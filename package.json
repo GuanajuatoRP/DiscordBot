@@ -1,0 +1,29 @@
+{
+  "name": "guanajuatobot",
+  "version": "1.0.0",
+  "description": "Bot officiel du serveur RP FH5 GuanajuatoRo",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/guanajuatorp/guanajuatobot.git"
+  },
+  "keywords": [],
+  "author": "Dercraker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/guanajuatorp/guanajuatobot/issues"
+  },
+  "dependencies": {
+    "common-tags": "^1.8.0",
+    "discord-akairo": "github:NotEnoughUpdates/discord-akairo",
+    "discord-buttons": "^4.0.0",
+    "discord.js": "^13.1.0",
+    "dotenv": "^10.0.0",
+    "fs": "^0.0.1-security",
+    "node-fetch": "^3.0.0",
+    "nodemon": "^2.0.13"
+  }
+}

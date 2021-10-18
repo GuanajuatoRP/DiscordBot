@@ -1,0 +1,7 @@
+{
+    "commands": {
+        "ping" : {
+            "desc": "La commande ping permet de connaître la latence du bot!"
+        }
+    }
+}
