@@ -1,24 +1,104 @@
 {
+    "bot" : {
+        "status" : {
+            "name" : "Apprend a apprendre"
+        }
+    },
     "commands": {
         "ping" : {
-            "desc": "La commande ping permet de connaître la latence du bot!",
-            "usage" : "ping"
+            "desc": "La commande ping permet de connaître la latence du bot!"
         },
         "help" : {
             "desc": "La commande help renvoie la liste des commandes du bot!",
-            "usage" : "help <commande>",
             "embed": {
                 "desc" : "Retrouvez la liste de toutes les commandes mis a disposition sur le serveur"
             }
         },
-        "purge" : {
-            "desc" : "Permet de suprimer entre 1 et 100 messages, ne permet pas de supprimer les messages épingler",
-            "usage" : "purge <Nombre de message a supprimer>",
-            "messageError" : "Vous ne pouvez pas supprimer un message de plus de 14jours"
+        "register" :{
+            "desc": "Permet de s'enregistrer sur le rp",
+            "embed": {
+                "1" : {
+                    "Fields" : {
+                        "1" : {
+                            "name": "<:checked:854861981164109865>",
+                            "content" : "Votre compte a déja été créé"
+                        }
+                    }
+                }
+            },
+            "button" : {
+                "label" : "S'enregister",
+                "url" : "https://uploads.sitepoint.com/wp-content/uploads/2015/07/1436013803checkbox-1024x1024.jpg",
+                "Fields" : {
+                    "1" : {
+                        "name": "Activation du compte",
+                        "content" : "Clique sur le bouton suivant pour activer ton compte"
+                    }
+                }
+            },
+            "messageReply" : {
+                "1" : "Tu as reçut en privé le lien d'activation de ton compte"
+            }
+        },
+        "creatembed" : {
+            "desc" : "La commande CreateEmbed permet de crée et custom un embed puis de l'envoyer dans un channel par son id",
+            "usage" : "createembed + interaction avec des menu",
+            "message" : {
+                "content" : "Merci de choisir l'une de ces options pour éditer / envoyer l'embed"
+            }
         }
     },
     "embeds" : {
-        "author" : "GuanajuatoRP",
-        "footer" : "L'équipe de GunajuatoRP"
+        "default" : {
+            "author" : "GuanajuatoRP",
+            "footer" : "L'équipe de GunajuatoRP",
+            "emoji" : "<:checked:854861981164109865>"
+        },
+        "CustomEmbedMenu" : {
+            "customId" : "CreateEmbedMenu",
+            "placeHolder" :"Choisir une option pour éditer l'embed",
+            "Options" : [{
+                "label": "SetColor",
+                "description": "Permet changer la couleur de l'embed",
+                "value": "SetColor"
+            },
+            {
+                "label": "SetTitle",
+                "description": "Permet de définir ou redéfir un titre",
+                "value": "SetTitle"
+            },
+            {
+                "label": "SetUrl",
+                "description": "Permet de définir ou redéfir une url",
+                "value": "SetUrl"
+            },
+            {
+                "label": "SetDesc",
+                "description": "Permet de définir ou redéfir une description",
+                "value": "SetDesc"
+            }, {
+                "label": "SetImage",
+                "description": "Permet de définir ou redéfir une Image",
+                "value": "SetImage"
+            },
+            {
+                "label": "SetThumbnail",
+                "description": "Permet de définir ou redéfir un thumbnail",
+                "value": "SetThumbnail"
+            },
+            {
+                "label": "AddField",
+                "description": "Permet d'ajouter un champ (Titre + Valeur + inline)",
+                "value": "AddField"
+            }, {
+                "label": "SendEmbed",
+                "description": "Une fois votre embed finis envoyez le dans le channel souhaiter via son Id",
+                "value": "SendEmbed'"
+            }]
+        },
+        "LogsEmbed" : {
+            "author": "Définir l'action",
+            "footer": "Réalisée par {Définir le membdre}"
+        }
     }
 }
