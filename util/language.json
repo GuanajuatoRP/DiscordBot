@@ -14,6 +14,11 @@
                 "desc" : "Retrouvez la liste de toutes les commandes mis a disposition sur le serveur"
             }
         },
+        "purge" : {
+            "desc" : "Permet de suprimer entre 1 et 100 messages, ne permet pas de supprimer les messages épingler",
+            "usage" : "purge <Nombre de message a supprimer>",
+            "messageError" : "Vous ne pouvez pas supprimer un message de plus de 14jours"
+        },
         "register" :{
             "desc": "Permet de s'enregistrer sur le rp",
             "embed": {
@@ -93,7 +98,7 @@
             }, {
                 "label": "SendEmbed",
                 "description": "Une fois votre embed finis envoyez le dans le channel souhaiter via son Id",
-                "value": "SendEmbed'"
+                "value": "SendEmbed"
             }]
         },
         "LogsEmbed" : {

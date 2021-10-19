@@ -133,7 +133,6 @@ class embedCustomListener extends Listener {
                 interaction.message.reply('Merci fournir l\'id du channel dans le quel vous voulez envoyer l\'embed\nLe message **DOIT** commancer par : \'**!em **\', vous avez 1minute pour valider le message')
                 await interaction.channel.awaitMessages({ filter, max: 1, time: 60000 })
                     .then(collected => {
-                        console.log(collected.first().content.replace("!em ", ""));
                         this.client.channels.cache.get(collected.first().content.replace("!em ", "")).send({
                                 embeds: [Embed]
                             })
