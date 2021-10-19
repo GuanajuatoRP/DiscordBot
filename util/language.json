@@ -40,7 +40,7 @@
                 "1" : "Tu as reçut en privé le lien d'activation de ton compte"
             }
         },
-        "creatembed" : {
+        "createembed" : {
             "desc" : "La commande CreateEmbed permet de crée et custom un embed puis de l'envoyer dans un channel par son id",
             "usage" : "createembed + interaction avec des menu",
             "message" : {
