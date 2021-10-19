@@ -105,5 +105,10 @@
             "author": "Définir l'action",
             "footer": "Réalisée par {Définir le membdre}"
         }
+    },
+    "event" : {
+        "ready" : {
+            "message" : "Bot is Ready !🤖"
+        }
     }
 }
