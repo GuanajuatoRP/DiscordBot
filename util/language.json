@@ -1,13 +1,20 @@
 {
     "commands": {
         "ping" : {
-            "desc": "La commande ping permet de connaître la latence du bot!"
+            "desc": "La commande ping permet de connaître la latence du bot!",
+            "usage" : "ping"
         },
         "help" : {
             "desc": "La commande help renvoie la liste des commandes du bot!",
+            "usage" : "help <commande>",
             "embed": {
                 "desc" : "Retrouvez la liste de toutes les commandes mis a disposition sur le serveur"
             }
+        },
+        "purge" : {
+            "desc" : "Permet de suprimer entre 1 et 100 messages, ne permet pas de supprimer les messages épingler",
+            "usage" : "purge <Nombre de message a supprimer>",
+            "messageError" : "Vous ne pouvez pas supprimer un message de plus de 14jours"
         }
     },
     "embeds" : {

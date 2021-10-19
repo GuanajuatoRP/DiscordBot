@@ -12,7 +12,7 @@ class HelpCommand extends Command {
             ],
             description: {
                 content: `${lang.commands.help.desc}`,
-                usage: 'help <commande>',
+                usage: lang.commands.help.usage,
                 exemples: ['help', 'help ping', 'aide createembed']
             }
         });

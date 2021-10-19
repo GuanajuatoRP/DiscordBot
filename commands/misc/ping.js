@@ -8,7 +8,7 @@ class PingCommand extends Command {
             category: 'Misc',
             description: {
                 content : `${lang.commands.ping.desc}`,
-                usage: `ping`,
+                usage: lang.commands.ping.usage,
                 exemples: ['ping']
             }
         });
