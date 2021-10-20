@@ -121,6 +121,11 @@
                     "embed" : {
                         "author" : "Supression d'un salon"
                     }
+                },
+                "purge" : {
+                    "embed" : {
+                        "author" : "Commande Purge"
+                    }
                 }
             }
         }
