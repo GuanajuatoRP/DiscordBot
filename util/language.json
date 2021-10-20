@@ -152,6 +152,12 @@
                     }
                 }
             }
+        },
+        "guild" : {
+            "banAdd" : "Ban",
+            "banRemove" : "UnBan",
+            "memberAdd" : "Nouveau Membre",
+            "memberRemove" : "Un membre a quiter le serveur"
         }
     }
 }
