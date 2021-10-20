@@ -116,6 +116,11 @@
                     "embed" : {
                         "author" : "Création d'un nouveau salon"
                     }
+                },
+                "delete" : {
+                    "embed" : {
+                        "author" : "Supression d'un salon"
+                    }
                 }
             }
         }
