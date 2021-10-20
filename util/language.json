@@ -139,6 +139,18 @@
                         "author" : "Supression d'un role"
                     }
                 }
+            },
+            "invitation" : {
+                "create" : {
+                    "embed" : {
+                        "author" : "Création d'un lien d'invitation"
+                    }
+                },
+                "delete" : {
+                    "embed" : {
+                        "author" : "Supression d'un lien d'invitation"
+                    }
+                }
             }
         }
     }
