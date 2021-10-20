@@ -109,6 +109,15 @@
     "event" : {
         "ready" : {
             "message" : "Bot is Ready !🤖"
+        },
+        "logs" : {
+            "salons" : {
+                "create" : {
+                    "embed" : {
+                        "author" : "Création d'un nouveau salon"
+                    }
+                }
+            }
         }
     }
 }
