@@ -26,14 +26,14 @@ module.exports = class BotClient extends AkairoClient {
             prefix: appConfig.configAkairo.prefix,
             channel: 'guild',
             defaultCooldown: 2000,
+            execSlash : true,
+            autoRegisterSlashCommands: true,
             typing: true,
             directory: './commands/'
         });
-
         this.listenerHandler = new ListenerHandler(this, {
             directory: './listeners/'
         });
-
         this.commandHandler.loadAll();
         this.commandHandler.useListenerHandler(this.listenerHandler);
         this.listenerHandler.loadAll();
