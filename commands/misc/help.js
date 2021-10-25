@@ -23,10 +23,10 @@ class HelpCommand extends Command {
             const command = args.command
             if (!command) {
                 let Embed = new MessageEmbed()
-                    .setAuthor(lang.embeds.author, "https://www.gtplanet.net/wp-content/uploads/2021/08/ForzaHorizon5_KeyArt_Horiz_RGB_Final-800x450.jpg", "https://discord.gg/BtkWVH2Kq9")
+                    .setAuthor(`${lang.embeds.default.author}`, "https://www.gtplanet.net/wp-content/uploads/2021/08/ForzaHorizon5_KeyArt_Horiz_RGB_Final-800x450.jpg", "https://discord.gg/BtkWVH2Kq9")
                     .setColor('#ff8000')
                     .setDescription(lang.commands.help.embed.desc)
-                    .setFooter(lang.embeds.footer, "https://www.gtplanet.net/wp-content/uploads/2021/08/ForzaHorizon5_KeyArt_Horiz_RGB_Final-800x450.jpg")
+                    .setFooter(`${lang.embeds.default.footer}`, "https://www.gtplanet.net/wp-content/uploads/2021/08/ForzaHorizon5_KeyArt_Horiz_RGB_Final-800x450.jpg")
                     .setTimestamp()
                     .addFields()
 
