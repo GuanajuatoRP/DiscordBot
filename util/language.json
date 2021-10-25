@@ -20,8 +20,9 @@
             "messageError" : "Vous ne pouvez pas supprimer un message de plus de 14jours"
         },
         "roll" : {
-            "desc" : "Permet de tirer un ou plusieur nombre aléatoirement de 0 a un nombre choisi.\nValeur par default Valeur: 1, Plage: 0-15",
-            "usage" : "roll <N nombre a tirer> <>"
+            "desc" : "Permet de tirer un ou plusieur nombre aléatoirement de 1 a un nombre choisi.\nValeur par default Valeur: 1, Plage: 1-15",
+            "usage" : "roll <N nombre a tirer> <Plage de tirage>",
+            "messageError" : "Vous ne pouvez pas tirer un nombre supérieur a la plage"
         },
         "register" :{
             "desc": "Permet de s'enregistrer sur le rp",

@@ -8,15 +8,33 @@ class RollCommand extends Command {
             aliases: ['roll'],
             category: 'Moderation',
             description: {
-                content : rollLang.usage,
-                usage: rollLang.desc,
-                exemples: ['ping']
-            }
+                content : rollLang.desc,
+                usage: rollLang.usage,
+                exemples: ['roll','roll 2 10']
+            },
+            args: [
+                { id: 'nbVal', type: 'number', default: 1 },
+                { id: 'plage', type: 'number', default: 15 }
+            ]
         });
     }
 
-    exec(message) {
-        return message.reply('Pong!');
+    exec(message, {nbVal, plage}) {
+        if (nbVal > plage){
+            return message.reply(rollLang.messageError)
+        }
+        let result = []
+        let nb
+        for (let i = 0; i < nbVal; i++){
+            do {
+                nb = Math.floor(Math.random() * (plage - 1 + 1) + 1)
+            } while (result.includes(nb));
+            result.push(nb)
+        }
+        result.sort((a,b) => {
+            return a - b;
+        })
+        return message.reply(`Voici vos valeur${nbVal === 1 ? '':'s'}: ${result.join(',')}`);
     }
 }
 
