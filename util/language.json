@@ -19,6 +19,10 @@
             "usage" : "purge <Nombre de message a supprimer>",
             "messageError" : "Vous ne pouvez pas supprimer un message de plus de 14jours"
         },
+        "roll" : {
+            "desc" : "Permet de tirer un ou plusieur nombre aléatoirement de 0 a un nombre choisi.\nValeur par default Valeur: 1, Plage: 0-15",
+            "usage" : "roll <N nombre a tirer> <>"
+        },
         "register" :{
             "desc": "Permet de s'enregistrer sur le rp",
             "embed": {
