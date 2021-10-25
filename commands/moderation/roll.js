@@ -21,7 +21,11 @@ class RollCommand extends Command {
 
     exec(message, {nbVal, plage}) {
         if (nbVal > plage){
-            return message.reply(rollLang.messageError)
+            message.delete()
+            return message.channel.send(rollLang.messageError)
+            .then(message => {
+                setTimeout(() => message.delete(),10000)
+            })
         }
         let result = []
         let nb

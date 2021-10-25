@@ -24,6 +24,10 @@
             "usage" : "roll <N nombre a tirer> <Plage de tirage>",
             "messageError" : "Vous ne pouvez pas tirer un nombre supérieur a la plage"
         },
+        "droll" : {
+            "desc" : "Permet de répartir aléatoirment des membre d'un channel vocal dans d'autre channel vocal ",
+            "usage" : "droll"
+        },
         "register" :{
             "desc": "Permet de s'enregistrer sur le rp",
             "embed": {
