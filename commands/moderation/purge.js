@@ -14,23 +14,39 @@ class PurgeCommand extends Command {
             typing: false,
             args: [
                 { id: 'nbMessage', type: 'number', default: 100 }
-            ]
+            ],
+            slash: true,
+            slashOptions: [{
+            name: 'nombre',
+            description: "Nombre de message que vous voulez supprimer, 100Max",
+            type: 'NUMBER',
+            required: true
+        }]
         });
     }
-    async exec(message, args) {
+    exec(message) {
+        message.reply({
+            content: `Merci d'utiliser la commande avec un /`,
+            ephemeral: true
+        })
+        message.delete();
+    }
+    async execSlash(message,{nombre}) {
         let messages = await message.channel.messages.fetch({
-                limit: args.nbMessage,
-                before: message.id
-            })
+            limit: nombre,
+            before: message.id
+        })
 
         messages = messages.filter(message => message.pinned === false)
-        message.delete()
-
         try {
             await message.channel.bulkDelete(messages)
         } catch (error) {
             message.channel.send(lang.commands.purge.messageError)
         }
+        message.interaction.reply({
+            content: 'La commande purge a bien été executée',
+            ephemeral: true,
+        })
     }
 }
 module.exports = PurgeCommand

@@ -5,7 +5,7 @@ const lang = require('../../util/language.json')
 class HelpCommand extends Command {
     constructor() {
         super('help', {
-            aliases: ['help', 'aide'],
+            aliases: ['help'],
             category: 'Misc',
             args: [
                 { id: 'command', type: 'commandAlias' }
@@ -13,7 +13,7 @@ class HelpCommand extends Command {
             description: {
                 content: `${lang.commands.help.desc}`,
                 usage: lang.commands.help.usage,
-                exemples: ['help', 'help ping', 'aide createembed']
+                exemples: ['help', 'help ping']
             }
         });
     }
