@@ -3,12 +3,8 @@ const lang = require('./language.json')
 const cemLang = lang.embeds.CustomEmbedMenu
 
 
-const DefaultEmbed = new MessageEmbed()
-    .setAuthor(lang.embeds.default.author, "https://www.gtplanet.net/wp-content/uploads/2021/08/ForzaHorizon5_KeyArt_Horiz_RGB_Final-800x450.jpg", "https://discord.gg/BtkWVH2Kq9")
-    .setColor('#ff8000')
-    .setFooter(lang.embeds.default.footer, "https://www.gtplanet.net/wp-content/uploads/2021/08/ForzaHorizon5_KeyArt_Horiz_RGB_Final-800x450.jpg")
-    .setTimestamp()
-    .addFields()
+// const DefaultEmbed = new MessageEmbed()
+//     .setAuthor(lang.embeds.default.author, "https://www.gtplanet.net/wp-content/uploads/2021/08/ForzaHorizon5_KeyArt_Horiz_RGB_Final-800x450.jpg", "https://discord.gg/BtkWVH2Kq9").setColor('#ff8000').setFooter(lang.embeds.default.footer, "https://www.gtplanet.net/wp-content/uploads/2021/08/ForzaHorizon5_KeyArt_Horiz_RGB_Final-800x450.jpg").setTimestamp().addFields()
 
 const CustomEmbedMenu = new MessageActionRow()
     .addComponents(
@@ -56,7 +52,10 @@ const CustomEmbedMenu = new MessageActionRow()
         ])
     )
 module.exports = {
-    DefaultEmbed: DefaultEmbed,
+    // DefaultEmbed: DefaultEmbed,
+    DefaultEmbed: function() {
+        return new MessageEmbed().setAuthor(lang.embeds.default.author, "https://www.gtplanet.net/wp-content/uploads/2021/08/ForzaHorizon5_KeyArt_Horiz_RGB_Final-800x450.jpg", "https://discord.gg/BtkWVH2Kq9").setColor('#ff8000').setFooter(lang.embeds.default.footer, "https://www.gtplanet.net/wp-content/uploads/2021/08/ForzaHorizon5_KeyArt_Horiz_RGB_Final-800x450.jpg").setTimestamp()
+    },
     LogsEmbed: function() {
         return new MessageEmbed().setAuthor(lang.embeds.LogsEmbed.author).setColor('#ff0000').setFooter(lang.embeds.LogsEmbed.footer).setTimestamp()
     },
