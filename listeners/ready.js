@@ -12,6 +12,7 @@ class ReadyListener extends Listener {
     }
 
     exec() {
+        console.log(`${lang.event.ready.message} at ${date.getHours()}H${date.getMinutes()}`);
         this.client.channels.cache.get(appconfig.chanels.botLog).send(`${lang.event.ready.message} at ${date.getHours()}H${date.getMinutes()}`)
     }
 }
