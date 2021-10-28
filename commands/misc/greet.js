@@ -1,24 +1,26 @@
 const { Command } = require('discord-akairo');
-
-
 class GreetCommand extends Command {
     constructor() {
     super("greet", {
         aliases: ["greet"],
-        slash: true
-    });
-}
-
-/* Using exec and execSlash*/
+        description:"dit bonjour a la personne mentionné",
+        slash: true,
+        slashOptions: [{
+            name: "member",
+            description: "The member you want to greet",
+            type: "USER",
+            required: true
+        }]
+    })
+    }
 
     exec(message) {
-        message.reply(`Hello `);
+        message.reply({
+            content: `Merci d'utiliser la slash command`,
+        })
     }
-    // By default it will use the normal exec method but if you specify execSlash it will run and not the exec
-    // If you want it to always run execSlash you will have to add the execSlash option to your command handler
-    // and it will only use the execSlash and throw a error if you aren't using it
-    execSlash(message) {
-        message.channel.send(`Hello `);
+    execSlash(message,{member}) {
+        message.interaction.reply(`Coucou ${member}`);
     }
 }
 
