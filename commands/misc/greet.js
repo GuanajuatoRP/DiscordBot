@@ -3,7 +3,7 @@ class GreetCommand extends Command {
     constructor() {
     super("greet", {
         aliases: ["greet"],
-        description:"dit bonjour a la personne mentionné",
+        category: "Test",
         slash: true,
         slashOptions: [{
             name: "member",
