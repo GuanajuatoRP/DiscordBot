@@ -11,9 +11,8 @@ class embedCustomListener extends Listener {
     }
 
     async exec(interaction) {
-        if (!interaction.isSelectMenu() && interaction.customId !== 'CreateEmbedMenu') return;
-
-        let Embed = interaction.message.embeds[0]
+        if (interaction.isSelectMenu() && interaction.customId === 'CreateEmbedMenu'){
+            let Embed = interaction.message.embeds[0]
         const filter = m => m.content.startsWith('!em ')
         await interaction.deferUpdate()
         await interaction.editReply({ content: `Vous avez choisi l'option ${interaction.values[0]}`, components: [] });
@@ -139,6 +138,7 @@ class embedCustomListener extends Listener {
                     })
                     .catch(() => console.error(`Vous avez 2minutes pour définir le titre veulliez recommancé`))
                 break;
+        }
         }
     }
 }

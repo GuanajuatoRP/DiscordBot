@@ -1,5 +1,5 @@
 const { Command } = require('discord-akairo');
-const lang = require('../../util/language.json')
+const appConfig = require('../../util/appConfig.json')
 const fs = require('fs')
 
 class EndGameCommand extends Command {
@@ -24,7 +24,17 @@ class EndGameCommand extends Command {
         message.delete();
     }
     async execSlash(message) {
-
+        message.interaction.reply({
+            content: 'La commande ngm a bien été executée',
+            ephemeral: true,
+        })
+        const cat = this.client.channels.cache.get(appConfig.chanels.game.categorie)
+        // console.log(cat.children);
+        cat.children.forEach(child => {
+            if (child.id != appConfig.chanels.game.admin){
+                this.client.channels.cache.get(child.id).delete()
+            }
+        });
     }
 }
 module.exports = EndGameCommand
