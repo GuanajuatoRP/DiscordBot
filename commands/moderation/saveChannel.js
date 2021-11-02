@@ -31,16 +31,16 @@ class SaveChannelCommand extends Command {
     async execSlash(message,{channel}) {
         // channel = channel.slice(2,-1)
         // const salon = this.client.channels.cache.get(channel)
-        // const json = `{
-        //     "name": "${salon.name}",
-        //     "channelInfo" : {
-        //         "type": "${salon.type}",
-        //         "topic": "${salon.topic}",
-        //         "permissionOverwrites": ${salon.permissionOverwrites.cache},
-        //         "position": "${salon.position}"
-        //     }
-        // }`
-        console.log(channel.parent);
+        const json = `{
+            "name": "${channel.name}",
+            "channelInfo" : {
+                "type": "${channel.type}",
+                "topic": "${channel.topic}",
+                "permissionOverwrites": ${channel.permissionOverwrites.cache},
+                "position": "${channel.position}"
+            }
+        }`
+        console.log(json);
 
 
         message.interaction.reply({

@@ -1,0 +1,48 @@
+{
+    "livreur" : [
+        {
+            "name": "livreur",
+            "info" : {
+                "type": "GUILD_TEXT",
+                "position": "1"
+            }
+        },    
+        {
+            "name": "police",
+            "info" : {
+                "type": "GUILD_TEXT",
+                "position": "2"
+            }
+        },    
+        {
+            "name": "livreur",
+            "info" : {
+                "type": "GUILD_VOICE",
+                "position": "3"
+            }
+        },    
+        {
+            "name": "police",
+            "info" : {
+                "type": "GUILD_VOICE",
+                "position": "4"
+            }
+        }    
+    ],
+    "rally" : [
+        {
+            "name": "session",
+            "info" : {
+                "type": "GUILD_TEXT",
+                "position": "1"
+            }
+        },    
+        {
+            "name": "resultat",
+            "info" : {
+                "type": "GUILD_TEXT",
+                "position": "2"
+            }
+        }    
+    ]
+}
