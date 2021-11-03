@@ -14,7 +14,14 @@ class HelpCommand extends Command {
                 content: `${lang.commands.help.desc}`,
                 usage: lang.commands.help.usage,
                 exemples: ['help', 'help ping']
-            }
+            },
+            slash: true,
+            slashOptions: [{
+                name: 'name',
+                description: "Nom de la commande sur le quel vous voulez plus d'info ",
+                type: 'STRING',
+                required: false
+            }]
         });
     }
 
@@ -66,7 +73,13 @@ class HelpCommand extends Command {
             `)
 
 
-        }          
+        }
+    execSlash(message, {name}) {
+        message.interaction.reply({
+            content:`${name}`,
+            ephemeral: true
+        })
+    }          
 }
 
 module.exports = HelpCommand;

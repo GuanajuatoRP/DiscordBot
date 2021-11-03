@@ -27,7 +27,7 @@ module.exports = class BotClient extends AkairoClient {
             channel: 'guild',
             defaultCooldown: 2000,
             execSlash : true,
-            autoRegisterSlashCommands: false,
+            autoRegisterSlashCommands: true,
             typing: true,
             directory: './commands/'
         });
