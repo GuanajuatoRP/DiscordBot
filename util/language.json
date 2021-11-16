@@ -10,6 +10,8 @@
         },
         "help" : {
             "desc": "La commande help renvoie la liste des commandes du bot!",
+            "usage" : "help <Nom de commande>",
+            "exemples": ["help","help ping"],
             "embed": {
                 "desc" : "Retrouvez la liste de toutes les commandes mis a disposition sur le serveur"
             }
