@@ -65,7 +65,6 @@ class HelpCommand extends Command {
 
 
             const aliases = [...this.handler.aliases.values()]
-            console.log(aliases.includes(command));
             if (!aliases.includes(command)){
                 return message.interaction.reply({
                     content: `La commande ***${command}*** n'existe pas`

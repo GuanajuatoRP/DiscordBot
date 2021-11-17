@@ -6,7 +6,9 @@
     },
     "commands": {
         "ping" : {
-            "desc": "La commande ping permet de connaître la latence du bot!"
+            "desc": "La commande ping permet de connaître la latence du bot!",
+            "usage": "",
+            "exemples" : []
         },
         "help" : {
             "desc": "La commande help renvoie la liste des commandes du bot!",
@@ -19,19 +21,24 @@
         "purge" : {
             "desc" : "Permet de suprimer entre 1 et 100 messages, ne permet pas de supprimer les messages épingler",
             "usage" : "purge <Nombre de message a supprimer>",
+            "exemples" : [],
             "messageError" : "Vous ne pouvez pas supprimer un message de plus de 14jours"
         },
         "roll" : {
             "desc" : "Permet de tirer un ou plusieur nombre aléatoirement de 1 a un nombre choisi.\nValeur par default Valeur: 1, Plage: 1-15",
             "usage" : "roll <N nombre a tirer> <Plage de tirage>",
+            "exemples" : [],
             "messageError" : "Vous ne pouvez pas tirer un nombre supérieur a la plage"
         },
         "droll" : {
             "desc" : "Permet de répartir aléatoirment des membre d'un channel vocal dans d'autre channel vocal ",
-            "usage" : "droll"
+            "usage" : "droll",
+            "exemples" : []
         },
         "register" :{
             "desc": "Permet de s'enregistrer sur le rp",
+            "usage":"",
+            "exemples" : [],
             "embed": {
                 "1" : {
                     "Fields" : {
@@ -59,6 +66,7 @@
         "createembed" : {
             "desc" : "La commande CreateEmbed permet de crée et custom un embed puis de l'envoyer dans un channel par son id",
             "usage" : "createembed + interaction avec des menu",
+            "exemples" : [],
             "message" : {
                 "content" : "Merci de choisir l'une de ces options pour éditer / envoyer l'embed"
             }
