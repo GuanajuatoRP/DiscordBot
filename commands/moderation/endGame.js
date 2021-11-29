@@ -29,9 +29,8 @@ class EndGameCommand extends Command {
             ephemeral: true,
         })
         const cat = this.client.channels.cache.get(appConfig.chanels.game.categorie)
-        // console.log(cat.children);
         cat.children.forEach(child => {
-            if (child.id != appConfig.chanels.game.admin){
+            if (child.id != appConfig.chanels.game.admin && child.id != appConfig.chanels.game.salleDeJeux){
                 this.client.channels.cache.get(child.id).delete()
             }
         });
