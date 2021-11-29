@@ -50,27 +50,14 @@ class SaveChannelCommand extends Command {
             channel.messages.fetch()
             .then(msg => {
                 const messageTab = [...msg].reverse()
-                messageTab.forEach(el => {
-                    const obj = el[1]
-
-                    message.channel.send({
-                        content: `${obj.content}`,
-                        embed : obj.embed,
-                        components : obj.components,
-                        mentions : obj.mentions
-                    }).then(newMessage => {
-                        if (obj.pinned) newMessage.pin()
-                    })
-                    console.log(obj.embed);
-                });
+                salon.messages = messageTab
+                console.log(JSON.stringify(salon));
             });
-
 
             message.interaction.reply({
                 content: 'La commande backup a bien été executée',
                 ephemeral: true,
             })
-            // console.log(channel.messages.cache);
         }
 }
 module.exports = SaveChannelCommand

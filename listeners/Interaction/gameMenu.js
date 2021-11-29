@@ -26,6 +26,27 @@ class GameMenuListener extends Listener {
                     .then(channel => {
                         channel.setParent('905214164950196224')
                         channel.permissionOverwrites.set(salon.channelInfo.permissionOverwrites)
+                        salon.messages.forEach(el => {
+                            const obj = el[1]
+                            if (obj.content) {
+                                channel.send({
+                                    content: `${obj.content}`,
+                                    embeds : obj.embeds,
+                                    components : obj.components,
+                                    mentions : obj.mentions
+                                }).then(newMessage => {
+                                    if (obj.pinned) newMessage.pin()
+                                })
+                            } else {
+                                channel.send({
+                                    embeds : obj.embeds,
+                                    components : obj.components,
+                                    mentions : obj.mentions
+                                }).then(newMessage => {
+                                    if (obj.pinned) newMessage.pin()
+                                })
+                            }
+                        });
                     })
             });
         }

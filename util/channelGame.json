@@ -1,3 +1,140 @@
 {
-    "test": [{ "name": "AFK", "channelInfo": { "type": "GUILD_VOICE", "permissionOverwrites": [{ "id": "877644017255465011", "type": 0, "allow": "34983488", "deny": "2984390929" }, { "id": "877644017255465012", "type": 0, "allow": "0", "deny": "1024" }, { "id": "877644017255465013", "type": 0, "allow": "0", "deny": "1024" }, { "id": "877644017276428344", "type": 0, "allow": "3019374416", "deny": "0" }, { "id": "877644017276428345", "type": 0, "allow": "63054080", "deny": "0" }, { "id": "152125692618735616", "type": 1, "allow": "0", "deny": "0" }], "position": 1 } }]
+    "test": [{
+        "name":"règlement-drag",
+        "channelInfo":{
+           "type":"GUILD_TEXT",
+           "topic":"coucou :p",
+           "permissionOverwrites":[
+              {
+                 "id":"877644017255465011",
+                 "type":0,
+                 "allow":"37078592",
+                 "deny":"2982295825"
+              },
+              {
+                 "id":"877644017255465012",
+                 "type":0,
+                 "allow":"0",
+                 "deny":"1024"
+              },
+              {
+                 "id":"877644017255465013",
+                 "type":0,
+                 "allow":"0",
+                 "deny":"1024"
+              },
+              {
+                 "id":"877644017255465019",
+                 "type":0,
+                 "allow":"1024",
+                 "deny":"0"
+              },
+              {
+                 "id":"877644017276428343",
+                 "type":0,
+                 "allow":"0",
+                 "deny":"0"
+              },
+              {
+                 "id":"877644017276428345",
+                 "type":0,
+                 "allow":"64433472",
+                 "deny":"0"
+              }
+           ],
+           "position":0
+        },
+        "messages":[
+           [
+              "914979273117405196",
+              {
+                 "channelId":"877644018568269864",
+                 "guildId":"877644017255465011",
+                 "deleted":false,
+                 "id":"914979273117405196",
+                 "type":"DEFAULT",
+                 "system":false,
+                 "content":"coucou de test <@!152125692618735616>",
+                 "authorId":"152125692618735616",
+                 "pinned":true,
+                 "tts":false,
+                 "nonce":null,
+                 "embeds":[
+                    
+                 ],
+                 "components":[
+                    
+                 ],
+                 "attachments":[
+                    
+                 ],
+                 "stickers":[
+                    
+                 ],
+                 "createdTimestamp":1638218458204,
+                 "editedTimestamp":null,
+                 "webhookId":null,
+                 "groupActivityApplicationId":null,
+                 "applicationId":null,
+                 "activity":null,
+                 "flags":0,
+                 "reference":null,
+                 "interaction":null,
+                 "cleanContent":"coucou de test @​Dercraker"
+              }
+           ],
+           [
+              "914987205917802546",
+              {
+                 "channelId":"877644018568269864",
+                 "guildId":"877644017255465011",
+                 "deleted":false,
+                 "id":"914987205917802546",
+                 "type":"DEFAULT",
+                 "system":false,
+                 "content":"",
+                 "authorId":"899735680714936390",
+                 "pinned":false,
+                 "tts":false,
+                 "nonce":null,
+                 "embeds":[
+                    {
+                       "type":"rich",
+                       "title":"AAAA",
+                       "description":null,
+                       "url":null,
+                       "color":16744448,
+                       "timestamp":1638220332498,
+                       "fields":[
+                          
+                       ],
+                       "thumbnail":null,
+                       "image":null,
+                       "video":null,
+                       "provider":null
+                    }
+                 ],
+                 "components":[
+                    
+                 ],
+                 "attachments":[
+                    
+                 ],
+                 "stickers":[
+                    
+                 ],
+                 "createdTimestamp":1638220349531,
+                 "editedTimestamp":null,
+                 "webhookId":null,
+                 "groupActivityApplicationId":null,
+                 "applicationId":null,
+                 "activity":null,
+                 "flags":0,
+                 "reference":null,
+                 "interaction":null,
+                 "cleanContent":""
+              }
+           ]
+        ]
+     }]
 }
