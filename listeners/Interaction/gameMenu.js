@@ -19,12 +19,13 @@ class GameMenuListener extends Listener {
                 ephemeral: true
             })
 
-            channels[interaction.values[0]].forEach(channel => {
-                interaction.message.guild.channels.create(channel.name, {
-                        "type": channel.info.type,
+            channels[interaction.values[0]].forEach(salon => {
+                interaction.message.guild.channels.create(salon.name, {
+                        "type": salon.channelInfo.type,
                     })
                     .then(channel => {
                         channel.setParent('905214164950196224')
+                        channel.permissionOverwrites.set(salon.channelInfo.permissionOverwrites)
                     })
             });
         }

@@ -14,12 +14,6 @@ class GameCommand extends Command {
             },
             typing: false,
             slash: true,
-            //     slashOptions: [{
-            //     name: 'name',
-            //     description: "Salon a backup",
-            //     type: 'STRING',
-            //     required: true
-            // }]
         });
     }
     exec(message) {

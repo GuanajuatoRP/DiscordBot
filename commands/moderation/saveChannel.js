@@ -14,11 +14,11 @@ class SaveChannelCommand extends Command {
             typing: false,
             slash: true,
             slashOptions: [{
-            name: 'channel',
-            description: "Salon a info",
-            type: 'CHANNEL',
-            required: true
-        }]
+                name: 'channel',
+                description: "Salon a info",
+                type: 'CHANNEL',
+                required: true
+            }]
         });
     }
     exec(message) {
@@ -28,19 +28,29 @@ class SaveChannelCommand extends Command {
         })
         message.delete();
     }
-    async execSlash(message,{channel}) {
-        // channel = channel.slice(2,-1)
-        // const salon = this.client.channels.cache.get(channel)
-        const json = `{
-            "name": "${channel.name}",
-            "channelInfo" : {
-                "type": "${channel.type}",
-                "topic": "${channel.topic}",
-                "permissionOverwrites": ${channel.permissionOverwrites.cache},
-                "position": "${channel.position}"
+    async execSlash(message, { channel }) {
+
+        let permissionsList = new Array();
+        const permissions = [...channel.permissionOverwrites.cache]
+        permissions.forEach(permission => {
+            permissionsList.push(permission[1])
+        });
+
+
+        const salon = new Object()
+        salon.name = channel.name,
+            salon.channelInfo = {
+                "type": channel.type,
+                "topic": channel.topic,
+                "permissionOverwrites": permissionsList,
+                "position": channel.position
             }
-        }`
-        console.log(json);
+
+
+        // console.log(channel.messages.cache);
+        const sal = this.client.channels.cache.get('877644018568269864');
+        const msg = sal.messages.cache;
+        console.log(msg);
 
 
         message.interaction.reply({
