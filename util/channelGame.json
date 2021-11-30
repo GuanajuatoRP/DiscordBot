@@ -1,5 +1,6 @@
 {
-    "livreur": [{
+    "livreur": [
+        {
             "name": "règlement-livraison",
             "channelInfo": {
                 "type": "GUILD_TEXT",
@@ -472,7 +473,8 @@
             }
         }
     ],
-    "rally": [{
+    "rally": [
+        {
             "name": "règlement-rally",
             "channelInfo": {
                 "type": "GUILD_TEXT",
@@ -705,7 +707,8 @@
 
         }
     ],
-    "Hide&Seek": [{
+    "Hide&Seek": [
+        {
             "name": "reglement-hide-and-seek",
             "channelInfo": {
                 "type": "GUILD_TEXT",
@@ -844,7 +847,8 @@
             "messages": []
         }
     ],
-    "jeuneConducteur": [{
+    "jeuneConducteur": [
+        {
             "name": "règlement-jeune-conducteur",
             "channelInfo": {
                 "type": "GUILD_TEXT",
