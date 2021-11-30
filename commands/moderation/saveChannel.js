@@ -1,4 +1,5 @@
 const { Command } = require('discord-akairo');
+const fs = require('fs');
 const lang = require('../../util/language.json')
 
 class SaveChannelCommand extends Command {
@@ -51,6 +52,12 @@ class SaveChannelCommand extends Command {
             .then(msg => {
                 const messageTab = [...msg].reverse()
                 salon.messages = messageTab
+
+                    fs.appendFile('cat.json', `${JSON.stringify(salon)},` , (err) => {
+                    if(err) throw err;
+                    })
+
+
                 console.log(JSON.stringify(salon));
             });
 
