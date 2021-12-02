@@ -1,6 +1,5 @@
 const { Command } = require('discord-akairo');
 const appConfig = require('../../util/appConfig.json')
-const fs = require('fs')
 
 class EndGameCommand extends Command {
     constructor() {
@@ -34,6 +33,17 @@ class EndGameCommand extends Command {
                 this.client.channels.cache.get(child.id).delete()
             }
         });
+
+        const RoleA = message.guild.roles.cache.get(appConfig.Roles.GMA);
+        RoleA.members.forEach(member => {
+            member.roles.remove(RoleA);
+        });
+        const RoleB = message.guild.roles.cache.get(appConfig.Roles.GMB);
+        RoleB.members.forEach(member => {
+            member.roles.remove(RoleB);
+        });
+
+
     }
 }
 module.exports = EndGameCommand
