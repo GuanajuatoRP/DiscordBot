@@ -5,7 +5,7 @@ class PurgeCommand extends Command {
     constructor() {
         super('purge', {
             aliases: ['purge', 'clear'],
-            category: 'Moderation',
+            category: 'Administration',
             description: {
                 content: lang.commands.purge.desc,
                 usage: lang.commands.purge.usage,
@@ -20,8 +20,9 @@ class PurgeCommand extends Command {
             name: 'nombre',
             description: "Nombre de message que vous voulez supprimer, 100Max",
             type: 'NUMBER',
-            required: true
-        }]
+            required: true,
+            }],
+            ownerOnly : true,
         });
     }
     exec(message) {

@@ -1,16 +1,16 @@
 const { Command } = require('discord-akairo');
 const lang = require('../../util/language.json');
-const rollLang = lang.commands.roll
+const numberLang = lang.commands.number
 
-class RollCommand extends Command {
+class NumberCommand extends Command {
     constructor() {
-        super('roll', {
-            aliases: ['roll'],
-            category: 'Moderation',
+        super('number', {
+            aliases: ['number'],
+            category: 'Administration',
             description: {
-                content: rollLang.desc,
-                usage: rollLang.usage,
-                exemples: ['roll', 'roll 2 10']
+                content: numberLang.desc,
+                usage: numberLang.usage,
+                exemples: ['number', 'number 2 10']
             },
             slash: true,
             slashOptions: [{
@@ -23,18 +23,16 @@ class RollCommand extends Command {
                 description: "plage sur la quelle tirer les valeurs",
                 type: 'NUMBER',
                 required: true
-            }]
+            }],
+            slashOnly : true
         });
     }
 
-    exec(message) {
-        return message.reply(`Merci d'utiliser cette commande avec un slash`);
-    }
 
     execSlash(message, { nbval, plage }) {
         if (nbval > plage) {
             return message.interaction.reply({
-                content: rollLang.messageError,
+                content: numberLang.messageError,
                 ephemeral: true
             })
         }
@@ -53,4 +51,4 @@ class RollCommand extends Command {
     }
 }
 
-module.exports = RollCommand;
+module.exports = NumberCommand;

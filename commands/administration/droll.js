@@ -2,7 +2,7 @@ const { Command } = require('discord-akairo');
 const appConfig = require('../../util/appConfig.json')
 const { DefaultEmbed } = require('../../util/ExportEmbed');
 const lang = require('../../util/language.json');
-const drollLang = lang.commands.roll
+const drollLang = lang.commands.number
 
 class DrollCommand extends Command {
     constructor() {
@@ -13,8 +13,10 @@ class DrollCommand extends Command {
             description: {
                 content : drollLang.desc,
                 usage: drollLang.usage,
-                exemples: ['droll','droll 2']
+                exemples: ['droll']
             },
+            slash : true,
+            slashEphemeral: true
         });
     }
 
@@ -51,10 +53,16 @@ class DrollCommand extends Command {
             role.setAuthor("Répartition des équipes")
             role.addField("Police :oncoming_police_car: :",`${teamA.join(",")}`,false)
             role.addField("Civils :blue_car: :",`${teamB.join(",")}`,false)
+
             message.channel.send({
                 embeds: [role],
             })
+
         })
+    }
+
+    execSlash(message){
+
     }
 }
 

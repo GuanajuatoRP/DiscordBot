@@ -6,7 +6,7 @@ class GameCommand extends Command {
     constructor() {
         super('game', {
             aliases: ['game'],
-            category: 'Moderation',
+            category: 'Administration',
             description: {
                 content: `Permet de crée une nouvelle partie `,
                 usage: `game`,

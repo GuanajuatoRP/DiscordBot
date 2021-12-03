@@ -24,9 +24,9 @@
             "exemples": [],
             "messageError": "Vous ne pouvez pas supprimer un message de plus de 14jours"
         },
-        "roll": {
+        "number": {
             "desc": "Permet de tirer un ou plusieur nombre aléatoirement de 1 a un nombre choisi.",
-            "usage": "roll <N nombre a tirer> <Plage de tirage>",
+            "usage": "number <N nombre a tirer> <Plage de tirage>",
             "exemples": [],
             "messageError": "Vous ne pouvez pas tirer un nombre supérieur a la plage"
         },

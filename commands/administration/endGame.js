@@ -5,7 +5,7 @@ class EndGameCommand extends Command {
     constructor() {
         super('endgame', {
             aliases: ['endgame'],
-            category: 'Moderation',
+            category: 'Administration',
             description: {
                 content: `Permet terminer une partie `,
                 usage: `endgame`,

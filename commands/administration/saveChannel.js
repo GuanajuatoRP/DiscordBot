@@ -6,7 +6,7 @@ class SaveChannelCommand extends Command {
     constructor() {
         super('info', {
             aliases: ['info'],
-            category: 'Moderation',
+            category: 'Administration',
             description: {
                 content: `Permet d'avoir les info d'un channel`,
                 usage: `backup <ChannelName>`,
