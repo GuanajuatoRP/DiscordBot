@@ -16,7 +16,7 @@ class RoleCommand extends Command {
                 usage: roleLang.usage,
                 exemples: ['role']
             },
-            slash : true,
+            slash : true
         });
     }
 

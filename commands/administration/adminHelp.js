@@ -1,11 +1,11 @@
 const { stripIndents } = require('common-tags');
-const { Command, AkairoHandler, CommandHandler } = require('discord-akairo');
+const { Command } = require('discord-akairo');
 const { MessageEmbed } = require('discord.js');
 const lang = require('../../util/language.json')
 class AdminHelpCommand extends Command {
     constructor() {
         super('adminhelp', {
-            aliases: ['adminhelp','adhelp'],
+            aliases: ['adminhelp'],
             category: 'Administration',
             description: {
                 content: `${lang.commands.help.desc}`,
@@ -74,7 +74,8 @@ class AdminHelpCommand extends Command {
             const aliases = [...this.handler.aliases.values()]
             if (!aliases.includes(command)){
                 return message.interaction.reply({
-                    content: `La commande ***${command}*** n'existe pas`
+                    content: `La commande ***${command}*** n'existe pas`,
+                    ephemeral: true
                 }) 
             }
 
@@ -94,7 +95,8 @@ class AdminHelpCommand extends Command {
                     <> = argument(s) optionnel(s) | {} = argument(s) obligatoire
                     Les caractères suivants -> <>, {} ne doivents pas être inclus dans les commandes
                 \`\`\`               
-                `
+                `,
+                ephemeral: true
             }) 
             
 

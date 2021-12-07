@@ -42,14 +42,16 @@ class HelpCommand extends Command {
                     .addFields()
 
                 for (const category of this.handler.categories.values()) {
-                    Embed.addField(
-                            `${category.id}`,
-                            `${category
-                                .filter(cmd => cmd.aliases.length > 0)
-                                .map(cmd => `\`${cmd.aliases[0]}\``)
-                                .join(', ')
-                            }`
-                    )
+                    if (category.id !== 'Administration'){
+                        Embed.addField(
+                                `${category.id}`,
+                                `${category
+                                    .filter(cmd => cmd.aliases.length > 0)
+                                    .map(cmd => `\`${cmd.aliases[0]}\``)
+                                    .join(', ')
+                                }`
+                        )
+                    }
                 }
             
                 Embed.addField(
@@ -67,8 +69,20 @@ class HelpCommand extends Command {
             const aliases = [...this.handler.aliases.values()]
             if (!aliases.includes(command)){
                 return message.interaction.reply({
-                    content: `La commande ***${command}*** n'existe pas`
+                    content: `La commande ***${command}*** n'existe pas`,
+                    ephemeral: true
                 }) 
+            }
+            for (const category of this.handler.categories.values()) {
+                if (category.id == 'Administration'){
+                    for (const cat of category) {
+                        if (cat[0] == command){
+                            return message.interaction.reply({
+                                content: `La commande help ne permet pas d'avoir des informaton sur la commande : ***${command}***`
+                            }) 
+                        }
+                    }
+                }
             }
 
             return message.interaction.reply({
@@ -83,11 +97,12 @@ class HelpCommand extends Command {
     
                     
     
-                    / @${this.client.user.username} = prefixs  a utiliser avec le bot
+                    / @${this.client.user.username} = prefixs a utiliser avec le bot
                     <> = argument(s) optionnel(s) | {} = argument(s) obligatoire
                     Les caractères suivants -> <>, {} ne doivents pas être inclus dans les commandes
                 \`\`\`               
-                `
+                `,
+                ephemeral: true
             }) 
             
 
