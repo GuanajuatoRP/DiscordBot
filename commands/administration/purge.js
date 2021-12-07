@@ -22,7 +22,6 @@ class PurgeCommand extends Command {
             type: 'NUMBER',
             required: true,
             }],
-            ownerOnly : true,
         });
     }
     exec(message) {

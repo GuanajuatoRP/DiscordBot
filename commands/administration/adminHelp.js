@@ -19,7 +19,6 @@ class AdminHelpCommand extends Command {
                 type: 'STRING',
                 required: false
             }],
-            ownerOnly : true,
         });
     }
 

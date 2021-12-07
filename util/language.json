@@ -30,9 +30,9 @@
             "exemples": [],
             "messageError": "Vous ne pouvez pas tirer un nombre supérieur a la plage"
         },
-        "droll": {
+        "role": {
             "desc": "Permet de répartir aléatoirment des membre d'un channel vocal dans d'autre channel vocal ",
-            "usage": "droll",
+            "usage": "role",
             "exemples": []
         },
         "register": {
