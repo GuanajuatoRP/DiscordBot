@@ -2,34 +2,28 @@ const { stripIndents } = require('common-tags');
 const { Command } = require('discord-akairo');
 const { MessageEmbed } = require('discord.js');
 const lang = require('../../util/language.json')
+const helpLang = lang.commands.help
 class HelpCommand extends Command {
     constructor() {
         super('help', {
             aliases: ['help'],
             category: 'Misc',
-            args: [
-                { id: 'command', type: 'commandAlias' }
-            ],
             description: {
-                content: `${lang.commands.help.desc}`,
-                usage: lang.commands.help.usage,
-                exemples: ['help', 'help ping']
+                content: helpLang.description.desc,
+                usage: helpLang.description.usage,
+                exemples: helpLang.description.exemples
             },
             slash: true,
+            slashOnly : true,
             slashOptions: [{
                 name: 'command',
-                description: "Nom de la commande sur le quel vous voulez plus d'info ",
+                description: helpLang.slashOptions.command.description,
                 type: 'STRING',
                 required: false
             }]
         });
     }
 
-    exec(message) {
-        message.reply({
-            content : 'Merci d\'utiliser cette commande avec un slash',
-        })
-    }
     execSlash(message, {command}) {
             const prefix = this.handler.prefix
             if (!command) {

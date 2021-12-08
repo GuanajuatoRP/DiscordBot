@@ -1,6 +1,8 @@
 const { Command } = require('discord-akairo')
 const { MessageActionRow, MessageSelectMenu } = require('discord.js')
 const fs = require('fs')
+const lang = require('../../util/language.json')
+const gameLang = lang.commands.game
 
 class GameCommand extends Command {
     constructor() {
@@ -8,20 +10,14 @@ class GameCommand extends Command {
             aliases: ['game'],
             category: 'Administration',
             description: {
-                content: `Permet de crée une nouvelle partie `,
-                usage: `game`,
-                exemples: ['game']
+                content: gameLang.description.desc,
+                usage: gameLang.description.usage,
+                exemples: gameLang.description.exemples
             },
             typing: false,
             slash: true,
+            slashOnly: true
         });
-    }
-    exec(message) {
-        message.reply({
-            content: `Merci d'utiliser la commande avec un /`,
-            ephemeral: true
-        })
-        message.delete();
     }
     async execSlash(message) {
         const rawData = fs.readFileSync('./util/channelGame.json')
@@ -29,12 +25,12 @@ class GameCommand extends Command {
         try {
             let menu = new MessageSelectMenu()
                 .setCustomId('gameMenu')
-                .setPlaceholder('Merci de choisir un mode de jeux')
+                .setPlaceholder(gameLang.menu.Placeholder)
 
             Object.keys(channels).forEach(key => {
                 menu.addOptions([{
                     label: `${key}`,
-                    description: `selection de l\'option ${key}`,
+                    description: `${gameLang.menu.description} ${key}`,
                     value: `${key}`,
                 }])
             });
@@ -44,7 +40,7 @@ class GameCommand extends Command {
 
 
             message.interaction.reply({
-                content: 'Liste des modes de jeux :',
+                content: gameLang.interaction.content,
                 components: [gameMenu],
                 ephemeral: true,
             })

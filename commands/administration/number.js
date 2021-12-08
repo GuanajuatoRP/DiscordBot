@@ -8,19 +8,19 @@ class NumberCommand extends Command {
             aliases: ['number'],
             category: 'Administration',
             description: {
-                content: numberLang.desc,
-                usage: numberLang.usage,
-                exemples: ['number', 'number 2 10']
+                content: numberLang.description.desc,
+                usage: numberLang.description.usage,
+                exemples: numberLang.description.exemples
             },
             slash: true,
             slashOptions: [{
                 name: 'nbval',
-                description: "nombre de valeurs a tirer",
+                description: numberLang.slashOptions.nbval.description,
                 type: 'NUMBER',
                 required: true
             }, {
                 name: 'plage',
-                description: "plage sur la quelle tirer les valeurs",
+                description: numberLang.slashOptions.plage.description,
                 type: 'NUMBER',
                 required: true
             }],

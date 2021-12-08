@@ -5,70 +5,130 @@
         }
     },
     "commands": {
-        "ping": {
-            "desc": "La commande ping permet de connaître la latence du bot!",
-            "usage": "",
-            "exemples": []
-        },
-        "help": {
-            "desc": "La commande help renvoie la liste des commandes du bot!",
-            "usage": "help <Nom de commande>",
-            "exemples": ["help", "help ping"],
-            "embed": {
-                "desc": "Retrouvez la liste de toutes les commandes mis a disposition sur le serveur"
-            }
-        },
-        "purge": {
-            "desc": "Permet de suprimer entre 1 et 100 messages, ne permet pas de supprimer les messages épingler",
-            "usage": "purge <Nombre de message a supprimer>",
-            "exemples": [],
-            "messageError": "Vous ne pouvez pas supprimer un message de plus de 14jours"
-        },
-        "number": {
-            "desc": "Permet de tirer un ou plusieur nombre aléatoirement de 1 a un nombre choisi.",
-            "usage": "number <N nombre a tirer> <Plage de tirage>",
-            "exemples": [],
-            "messageError": "Vous ne pouvez pas tirer un nombre supérieur a la plage"
-        },
-        "role": {
-            "desc": "Permet de répartir aléatoirment des membre d'un channel vocal dans d'autre channel vocal ",
-            "usage": "role",
-            "exemples": []
-        },
-        "register": {
-            "desc": "Permet de s'enregistrer sur le rp",
-            "usage": "",
-            "exemples": [],
-            "embed": {
-                "1": {
-                    "Fields": {
-                        "1": {
-                            "name": "<:checked:854861981164109865>",
-                            "content": "Votre compte a déja été créé"
-                        }
-                    }
-                }
+        "adminhelp": {
+            "description" : {
+                "desc": "Permet de listé et avoir toute les informations des commandes de la catégorie Administration",
+                "usage": "adminhelp <CommandAlias>",
+                "exemples": ["adminhelp", "adminhelp role"]
             },
-            "button": {
-                "label": "S'enregister",
-                "url": "https://uploads.sitepoint.com/wp-content/uploads/2015/07/1436013803checkbox-1024x1024.jpg",
-                "Fields": {
-                    "1": {
-                        "name": "Activation du compte",
-                        "content": "Clique sur le bouton suivant pour activer ton compte"
-                    }
-                }
-            },
-            "messageReply": {
-                "1": "Tu as reçut en privé le lien d'activation de ton compte"
+            "slashOptions":{
+                "description": "Nom de la commande sur la quelle vous voulez plus d'infos"
             }
         },
         "createembed": {
-            "desc": "La commande CreateEmbed permet de crée et custom un embed puis de l'envoyer dans un channel par son id",
-            "usage": "createembed + interaction avec des menu",
-            "exemples": [],
+            "description" : {
+                "desc": "La commande CreateEmbed permet de crée et custom un embed",
+                "usage": "createembed + interaction avec des menu",
+                "exemples": ["createembed"]
+            },
             "message": {
                 "content": "Merci de choisir l'une de ces options pour éditer / envoyer l'embed"
+            }
+        },
+        "endgame": {
+            "description":{
+                "desc": "Termine une session, supprime tous les salon et le rôle crée suite a une session",
+                "usage": "endgame",
+                "exemples": ["endgame"]
+            },
+            "interaction" : {
+                "content" : "La session est terminée, les salons suprimé et les permission retirée"
+            }
+        },
+        "game": {
+            "description":{
+                "desc": "Permet de crée une nouvelle session, avec tous les salons en fonction du mode de jeux",
+                "usage": "game",
+                "exemples": ["game"]
+            },
+            "interaction" : {
+                "content" : "Liste des modes de jeux :"
+            },
+            "menu" : {
+                "Placeholder" : "Merci de choisir un mode de jeux",
+                "description" : "selection de l'option"
+            }
+        },
+        "number": {
+            "description":{
+                "desc": "Permet de tirer un ou plusieur nombre aléatoirement de 1 a un nombre choisi",
+                "usage": "number {N nombre a tirer} {Plage de tirage}",
+                "exemples": ["number 1 5", "number 15 50"]
+            },
+            "slashOptions":{
+                "nbval":{
+                    "description":"nombre de valeurs a tirer"
+                },
+                "plage":{
+                    "description":"plage sur la quelle tirer les valeurs"
+                }
+            },
+            "messageError": "Vous ne pouvez pas tirer un nombre supérieur a la plage"
+        },
+        "purge": {
+            "description": {
+                "desc": "Permet de suprimer entre 1 et 100 messages, ne permet pas de supprimer les messages épingler",
+                "usage": "purge <Nombre de message a supprimer>",
+                "exemples": ["purge", "purge 42"]
+            },
+            "slashOptions":{
+                "nombre": {
+                    "description" : "Nombre de message que vous voulez supprimer, 100Max"
+                }
+            },
+            "interaction": {
+                "content":"La commande purge a bien été executée"
+            },
+            "messageError": "Vous ne pouvez pas supprimer un message de plus de 14jours"
+        },
+        "role": {
+            "description":{
+                "desc": "Permet de répartir les membre de la salle de jeu en deux équipe",
+                "usage": "role",
+                "exemples": ["role"]
+            },
+            "embed": {
+                "Author" : "Répartition des équipes",
+                "Fields" : [
+                    {"teamname" : "Team :regional_indicator_a: :"},
+                    {"teamname" : "Team :b: :"}
+                ]
+                
+            },
+            "bouton" : {
+                "label" : "Obtenir un role"
+            },
+            "interaction" : {
+                "error" : {
+                    "content" : "Le nombre minimal de personne requise pour cette commande est de 2"
+                }
+            }
+        },
+        "info": {
+            "description":{
+                "desc": "Permet d'avoir les info d'un channel",
+                "usage": "info {ChannelName}",
+                "exemples": ["info #annonces", "info #bot-staff"]
+            },
+            "slashOptions" : {
+                "channel" : {
+                    "description" : "Salon sur le quel vous voulez des informations"
+                }
+            },
+            "interaction" : {
+                "content" : "La commande d'information a bien été executée"
+            }
+        },
+        "help": {
+            "description" : {
+                "desc": "La commande help renvoie la liste des commandes du bot!",
+                "usage": "help <Nom de commande>",
+                "exemples": ["help"]
+            },
+            "slashOptions": {
+                "command": {
+                    "description" : "Nom de la commande sur le quel vous voulez plus d'info"
+                }
             }
         }
     },

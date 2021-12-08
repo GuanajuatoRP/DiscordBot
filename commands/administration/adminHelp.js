@@ -2,30 +2,26 @@ const { stripIndents } = require('common-tags');
 const { Command } = require('discord-akairo');
 const { MessageEmbed } = require('discord.js');
 const lang = require('../../util/language.json')
+const adhelpLang = lang.commands.adminhelp
 class AdminHelpCommand extends Command {
     constructor() {
         super('adminhelp', {
             aliases: ['adminhelp'],
             category: 'Administration',
             description: {
-                content: `${lang.commands.help.desc}`,
-                usage: lang.commands.help.usage,
-                exemples: ['help', 'help ping']
+                content: adhelpLang.description.desc,
+                usage: adhelpLang.description.usage,
+                exemples: adhelpLang.description.exemples
             },
             slash: true,
+            slashOnly: true,
             slashOptions: [{
                 name: 'command',
-                description: "Nom de la commande sur le quel vous voulez plus d'info ",
+                description: adhelpLang.slashOptions.description,
                 type: 'STRING',
                 required: false
             }],
         });
-    }
-
-    exec(message) {
-        message.reply({
-            content : 'Merci d\'utiliser cette commande avec un slash',
-        })
     }
     execSlash(message, {command}) {
             const prefix = this.handler.prefix
@@ -52,8 +48,8 @@ class AdminHelpCommand extends Command {
             
                 Embed.addField(
                     '------------',
-                    `**\`${prefix}help <command>\` pour des infos sur une commande spécifique **
-                    Exemples \`${prefix}help ping\`  || \`${prefix}help embed\``
+                    `**\`/adminhelp <command>\` pour des infos sur une commande spécifique **
+                    Exemples \`/adminhelp role\`  || \`/adminhelp createembed\``
                 )
                 return message.interaction.reply({
                     embeds: [Embed],
@@ -85,13 +81,13 @@ class AdminHelpCommand extends Command {
                 \`\`\`makefile
                     [help : ${command}]     ${isOwnerCommand?'⚠️⚠️OwnerOnly !!!⚠️⚠️':''}
 
-                    ${lang.commands[command].desc}
+                    ${lang.commands[command].description.desc}
 
-                    Utilisation: /${lang.commands[command].usage}
-                    Exemples: /${lang.commands[command].exemples.join(`, /`)}
+                    Utilisation: /${lang.commands[command].description.usage}
+                    Exemples: /${lang.commands[command].description.exemples.join(`, /`)}
 
 
-                    / = prefixs  a utiliser avec le bot
+                    / = prefix a utiliser avec le bot
                     <> = argument(s) optionnel(s) | {} = argument(s) obligatoire
                     Les caractères suivants -> <>, {} ne doivents pas être inclus dans les commandes
                 \`\`\`               

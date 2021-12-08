@@ -1,37 +1,31 @@
 const { Command } = require('discord-akairo');
 const lang = require('../../util/language.json')
+const purgeLang = lang.commands.purge
 
 class PurgeCommand extends Command {
     constructor() {
         super('purge', {
-            aliases: ['purge', 'clear'],
+            aliases: ['purge'],
             category: 'Administration',
             description: {
-                content: lang.commands.purge.desc,
-                usage: lang.commands.purge.usage,
-                exemples: ['purge', 'purge 23', 'clear']
+                content: purgeLang.description.desc,
+                usage: purgeLang.description.usage,
+                exemples: purgeLang.description.exemples
             },
             typing: false,
-            args: [
-                { id: 'nbMessage', type: 'number', default: 100 }
-            ],
             slash: true,
+            slashOnly: true,
+            slashGuilds: ["877644017255465011"],
             slashOptions: [{
-            name: 'nombre',
-            description: "Nombre de message que vous voulez supprimer, 100Max",
-            type: 'NUMBER',
-            required: true,
+                name: 'nombre',
+                description: purgeLang.slashOptions.nombre.description,
+                type: 'NUMBER',
+                required: false,
             }],
         });
     }
-    exec(message) {
-        message.reply({
-            content: `Merci d'utiliser la commande avec un /`,
-            ephemeral: true
-        })
-        message.delete();
-    }
     async execSlash(message,{nombre}) {
+        if (nombre == null ) nombre = 100
         let messages = await message.channel.messages.fetch({
             limit: nombre,
             before: message.id
@@ -41,10 +35,10 @@ class PurgeCommand extends Command {
         try {
             await message.channel.bulkDelete(messages)
         } catch (error) {
-            message.channel.send(lang.commands.purge.messageError)
+            message.channel.send(purgeLang.messageError)
         }
         message.interaction.reply({
-            content: 'La commande purge a bien été executée',
+            content: purgeLang.interaction.content,
             ephemeral: true,
         })
     }

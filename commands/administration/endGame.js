@@ -1,5 +1,7 @@
 const { Command } = require('discord-akairo');
 const appConfig = require('../../util/appConfig.json')
+const lang = require('../../util/language.json')
+const endGameLang = lang.commands.endgame
 
 class EndGameCommand extends Command {
     constructor() {
@@ -7,25 +9,18 @@ class EndGameCommand extends Command {
             aliases: ['endgame'],
             category: 'Administration',
             description: {
-                content: `Permet terminer une partie `,
-                usage: `endgame`,
-                exemples: ['endgame']
+                content: endGameLang.description.desc,
+                usage: endGameLang.description.usage,
+                exemples: endGameLang.description.exemples
             },
             typing: false,
             slash: true,
+            slashOnly: true
         });
-    }
-    exec(message) {
-        message.reply({
-            content: `Merci d'utiliser la commande avec un /`,
-            ephemeral: true
-        })
-        message.delete();
     }
     async execSlash(message) {
         message.interaction.reply({
-            content: 'La commande ngm a bien été executée',
-            ephemeral: true,
+            content: endGameLang.interaction.content,
         })
         const cat = this.client.channels.cache.get(appConfig.chanels.game.categorie)
         cat.children.forEach(child => {

@@ -3,7 +3,7 @@ const appConfig = require('../../util/appConfig.json')
 const { DefaultEmbed } = require('../../util/ExportEmbed');
 const { MessageActionRow, MessageButton } = require('discord.js');
 const lang = require('../../util/language.json');
-const roleLang = lang.commands.number
+const roleLang = lang.commands.role
 
 class RoleCommand extends Command {
     constructor() {
@@ -12,55 +12,14 @@ class RoleCommand extends Command {
             category: 'Administration',
             typing:false,
             description: {
-                content : roleLang.desc,
-                usage: roleLang.usage,
-                exemples: ['role']
+                content : roleLang.description.desc,
+                usage: roleLang.description.usage,
+                exemples: roleLang.description.exemples
             },
-            slash : true
+            slash : true,
+            slashOnly: true
         });
     }
-
-    exec(message) {
-        message.delete();
-        message.guild.channels.fetch('914908463027589181')
-        .then(channel => {
-            const guildChannel = channel
-            const membersOfChannel = guildChannel.members
-            let result = []
-            let nb
-            let role = DefaultEmbed()
-            let teamA = []
-            let teamB = []
-            for (let i = 0; i < Math.round(membersOfChannel.size/2); i++) {
-                do {
-                    nb = Math.floor(Math.random() * (membersOfChannel.size - 1 + 1) + 1)
-                } while (result.includes(nb));
-                result.push(nb)
-            } 
-
-            let idx = 1
-            membersOfChannel.forEach(member => {
-                if (!result.includes(idx)){
-                    teamA.push(member.user.username)
-                } else {
-                    teamB.push(member.user.username)
-                }
-                // *Permet de déplacé un GuildMember dans un GuildChannel de type vocal
-                // *message.guild.channels.fetch((result.includes(idx))?appConfig.chanels.staff.aide:appConfig.chanels.staff.salleAttente)
-                // *.then(channel => member.voice.setChannel(channel))
-                idx++
-            });
-            role.setAuthor("Répartition des équipes")
-            role.addField("Police :oncoming_police_car: :",`${teamA.join(",")}`,false)
-            role.addField("Civils :blue_car: :",`${teamB.join(",")}`,false)
-
-            // message.channel.send({
-            //     embeds: [role],
-            // })
-
-        })
-    }
-    
     execSlash(message) {
         message.guild.channels.fetch(appConfig.chanels.game.salleDeJeux)
         .then(channel => {
@@ -88,13 +47,13 @@ class RoleCommand extends Command {
             role.setAuthor("Répartition des équipes")
 
             if (membersOfChannel.length >= 2) {
-                role.addField("Team :regional_indicator_a: :",`${teamA.join(",")}`,false)
-                role.addField("Team :b: :",`${teamB.join(",")}`,false)
+                role.addField(roleLang.embed.Fields[0].teamname ,`${teamA.join(",")}`,false)
+                role.addField(roleLang.embed.Fields[1].teamname,`${teamB.join(",")}`,false)
                 const btGetRole = new MessageActionRow()
                     .addComponents(
                         new MessageButton()
                             .setCustomId('GetRole')
-                            .setLabel('Obtenir un role')
+                            .setLabel(roleLang.bouton.label)
                             .setStyle('PRIMARY')
                     )
     
@@ -104,7 +63,7 @@ class RoleCommand extends Command {
                 })
             } else {
                 return message.interaction.reply({
-                    content: 'Le nombre minimal de personne requise pour cette commande est de 2',
+                    content: roleLang.interaction.error.content,
                     ephemeral: true
                 })
             }

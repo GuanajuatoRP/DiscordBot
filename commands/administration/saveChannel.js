@@ -1,6 +1,7 @@
 const { Command } = require('discord-akairo');
 const fs = require('fs');
 const lang = require('../../util/language.json')
+const infoLang = lang.commands.info
 
 class SaveChannelCommand extends Command {
     constructor() {
@@ -8,26 +9,20 @@ class SaveChannelCommand extends Command {
             aliases: ['info'],
             category: 'Administration',
             description: {
-                content: `Permet d'avoir les info d'un channel`,
-                usage: `backup <ChannelName>`,
-                exemples: ['backup <ChannelName>']
+                content: infoLang.description.desc,
+                usage: infoLang.description.usage,
+                exemples: infoLang.description.exemples
             },
             typing: false,
             slash: true,
+            slashOnly: true,
             slashOptions: [{
                 name: 'channel',
-                description: "Salon a info",
+                description: infoLang.slashOptions.channel.description,
                 type: 'CHANNEL',
                 required: true
             }]
         });
-    }
-    exec(message) {
-        message.reply({
-            content: `Merci d'utiliser la commande avec un /`,
-            ephemeral: true
-        })
-        message.delete();
     }
     async execSlash(message, { channel }) {
         const salon = new Object()
@@ -71,7 +66,7 @@ class SaveChannelCommand extends Command {
         }
 
         message.interaction.reply({
-            content: 'La commande backup a bien été executée',
+            content: infoLang.interaction.content,
             ephemeral: true,
         })
     }

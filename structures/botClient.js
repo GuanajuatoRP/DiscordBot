@@ -3,7 +3,8 @@ const appConfig = require('../util/appConfig.json')
 
 module.exports = class BotClient extends AkairoClient {
     constructor() {
-        super({ ownerID: appConfig.configAkairo.ownersIds }, {
+        super({ ownerID: '152125692618735616' }, {
+        // super({ ownerID: appConfig.configAkairo.ownersIds }, {
             allowedMentions: {
                 parse: ['roles', 'everyone', 'users'],
                 repliedUser: true
