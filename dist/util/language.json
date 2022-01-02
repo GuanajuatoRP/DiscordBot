@@ -1,0 +1,317 @@
+{
+    "bot": {
+        "status": {
+            "name": "Apprend a apprendre"
+        }
+    },
+    "commands": {
+        "adminhelp": {
+            "description": {
+                "desc": "Permet de listé et avoir toute les informations des commandes de la catégorie Administration",
+                "usage": "adminhelp <CommandAlias>",
+                "exemples": ["adminhelp", "adminhelp role"]
+            },
+            "slashOptions": {
+                "description": "Nom de la commande sur la quelle vous voulez plus d'infos"
+            }
+        },
+        "createembed": {
+            "description": {
+                "desc": "La commande CreateEmbed permet de crée et custom un embed",
+                "usage": "createembed",
+                "exemples": ["createembed"]
+            },
+            "interaction": {
+                "newEmbed": "Un nouvelle embed a été crée vous pouvez a présent le modifier"
+            },
+            "Options": {
+                "Display": {
+                    "description": "Permet d'afficher l'embed"
+                },
+                "SetColor": {
+                    "description": "Permet changer la couleur de l'embed"
+                },
+                "SetTitle": {
+                    "description": "Permet de définir ou redéfir un titre"
+                },
+                "SetUrl": {
+                    "description": "Permet de définir ou redéfir une url"
+                },
+                "SetDesc": {
+                    "description": "Permet de définir ou redéfir une description"
+                },
+                "SetImage": {
+                    "description": "Permet de définir ou redéfir une Image"
+                },
+                "SetThumbnail": {
+                    "description": "Permet de définir ou redéfir un thumbnail"
+                },
+                "AddField": {
+                    "description": "Permet d'ajouter un champ (Titre + Valeur + inline, inline true or false)"
+                },
+                "SendEmbed": {
+                    "description": "Une fois votre embed finis envoyez le dans le channel souhaiter via son Id"
+                }
+            }
+        },
+        "endgame": {
+            "description": {
+                "desc": "Termine une session, supprime tous les salon et le rôle crée suite a une session",
+                "usage": "endgame",
+                "exemples": ["endgame"]
+            },
+            "interaction": {
+                "content": "La session est terminée, les salons suprimé et les permission retirée"
+            }
+        },
+        "getchannel": {
+            "description": {
+                "desc": "Enregistre toutes les donnée d'une catégorie dans fichier prédéfinis",
+                "usage": "getcategorie {catégorieName}",
+                "exemples": ["getcategorie livreur", "getcategorie rally"]
+            },
+            "interaction": {
+                "content": "Toutes les donnée anisi que toutes les propriétée du channel on été enregistré"
+            }
+        },
+        "adminlist": {
+            "description": {
+                "desc": "Liste toute les personnes étant admin sur le serveur et ayant accès au commande admin only",
+                "usage": "adminlist <addUser> <removeUser>",
+                "exemples": ["adminlist Dercraker"]
+            },
+            "slashOptions": {
+                "add": "Ajout d'un utilisateur a la liste des administrateurs",
+                "remove": "Retire un utilisateur a la liste des administrateurs"
+            },
+            "interaction": {
+                "notOwnerError": "Vous n'avez pas la permission d'utiliser cette commande, Seul le propriétaire du serveur le peut",
+                "notManagableUser": "Cette utilisateur n'est pas managable"
+            },
+            "embed": {
+                "adminListField": "Voici la liste des administrateurs"
+            }
+        },
+        "game": {
+            "description": {
+                "desc": "Permet de crée une nouvelle session, avec tous les salons en fonction du mode de jeux",
+                "usage": "game {GamodeName}",
+                "exemples": ["game livreur", "game rally"]
+            },
+            "interaction": {
+                "content": "Liste des modes de jeux :"
+            },
+            "menu": {
+                "Placeholder": "Merci de choisir un mode de jeux",
+                "description": "selection de l'option"
+            }
+        },
+        "number": {
+            "description": {
+                "desc": "Permet de tirer un ou plusieur nombre aléatoirement de 1 a un nombre choisi",
+                "usage": "number {N nombre a tirer} {Plage de tirage}",
+                "exemples": ["number 1 5", "number 15 50"]
+            },
+            "slashOptions": {
+                "nbval": {
+                    "description": "nombre de valeurs a tirer"
+                },
+                "plage": {
+                    "description": "plage sur la quelle tirer les valeurs"
+                }
+            },
+            "messageError": "Vous ne pouvez pas tirer un nombre supérieur a la plage"
+        },
+        "ping": {
+            "description": {
+                "desc": "Permet d'avoir le ping du bot",
+                "usage": "ping",
+                "exemples": ["ping"]
+            }
+        },
+        "purge": {
+            "description": {
+                "desc": "Permet de suprimer entre 1 et 100 messages, ne permet pas de supprimer les messages épingler",
+                "usage": "purge <Nombre de message a supprimer>",
+                "exemples": ["purge", "purge 42"]
+            },
+            "slashOptions": {
+                "nombre": {
+                    "description": "Nombre de message que vous voulez supprimer, 100Max"
+                }
+            },
+            "interaction": {
+                "content": "La commande purge a bien été executée"
+            },
+            "messageError": {
+                "maxNumber": "Tu ne peux peut purge que 100 Message Max",
+                "maxDays": "Vous ne pouvez pas supprimer un message de plus de 14jours"
+            }
+        },
+        "role": {
+            "description": {
+                "desc": "Permet de répartir les membre de la salle de jeu en deux équipe",
+                "usage": "role",
+                "exemples": ["role"]
+            },
+            "embed": {
+                "Author": "Répartition des équipes",
+                "Fields": [
+                    { "teamname": "Team :regional_indicator_a: :" },
+                    { "teamname": "Team :b: :" }
+                ]
+            },
+            "bouton": {
+                "label": "Obtenir un role"
+            },
+            "interaction": {
+                "error": {
+                    "content": "Le nombre minimal de personne requise pour cette commande est de 2"
+                }
+            }
+        },
+        "info": {
+            "description": {
+                "desc": "Permet d'avoir les info d'un channel",
+                "usage": "info {ChannelName}",
+                "exemples": ["info #annonces", "info #bot-staff"]
+            },
+            "slashOptions": {
+                "channel": {
+                    "description": "Salon sur le quel vous voulez des informations"
+                }
+            },
+            "interaction": {
+                "content": "La commande d'information a bien été executée"
+            }
+        },
+        "help": {
+            "description": {
+                "desc": "La commande help renvoie la liste des commandes du bot!",
+                "usage": "help <Nom de commande>",
+                "exemples": ["help"]
+            },
+            "slashOptions": {
+                "command": {
+                    "description": "Nom de la commande sur le quel vous voulez plus d'info"
+                }
+            }
+        }
+    },
+    "embeds": {
+        "default": {
+            "author": "GuanajuatoRP",
+            "footer": "L'équipe de GunajuatoRP",
+            "emoji": "<:checked:854861981164109865>"
+        },
+        "CustomEmbedMenu": {
+            "customId": "CreateEmbedMenu",
+            "placeHolder": "Choisir une option pour éditer l'embed",
+            "Options": [{
+                    "label": "SetColor",
+                    "description": "Permet changer la couleur de l'embed",
+                    "value": "SetColor"
+                },
+                {
+                    "label": "SetTitle",
+                    "description": "Permet de définir ou redéfir un titre",
+                    "value": "SetTitle"
+                },
+                {
+                    "label": "SetUrl",
+                    "description": "Permet de définir ou redéfir une url",
+                    "value": "SetUrl"
+                },
+                {
+                    "label": "SetDesc",
+                    "description": "Permet de définir ou redéfir une description",
+                    "value": "SetDesc"
+                }, {
+                    "label": "SetImage",
+                    "description": "Permet de définir ou redéfir une Image",
+                    "value": "SetImage"
+                },
+                {
+                    "label": "SetThumbnail",
+                    "description": "Permet de définir ou redéfir un thumbnail",
+                    "value": "SetThumbnail"
+                },
+                {
+                    "label": "AddField",
+                    "description": "Permet d'ajouter un champ (Titre + Valeur + inline)",
+                    "value": "AddField"
+                }, {
+                    "label": "SendEmbed",
+                    "description": "Une fois votre embed finis envoyez le dans le channel souhaiter via son Id",
+                    "value": "SendEmbed"
+                }
+            ]
+        },
+        "LogsEmbed": {
+            "author": "Définir l'action",
+            "footer": "Réalisée par {Définir le membdre}"
+        }
+    },
+    "event": {
+        "ready": {
+            "message": "Bot is Ready !🤖"
+        },
+        "deletePinnedMessageAlerte": {
+            "description": "Supprime automatiquement le message qui indique qu'une personne a épinglé un message"
+        },
+        "guildBanAdd": {
+            "description": "Permet de logger quand un user a été ban, pourquoi et quand",
+            "embed": {
+                "author": "Ban"
+            }
+        },
+        "guildBanRemove": {
+            "description": "Permet de logger quand et qui déban un utilisateur",
+            "embed": {
+                "author": "UnBan"
+            }
+        },
+        "guildMemberAdd": {
+            "description": "Permet de logger quand un utilisateur rejoins le serveur",
+            "embed": {
+                "author": "Nouveau Membre"
+            }
+        },
+        "guildMemberRemove": {
+            "description": "Permet de logger quand un utilisateur quite le serveur",
+            "embed": {
+                "author": "Un membre a quiter le serveur"
+            }
+        },
+        "invitationCreate": {
+            "description": "Permet de logger quand quelqu'un crée une nouvelle invitation",
+            "embed": {
+                "author": "Création d'un lien d'invitation"
+            }
+        },
+        "invitationRemove": {
+            "description": "Permet de logger quand quelqu'un supprime une invitation",
+            "embed": {
+                "author": "Supression d'un lien d'invitation"
+            }
+        },
+        "roleCreate": {
+            "description": "Permmet de logger la creation de role",
+            "embed": {
+                "author": "Création d'un role"
+            }
+        },
+        "roleRemove": {
+            "description": "Permmet de logger la suppression de role",
+            "embed": {
+                "author": "Supression d'un role"
+            }
+        },
+        "messageBulkDelete": {
+            "description": "Permet de logger la supression de mass des messages",
+            "embed": {
+                "author": "Commande Purge"
+            }
+        }
+    }
+}
