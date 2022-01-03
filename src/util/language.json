@@ -22,13 +22,15 @@
                 "exemples": ["createembed"]
             },
             "interaction": {
-                "newEmbed": "Un nouvelle embed a été crée vous pouvez a présent le modifier"
+                "newEmbed": "Un nouvelle embed a été crée vous pouvez a présent le modifier",
+                "multypleOptions" : "Vous ne pouvez faire qu'une seul action a la fois"
             },
             "Options": {
                 "Display": {
                     "description": "Permet d'afficher l'embed"
                 },
                 "SetColor": {
+                    "hexError" : "tu doit fournir une couleur HexaDécimale",
                     "description": "Permet changer la couleur de l'embed"
                 },
                 "SetTitle": {
@@ -50,7 +52,8 @@
                     "description": "Permet d'ajouter un champ (Titre + Valeur + inline, inline true or false)"
                 },
                 "SendEmbed": {
-                    "description": "Une fois votre embed finis envoyez le dans le channel souhaiter via son Id"
+                    "description": "Une fois votre embed finis envoyez le dans le channel souhaiter via son Id",
+                    "errorType": "Vous devez fournir un channel textuel"
                 }
             }
         },
@@ -159,6 +162,29 @@
                 "Fields": [
                     { "teamname": "Team :regional_indicator_a: :" },
                     { "teamname": "Team :b: :" }
+                ]
+
+            },
+            "bouton": {
+                "label": "Obtenir un role"
+            },
+            "interaction": {
+                "error": {
+                    "content": "Le nombre minimal de personne requise pour cette commande est de 2"
+                }
+            }
+        },
+        "register": {
+            "description": {
+                "desc": "Permet de crée son compte sur le RP",
+                "usage": "register",
+                "exemples": ["register"]
+            },
+            "embed": {
+                "title": "Création de compte",
+                "color" : "#478BFF",
+                "Fields": [
+                    { "name": "Cliquer sur le bouton suivant afain de pouvoir crée votre compte","value" : "le bouton est valide 5 minutes ne traine pas"}
                 ]
 
             },

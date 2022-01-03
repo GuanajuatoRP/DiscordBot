@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.NumberCommand = void 0;
 const sheweny_1 = require("sheweny");
 const language_json_1 = __importDefault(require("../../../util/language.json"));
+const export_1 = require("../../../util/export");
 const numberLang = language_json_1.default.commands.number;
 class NumberCommand extends sheweny_1.Command {
     constructor(client) {
@@ -60,7 +61,12 @@ class NumberCommand extends sheweny_1.Command {
         result.sort((a, b) => {
             return a - b;
         });
-        return interaction.reply(`Voici ${nbval === 1 ? 'la' : 'vos'} valeur${nbval === 1 ? '' : 's'}: ${result.join(',')}`);
+        let embed = (0, export_1.DefaultEmbed)();
+        embed.title = `Voici la liste de${nbval === 1 ? '' : 's'} nombre${nbval === 1 ? '' : 's'} allant de **1 à ${plage}**`;
+        embed.fields.push({ name: `${nbval === 1 ? 'La valeur' : 'Liste des valeurs'}`, value: result.join(','), inline: true });
+        return interaction.reply({
+            embeds: [embed]
+        });
     }
 }
 exports.NumberCommand = NumberCommand;

@@ -177,7 +177,7 @@ class CreateEmbedCommand extends sheweny_1.Command {
                     case 'send':
                         if (option.channel.type !== 'GUILD_TEXT') {
                             return interaction.reply({
-                                content: 'Vous devez fournir un channel textuel',
+                                content: commandLang.Options.SendEmbed.errorType,
                                 ephemeral: true
                             });
                         }
@@ -195,7 +195,7 @@ class CreateEmbedCommand extends sheweny_1.Command {
         }
         else {
             return interaction.reply({
-                content: 'Vous ne pouvez faire qu\'une seul action a la fois',
+                content: commandLang.interaction.multypleOptions,
                 ephemeral: true
             });
         }

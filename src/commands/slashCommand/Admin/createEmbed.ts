@@ -123,7 +123,7 @@ export class CreateEmbedCommand extends Command {
                     return interaction.reply({
                         embeds : [embed],
                         ephemeral : true
-                    }) 
+                    })
                 case 'title':
                     embed.title = option.value
                     saveEmbed(embed)
@@ -183,7 +183,7 @@ export class CreateEmbedCommand extends Command {
                 case 'send':
                     if (option.channel!.type !== 'GUILD_TEXT'){
                         return interaction.reply({
-                            content : 'Vous devez fournir un channel textuel',
+                            content : commandLang.Options.SendEmbed.errorType,
                             ephemeral : true
                         })
                     }
@@ -201,7 +201,7 @@ export class CreateEmbedCommand extends Command {
         });
         } else {
             return interaction.reply({
-                content : 'Vous ne pouvez faire qu\'une seul action a la fois',
+                content : commandLang.interaction.multypleOptions,
                 ephemeral : true
             })
         }

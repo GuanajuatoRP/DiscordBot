@@ -2,6 +2,7 @@ import { Command } from "sheweny"
 import type { ShewenyClient } from "sheweny"
 import type { CommandInteraction } from "discord.js"
 import lang from '../../../util/language.json'
+import { DefaultEmbed } from "../../../util/export"
 const numberLang = lang.commands.number
 
 export class NumberCommand extends Command {
@@ -58,6 +59,11 @@ export class NumberCommand extends Command {
         result.sort((a : any, b : any) => {
             return a - b;
         })
-        return interaction.reply(`Voici ${nbval === 1 ? 'la':'vos'} valeur${nbval === 1 ? '':'s'}: ${result.join(',')}`);
+        let embed = DefaultEmbed()
+            embed.title = `Voici la liste de${nbval === 1 ? '':'s'} nombre${nbval === 1 ? '':'s'} allant de **1 à ${plage}**`
+            embed.fields.push({name: `${nbval === 1 ? 'La valeur':'Liste des valeurs'}`, value : result.join(','), inline : true})
+        return interaction.reply({
+            embeds: [embed]
+        });
     }
 }
