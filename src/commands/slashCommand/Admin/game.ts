@@ -6,6 +6,7 @@ import type { ShewenyClient } from 'sheweny'
 import type { CommandInteraction } from 'discord.js'
 
 import lang from '../../../util/language.json'
+import { CommandLog } from '../../../util/export'
 const gameLang = lang.commands.game
     
     
@@ -37,6 +38,8 @@ export class GameCommand extends Command {
         });
     }
     execute(interaction : CommandInteraction) {
+        CommandLog(interaction.guild!.members.cache.get(interaction.user.id)!,interaction)
+        
         const rawData = fs.readFileSync(path.join(__dirname, '../../../util/channelGame.json')).toString()
         const channels = JSON.parse(rawData)
 

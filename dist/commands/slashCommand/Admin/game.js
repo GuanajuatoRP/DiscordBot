@@ -27,6 +27,7 @@ const sheweny_1 = require("sheweny");
 const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
 const language_json_1 = __importDefault(require("../../../util/language.json"));
+const export_1 = require("../../../util/export");
 const gameLang = language_json_1.default.commands.game;
 class GameCommand extends sheweny_1.Command {
     constructor(client) {
@@ -55,6 +56,7 @@ class GameCommand extends sheweny_1.Command {
         });
     }
     execute(interaction) {
+        (0, export_1.CommandLog)(interaction.guild.members.cache.get(interaction.user.id), interaction);
         const rawData = fs.readFileSync(path.join(__dirname, '../../../util/channelGame.json')).toString();
         const channels = JSON.parse(rawData);
         channels[interaction.options.getString('game_name')].forEach((salon) => {

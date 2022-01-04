@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PingCommand = void 0;
 const sheweny_1 = require("sheweny");
 const language_json_1 = __importDefault(require("../../../util/language.json"));
+const export_1 = require("../../../util/export");
 const pingLang = language_json_1.default.commands.ping;
 class PingCommand extends sheweny_1.Command {
     constructor(client) {
@@ -33,6 +34,7 @@ class PingCommand extends sheweny_1.Command {
         });
     }
     execute(interaction) {
+        (0, export_1.CommandLog)(interaction.guild.members.cache.get(interaction.user.id), interaction);
         const start = Date.now();
         interaction.reply({ content: "Pong !" }).then(() => {
             const end = Date.now();

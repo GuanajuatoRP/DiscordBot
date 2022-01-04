@@ -8,6 +8,7 @@ const sheweny_1 = require("sheweny");
 const language_json_1 = __importDefault(require("../../../util/language.json"));
 const endgameLang = language_json_1.default.commands.endgame;
 const appConfig_json_1 = __importDefault(require("../../../util/appConfig.json"));
+const export_1 = require("../../../util/export");
 class EndGameCommand extends sheweny_1.Command {
     constructor(client) {
         super(client, {
@@ -35,6 +36,7 @@ class EndGameCommand extends sheweny_1.Command {
         });
     }
     execute(interaction) {
+        (0, export_1.CommandLog)(interaction.guild.members.cache.get(interaction.user.id), interaction);
         const cat = interaction.guild.channels.cache.get(appConfig_json_1.default.chanels.game.categorie);
         if (cat.type !== 'GUILD_CATEGORY') {
             interaction.reply({

@@ -1,5 +1,5 @@
 import { Command } from "sheweny"
-import {DefaultEmbed} from '../../../util/export'
+import {CommandLog, DefaultEmbed} from '../../../util/export'
 import {stripIndents} from 'common-tags'
 import type { ShewenyClient } from "sheweny"
 import type { CommandInteraction, AutocompleteInteraction } from "discord.js"
@@ -31,6 +31,8 @@ export class HelpCommand extends Command {
         });
     }
     execute(interaction : CommandInteraction) {
+        CommandLog(interaction.guild!.members.cache.get(interaction.user.id)!,interaction)
+        
         let commandName = interaction.options
 
         let allCategory = new Array //Get All Unnique Catégory

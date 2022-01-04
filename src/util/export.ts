@@ -1,8 +1,10 @@
+import { GuildMember, CommandInteraction, TextChannel } from 'discord.js';
 import { MessageActionRow, MessageSelectMenu, MessageEmbed } from 'discord.js'
 import fs from 'fs'
 import path from 'path'
 const lang = require('./language.json')
 const cemLang = lang.embeds.CustomEmbedMenu
+import appConf from '../util/appConfig.json'
 
 export const saveEmbed = (embed:MessageEmbed) => {
     fs.writeFile(path.join(__dirname, './customEmbed.json'), JSON.stringify(embed), function writeJSON(err) {
@@ -62,6 +64,27 @@ export const DefaultEmbed = () => {
 export const LogsEmbed = () => {
         return new MessageEmbed().setAuthor(lang.embeds.LogsEmbed.author).setColor('#ff0000').setFooter(lang.embeds.LogsEmbed.footer).setTimestamp()
     }
+export const CommandLog = (member : GuildMember, interaction: CommandInteraction) => {
+    const Embed = new MessageEmbed()
+        Embed.setAuthor('Command Log')
+        Embed.setColor('#ff0000')
+        Embed.fields.push({name: "Nom de la commande", value : interaction.commandName, inline: true})
+        Embed.fields.push({name: "Salon d'utilisation", value : interaction.guild!.channels.cache.get(interaction.channelId)!.name, inline: true})
+        Embed.setFooter(`Cette action a été réalisée par ${member.nickname != null ? member.nickname : member.user.username} -> id : ${member.id}`)
+        Embed.setTimestamp()
+    const channel = interaction.guild!.channels.cache.get(appConf.chanels.staff.commandLog) as TextChannel
+
+    const d = new Date
+    const dformat = [d.getDate(),d.getMonth()+1,d.getFullYear()].join('/')+' '+[d.getHours(),d.getMinutes(),d.getSeconds()].join(':');
+    
+    const log = `${dformat}, Command : ${interaction.commandName}, channel : ${interaction.guild!.channels.cache.get(interaction.channelId)!.name} User : ${member.nickname != null ? member.nickname : member.user.username}, UserID : ${member.id}`
+
+    fs.appendFileSync(path.join(__dirname,'/commandLog.txt'), log+'\n')
+
+    return channel.send({
+        embeds : [Embed]
+        })
+}
 
 export const ChannelObject = {
     name: String,

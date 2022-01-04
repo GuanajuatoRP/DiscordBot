@@ -1,5 +1,5 @@
 import { Command } from 'sheweny'
-import { DefaultEmbed } from '../../../util/export'
+import { CommandLog, DefaultEmbed } from '../../../util/export'
 import fs from 'fs'
 import path from 'path'
 import type { ShewenyClient } from 'sheweny'
@@ -44,7 +44,8 @@ export class AdminListCommand extends Command {
         });
     }
     execute(interaction : CommandInteraction) {
-        
+        CommandLog(interaction.guild!.members.cache.get(interaction.user.id)!,interaction)
+
         if (interaction.member.user.id !== appConfig.botConfig.dercrakerId){
             return interaction.reply({
                 content : adminListLang.interaction.notOwnerError,

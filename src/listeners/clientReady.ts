@@ -15,13 +15,22 @@ export class Ready extends Event {
     }
 
     execute() {
-        this.client.application!.commands.set([])
+        // this.client.application!.commands.set([])
+
+
+
+
+
+
+
+
+
         const ReadyMessage = `${lang.event.ready.message} at ${date.getHours()}H ${date.getMinutes()}`
         
         console.log(ReadyMessage); //Send ready message in consol
     
         const channel = this.client.channels.cache.get(appConfig.chanels.staff.botLog)! as TextChannel //Get logbot channel with id and check if is textchannel
-        channel.send(ReadyMessage);
+        return channel.send(ReadyMessage);
     
     }
 }

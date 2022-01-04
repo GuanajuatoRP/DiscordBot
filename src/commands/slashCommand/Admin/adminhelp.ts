@@ -1,5 +1,5 @@
 import { Command } from "sheweny"
-import {DefaultEmbed} from '../../../util/export'
+import {CommandLog, DefaultEmbed} from '../../../util/export'
 import {stripIndents} from 'common-tags'
 import type { ShewenyClient } from "sheweny"
 import type { CommandInteraction, AutocompleteInteraction } from "discord.js"
@@ -31,6 +31,7 @@ export class AdminHelpCommand extends Command {
         });
     }
     execute(interaction : CommandInteraction) {
+        CommandLog(interaction.guild!.members.cache.get(interaction.user.id)!,interaction)
         let commandName = interaction.options
         const commands = Array.from(this.client.util.getCommands()) //Get All Commands loaded for the bot 
         

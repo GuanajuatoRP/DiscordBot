@@ -37,6 +37,7 @@ class RoleCommand extends sheweny_1.Command {
         });
     }
     execute(interaction) {
+        (0, export_1.CommandLog)(interaction.guild.members.cache.get(interaction.user.id), interaction);
         interaction.guild.channels.fetch(appConfig_json_1.default.chanels.game.salleDeJeux)
             .then(channel => {
             const guildChannel = channel;

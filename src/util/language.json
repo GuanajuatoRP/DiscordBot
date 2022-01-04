@@ -286,6 +286,12 @@
         "deletePinnedMessageAlerte": {
             "description": "Supprime automatiquement le message qui indique qu'une personne a épinglé un message"
         },
+        "userMissingPermission": {
+            "description": "Permet de logger l'utilisation de commande sans la permissions",
+            "interaction": {
+                "content": "Oupss il semblerais que tu n'ais pas la permission d'utilisé cette commande"
+            }
+        },
         "guildBanAdd": {
             "description": "Permet de logger quand un user a été ban, pourquoi et quand",
             "embed": {

@@ -4,6 +4,7 @@ import { Command } from 'sheweny'
     import lang from '../../../util/language.json'
     const endgameLang = lang.commands.endgame
     import appConfig from '../../../util/appConfig.json'
+import { CommandLog } from '../../../util/export'
     
     
     
@@ -34,6 +35,7 @@ import { Command } from 'sheweny'
             });
         }
         execute(interaction : CommandInteraction) {
+            CommandLog(interaction.guild!.members.cache.get(interaction.user.id)!,interaction)
 
             const cat = interaction.guild!.channels.cache.get(appConfig.chanels.game.categorie)! as CategoryChannel
             if (cat.type !== 'GUILD_CATEGORY' ){

@@ -36,6 +36,7 @@ class GetChannelCommand extends sheweny_1.Command {
         });
     }
     execute(interaction) {
+        (0, export_1.CommandLog)(interaction.guild.members.cache.get(interaction.user.id), interaction);
         let salon = Object.create(export_1.ChannelObject);
         let permissions;
         let permissionsList = new Array();

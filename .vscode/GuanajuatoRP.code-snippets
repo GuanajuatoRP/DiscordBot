@@ -47,6 +47,7 @@
 		"prefix": "NewCommand",
 		"body": [
 			"import { Command } from 'sheweny'",
+			"import { CommandLog } from '../../../util/export'",
             "import type { ShewenyClient } from 'sheweny'",
             "import type { CommandInteraction } from 'discord.js'",
             "import lang from '../../../util/language.json'",
@@ -81,6 +82,7 @@
             "        });",
             "    }",
             "    execute(interaction : CommandInteraction) {",
+            "        CommandLog(interaction.guild!.members.cache.get(interaction.user.id)!,interaction)",
             "        ",
             "        return interaction.reply({",
             "            content : '$4'",
