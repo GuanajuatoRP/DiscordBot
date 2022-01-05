@@ -4,8 +4,8 @@ import { CommandInteraction, GuildMember, MessageEmbed, TextChannel } from "disc
 // import lang from '../util/language.json'
 // const eventLang = lang.event
 import appConf from "../util/appConfig.json"
-// import fs from 'fs'
-// import path from 'path'
+import fs from 'fs'
+import path from 'path'
 
 export class CommandLog extends Event {
     constructor(client: ShewenyClient) {
@@ -26,10 +26,11 @@ export class CommandLog extends Event {
         Embed.setTimestamp()
         const channel = interaction.guild!.channels.cache.get(appConf.chanels.staff.commandLog) as TextChannel
 
-        // const d = new Date
-        // const dformat = [d.getDate(),d.getMonth()+1,d.getFullYear()].join('/')+' '+[d.getHours(),d.getMinutes(),d.getSeconds()].join(':');
-        // const log = `${dformat}, Command : ${interaction.commandName}, channel : ${interaction.guild!.channels.cache.get(interaction.channelId)!.name} User : ${member.displayName}, UserID : ${member.id}`
-        // fs.appendFileSync(path.join(__dirname,'/Logs/commandLog.txt'), log+'\n')
+        const d = new Date
+        const today = [d.getDate(),d.getMonth()+1,d.getFullYear()].join('-')
+        const dformat = today+' '+[d.getHours(),d.getMinutes(),d.getSeconds()].join(':');
+        const log = `${dformat}, Command : ${interaction.commandName}, channel : ${interaction.guild!.channels.cache.get(interaction.channelId)!.name} User : ${member.displayName}, UserID : ${member.id}`
+        fs.appendFileSync(path.join(__dirname,`../util/logs/commandLog_${today}.txt`), log+'\n')
         return channel.send({
             embeds : [Embed]
         })

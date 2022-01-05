@@ -9,8 +9,8 @@ const discord_js_1 = require("discord.js");
 // import lang from '../util/language.json'
 // const eventLang = lang.event
 const appConfig_json_1 = __importDefault(require("../util/appConfig.json"));
-// import fs from 'fs'
-// import path from 'path'
+const fs_1 = __importDefault(require("fs"));
+const path_1 = __importDefault(require("path"));
 class CommandLog extends sheweny_1.Event {
     constructor(client) {
         super(client, "CommandLog", {
@@ -28,10 +28,11 @@ class CommandLog extends sheweny_1.Event {
         Embed.setFooter(`Cette action a été réalisée par ${member.displayName} -> id : ${member.id}`);
         Embed.setTimestamp();
         const channel = interaction.guild.channels.cache.get(appConfig_json_1.default.chanels.staff.commandLog);
-        // const d = new Date
-        // const dformat = [d.getDate(),d.getMonth()+1,d.getFullYear()].join('/')+' '+[d.getHours(),d.getMinutes(),d.getSeconds()].join(':');
-        // const log = `${dformat}, Command : ${interaction.commandName}, channel : ${interaction.guild!.channels.cache.get(interaction.channelId)!.name} User : ${member.displayName}, UserID : ${member.id}`
-        // fs.appendFileSync(path.join(__dirname,'/Logs/commandLog.txt'), log+'\n')
+        const d = new Date;
+        const today = [d.getDate(), d.getMonth() + 1, d.getFullYear()].join('-');
+        const dformat = today + ' ' + [d.getHours(), d.getMinutes(), d.getSeconds()].join(':');
+        const log = `${dformat}, Command : ${interaction.commandName}, channel : ${interaction.guild.channels.cache.get(interaction.channelId).name} User : ${member.displayName}, UserID : ${member.id}`;
+        fs_1.default.appendFileSync(path_1.default.join(__dirname, `../util/logs/commandLog_${today}.txt`), log + '\n');
         return channel.send({
             embeds: [Embed]
         });
