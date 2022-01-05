@@ -15,6 +15,16 @@
                 "description": "Nom de la commande sur la quelle vous voulez plus d'infos"
             }
         },
+        "getcommandlogs": {
+            "description": {
+                "desc": "Permet de télécharger un fichier de commandLogs",
+                "usage": "getcommandlogs {DateOfFile}",
+                "exemples": ["getcommandlogs 05-01-2022", "getcommandlogs 06-01-2022"]
+            },
+            "slashOptions": {
+                "description": "Date du CommandLogs a télécharger"
+            }
+        },
         "createembed": {
             "description": {
                 "desc": "La commande CreateEmbed permet de crée et custom un embed",
@@ -345,6 +355,9 @@
             "embed": {
                 "author": "Commande Purge"
             }
+        },
+        "CommandLog": {
+            "description": "Permet de logger l'ensemble des utilisation de commande"
         }
     }
 }

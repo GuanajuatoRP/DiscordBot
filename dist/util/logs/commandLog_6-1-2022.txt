@@ -1,0 +1,11 @@
+6-1-2022 0:17:38, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+6-1-2022 0:17:51, Command : getcommandlogs, channel : log-bot User : Dercraker, UserID : 152125692618735616
+6-1-2022 0:18:13, Command : getcommandlogs, channel : log-bot User : Dercraker, UserID : 152125692618735616
+6-1-2022 0:20:27, Command : getcommandlogs, channel : log-bot User : Dercraker, UserID : 152125692618735616
+6-1-2022 0:20:47, Command : getcommandlogs, channel : log-bot User : Dercraker, UserID : 152125692618735616
+6-1-2022 0:31:55, Command : getcommandlogs, channel : log-bot User : Dercraker, UserID : 152125692618735616
+6-1-2022 0:32:55, Command : adminlist, channel : log-bot User : Dercraker, UserID : 152125692618735616
+6-1-2022 0:33:8, Command : adminlist, channel : log-bot User : Dercraker, UserID : 152125692618735616
+6-1-2022 0:33:30, Command : getcommandlogs, channel : admin User : kilarn123, UserID : 297855909592563723
+6-1-2022 0:35:56, Command : getcommandlogs, channel : admin User : kilarn123, UserID : 297855909592563723
+6-1-2022 0:36:31, Command : getcommandlogs, channel : admin User : Dercraker, UserID : 152125692618735616

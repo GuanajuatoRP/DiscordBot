@@ -1,8 +1,8 @@
 import { Event } from "sheweny"
 import type { ShewenyClient } from "sheweny"
 import { CommandInteraction, GuildMember, MessageEmbed, TextChannel } from "discord.js"
-// import lang from '../util/language.json'
-// const eventLang = lang.event
+import lang from '../util/language.json'
+const eventLang = lang.event.CommandLog
 import appConf from "../util/appConfig.json"
 import fs from 'fs'
 import path from 'path'
@@ -10,7 +10,7 @@ import path from 'path'
 export class CommandLog extends Event {
     constructor(client: ShewenyClient) {
         super(client, "CommandLog", {
-            description: "Permet de logger l'ensemble des utilisation de commande",
+            description: eventLang.description,
             once: false,
         });
     }

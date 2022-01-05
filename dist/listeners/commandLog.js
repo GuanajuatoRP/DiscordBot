@@ -6,15 +6,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommandLog = void 0;
 const sheweny_1 = require("sheweny");
 const discord_js_1 = require("discord.js");
-// import lang from '../util/language.json'
-// const eventLang = lang.event
+const language_json_1 = __importDefault(require("../util/language.json"));
+const eventLang = language_json_1.default.event.CommandLog;
 const appConfig_json_1 = __importDefault(require("../util/appConfig.json"));
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 class CommandLog extends sheweny_1.Event {
     constructor(client) {
         super(client, "CommandLog", {
-            description: "Permet de logger l'ensemble des utilisation de commande",
+            description: eventLang.description,
             once: false,
         });
     }
