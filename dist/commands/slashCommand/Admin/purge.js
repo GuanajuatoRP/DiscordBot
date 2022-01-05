@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PurgeCommand = void 0;
 const sheweny_1 = require("sheweny");
 const language_json_1 = __importDefault(require("../../../util/language.json"));
-const export_1 = require("../../../util/export");
 const purgeLang = language_json_1.default.commands.purge;
 class PurgeCommand extends sheweny_1.Command {
     constructor(client) {
@@ -35,7 +34,7 @@ class PurgeCommand extends sheweny_1.Command {
         });
     }
     async execute(interaction) {
-        (0, export_1.CommandLog)(interaction.guild.members.cache.get(interaction.user.id), interaction);
+        this.client.emit('CommandLog', interaction);
         if (interaction.options.getNumber('nombre') > 100) {
             return interaction.reply({
                 content: purgeLang.messageError.maxNumber,

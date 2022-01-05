@@ -9,3 +9,10 @@
 4/1/2022 1:37:18, Command : purge, channel : log-bot User : Dercraker, UserID : 152125692618735616
 4/1/2022 1:37:26, Command : role, channel : log-bot User : Dercraker, UserID : 152125692618735616
 4/1/2022 1:37:29, Command : register, channel : log-bot User : Dercraker, UserID : 152125692618735616
+5/1/2022 1:12:35, Command : createembed, channel : log-bot User : Dercraker, UserID : 152125692618735616
+5/1/2022 1:12:46, Command : createembed, channel : log-bot User : Dercraker, UserID : 152125692618735616
+5/1/2022 1:12:55, Command : createembed, channel : log-bot User : Dercraker, UserID : 152125692618735616
+5/1/2022 1:13:59, Command : createembed, channel : log-bot User : Dercraker, UserID : 152125692618735616
+5/1/2022 1:38:54, Command : game, channel : admin User : Dercraker, UserID : 152125692618735616
+5/1/2022 1:39:3, Command : endgame, channel : admin User : Dercraker, UserID : 152125692618735616
+5/1/2022 23:30:43, Command : adminhelp, channel : log-bot User : Dercraker, UserID : 152125692618735616

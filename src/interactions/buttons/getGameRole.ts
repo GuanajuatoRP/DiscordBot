@@ -14,7 +14,7 @@ export class Btns extends Button {
         await button.deferUpdate()
         const RoleA = button.guild!.roles.cache.get(appConfig.Roles.GMA) as Role
         const RoleB = button.guild!.roles.cache.get(appConfig.Roles.GMB) as Role
-        if (button.message.embeds[0].fields![0].value.indexOf(member.nickname != null ? member.nickname : member.user.username) != -1){
+        if (button.message.embeds[0].fields![0].value.indexOf(member.displayName) != -1){
             member.roles.add(RoleA)
         } else {
             member.roles.add(RoleB)

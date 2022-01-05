@@ -26,8 +26,8 @@ exports.GameCommand = void 0;
 const sheweny_1 = require("sheweny");
 const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
+const appConfig_json_1 = __importDefault(require("../../../util/appConfig.json"));
 const language_json_1 = __importDefault(require("../../../util/language.json"));
-const export_1 = require("../../../util/export");
 const gameLang = language_json_1.default.commands.game;
 class GameCommand extends sheweny_1.Command {
     constructor(client) {
@@ -56,7 +56,7 @@ class GameCommand extends sheweny_1.Command {
         });
     }
     execute(interaction) {
-        (0, export_1.CommandLog)(interaction.guild.members.cache.get(interaction.user.id), interaction);
+        this.client.emit('CommandLog', interaction);
         const rawData = fs.readFileSync(path.join(__dirname, '../../../util/channelGame.json')).toString();
         const channels = JSON.parse(rawData);
         channels[interaction.options.getString('game_name')].forEach((salon) => {
@@ -64,7 +64,7 @@ class GameCommand extends sheweny_1.Command {
                 "type": salon.channelInfo.type,
             })
                 .then((channel) => {
-                channel.setParent('905214164950196224');
+                channel.setParent(appConfig_json_1.default.chanels.game.categorie);
                 channel.permissionOverwrites.set(salon.channelInfo.permissionOverwrites);
                 switch (channel.type) {
                     case 'GUILD_TEXT':

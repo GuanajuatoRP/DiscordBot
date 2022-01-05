@@ -45,7 +45,7 @@ class AdminListCommand extends sheweny_1.Command {
         });
     }
     execute(interaction) {
-        (0, export_1.CommandLog)(interaction.guild.members.cache.get(interaction.user.id), interaction);
+        this.client.emit('CommandLog', interaction);
         if (interaction.member.user.id !== appConfig_json_1.default.botConfig.dercrakerId) {
             return interaction.reply({
                 content: adminListLang.interaction.notOwnerError,

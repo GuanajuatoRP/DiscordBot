@@ -2,7 +2,6 @@ import { Command } from "sheweny";
 import type { ShewenyClient } from "sheweny";
 import type { CommandInteraction } from "discord.js";
 import lang from '../../../util/language.json'
-import { CommandLog } from "../../../util/export";
 const pingLang = lang.commands.ping
 
 export class PingCommand extends Command {
@@ -32,7 +31,7 @@ export class PingCommand extends Command {
         });
     }
     execute(interaction: CommandInteraction) {
-        CommandLog(interaction.guild!.members.cache.get(interaction.user.id)!,interaction)
+        this.client.emit('CommandLog', interaction as CommandInteraction)
         
         const start = Date.now()
         interaction.reply({ content: "Pong !" }).then(() => {

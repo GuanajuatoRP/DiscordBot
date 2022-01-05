@@ -3,13 +3,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ChannelObject = exports.CommandLog = exports.LogsEmbed = exports.DefaultEmbed = exports.CustomEmbedMenu = exports.saveEmbed = void 0;
+exports.ChannelObject = exports.LogsEmbed = exports.DefaultEmbed = exports.CustomEmbedMenu = exports.saveEmbed = void 0;
 const discord_js_1 = require("discord.js");
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const lang = require('./language.json');
 const cemLang = lang.embeds.CustomEmbedMenu;
-const appConfig_json_1 = __importDefault(require("../util/appConfig.json"));
 const saveEmbed = (embed) => {
     fs_1.default.writeFile(path_1.default.join(__dirname, './customEmbed.json'), JSON.stringify(embed), function writeJSON(err) {
         if (err)
@@ -68,24 +67,6 @@ const LogsEmbed = () => {
     return new discord_js_1.MessageEmbed().setAuthor(lang.embeds.LogsEmbed.author).setColor('#ff0000').setFooter(lang.embeds.LogsEmbed.footer).setTimestamp();
 };
 exports.LogsEmbed = LogsEmbed;
-const CommandLog = (member, interaction) => {
-    const Embed = new discord_js_1.MessageEmbed();
-    Embed.setAuthor('Command Log');
-    Embed.setColor('#ff0000');
-    Embed.fields.push({ name: "Nom de la commande", value: interaction.commandName, inline: true });
-    Embed.fields.push({ name: "Salon d'utilisation", value: interaction.guild.channels.cache.get(interaction.channelId).name, inline: true });
-    Embed.setFooter(`Cette action a été réalisée par ${member.nickname != null ? member.nickname : member.user.username} -> id : ${member.id}`);
-    Embed.setTimestamp();
-    const channel = interaction.guild.channels.cache.get(appConfig_json_1.default.chanels.staff.commandLog);
-    const d = new Date;
-    const dformat = [d.getDate(), d.getMonth() + 1, d.getFullYear()].join('/') + ' ' + [d.getHours(), d.getMinutes(), d.getSeconds()].join(':');
-    const log = `${dformat}, Command : ${interaction.commandName}, channel : ${interaction.guild.channels.cache.get(interaction.channelId).name} User : ${member.nickname != null ? member.nickname : member.user.username}, UserID : ${member.id}`;
-    fs_1.default.appendFileSync(path_1.default.join(__dirname, '/commandLog.txt'), log + '\n');
-    return channel.send({
-        embeds: [Embed]
-    });
-};
-exports.CommandLog = CommandLog;
 exports.ChannelObject = {
     name: String,
     channelInfo: {

@@ -4,9 +4,8 @@ import * as path from 'path'
 import {AutocompleteInteraction} from 'discord.js'
 import type { ShewenyClient } from 'sheweny'
 import type { CommandInteraction } from 'discord.js'
-
+import appConf from '../../../util/appConfig.json'
 import lang from '../../../util/language.json'
-import { CommandLog } from '../../../util/export'
 const gameLang = lang.commands.game
     
     
@@ -38,7 +37,7 @@ export class GameCommand extends Command {
         });
     }
     execute(interaction : CommandInteraction) {
-        CommandLog(interaction.guild!.members.cache.get(interaction.user.id)!,interaction)
+        this.client.emit('CommandLog', interaction as CommandInteraction)
         
         const rawData = fs.readFileSync(path.join(__dirname, '../../../util/channelGame.json')).toString()
         const channels = JSON.parse(rawData)
@@ -48,7 +47,7 @@ export class GameCommand extends Command {
                     "type": salon.channelInfo.type,
                 })
                 .then((channel : any ) => {
-                    channel.setParent('905214164950196224')
+                    channel.setParent(appConf.chanels.game.categorie)
                     channel.permissionOverwrites.set(salon.channelInfo.permissionOverwrites)
                     switch (channel.type) {
                         case 'GUILD_TEXT':

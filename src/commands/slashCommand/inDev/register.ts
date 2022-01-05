@@ -1,4 +1,4 @@
-import { CommandLog, DefaultEmbed } from './../../../util/export';
+import { DefaultEmbed } from './../../../util/export';
 import { Command } from 'sheweny'
 import type { ShewenyClient } from 'sheweny'
 import { CommandInteraction, MessageActionRow, MessageButton } from 'discord.js'
@@ -34,7 +34,7 @@ export class RegisterCommand extends Command {
         });
     }
     execute(interaction : CommandInteraction) {
-        CommandLog(interaction.guild!.members.cache.get(interaction.user.id)!,interaction)
+        this.client.emit('CommandLog', interaction as CommandInteraction)
         
         // TODO: créé une requête dans le but de get la liste des user sur la bd puis check si userlist.include intercation.user
         const userAlreadyregister : Boolean = true 

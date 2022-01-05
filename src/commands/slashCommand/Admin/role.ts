@@ -1,6 +1,6 @@
 import { Command } from 'sheweny'
 import {MessageActionRow , MessageButton} from 'discord.js'
-import {CommandLog, DefaultEmbed} from '../../../util/export'
+import { DefaultEmbed} from '../../../util/export'
 import type { ShewenyClient } from 'sheweny'
 import type { CommandInteraction } from 'discord.js'
 import appConfig from '../../../util/appConfig.json'
@@ -36,7 +36,7 @@ export class RoleCommand extends Command {
         });
     }
     execute(interaction : CommandInteraction) {
-        CommandLog(interaction.guild!.members.cache.get(interaction.user.id)!,interaction)
+        this.client.emit('CommandLog', interaction as CommandInteraction)
         
         interaction.guild!.channels.fetch(appConfig.chanels.game.salleDeJeux)
     .then(channel => {

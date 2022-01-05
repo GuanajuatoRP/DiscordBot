@@ -36,7 +36,7 @@ class RegisterCommand extends sheweny_1.Command {
         });
     }
     execute(interaction) {
-        (0, export_1.CommandLog)(interaction.guild.members.cache.get(interaction.user.id), interaction);
+        this.client.emit('CommandLog', interaction);
         // TODO: créé une requête dans le but de get la liste des user sur la bd puis check si userlist.include intercation.user
         const userAlreadyregister = true;
         if (userAlreadyregister) {

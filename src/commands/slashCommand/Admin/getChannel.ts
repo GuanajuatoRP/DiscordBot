@@ -1,6 +1,6 @@
 import { Command } from 'sheweny'
 import fs from 'fs'
-import { ChannelObject, CommandLog } from '../../../util/export'
+import { ChannelObject } from '../../../util/export'
 import type { ShewenyClient } from 'sheweny'
 import type { CommandInteraction, TextChannel, VoiceChannel } from 'discord.js'
 import lang from '../../../util/language.json'
@@ -35,7 +35,7 @@ export class GetChannelCommand extends Command {
         });
     }
     execute(interaction : CommandInteraction) {
-        CommandLog(interaction.guild!.members.cache.get(interaction.user.id)!,interaction)
+        this.client.emit('CommandLog', interaction as CommandInteraction)
         
         let salon = Object.create(ChannelObject)
         let permissions : Array<any>

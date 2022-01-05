@@ -1,5 +1,5 @@
 import { Command } from 'sheweny'
-import { CommandLog, saveEmbed } from '../../../util/export'
+import { saveEmbed } from '../../../util/export'
 import { MessageEmbed, TextChannel } from 'discord.js'
 import fs from 'fs'
 import path from 'path'
@@ -98,7 +98,7 @@ export class CreateEmbedCommand extends Command {
 
 
     async execute(interaction : CommandInteraction) {
-        CommandLog(interaction.guild!.members.cache.get(interaction.user.id)!,interaction)
+        this.client.emit('CommandLog', interaction as CommandInteraction)
 
         if (interaction.options.data.length === 0){
             const embed = new MessageEmbed().setAuthor(lang.embeds.default.author, "https://www.gtplanet.net/wp-content/uploads/2021/08/ForzaHorizon5_KeyArt_Horiz_RGB_Final-800x450.jpg", "https://discord.gg/BtkWVH2Kq9").setTimestamp().addFields()

@@ -34,7 +34,7 @@ class HelpCommand extends sheweny_1.Command {
         });
     }
     execute(interaction) {
-        (0, export_1.CommandLog)(interaction.guild.members.cache.get(interaction.user.id), interaction);
+        this.client.emit('CommandLog', interaction);
         let commandName = interaction.options;
         let allCategory = new Array; //Get All Unnique Catégory
         this.client.collections.commands.forEach(command => {

@@ -1,5 +1,5 @@
 import { Command } from "sheweny"
-import {CommandLog, DefaultEmbed} from '../../../util/export'
+import { DefaultEmbed} from '../../../util/export'
 import {stripIndents} from 'common-tags'
 import type { ShewenyClient } from "sheweny"
 import type { CommandInteraction, AutocompleteInteraction } from "discord.js"
@@ -31,7 +31,7 @@ export class HelpCommand extends Command {
         });
     }
     execute(interaction : CommandInteraction) {
-        CommandLog(interaction.guild!.members.cache.get(interaction.user.id)!,interaction)
+        this.client.emit('CommandLog', interaction as CommandInteraction)
         
         let commandName = interaction.options
 

@@ -2,7 +2,7 @@ import { Command } from "sheweny"
 import type { ShewenyClient } from "sheweny"
 import type { CommandInteraction } from "discord.js"
 import lang from '../../../util/language.json'
-import { CommandLog, DefaultEmbed } from "../../../util/export"
+import { DefaultEmbed } from "../../../util/export"
 const numberLang = lang.commands.number
 
 export class NumberCommand extends Command {
@@ -39,7 +39,7 @@ export class NumberCommand extends Command {
         });
     }
     execute(interaction : CommandInteraction) {
-        CommandLog(interaction.guild!.members.cache.get(interaction.user.id)!,interaction)
+        this.client.emit('CommandLog', interaction as CommandInteraction)
         
         const nbval : number = interaction.options.getNumber('nbval')!
         const plage : number = interaction.options.getNumber('plage')!

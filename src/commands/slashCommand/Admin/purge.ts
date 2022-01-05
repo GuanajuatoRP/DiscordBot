@@ -2,7 +2,6 @@ import { Command } from 'sheweny'
 import type { ShewenyClient } from 'sheweny'
 import { CommandInteraction} from 'discord.js'
 import lang from '../../../util/language.json'
-import { CommandLog } from '../../../util/export'
 const purgeLang = lang.commands.purge
 
 
@@ -34,7 +33,7 @@ export class PurgeCommand extends Command {
         });
     }
     async execute(interaction : CommandInteraction) {
-        CommandLog(interaction.guild!.members.cache.get(interaction.user.id)!,interaction)
+        this.client.emit('CommandLog', interaction as CommandInteraction)
         
         if (interaction.options.getNumber('nombre')! > 100 ) {
             return interaction.reply({
