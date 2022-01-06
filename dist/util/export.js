@@ -7,8 +7,8 @@ exports.ChannelObject = exports.LogsEmbed = exports.DefaultEmbed = exports.Custo
 const discord_js_1 = require("discord.js");
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
-const lang = require('./language.json');
-const cemLang = lang.embeds.CustomEmbedMenu;
+const language_json_1 = __importDefault(require("./language.json"));
+const cemLang = language_json_1.default.embeds.CustomEmbedMenu;
 const saveEmbed = (embed) => {
     fs_1.default.writeFile(path_1.default.join(__dirname, './customEmbed.json'), JSON.stringify(embed), function writeJSON(err) {
         if (err)
@@ -60,11 +60,11 @@ exports.CustomEmbedMenu = new discord_js_1.MessageActionRow()
     }
 ]));
 const DefaultEmbed = () => {
-    return new discord_js_1.MessageEmbed().setAuthor(lang.embeds.default.author, "https://www.gtplanet.net/wp-content/uploads/2021/08/ForzaHorizon5_KeyArt_Horiz_RGB_Final-800x450.jpg", "https://discord.gg/BtkWVH2Kq9").setColor('#ff8000').setFooter(lang.embeds.default.footer, "https://www.gtplanet.net/wp-content/uploads/2021/08/ForzaHorizon5_KeyArt_Horiz_RGB_Final-800x450.jpg").setTimestamp().addFields();
+    return new discord_js_1.MessageEmbed().setAuthor(language_json_1.default.embeds.default.author, "https://www.gtplanet.net/wp-content/uploads/2021/08/ForzaHorizon5_KeyArt_Horiz_RGB_Final-800x450.jpg", "https://discord.gg/BtkWVH2Kq9").setColor('#ff8000').setFooter(language_json_1.default.embeds.default.footer, "https://www.gtplanet.net/wp-content/uploads/2021/08/ForzaHorizon5_KeyArt_Horiz_RGB_Final-800x450.jpg").setTimestamp().addFields();
 };
 exports.DefaultEmbed = DefaultEmbed;
-const LogsEmbed = () => {
-    return new discord_js_1.MessageEmbed().setAuthor(lang.embeds.LogsEmbed.author).setColor('#ff0000').setFooter(lang.embeds.LogsEmbed.footer).setTimestamp();
+const LogsEmbed = (name, id) => {
+    return new discord_js_1.MessageEmbed().setAuthor(language_json_1.default.embeds.LogsEmbed.author).setColor('#ff0000').setFooter(language_json_1.default.embeds.LogsEmbed.footer.format(name, id)).setTimestamp();
 };
 exports.LogsEmbed = LogsEmbed;
 exports.ChannelObject = {

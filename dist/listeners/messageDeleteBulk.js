@@ -18,11 +18,15 @@ class MessageDeleteBulk extends sheweny_1.Event {
     }
     async execute(messages) {
         const guild = this.client.guilds.cache.get(messages.first().guildId);
-        let Embed = (0, export_1.LogsEmbed)();
-        Embed.setColor('#FF631A');
+        const auditLogs = await guild.fetchAuditLogs({
+            limit: 1,
+            type: 'MESSAGE_BULK_DELETE'
+        });
+        const executor = auditLogs.entries.first().executor;
+        let Embed = (0, export_1.LogsEmbed)(executor.username, executor.id);
+        Embed.setColor(eventLang.embed.color);
         Embed.setAuthor(eventLang.embed.author);
-        Embed.addFields({ name: 'Salons d\`utilisation', value: `${guild.channels.cache.get(messages.first().channelId).name}`, inline: true });
-        Embed.setFooter('');
+        Embed.addFields({ name: eventLang.embed.fields.salon.name, value: `${guild.channels.cache.get(messages.first().channelId).name}`, inline: true });
         const channel = guild.channels.cache.get(appConfig_json_1.default.chanels.staff.botLog);
         channel.send({ embeds: [Embed] });
     }

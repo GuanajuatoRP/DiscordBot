@@ -4,7 +4,7 @@ import {stripIndents} from 'common-tags'
 import type { ShewenyClient } from "sheweny"
 import type { CommandInteraction, AutocompleteInteraction } from "discord.js"
 import lang from '../../../util/language.json'
-const Helplang = lang.commands.help
+const cmdLang = lang.commands.help
 
 export class HelpCommand extends Command {
     constructor(client: ShewenyClient) {
@@ -12,13 +12,13 @@ export class HelpCommand extends Command {
             name: 'help',
             category: 'Misc', //* Default category is InDev
             // type: '', //* Default type is SLASH_COMMAND
-            description: Helplang.description.desc,
-            usage : Helplang.description.usage,
-            examples : Helplang.description.exemples,
+            description: cmdLang.description.desc,
+            usage : cmdLang.description.usage,
+            examples : cmdLang.description.exemples,
             options : [
                 {   type : 'STRING',
                     name: 'commande',
-                    description: Helplang.slashOptions.command.description,
+                    description: cmdLang.slashOptions.command.description,
                     autocomplete : true,
                 }
             ],
@@ -40,27 +40,23 @@ export class HelpCommand extends Command {
             if (!allCategory.includes(`${command.category}`) && command.category != 'InDev' && command.category != 'Admin') allCategory.push(`${command.category}`)
         });
         const commands = Array.from(this.client.util.getCommands()) //Get All Commands loaded for the bot 
-
-
+        
         if (!commandName.get('commande')){
             let Embed = DefaultEmbed()
-                .setDescription(lang.commands.help.description.desc)
-                .addFields()
-
+            .setDescription(lang.commands.help.description.desc)
             for (const category of allCategory) {
                 Embed.addField(
-                        `${category}`,
-                        `${commands.filter(c => c.category === `${category}` && c.adminsOnly === false && c.type === 'SLASH_COMMAND')
-                                    .map(c => `\`${c.name}\``)
-                                    .join(', ')}`
+                    `${category}`,
+                    `${commands.filter(c => c.category === `${category}` && c.adminsOnly === false && c.type === 'SLASH_COMMAND')
+                    .map(c => `\`${c.name}\``)
+                    .join(', ')}`
                 )
+                // console.log(category);
+                // console.log(`${commands.filter(c => c.category === `${category}` && c.adminsOnly === false && c.type === 'SLASH_COMMAND')
+                // .map(c => `\`${c.name}\``)
+                // .join(', ')}`);
             }
-            
-            Embed.addField(
-                '------------',
-                `**\`/help <command>\` pour des infos sur une commande spécifique **
-                Exemples \`/help ping\`  || \`/help number\``
-            )
+            Embed.addField(cmdLang.genericEmbed.fields.info.name,cmdLang.genericEmbed.fields.info.value)
             return interaction.reply({
                 embeds: [Embed],
                 ephemeral: true
@@ -71,13 +67,14 @@ export class HelpCommand extends Command {
             
             if (!commands.map(c => c.name).includes(CName)){
                 return interaction.reply({
-                    content: `La commande ***${CName}***  n'existe pas`,
+                    content: cmdLang.interaction.wrongName.format(CName),
                     ephemeral : true
                 }) 
             }
             if (command!.adminsOnly === true){
                 return interaction.reply({
-                    content: `La commande ***${CName}*** ne peut pas être lue depuis ce menu`
+                    content: cmdLang.interaction.noRead.format(CName),
+                    ephemeral : true
                 }) 
             }
 

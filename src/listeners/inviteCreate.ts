@@ -1,6 +1,6 @@
 import { Event } from "sheweny";
 import type { ShewenyClient } from "sheweny";
-import type { TextChannel , Invite, Guild } from "discord.js";
+import type { TextChannel , Invite, Guild, ColorResolvable } from "discord.js";
 import lang from '../util/language.json'
 import { LogsEmbed } from "../util/export";
 const eventLang = lang.event.invitationCreate
@@ -23,11 +23,10 @@ export class InviteCreate extends Event {
         const executor = auditLogs.entries.first()!.executor
         
 
-        let Embed = LogsEmbed()
-            Embed.setColor('#A600FF')
+        let Embed = LogsEmbed(executor!.username,executor!.id)
+            Embed.setColor(eventLang.embed.color as ColorResolvable)
             Embed.setAuthor(eventLang.embed.author)
-            Embed.addFields({ name: 'URL du lien', value: `${invite.url}`, inline: true }, { name: `Code de l'invitation`, value: `${invite.code}`, inline: true }, { name: `Salons visé par l'invitation`, value: `${invite.channel}`, inline: true }, )
-            Embed.setFooter(`Cette action a été réalisée par ${executor!.username} -> id : ${executor!.id}`)
+            Embed.addFields({ name: eventLang.embed.fields.link.name, value: `${invite.url}`, inline: true }, { name: eventLang.embed.fields.code.name, value: `${invite.code}`, inline: true }, { name: eventLang.embed.fields.salon.name, value: `${invite.channel}`, inline: true }, )
 
         const channel = guild.channels.cache.get(appConf.chanels.staff.botLog) as TextChannel
         channel!.send({ embeds: [Embed] })

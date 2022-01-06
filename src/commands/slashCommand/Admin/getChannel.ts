@@ -4,7 +4,7 @@ import { ChannelObject } from '../../../util/export'
 import type { ShewenyClient } from 'sheweny'
 import type { CommandInteraction, TextChannel, VoiceChannel } from 'discord.js'
 import lang from '../../../util/language.json'
-const getchannelLang = lang.commands.getchannel
+const cmdLang = lang.commands.getchannel
 
 
 
@@ -14,9 +14,9 @@ export class GetChannelCommand extends Command {
             name: 'getchannel',
             category: 'Admin', //* Default category is InDev
             // type: '', //* Default type is SLASH_COMMAND
-            description: getchannelLang.description.desc,
-            usage : getchannelLang.description.usage,
-            examples : getchannelLang.description.exemples,
+            description: cmdLang.description.desc,
+            usage : cmdLang.description.usage,
+            examples : cmdLang.description.exemples,
             options : [
                 {
                     type : 'CHANNEL',

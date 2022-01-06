@@ -8,16 +8,16 @@ const export_1 = require("./../../../util/export");
 const sheweny_1 = require("sheweny");
 const discord_js_1 = require("discord.js");
 const language_json_1 = __importDefault(require("../../../util/language.json"));
-const registerLang = language_json_1.default.commands.register;
+const cmdLang = language_json_1.default.commands.register;
 class RegisterCommand extends sheweny_1.Command {
     constructor(client) {
         super(client, {
             name: 'register',
             // category: 'Misc', //* Default category is InDev
             // type: '', //* Default type is SLASH_COMMAND
-            description: registerLang.description.desc,
-            usage: registerLang.description.usage,
-            examples: registerLang.description.exemples,
+            description: cmdLang.description.desc,
+            usage: cmdLang.description.usage,
+            examples: cmdLang.description.exemples,
             options: [
             // {
             // type : 'STRING',
@@ -41,23 +41,25 @@ class RegisterCommand extends sheweny_1.Command {
         const userAlreadyregister = true;
         if (userAlreadyregister) {
             return interaction.reply({
-                content: 'Vous avez deja été enregistrer sur le Rôleplay',
+                content: cmdLang.interaction.alreadyRegister.content,
                 ephemeral: true
             });
         }
         else {
+            // TODO: API call pour request un token d'authentification
             const token = 'token autentification';
             let embed = (0, export_1.DefaultEmbed)();
-            embed.title = registerLang.embed.title;
-            embed.color = registerLang.embed.color;
-            embed.fields.push({ name: registerLang.embed.Fields[0].name, value: registerLang.embed.Fields[0].value, inline: true });
+            embed.title = cmdLang.embed.title;
+            embed.color = cmdLang.embed.color;
+            embed.fields.push({ name: cmdLang.embed.Fields[0].name, value: cmdLang.embed.Fields[0].value, inline: true });
             const btNewAccount = new discord_js_1.MessageActionRow()
                 .addComponents(new discord_js_1.MessageButton()
-                .setLabel('Je crée mon compte !')
+                .setLabel(cmdLang.bouton.label)
                 .setStyle('LINK')
+                //TODO: inclure le token au lien pour l'enregistrement
                 .setURL('https://www.youtube.com/watch?v=ORBwkXsUNEs'));
             interaction.reply({
-                content: `Vos information d'enregistrement vont vous être envoyé en privé `,
+                content: cmdLang.interaction.sendRegister,
                 ephemeral: true
             });
             return interaction.user.send({

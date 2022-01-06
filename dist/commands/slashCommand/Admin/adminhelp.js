@@ -8,20 +8,20 @@ const sheweny_1 = require("sheweny");
 const export_1 = require("../../../util/export");
 const common_tags_1 = require("common-tags");
 const language_json_1 = __importDefault(require("../../../util/language.json"));
-const Helplang = language_json_1.default.commands.adminhelp;
+const cmdLang = language_json_1.default.commands.adminhelp;
 class AdminHelpCommand extends sheweny_1.Command {
     constructor(client) {
         super(client, {
             name: 'adminhelp',
             category: 'Admin',
             // type: '', //* Default type is SLASH_COMMAND
-            description: Helplang.description.desc,
-            usage: Helplang.description.usage,
-            examples: Helplang.description.exemples,
+            description: cmdLang.description.desc,
+            usage: cmdLang.description.usage,
+            examples: cmdLang.description.exemples,
             options: [
                 { type: 'STRING',
                     name: 'commande',
-                    description: Helplang.slashOptions.description,
+                    description: cmdLang.slashOptions.description,
                     autocomplete: true,
                 }
             ],
@@ -57,8 +57,7 @@ class AdminHelpCommand extends sheweny_1.Command {
                     .map(c => `\`${c.name}\``)
                     .join(', ')}`);
             }
-            Embed.addField('------------', `**\`/adminhelp <command>\` pour des infos sur une commande spécifique **
-                Exemples \`/adminhelp ping\`  || \`/adminhelp embed\``);
+            Embed.addField(cmdLang.embed.fields.info.name, cmdLang.embed.fields.info.value);
             return interaction.reply({
                 embeds: [Embed],
                 ephemeral: true
@@ -69,12 +68,14 @@ class AdminHelpCommand extends sheweny_1.Command {
             const command = this.client.collections.commands.get(CName); //récupération du nom 
             if (!commands.map(c => c.name).includes(CName)) {
                 return interaction.reply({
-                    content: `La commande ***${CName}*** n'existe pas`
+                    content: cmdLang.interaction.wrongName.format(CName),
+                    ephemeral: true
                 });
             }
             if (command.adminsOnly === false) {
                 return interaction.reply({
-                    content: `La commande ***${CName}*** ne peut pas être lue depuis ce menu`
+                    content: cmdLang.interaction.noRead.format(CName),
+                    ephemeral: true
                 });
             }
             return interaction.reply({

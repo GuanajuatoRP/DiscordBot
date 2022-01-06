@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.EndGameCommand = void 0;
 const sheweny_1 = require("sheweny");
 const language_json_1 = __importDefault(require("../../../util/language.json"));
-const endgameLang = language_json_1.default.commands.endgame;
+const cmdLang = language_json_1.default.commands.endgame;
 const appConfig_json_1 = __importDefault(require("../../../util/appConfig.json"));
 class EndGameCommand extends sheweny_1.Command {
     constructor(client) {
@@ -14,9 +14,9 @@ class EndGameCommand extends sheweny_1.Command {
             name: 'endgame',
             category: 'Admin',
             // type: '', //* Default type is SLASH_COMMAND
-            description: endgameLang.description.desc,
-            usage: endgameLang.description.usage,
-            examples: endgameLang.description.exemples,
+            description: cmdLang.description.desc,
+            usage: cmdLang.description.usage,
+            examples: cmdLang.description.exemples,
             options: [
             // {
             //    type : 'STRING',
@@ -57,7 +57,7 @@ class EndGameCommand extends sheweny_1.Command {
             member.roles.remove(RoleB);
         });
         return interaction.reply({
-            content: endgameLang.interaction.content,
+            content: cmdLang.interaction.content,
             ephemeral: true
         });
     }

@@ -22,11 +22,11 @@ class RoleDelete extends sheweny_1.Event {
             type: 'ROLE_DELETE'
         });
         const executor = auditLogs.entries.first().executor;
-        let Embed = (0, export_1.LogsEmbed)();
-        Embed.setColor('#A600FF');
+        let Embed = (0, export_1.LogsEmbed)(executor.username, executor.id);
+        Embed.setColor(eventLang.embed.color);
         Embed.setAuthor(eventLang.embed.author);
-        Embed.addFields({ name: 'Nom du role', value: `${role.name}`, inline: true }, { name: `Id ru rôle`, value: `${role.id}`, inline: true });
-        Embed.setFooter(`Cette action a été réalisée par ${executor.username} -> id : ${executor.id}`);
+        Embed.addFields({ name: eventLang.embed.fields.roleName.name, value: `${role.name}`, inline: true }, { name: eventLang.embed.fields.roleId.name, value: `${role.id}`, inline: true });
+        Embed.setFooter(`Cette action a été réalisée par {0} -> id : {1}`.format(executor.username, executor.id));
         const channel = role.guild.channels.cache.get(appConfig_json_1.default.chanels.staff.botLog);
         channel.send({ embeds: [Embed] });
     }

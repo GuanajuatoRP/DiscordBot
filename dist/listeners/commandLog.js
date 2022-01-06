@@ -21,11 +21,10 @@ class CommandLog extends sheweny_1.Event {
     execute(interaction) {
         const member = interaction.member;
         const Embed = new discord_js_1.MessageEmbed();
-        Embed.setAuthor('Command Log');
-        Embed.setColor('#ff0000');
-        Embed.fields.push({ name: "Nom de la commande", value: interaction.commandName, inline: true });
-        Embed.fields.push({ name: "Salon d'utilisation", value: interaction.guild.channels.cache.get(interaction.channelId).name, inline: true });
-        Embed.setFooter(`Cette action a été réalisée par ${member.displayName} -> id : ${member.id}`);
+        Embed.setAuthor(eventLang.embed.author);
+        Embed.setColor(eventLang.embed.color);
+        Embed.fields.push({ name: eventLang.embed.fields.commandName.name, value: interaction.commandName, inline: true });
+        Embed.fields.push({ name: eventLang.embed.fields.salon.name, value: interaction.guild.channels.cache.get(interaction.channelId).name, inline: true });
         Embed.setTimestamp();
         const channel = interaction.guild.channels.cache.get(appConfig_json_1.default.chanels.staff.commandLog);
         const d = new Date;

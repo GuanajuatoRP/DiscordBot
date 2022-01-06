@@ -4,12 +4,13 @@ import lang from '../util/language.json'
 const date = new Date()
 import appConfig from '../util/appConfig.json'
 import type { TextChannel } from "discord.js";
+const eventLang = lang.event.ready
 
 
 export class Ready extends Event {
     constructor(client: ShewenyClient) {
         super(client, "ready", {
-            description: "send message in botLog Channel when the bot as start",
+            description: eventLang.description,
             once: true,
         });
     }
@@ -25,7 +26,7 @@ export class Ready extends Event {
 
 
 
-        const ReadyMessage = `${lang.event.ready.message} at ${date.getHours()}H ${date.getMinutes()}`
+        const ReadyMessage = `${eventLang.message} at ${date.getHours()}H ${date.getMinutes() > 9 ? date.getMinutes() : `0${date.getMinutes()}`}`
         
         console.log(ReadyMessage); //Send ready message in consol
     

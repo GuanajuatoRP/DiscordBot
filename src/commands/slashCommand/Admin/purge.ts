@@ -2,7 +2,7 @@ import { Command } from 'sheweny'
 import type { ShewenyClient } from 'sheweny'
 import { CommandInteraction} from 'discord.js'
 import lang from '../../../util/language.json'
-const purgeLang = lang.commands.purge
+const cmdLang = lang.commands.purge
 
 
 
@@ -12,14 +12,14 @@ export class PurgeCommand extends Command {
             name: 'purge',
             category: 'Admin', //* Default category is InDev
             // type: '', //* Default type is SLASH_COMMAND
-            description: purgeLang.description.desc,
-            usage : purgeLang.description.usage,
-            examples : purgeLang.description.exemples,
+            description: cmdLang.description.desc,
+            usage : cmdLang.description.usage,
+            examples : cmdLang.description.exemples,
             options : [
                 {
                     type : 'NUMBER',
                     name: 'nombre',
-                    description: purgeLang.slashOptions.nombre.description,
+                    description: cmdLang.slashOptions.nombre.description,
                     autocomplete : false,
                     required : true,
                 }
@@ -37,7 +37,7 @@ export class PurgeCommand extends Command {
         
         if (interaction.options.getNumber('nombre')! > 100 ) {
             return interaction.reply({
-                content : purgeLang.messageError.maxNumber,
+                content : cmdLang.messageError.maxNumber,
                 ephemeral: true,
             })
         }
@@ -53,28 +53,13 @@ export class PurgeCommand extends Command {
             await channel.bulkDelete(messages)
         } catch (error) {
             return interaction.reply({
-                content: purgeLang.messageError.maxDays,
+                content: cmdLang.messageError.maxDays,
                 ephemeral: true,
             })
         }
         return interaction.reply({
-            content: purgeLang.interaction.content,
+            content: cmdLang.interaction.content,
             ephemeral: true,
         })
     }
-    // onAutocomplete(interaction: AutocompleteInteraction) {
-    //     const focusedOption = interaction.options.getFocused(true);
-    
-    //     const choices: Array<string> = Array.from(this.client.util.getCommands()).filter(c => c.category !== `InDev` && c.adminsOnly === false && c.type === 'SLASH_COMMAND').map(c => c.name)
-    
-    //     if (focusedOption.name === 'commande') {
-    //         choices
-    //     }
-    
-    //     const filtered = choices!.filter((choice: any) =>
-    //         choice.startsWith(focusedOption.value)
-    //     )
-    //     interaction
-    //         .respond(filtered.map((choice: any) => ({ name: choice, value: choice })))
-    // }
 }

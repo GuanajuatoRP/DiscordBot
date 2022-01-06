@@ -3,7 +3,7 @@ import { Command } from 'sheweny'
 import type { ShewenyClient } from 'sheweny'
 import { CommandInteraction, MessageActionRow, MessageButton } from 'discord.js'
 import lang from '../../../util/language.json'
-const registerLang = lang.commands.register
+const cmdLang = lang.commands.register
 
 
 
@@ -13,9 +13,9 @@ export class RegisterCommand extends Command {
             name: 'register',
             // category: 'Misc', //* Default category is InDev
             // type: '', //* Default type is SLASH_COMMAND
-            description: registerLang.description.desc,
-            usage : registerLang.description.usage,
-            examples : registerLang.description.exemples,
+            description: cmdLang.description.desc,
+            usage : cmdLang.description.usage,
+            examples : cmdLang.description.exemples,
             options : [
                 // {
                     // type : 'STRING',
@@ -40,25 +40,27 @@ export class RegisterCommand extends Command {
         const userAlreadyregister : Boolean = true 
         if (userAlreadyregister){
             return interaction.reply({
-                content : 'Vous avez deja été enregistrer sur le Rôleplay',
+                content : cmdLang.interaction.alreadyRegister.content,
                 ephemeral : true
             }) 
         } else {
+            // TODO: API call pour request un token d'authentification
             const token = 'token autentification'
             let embed = DefaultEmbed()
-                embed.title = registerLang.embed.title
-                embed.color = registerLang.embed.color as unknown as number
-                embed.fields.push({name : registerLang.embed.Fields[0].name, value :registerLang.embed.Fields[0].value, inline : true})
+                embed.title = cmdLang.embed.title
+                embed.color = cmdLang.embed.color as unknown as number
+                embed.fields.push({name : cmdLang.embed.Fields[0].name, value :cmdLang.embed.Fields[0].value, inline : true})
 
             const btNewAccount = new MessageActionRow()
             .addComponents(
                 new MessageButton()
-                    .setLabel('Je crée mon compte !')
+                    .setLabel(cmdLang.bouton.label)
                     .setStyle('LINK')
+                    //TODO: inclure le token au lien pour l'enregistrement
                     .setURL('https://www.youtube.com/watch?v=ORBwkXsUNEs')
             )
             interaction.reply({
-                content : `Vos information d'enregistrement vont vous être envoyé en privé `,
+                content : cmdLang.interaction.sendRegister,
                 ephemeral : true
             })
             return interaction.user.send({
@@ -68,23 +70,4 @@ export class RegisterCommand extends Command {
             })
         }
     }
-
-    // onAutocomplete(interaction: AutocompleteInteraction) {
-    //     const focusedOption = interaction.options.getFocused(true);
-    //     let choices : any;
-    
-    //     if (focusedOption.name === "name") {
-    //         choices = ["faq", "install", "collection", "promise", "debug"];
-    //     }
-    
-    //     if (focusedOption.name === "theme") {
-    //         choices = ["halloween", "christmas", "summer"];
-    //     }
-    
-    //     const filtered = choices!.filter((choice: any) =>
-    //         choice.startsWith(focusedOption.value)
-    //     );
-    //     interaction
-    //         .respond(filtered.map((choice: any) => ({ name: choice, value: choice })))
-    // }
 }

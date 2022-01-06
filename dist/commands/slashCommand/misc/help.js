@@ -8,20 +8,20 @@ const sheweny_1 = require("sheweny");
 const export_1 = require("../../../util/export");
 const common_tags_1 = require("common-tags");
 const language_json_1 = __importDefault(require("../../../util/language.json"));
-const Helplang = language_json_1.default.commands.help;
+const cmdLang = language_json_1.default.commands.help;
 class HelpCommand extends sheweny_1.Command {
     constructor(client) {
         super(client, {
             name: 'help',
             category: 'Misc',
             // type: '', //* Default type is SLASH_COMMAND
-            description: Helplang.description.desc,
-            usage: Helplang.description.usage,
-            examples: Helplang.description.exemples,
+            description: cmdLang.description.desc,
+            usage: cmdLang.description.usage,
+            examples: cmdLang.description.exemples,
             options: [
                 { type: 'STRING',
                     name: 'commande',
-                    description: Helplang.slashOptions.command.description,
+                    description: cmdLang.slashOptions.command.description,
                     autocomplete: true,
                 }
             ],
@@ -44,15 +44,17 @@ class HelpCommand extends sheweny_1.Command {
         const commands = Array.from(this.client.util.getCommands()); //Get All Commands loaded for the bot 
         if (!commandName.get('commande')) {
             let Embed = (0, export_1.DefaultEmbed)()
-                .setDescription(language_json_1.default.commands.help.description.desc)
-                .addFields();
+                .setDescription(language_json_1.default.commands.help.description.desc);
             for (const category of allCategory) {
                 Embed.addField(`${category}`, `${commands.filter(c => c.category === `${category}` && c.adminsOnly === false && c.type === 'SLASH_COMMAND')
                     .map(c => `\`${c.name}\``)
                     .join(', ')}`);
+                // console.log(category);
+                // console.log(`${commands.filter(c => c.category === `${category}` && c.adminsOnly === false && c.type === 'SLASH_COMMAND')
+                // .map(c => `\`${c.name}\``)
+                // .join(', ')}`);
             }
-            Embed.addField('------------', `**\`/help <command>\` pour des infos sur une commande spécifique **
-                Exemples \`/help ping\`  || \`/help number\``);
+            Embed.addField(cmdLang.genericEmbed.fields.info.name, cmdLang.genericEmbed.fields.info.value);
             return interaction.reply({
                 embeds: [Embed],
                 ephemeral: true
@@ -63,13 +65,14 @@ class HelpCommand extends sheweny_1.Command {
             const command = this.client.collections.commands.get(CName);
             if (!commands.map(c => c.name).includes(CName)) {
                 return interaction.reply({
-                    content: `La commande ***${CName}***  n'existe pas`,
+                    content: cmdLang.interaction.wrongName.format(CName),
                     ephemeral: true
                 });
             }
             if (command.adminsOnly === true) {
                 return interaction.reply({
-                    content: `La commande ***${CName}*** ne peut pas être lue depuis ce menu`
+                    content: cmdLang.interaction.noRead.format(CName),
+                    ephemeral: true
                 });
             }
             return interaction.reply({

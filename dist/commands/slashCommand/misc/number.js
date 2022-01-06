@@ -7,28 +7,28 @@ exports.NumberCommand = void 0;
 const sheweny_1 = require("sheweny");
 const language_json_1 = __importDefault(require("../../../util/language.json"));
 const export_1 = require("../../../util/export");
-const numberLang = language_json_1.default.commands.number;
+const cmdLang = language_json_1.default.commands.number;
 class NumberCommand extends sheweny_1.Command {
     constructor(client) {
         super(client, {
             name: 'number',
             category: 'Misc',
             // type: '', //* Default type is SLASH_COMMAND
-            description: numberLang.description.desc,
-            usage: numberLang.description.usage,
-            examples: numberLang.description.exemples,
+            description: cmdLang.description.desc,
+            usage: cmdLang.description.usage,
+            examples: cmdLang.description.exemples,
             options: [
                 {
                     type: 'NUMBER',
                     name: 'nbval',
-                    description: numberLang.slashOptions.nbval.description,
+                    description: cmdLang.slashOptions.nbval.description,
                     autocomplete: false,
                     required: true,
                 },
                 {
                     type: 'NUMBER',
                     name: 'plage',
-                    description: numberLang.slashOptions.plage.description,
+                    description: cmdLang.slashOptions.plage.description,
                     autocomplete: false,
                     required: true,
                 },
@@ -47,7 +47,7 @@ class NumberCommand extends sheweny_1.Command {
         const plage = interaction.options.getNumber('plage');
         if (nbval > plage) {
             return interaction.reply({
-                content: numberLang.messageError,
+                content: cmdLang.messageError,
                 ephemeral: true
             });
         }
@@ -63,7 +63,7 @@ class NumberCommand extends sheweny_1.Command {
             return a - b;
         });
         let embed = (0, export_1.DefaultEmbed)();
-        embed.title = `Voici la liste de${nbval === 1 ? '' : 's'} nombre${nbval === 1 ? '' : 's'} allant de **1 à ${plage}**`;
+        embed.title = ``.format(nbval === 1 ? '' : 's', plage.toString());
         embed.fields.push({ name: `${nbval === 1 ? 'La valeur' : 'Liste des valeurs'}`, value: result.join(','), inline: true });
         return interaction.reply({
             embeds: [embed]

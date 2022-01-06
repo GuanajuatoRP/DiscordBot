@@ -10,28 +10,28 @@ const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const appConfig_json_1 = __importDefault(require("../../../util/appConfig.json"));
 const language_json_1 = __importDefault(require("../../../util/language.json"));
-const adminListLang = language_json_1.default.commands.adminlist;
+const cmdLang = language_json_1.default.commands.adminlist;
 class AdminListCommand extends sheweny_1.Command {
     constructor(client) {
         super(client, {
             name: 'adminlist',
             category: 'Admin',
             // type: '', //* Default type is SLASH_COMMAND
-            description: adminListLang.description.desc,
-            usage: adminListLang.description.usage,
-            examples: adminListLang.description.exemples,
+            description: cmdLang.description.desc,
+            usage: cmdLang.description.usage,
+            examples: cmdLang.description.exemples,
             options: [
                 {
                     type: 'STRING',
                     name: 'add',
-                    description: adminListLang.slashOptions.add,
+                    description: cmdLang.slashOptions.add,
                     autocomplete: true,
                     required: false,
                 },
                 {
                     type: 'STRING',
                     name: 'remove',
-                    description: adminListLang.slashOptions.remove,
+                    description: cmdLang.slashOptions.remove,
                     autocomplete: true,
                     required: false,
                 }
@@ -48,7 +48,7 @@ class AdminListCommand extends sheweny_1.Command {
         this.client.emit('CommandLog', interaction);
         if (interaction.member.user.id !== appConfig_json_1.default.botConfig.dercrakerId) {
             return interaction.reply({
-                content: adminListLang.interaction.notOwnerError,
+                content: cmdLang.interaction.notOwnerError,
                 ephemeral: true
             });
         }
@@ -60,7 +60,7 @@ class AdminListCommand extends sheweny_1.Command {
                 adminList.push(u.nickname == null ? u.user.username : u.nickname);
             });
             let adminListEmbed = (0, export_1.DefaultEmbed)()
-                .addField(adminListLang.embed.adminListField, adminList.join(' , '));
+                .addField(cmdLang.embed.adminListField, adminList.join(' , '));
             return interaction.reply({
                 embeds: [adminListEmbed],
                 ephemeral: true
@@ -71,7 +71,7 @@ class AdminListCommand extends sheweny_1.Command {
                 if (u.user.username === interaction.options.getString('add') || u.nickname === interaction.options.getString('add')) {
                     if (u.id === appConfig_json_1.default.botConfig.dercrakerId) {
                         return interaction.reply({
-                            content: adminListLang.interaction.notManagableUser,
+                            content: cmdLang.interaction.notManagableUser,
                             ephemeral: true
                         });
                     }
@@ -82,7 +82,7 @@ class AdminListCommand extends sheweny_1.Command {
                             return console.log(err);
                     });
                     return interaction.reply({
-                        content: `L'utilisateur **${u.nickname == null ? u.user.username : u.nickname}** a bien été ajouté de la liste des administrateurs`,
+                        content: cmdLang.interaction.addUser.format(u.nickname == null ? u.user.username : u.nickname),
                         ephemeral: true
                     });
                 }
@@ -92,7 +92,7 @@ class AdminListCommand extends sheweny_1.Command {
             interaction.guild.roles.cache.get(appConfig_json_1.default.Roles.ADMIN).members.forEach(u => {
                 if (appConfig_json_1.default.botConfig.admins.includes(u.id) && u.user.username === interaction.options.getString('remove') || u.nickname === interaction.options.getString('remove')) {
                     if (u.id === appConfig_json_1.default.botConfig.dercrakerId) {
-                        return interaction.reply({ content: adminListLang.interaction.notManagableUser,
+                        return interaction.reply({ content: cmdLang.interaction.notManagableUser,
                             ephemeral: true });
                     }
                     u.roles.remove(adminRole);
@@ -102,7 +102,7 @@ class AdminListCommand extends sheweny_1.Command {
                             return console.log(err);
                     });
                     return interaction.reply({
-                        content: `L'utilisateur **${u.nickname == null ? u.user.username : u.nickname}** a bien été retiré de la liste des administrateurs`,
+                        content: cmdLang.interaction.removeUser.format(u.nickname == null ? u.user.username : u.nickname),
                         ephemeral: true
                     });
                 }
@@ -110,7 +110,7 @@ class AdminListCommand extends sheweny_1.Command {
         }
         else {
             return interaction.reply({
-                content: 'Vous ne pouvez pas ajouté et suprimer des utilisateurs en même temp',
+                content: cmdLang.interaction.dualOptions,
                 ephemeral: true
             });
         }

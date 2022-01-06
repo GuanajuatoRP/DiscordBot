@@ -1,6 +1,6 @@
 import { Event } from "sheweny"
 import type { ShewenyClient } from "sheweny"
-import { CommandInteraction, GuildMember, MessageEmbed, TextChannel } from "discord.js"
+import { ColorResolvable, CommandInteraction, GuildMember, MessageEmbed, TextChannel } from "discord.js"
 import lang from '../util/language.json'
 const eventLang = lang.event.CommandLog
 import appConf from "../util/appConfig.json"
@@ -18,11 +18,10 @@ export class CommandLog extends Event {
     execute(interaction: CommandInteraction) {
         const member = interaction.member as GuildMember
         const Embed = new MessageEmbed()
-        Embed.setAuthor('Command Log')
-        Embed.setColor('#ff0000')
-        Embed.fields.push({name: "Nom de la commande", value : interaction.commandName, inline: true})
-        Embed.fields.push({name: "Salon d'utilisation", value : interaction.guild!.channels.cache.get(interaction.channelId)!.name, inline: true})
-        Embed.setFooter(`Cette action a été réalisée par ${member.displayName} -> id : ${member.id}`)
+        Embed.setAuthor(eventLang.embed.author)
+        Embed.setColor(eventLang.embed.color as ColorResolvable)
+        Embed.fields.push({name: eventLang.embed.fields.commandName.name, value : interaction.commandName, inline: true})
+        Embed.fields.push({name: eventLang.embed.fields.salon.name, value : interaction.guild!.channels.cache.get(interaction.channelId)!.name, inline: true})
         Embed.setTimestamp()
         const channel = interaction.guild!.channels.cache.get(appConf.chanels.staff.commandLog) as TextChannel
 

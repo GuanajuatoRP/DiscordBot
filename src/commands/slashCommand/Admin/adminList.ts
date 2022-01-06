@@ -6,7 +6,7 @@ import type { ShewenyClient } from 'sheweny'
 import type { AutocompleteInteraction, CommandInteraction } from 'discord.js'
 import appConfig from '../../../util/appConfig.json'
 import lang from '../../../util/language.json'
-const adminListLang = lang.commands.adminlist
+const cmdLang = lang.commands.adminlist
 
 
 
@@ -16,21 +16,21 @@ export class AdminListCommand extends Command {
             name: 'adminlist',
             category: 'Admin', //* Default category is InDev
             // type: '', //* Default type is SLASH_COMMAND
-            description: adminListLang.description.desc,
-            usage : adminListLang.description.usage,
-            examples : adminListLang.description.exemples,
+            description: cmdLang.description.desc,
+            usage : cmdLang.description.usage,
+            examples : cmdLang.description.exemples,
             options : [
                 {
                     type : 'STRING',
                     name: 'add',
-                    description: adminListLang.slashOptions.add,
+                    description: cmdLang.slashOptions.add,
                     autocomplete : true,
                     required : false,
                     },
                 {
                     type : 'STRING',
                     name: 'remove',
-                    description: adminListLang.slashOptions.remove,
+                    description: cmdLang.slashOptions.remove,
                     autocomplete : true,
                     required : false,
                     }
@@ -48,7 +48,7 @@ export class AdminListCommand extends Command {
 
         if (interaction.member.user.id !== appConfig.botConfig.dercrakerId){
             return interaction.reply({
-                content : adminListLang.interaction.notOwnerError,
+                content : cmdLang.interaction.notOwnerError,
                 ephemeral : true
             })
         }
@@ -62,7 +62,7 @@ export class AdminListCommand extends Command {
                 adminList.push(u.nickname == null ? u.user.username : u.nickname)
             });
             let adminListEmbed = DefaultEmbed()
-                .addField(adminListLang.embed.adminListField, adminList.join(' , '))
+                .addField(cmdLang.embed.adminListField, adminList.join(' , '))
 
             return interaction.reply({
                 embeds : [adminListEmbed],
@@ -73,7 +73,7 @@ export class AdminListCommand extends Command {
                 if (u.user.username === interaction.options.getString('add') || u.nickname === interaction.options.getString('add')){
                     if (u.id === appConfig.botConfig.dercrakerId){
                         return interaction.reply({
-                            content : adminListLang.interaction.notManagableUser,
+                            content : cmdLang.interaction.notManagableUser,
                             ephemeral: true
                     })
                     }
@@ -85,7 +85,7 @@ export class AdminListCommand extends Command {
                     })
 
                     return interaction.reply({
-                        content : `L'utilisateur **${u.nickname == null ? u.user.username : u.nickname}** a bien été ajouté de la liste des administrateurs`,
+                        content : cmdLang.interaction.addUser.format(u.nickname == null ? u.user.username : u.nickname),
                         ephemeral : true
                     }) 
                 }
@@ -94,7 +94,7 @@ export class AdminListCommand extends Command {
             interaction.guild!.roles.cache.get(appConfig.Roles.ADMIN)!.members.forEach(u => {
                 if (appConfig.botConfig.admins.includes(u.id) && u.user.username === interaction.options.getString('remove') || u.nickname === interaction.options.getString('remove')){
                     if (u.id === appConfig.botConfig.dercrakerId){
-                        return interaction.reply({content : adminListLang.interaction.notManagableUser,
+                        return interaction.reply({content : cmdLang.interaction.notManagableUser,
                         ephemeral : true})
                     }
                     u.roles.remove(adminRole!)
@@ -105,14 +105,14 @@ export class AdminListCommand extends Command {
                     })
 
                     return interaction.reply({
-                        content : `L'utilisateur **${u.nickname == null ? u.user.username : u.nickname}** a bien été retiré de la liste des administrateurs`,
+                        content : cmdLang.interaction.removeUser.format(u.nickname == null ? u.user.username : u.nickname),
                         ephemeral : true
                     }) 
                 }
             })
         } else {
             return interaction.reply({
-                content : 'Vous ne pouvez pas ajouté et suprimer des utilisateurs en même temp',
+                content : cmdLang.interaction.dualOptions,
                 ephemeral : true
             }) 
         }

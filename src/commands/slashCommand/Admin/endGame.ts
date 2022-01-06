@@ -2,7 +2,7 @@ import { Command } from 'sheweny'
 import type { ShewenyClient } from 'sheweny'
 import type { CommandInteraction, CategoryChannel } from 'discord.js'
 import lang from '../../../util/language.json'
-const endgameLang = lang.commands.endgame
+const cmdLang = lang.commands.endgame
 import appConfig from '../../../util/appConfig.json'
 export class EndGameCommand extends Command {
     constructor(client: ShewenyClient) {
@@ -10,9 +10,9 @@ export class EndGameCommand extends Command {
             name: 'endgame',
             category: 'Admin', //* Default category is InDev
             // type: '', //* Default type is SLASH_COMMAND
-            description: endgameLang.description.desc,
-            usage : endgameLang.description.usage,
-            examples : endgameLang.description.exemples,
+            description: cmdLang.description.desc,
+            usage : cmdLang.description.usage,
+            examples : cmdLang.description.exemples,
             options : [
                 // {
                     //    type : 'STRING',
@@ -58,7 +58,7 @@ export class EndGameCommand extends Command {
         
         
         return interaction.reply({
-            content : endgameLang.interaction.content,
+            content : cmdLang.interaction.content,
             ephemeral : true
         }) 
     }

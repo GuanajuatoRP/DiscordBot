@@ -22,10 +22,9 @@ class GuildBanAdd extends sheweny_1.Event {
             type: 'MEMBER_BAN_ADD'
         });
         const executor = auditLogs.entries.first().executor;
-        let embed = (0, export_1.LogsEmbed)();
+        let embed = (0, export_1.LogsEmbed)(executor.username, executor.id);
         embed.setAuthor(eventLang.embed.author);
-        embed.addField(`${ban.user.tag} **---**\`${ban.user.id}\`**---** a été bannis`, `Pour la raison suivante ${ban.reason}`, false);
-        embed.setFooter(`Cette action a été réalisée par ${executor.username} -> id : ${executor.id}`);
+        embed.addField(eventLang.embed.fields.ban.name.format(ban.user.tag, ban.user.id), eventLang.embed.fields.reason.name.format(ban.reason), false);
         const channel = ban.guild.channels.cache.get(appConfig_json_1.default.chanels.staff.botLog);
         channel.send({
             embeds: [embed]

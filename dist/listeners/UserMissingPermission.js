@@ -18,12 +18,11 @@ class userMissingPermissions extends sheweny_1.Event {
         });
     }
     execute(interaction) {
-        const executor = interaction.user;
-        const embed = (0, export_1.LogsEmbed)();
-        embed.setAuthor('User Not Have Permission');
-        embed.fields.push({ name: "Nom de la commande", value: interaction.commandName, inline: true });
-        embed.fields.push({ name: "Salon d'utilisation", value: interaction.guild.channels.cache.get(interaction.channelId).name, inline: true });
-        embed.setFooter(`Cette action a été réalisée par ${executor.username} -> id : ${executor.id}`);
+        const executor = interaction.member;
+        const embed = (0, export_1.LogsEmbed)(executor.displayName, executor.id);
+        embed.setAuthor(eventLang.embed.Author);
+        embed.fields.push({ name: eventLang.embed.fields.commandName.name, value: interaction.commandName, inline: true });
+        embed.fields.push({ name: eventLang.embed.fields.channel.name, value: interaction.guild.channels.cache.get(interaction.channelId).name, inline: true });
         const channel = interaction.guild.channels.cache.get(appConfig_json_1.default.chanels.staff.botLog);
         channel.send({
             embeds: [embed]

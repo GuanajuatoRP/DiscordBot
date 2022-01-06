@@ -5,7 +5,7 @@ import type { ShewenyClient } from 'sheweny'
 import type { CommandInteraction } from 'discord.js'
 import appConfig from '../../../util/appConfig.json'
 import lang from '../../../util/language.json'
-const roleLang = lang.commands.role
+const cmdLang = lang.commands.role
 
 
 
@@ -15,9 +15,9 @@ export class RoleCommand extends Command {
             name: 'role',
             category: 'Admin', //* Default category is InDev
             // type: '', //* Default type is SLASH_COMMAND
-            description: roleLang.description.desc,
-            usage : roleLang.description.usage,
-            examples : roleLang.description.exemples,
+            description: cmdLang.description.desc,
+            usage : cmdLang.description.usage,
+            examples : cmdLang.description.exemples,
             options : [
                 // {
                     // type : 'STRING',
@@ -64,13 +64,13 @@ export class RoleCommand extends Command {
         role.setAuthor("Répartition des équipes")
         
         if (membersOfChannel.length > 0) {
-            role.addField(roleLang.embed.Fields[0].teamname ,`${teamA.join(",")}`,false)
-            role.addField(roleLang.embed.Fields[1].teamname,`${teamB.join(",")}`,false)
+            role.addField(cmdLang.embed.Fields[0].teamname ,`${teamA.join(",")}`,false)
+            role.addField(cmdLang.embed.Fields[1].teamname,`${teamB.join(",")}`,false)
             const btGetRole = new MessageActionRow()
                 .addComponents(
                     new MessageButton()
                         .setCustomId('GetGameRole')
-                        .setLabel(roleLang.bouton.label)
+                        .setLabel(cmdLang.bouton.label)
                         .setStyle('PRIMARY')
                 )
             return interaction.reply({
@@ -79,7 +79,7 @@ export class RoleCommand extends Command {
             })
         } else {
             return interaction.reply({
-                content: roleLang.interaction.error.content,
+                content: cmdLang.interaction.error.content,
                 ephemeral: true
             })
         }

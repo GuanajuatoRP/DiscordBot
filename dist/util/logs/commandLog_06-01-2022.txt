@@ -1,16 +1,35 @@
-06-01-2022 01:49:35, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
-06-01-2022 01:54:04, Command : help, Command Options : [object Object], channel : log-bot User : Dercraker, UserID : 152125692618735616
-06-01-2022 01:54:50, Command : help, Command Options : [object Object], channel : log-bot User : Dercraker, UserID : 152125692618735616
-06-01-2022 01:54:58, Command : help, Command Options : [object Object], channel : log-bot User : Dercraker, UserID : 152125692618735616
-06-01-2022 01:55:05, Command : help, Command Options : [object Object], channel : log-bot User : Dercraker, UserID : 152125692618735616
-06-01-2022 01:55:26, Command : createembed, Command Options : [object Object], channel : log-bot User : Dercraker, UserID : 152125692618735616
-06-01-2022 01:55:51, Command : createembed, Command Options : [object Object], channel : log-bot User : Dercraker, UserID : 152125692618735616
-06-01-2022 01:57:01, Command : number, Command Options : [object Object], channel : log-bot User : Dercraker, UserID : 152125692618735616
-06-01-2022 01:58:08, Command : number, Command Options : [object Object], channel : log-bot User : Dercraker, UserID : 152125692618735616
-06-01-2022 01:58:52, Command : number, Command Options : [object Object], channel : log-bot User : Dercraker, UserID : 152125692618735616
-06-01-2022 01:59:40, Command : number, Command Options : [object Object], channel : log-bot User : Dercraker, UserID : 152125692618735616
-06-01-2022 02:02:10, Command : help, , channel : log-bot User : Dercraker, UserID : 152125692618735616
-06-01-2022 02:02:43, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
-06-01-2022 02:02:59, Command : help, Command Options : Option Name : commande, value : ping, channel : log-bot User : Dercraker, UserID : 152125692618735616
-06-01-2022 02:03:28, Command : help, Option Name : commande, value : ping, channel : log-bot User : Dercraker, UserID : 152125692618735616
-06-01-2022 02:03:51, Command : number, Option Name : nbval, value : 1, Option Name : plage, value : 15, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 22:55:33, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 22:57:10, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 22:57:37, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 22:58:11, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 22:58:59, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 22:59:21, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:00:04, Command : adminhelp, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:00:20, Command : adminhelp, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:00:22, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:00:40, Command : help, Option Name : commande, value : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:00:48, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:00:56, Command : number, Option Name : nbval, value : 5, Option Name : plage, value : 1, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:01:03, Command : number, Option Name : nbval, value : 1, Option Name : plage, value : 10, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:01:08, Command : number, Option Name : nbval, value : 10, Option Name : plage, value : 20, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:01:12, Command : help, Option Name : commande, value : dqsfq, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:01:17, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:02:58, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:03:11, Command : ping, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:03:17, Command : ping, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:03:20, Command : ping, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:03:40, Command : adminhelp, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:03:43, Command : adminhelp, Option Name : commande, value : eqsrf, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:04:47, Command : adminhelp, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:04:50, Command : adminhelp, Option Name : commande, value : azd, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:04:55, Command : adminhelp, Option Name : commande, value : adminhelp, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:05:02, Command : adminhelp, Option Name : commande, value : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:05:09, Command : help, Option Name : commande, value : adminhelp, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:05:35, Command : help, Option Name : commande, value : adminhelp, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:05:38, Command : adminhelp, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:05:42, Command : adminlist, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:05:47, Command : adminlist, Option Name : add, value : kilarn123, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:05:56, Command : adminlist, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:06:00, Command : adminlist, Option Name : remove, value : kilarn123, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:06:06, Command : adminhelp, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:06:15, Command : register, channel : log-bot User : Dercraker, UserID : 152125692618735616

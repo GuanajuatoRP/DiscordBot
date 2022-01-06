@@ -17,11 +17,10 @@ class GuildMemberRemove extends sheweny_1.Event {
         });
     }
     execute(member) {
-        let embed = (0, export_1.LogsEmbed)();
+        let embed = (0, export_1.LogsEmbed)(member.displayName, member.id);
         embed.setAuthor(eventLang.embed.author);
-        embed.setColor('#FF0000');
-        embed.setDescription(`${member.user.tag} **--**\`${member.user.id}\`**--**`);
-        embed.setFooter('');
+        embed.setColor(eventLang.embed.color);
+        embed.setDescription(eventLang.embed.description.format(member.user.tag, member.user.id));
         const channel = member.guild.channels.cache.get(appConfig_json_1.default.chanels.staff.botLog);
         channel.send({
             embeds: [embed]

@@ -2,17 +2,17 @@ import { Command } from "sheweny";
 import type { ShewenyClient } from "sheweny";
 import type { CommandInteraction } from "discord.js";
 import lang from '../../../util/language.json'
-const pingLang = lang.commands.ping
+const cmdLang = lang.commands.ping
 
 export class PingCommand extends Command {
     constructor(client: ShewenyClient) {
         super(client, {
             name: "ping",
-            category: 'Dev', //* Default category is InDev
+            category: 'Misc', //* Default category is InDev
             // type: '', //* Default type is SLASH_COMMAND
-            description: pingLang.description.desc,
-            usage : pingLang.description.usage,
-            examples : pingLang.description.exemples,
+            description: cmdLang.description.desc,
+            usage : cmdLang.description.usage,
+            examples : cmdLang.description.exemples,
             options : [
 
                 // {   type : 'STRING',

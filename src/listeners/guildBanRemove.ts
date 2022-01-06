@@ -1,5 +1,5 @@
 import { Event } from "sheweny";
-import { GuildBan, TextChannel } from "discord.js";
+import { ColorResolvable, GuildBan, TextChannel } from "discord.js";
 import { LogsEmbed } from "../util/export";
 import type { ShewenyClient } from "sheweny";
 import lang from '../util/language.json'
@@ -9,7 +9,7 @@ import appConf from '../util/appConfig.json'
 export class GuildBanRemove extends Event {
     constructor(client: ShewenyClient) {
         super(client, "guildBanRemove", {
-            description: "Permet de logger quand et qui déban un utilisateur",
+            description: eventLang.description,
             once: false,
         });
     }
@@ -20,11 +20,10 @@ export class GuildBanRemove extends Event {
             type: 'MEMBER_BAN_REMOVE'
         })
         const executor = auditLogs.entries.first()!.executor
-        let embed = LogsEmbed()
-            embed.setColor('#59ff00')
+        let embed = LogsEmbed(executor!.username,executor!.id)
+            embed.setColor(eventLang.embed.color as ColorResolvable)
             embed.setAuthor(eventLang.embed.author)
-            embed.addField(`${ban.user.tag} **---**\`${ban.user.id}\`**---** a été débannis`, `Pour la raison suivante ${ban.reason}`, false)
-            embed.setFooter(`Cette action a été réalisée par ${executor!.username} -> id : ${executor!.id}`)
+            embed.addField(eventLang.embed.fields.unban.name.format(ban.user.tag,ban.user.id), eventLang.embed.fields.reason.name.format(ban.reason!), false)
 
         const channel = ban.guild.channels.cache.get(appConf.chanels.staff.botLog) as TextChannel
         channel.send({
