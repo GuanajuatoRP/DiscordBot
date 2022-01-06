@@ -1,1 +1,16 @@
 06-01-2022 01:49:35, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 01:54:04, Command : help, Command Options : [object Object], channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 01:54:50, Command : help, Command Options : [object Object], channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 01:54:58, Command : help, Command Options : [object Object], channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 01:55:05, Command : help, Command Options : [object Object], channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 01:55:26, Command : createembed, Command Options : [object Object], channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 01:55:51, Command : createembed, Command Options : [object Object], channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 01:57:01, Command : number, Command Options : [object Object], channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 01:58:08, Command : number, Command Options : [object Object], channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 01:58:52, Command : number, Command Options : [object Object], channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 01:59:40, Command : number, Command Options : [object Object], channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 02:02:10, Command : help, , channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 02:02:43, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 02:02:59, Command : help, Command Options : Option Name : commande, value : ping, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 02:03:28, Command : help, Option Name : commande, value : ping, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 02:03:51, Command : number, Option Name : nbval, value : 1, Option Name : plage, value : 15, channel : log-bot User : Dercraker, UserID : 152125692618735616
