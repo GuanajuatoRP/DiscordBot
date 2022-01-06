@@ -31,10 +31,11 @@ export class PingCommand extends Command {
         });
     }
     execute(interaction: CommandInteraction) {
+        // get latency between bot and user
+        const start = Date.now()
         this.client.emit('CommandLog', interaction as CommandInteraction)
         
-        const start = Date.now()
-        interaction.reply({ content: "Pong !" }).then(() => {
+        interaction.reply({ content: "Pong !", ephemeral : true}).then(() => {
             const end = Date.now()
             const time = end - start
             interaction.editReply({content : `Pong : ${time}ms`})

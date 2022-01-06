@@ -37,7 +37,8 @@ class GetCommandLogsCommand extends sheweny_1.Command {
     }
     execute(interaction) {
         this.client.emit('CommandLog', interaction);
-        const DateList = fs_1.default.readdirSync(path_1.default.join(__dirname, '../../../util/logs')).map(date => date.slice(11, -4));
+        // check if de date put in the option is in the date list of txtlogger file
+        const DateList = fs_1.default.readdirSync(path_1.default.join(__dirname, '../../../util/logs')).map(date => date.slice(-14, -4));
         if (!DateList.includes(interaction.options.getString('file-date'))) {
             return interaction.reply({
                 content: cmdLang.interaction.dateError,

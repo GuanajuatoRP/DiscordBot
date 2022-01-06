@@ -1,0 +1,3 @@
+07-01-2022 00:31:46, Command : ping, channel : log-bot User : Dercraker, UserID : 152125692618735616
+07-01-2022 00:33:11, Command : ping, channel : log-bot User : Dercraker, UserID : 152125692618735616
+07-01-2022 00:35:47, Command : getcommandlogs, Option Name : file-date, value : 06-01-2022, channel : command-log User : Dercraker, UserID : 152125692618735616

@@ -36,7 +36,9 @@ export class GetCommandLogsCommand extends Command {
     }
     execute(interaction : CommandInteraction) {
         this.client.emit('CommandLog', interaction)
-        const DateList = fs.readdirSync(path.join(__dirname,'../../../util/logs')).map(date => date.slice(11,-4)) as Array<string>
+
+        // check if de date put in the option is in the date list of txtlogger file
+        const DateList = fs.readdirSync(path.join(__dirname,'../../../util/logs')).map(date => date.slice(-14,-4)) as Array<string>
         if (!DateList.includes(interaction.options.getString('file-date')! as string)){
             return interaction.reply({
                 content: cmdLang.interaction.dateError,

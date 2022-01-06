@@ -12,10 +12,10 @@ class Btns extends sheweny_1.Button {
     }
     async execute(button) {
         const member = button.member;
-        console.log(member.user.username);
         await button.deferUpdate();
         const RoleA = button.guild.roles.cache.get(appConfig_json_1.default.Roles.GMA);
         const RoleB = button.guild.roles.cache.get(appConfig_json_1.default.Roles.GMB);
+        // gives the role to the user according to the embed 
         if (button.message.embeds[0].fields[0].value.indexOf(member.displayName) != -1) {
             member.roles.add(RoleA);
         }

@@ -54,6 +54,7 @@ export class NumberCommand extends Command {
         let nb : number
         for (let i = 0; i < nbval; i++) {
             do {
+                //Get random number between 1 and max (plage)
                 nb = Math.floor(Math.random() * (plage - 1 + 1) + 1)
             } while (result.includes(nb));
             result.push(nb)

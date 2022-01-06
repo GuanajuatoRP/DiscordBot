@@ -33,9 +33,10 @@ class PingCommand extends sheweny_1.Command {
         });
     }
     execute(interaction) {
-        this.client.emit('CommandLog', interaction);
+        // get latency between bot and user
         const start = Date.now();
-        interaction.reply({ content: "Pong !" }).then(() => {
+        this.client.emit('CommandLog', interaction);
+        interaction.reply({ content: "Pong !", ephemeral: true }).then(() => {
             const end = Date.now();
             const time = end - start;
             interaction.editReply({ content: `Pong : ${time}ms` });
