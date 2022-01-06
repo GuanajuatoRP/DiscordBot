@@ -39,3 +39,9 @@
 06-01-2022 23:17:16, Command : adminhelp, channel : log-bot User : Dercraker, UserID : 152125692618735616
 06-01-2022 23:17:19, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
 06-01-2022 23:23:38, Command : getcommandlogs, Option Name : file-date, value : 06-01-2022, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:31:17, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:31:33, Command : getcommandlogs, Option Name : file-date, value : 06-01-2022, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:33:00, Command : purge, Option Name : nombre, value : 100, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:35:22, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:36:18, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:37:37, Command : purge, Option Name : nombre, value : 10, channel : log-bot User : Dercraker, UserID : 152125692618735616

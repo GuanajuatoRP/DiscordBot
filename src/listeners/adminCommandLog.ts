@@ -1,6 +1,7 @@
+import { LogsEmbed } from './../util/export';
 import { Event } from "sheweny"
 import type { ShewenyClient } from "sheweny"
-import { ColorResolvable, CommandInteraction, GuildMember, MessageEmbed, TextChannel } from "discord.js"
+import { ColorResolvable, CommandInteraction, GuildMember, TextChannel } from "discord.js"
 import lang from '../util/language.json'
 const eventLang = lang.event.adminCommandLog
 import appConf from "../util/appConfig.json"
@@ -17,7 +18,8 @@ export class CommandLog extends Event {
 
     execute(interaction: CommandInteraction) {
         const member = interaction.member as GuildMember
-        const Embed = new MessageEmbed()
+
+        const Embed = LogsEmbed(member.displayName, member.id)
         Embed.setAuthor(eventLang.embed.author)
         Embed.setColor(eventLang.embed.color as ColorResolvable)
         Embed.fields.push({name: eventLang.embed.fields.commandName.name, value : interaction.commandName, inline: true})

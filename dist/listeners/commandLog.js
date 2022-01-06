@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommandLog = void 0;
+const export_1 = require("./../util/export");
 const sheweny_1 = require("sheweny");
-const discord_js_1 = require("discord.js");
 const language_json_1 = __importDefault(require("../util/language.json"));
 const eventLang = language_json_1.default.event.commandLog;
 const appConfig_json_1 = __importDefault(require("../util/appConfig.json"));
@@ -20,7 +20,7 @@ class CommandLog extends sheweny_1.Event {
     }
     execute(interaction) {
         const member = interaction.member;
-        const Embed = new discord_js_1.MessageEmbed();
+        const Embed = (0, export_1.LogsEmbed)(member.displayName, member.id);
         Embed.setAuthor(eventLang.embed.author);
         Embed.setColor(eventLang.embed.color);
         Embed.fields.push({ name: eventLang.embed.fields.commandName.name, value: interaction.commandName, inline: true });
