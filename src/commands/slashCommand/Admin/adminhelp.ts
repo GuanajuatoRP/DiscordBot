@@ -31,7 +31,7 @@ export class AdminHelpCommand extends Command {
         });
     }
     execute(interaction : CommandInteraction) {
-        this.client.emit('CommandLog', interaction as CommandInteraction)
+        this.client.emit('AdminCommandLog', interaction as CommandInteraction)
         let commandName = interaction.options
         const commands = Array.from(this.client.util.getCommands()) //Get All Commands loaded for the bot 
         

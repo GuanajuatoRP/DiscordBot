@@ -46,7 +46,8 @@ export class GetCommandLogsCommand extends Command {
 
         return interaction.reply({
             content : cmdLang.interaction.content.format(interaction.options.getString('file-date')! as string),
-            files : [path.join(__dirname,`../../../util/logs/commandLog_${interaction.options.getString('file-date')!}.txt`)],
+            files : [path.join(__dirname,`../../../util/logs/commandLog_${interaction.options.getString('file-date')!}.txt`),
+                    path.join(__dirname,`../../../util/logs/adminCommandLog_${interaction.options.getString('file-date')!}.txt`)],
             ephemeral : true
         }) 
     }
@@ -56,7 +57,7 @@ export class GetCommandLogsCommand extends Command {
         let choices : Array<string>;
     
         if (focusedOption.name === "file-date") {
-            choices = fs.readdirSync(path.join(__dirname,'../../../util/logs')).map(date => date.slice(11,-4));
+            choices = [...new Set(fs.readdirSync(path.join(__dirname,'../../../util/logs')).map(date => date.slice(-14,-4)))];
         }
     
         const filtered = choices!.filter((choice: any) =>

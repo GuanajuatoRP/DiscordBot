@@ -7,13 +7,13 @@ exports.CommandLog = void 0;
 const sheweny_1 = require("sheweny");
 const discord_js_1 = require("discord.js");
 const language_json_1 = __importDefault(require("../util/language.json"));
-const eventLang = language_json_1.default.event.commandLog;
+const eventLang = language_json_1.default.event.adminCommandLog;
 const appConfig_json_1 = __importDefault(require("../util/appConfig.json"));
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 class CommandLog extends sheweny_1.Event {
     constructor(client) {
-        super(client, "CommandLog", {
+        super(client, "AdminCommandLog", {
             description: eventLang.description,
             once: false,
         });
@@ -32,7 +32,7 @@ class CommandLog extends sheweny_1.Event {
         const dformat = today + ' ' + [d.getHours() > 9 ? d.getHours() : `0${d.getHours()}`, d.getMinutes() > 9 ? d.getMinutes() : `0${d.getMinutes()}`, d.getSeconds() > 9 ? d.getSeconds() : `0${d.getSeconds()}`].join(':');
         const commandOptionValue = interaction.options.data.map(o => `Option Name : ${o.name}, value : ${o.value}`).join(', ');
         const log = `${dformat}, Command : ${interaction.commandName}, ${commandOptionValue != '' ? `${commandOptionValue}, ` : ''}channel : ${interaction.guild.channels.cache.get(interaction.channelId).name} User : ${member.displayName}, UserID : ${member.id}`;
-        fs_1.default.appendFileSync(path_1.default.join(__dirname, `../util/logs/commandLog_${today}.txt`), log + '\n');
+        fs_1.default.appendFileSync(path_1.default.join(__dirname, `../util/logs/adminCommandLog_${today}.txt`), log + '\n');
         return channel.send({
             embeds: [Embed]
         });

@@ -34,7 +34,7 @@ class AdminHelpCommand extends sheweny_1.Command {
         });
     }
     execute(interaction) {
-        this.client.emit('CommandLog', interaction);
+        this.client.emit('AdminCommandLog', interaction);
         let commandName = interaction.options;
         const commands = Array.from(this.client.util.getCommands()); //Get All Commands loaded for the bot 
         if (!commandName.get('commande')) { //si aucune commande est donner en paramètre

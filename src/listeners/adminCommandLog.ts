@@ -2,14 +2,14 @@ import { Event } from "sheweny"
 import type { ShewenyClient } from "sheweny"
 import { ColorResolvable, CommandInteraction, GuildMember, MessageEmbed, TextChannel } from "discord.js"
 import lang from '../util/language.json'
-const eventLang = lang.event.commandLog
+const eventLang = lang.event.adminCommandLog
 import appConf from "../util/appConfig.json"
 import fs from 'fs'
 import path from 'path'
 
 export class CommandLog extends Event {
     constructor(client: ShewenyClient) {
-        super(client, "CommandLog", {
+        super(client, "AdminCommandLog", {
             description: eventLang.description,
             once: false,
         });
@@ -31,7 +31,7 @@ export class CommandLog extends Event {
         
         const commandOptionValue = interaction.options.data.map(o => `Option Name : ${o.name}, value : ${o.value}`).join(', ') as string
         const log = `${dformat}, Command : ${interaction.commandName}, ${commandOptionValue != '' ? `${commandOptionValue}, ` : ''}channel : ${interaction.guild!.channels.cache.get(interaction.channelId)!.name} User : ${member.displayName}, UserID : ${member.id}`
-        fs.appendFileSync(path.join(__dirname,`../util/logs/commandLog_${today}.txt`), log+'\n')
+        fs.appendFileSync(path.join(__dirname,`../util/logs/adminCommandLog_${today}.txt`), log+'\n')
         return channel.send({
             embeds : [Embed]
         })

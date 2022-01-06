@@ -46,7 +46,8 @@ class GetCommandLogsCommand extends sheweny_1.Command {
         }
         return interaction.reply({
             content: cmdLang.interaction.content.format(interaction.options.getString('file-date')),
-            files: [path_1.default.join(__dirname, `../../../util/logs/commandLog_${interaction.options.getString('file-date')}.txt`)],
+            files: [path_1.default.join(__dirname, `../../../util/logs/commandLog_${interaction.options.getString('file-date')}.txt`),
+                path_1.default.join(__dirname, `../../../util/logs/adminCommandLog_${interaction.options.getString('file-date')}.txt`)],
             ephemeral: true
         });
     }
@@ -54,7 +55,7 @@ class GetCommandLogsCommand extends sheweny_1.Command {
         const focusedOption = interaction.options.getFocused(true);
         let choices;
         if (focusedOption.name === "file-date") {
-            choices = fs_1.default.readdirSync(path_1.default.join(__dirname, '../../../util/logs')).map(date => date.slice(11, -4));
+            choices = [...new Set(fs_1.default.readdirSync(path_1.default.join(__dirname, '../../../util/logs')).map(date => date.slice(-14, -4)))];
         }
         const filtered = choices.filter((choice) => choice.startsWith(focusedOption.value));
         interaction

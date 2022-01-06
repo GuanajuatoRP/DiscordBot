@@ -32,7 +32,7 @@
             },
             "interaction" : {
                 "dateError" : "La date ne correspond a aucune des dates disponibles vérifi le template qui doit être dd-mm-yyyy",
-                "content" : "Voici le fichier de CommandLogs qui correspond a la date du {0}"
+                "content" : "Voici les fichiers de CommandLogs qui correspondent a la date du {0}"
             },
             "slashOptions": {
                 "description": "Date du CommandLogs a télécharger"
@@ -437,11 +437,22 @@
                 }
             }
         },
-        "CommandLog": {
+        "commandLog": {
             "description": "Permet de logger l'ensemble des utilisation de commande",
             "embed" : {
-                "color" : "#ff0000",
+                "color" : "#27F9FF",
                 "author" : "Command Log",
+                "fields" : {
+                    "commandName" : {"name" : "Nom de la commande"},
+                    "salon" : {"name" : "Salon d'utilisation"}
+                }
+            }
+        },
+        "adminCommandLog": {
+            "description": "Permet de logger l'ensemble des utilisation de commande admin",
+            "embed" : {
+                "color" : "#ff0000",
+                "author" : "AdminCommand Log",
                 "fields" : {
                     "commandName" : {"name" : "Nom de la commande"},
                     "salon" : {"name" : "Salon d'utilisation"}
