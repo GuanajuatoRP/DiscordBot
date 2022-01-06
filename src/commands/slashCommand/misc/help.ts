@@ -37,6 +37,7 @@ export class HelpCommand extends Command {
 
         let allCategory = new Array //Get All Unnique Catégory
         this.client.collections.commands.forEach(command => {
+            // Filter all catégory without InDev and Admin
             if (!allCategory.includes(`${command.category}`) && command.category != 'InDev' && command.category != 'Admin') allCategory.push(`${command.category}`)
         });
         const commands = Array.from(this.client.util.getCommands()) //Get All Commands loaded for the bot 
@@ -51,10 +52,6 @@ export class HelpCommand extends Command {
                     .map(c => `\`${c.name}\``)
                     .join(', ')}`
                 )
-                // console.log(category);
-                // console.log(`${commands.filter(c => c.category === `${category}` && c.adminsOnly === false && c.type === 'SLASH_COMMAND')
-                // .map(c => `\`${c.name}\``)
-                // .join(', ')}`);
             }
             Embed.addField(cmdLang.genericEmbed.fields.info.name,cmdLang.genericEmbed.fields.info.value)
             return interaction.reply({
