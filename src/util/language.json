@@ -21,6 +21,10 @@
                 "usage": "getcommandlogs {DateOfFile}",
                 "exemples": ["getcommandlogs 05-01-2022", "getcommandlogs 06-01-2022"]
             },
+            "interaction" : {
+                "dateError" : "La date ne correspond a aucune des dates disponibles vérifi le template qui doit être dd-mm-yyyy",
+                "content" : "Voici le fichier de CommandLogs qui correspond a la date du {0}"
+            },
             "slashOptions": {
                 "description": "Date du CommandLogs a télécharger"
             }

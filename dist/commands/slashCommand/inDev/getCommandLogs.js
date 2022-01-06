@@ -9,6 +9,7 @@ const language_json_1 = __importDefault(require("../../../util/language.json"));
 const getcommandlogsLang = language_json_1.default.commands.getcommandlogs;
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
+// import util from 'util'
 class GetCommandLogsCommand extends sheweny_1.Command {
     constructor(client) {
         super(client, {
@@ -40,14 +41,15 @@ class GetCommandLogsCommand extends sheweny_1.Command {
         const DateList = fs_1.default.readdirSync(path_1.default.join(__dirname, '../../../util/logs')).map(date => date.slice(11, -4));
         if (!DateList.includes(interaction.options.getString('file-date'))) {
             return interaction.reply({
-                content: 'La date ne correspond a aucune des dates disponibles vérifi le template qui doit être dd-mm-yyyy',
+                content: getcommandlogsLang.interaction.dateError,
                 ephemeral: true
             });
         }
         return interaction.reply({
-            content: `Voici le fichier de CommandLogs qui correspond a la date du ${interaction.options.getString('file-date')}`,
+            content: ''.format(interaction.options.getString('file-date')),
+            // content : util.format('Voici le fichier de CommandLogs qui correspond a la date du {0}', interaction.options.getString('file-date')! as string),
             files: [path_1.default.join(__dirname, `../../../util/logs/commandLog_${interaction.options.getString('file-date')}.txt`)],
-            ephemeral: true
+            // ephemeral : true
         });
     }
     onAutocomplete(interaction) {
