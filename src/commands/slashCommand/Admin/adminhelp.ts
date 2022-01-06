@@ -4,7 +4,7 @@ import {stripIndents} from 'common-tags'
 import type { ShewenyClient } from "sheweny"
 import type { CommandInteraction, AutocompleteInteraction } from "discord.js"
 import lang from '../../../util/language.json'
-const Helplang = lang.commands.adminhelp
+const cmdLang = lang.commands.adminhelp
 
 export class AdminHelpCommand extends Command {
     constructor(client: ShewenyClient) {
@@ -12,13 +12,13 @@ export class AdminHelpCommand extends Command {
             name: 'adminhelp',
             category: 'Admin', //* Default category is InDev
             // type: '', //* Default type is SLASH_COMMAND
-            description: Helplang.description.desc,
-            usage : Helplang.description.usage,
-            examples : Helplang.description.exemples,
+            description: cmdLang.description.desc,
+            usage : cmdLang.description.usage,
+            examples : cmdLang.description.exemples,
             options : [
                 {   type : 'STRING',
                     name: 'commande',
-                    description: Helplang.slashOptions.description,
+                    description: cmdLang.slashOptions.description,
                     autocomplete : true,
                 }
             ],
@@ -31,7 +31,7 @@ export class AdminHelpCommand extends Command {
         });
     }
     execute(interaction : CommandInteraction) {
-        this.client.emit('CommandLog', interaction as CommandInteraction)
+        this.client.emit('AdminCommandLog', interaction as CommandInteraction)
         let commandName = interaction.options
         const commands = Array.from(this.client.util.getCommands()) //Get All Commands loaded for the bot 
         
@@ -65,11 +65,7 @@ export class AdminHelpCommand extends Command {
                 )
             }
             
-            Embed.addField(
-                '------------',
-                `**\`/adminhelp <command>\` pour des infos sur une commande spécifique **
-                Exemples \`/adminhelp ping\`  || \`/adminhelp embed\``
-            )
+            Embed.addField(cmdLang.embed.fields.info.name, cmdLang.embed.fields.info.value)
             return interaction.reply({
                 embeds: [Embed],
                 ephemeral: true
@@ -80,12 +76,14 @@ export class AdminHelpCommand extends Command {
             
             if (!commands.map(c => c.name).includes(CName)){
                 return interaction.reply({
-                    content: `La commande ***${CName}*** n'existe pas`
+                    content: cmdLang.interaction.wrongName.format(CName),
+                    ephemeral : true
                 }) 
             }
             if (command!.adminsOnly === false){
                 return interaction.reply({
-                    content: `La commande ***${CName}*** ne peut pas être lue depuis ce menu`
+                    content: cmdLang.interaction.noRead.format(CName),
+                    ephemeral : true
                 }) 
             }
 

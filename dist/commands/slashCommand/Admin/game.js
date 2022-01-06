@@ -28,21 +28,21 @@ const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
 const appConfig_json_1 = __importDefault(require("../../../util/appConfig.json"));
 const language_json_1 = __importDefault(require("../../../util/language.json"));
-const gameLang = language_json_1.default.commands.game;
+const cmdLang = language_json_1.default.commands.game;
 class GameCommand extends sheweny_1.Command {
     constructor(client) {
         super(client, {
             name: 'game',
             category: 'Admin',
             // type: '', //* Default type is SLASH_COMMAND
-            description: gameLang.description.desc,
-            usage: gameLang.description.usage,
-            examples: gameLang.description.exemples,
+            description: cmdLang.description.desc,
+            usage: cmdLang.description.usage,
+            examples: cmdLang.description.exemples,
             options: [
                 {
                     type: 'STRING',
                     name: 'game_name',
-                    description: gameLang.menu.Placeholder,
+                    description: cmdLang.menu.Placeholder,
                     autocomplete: true,
                     required: true,
                 }

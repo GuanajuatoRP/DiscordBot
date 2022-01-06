@@ -23,11 +23,10 @@ class InviteCreate extends sheweny_1.Event {
             type: 'INVITE_CREATE'
         });
         const executor = auditLogs.entries.first().executor;
-        let Embed = (0, export_1.LogsEmbed)();
-        Embed.setColor('#A600FF');
+        let Embed = (0, export_1.LogsEmbed)(executor.username, executor.id);
+        Embed.setColor(eventLang.embed.color);
         Embed.setAuthor(eventLang.embed.author);
-        Embed.addFields({ name: 'URL du lien', value: `${invite.url}`, inline: true }, { name: `Code de l'invitation`, value: `${invite.code}`, inline: true }, { name: `Salons visé par l'invitation`, value: `${invite.channel}`, inline: true });
-        Embed.setFooter(`Cette action a été réalisée par ${executor.username} -> id : ${executor.id}`);
+        Embed.addFields({ name: eventLang.embed.fields.link.name, value: `${invite.url}`, inline: true }, { name: eventLang.embed.fields.code.name, value: `${invite.code}`, inline: true }, { name: eventLang.embed.fields.salon.name, value: `${invite.channel}`, inline: true });
         const channel = guild.channels.cache.get(appConfig_json_1.default.chanels.staff.botLog);
         channel.send({ embeds: [Embed] });
     }

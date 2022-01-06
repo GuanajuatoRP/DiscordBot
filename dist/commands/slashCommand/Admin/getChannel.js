@@ -8,16 +8,16 @@ const sheweny_1 = require("sheweny");
 const fs_1 = __importDefault(require("fs"));
 const export_1 = require("../../../util/export");
 const language_json_1 = __importDefault(require("../../../util/language.json"));
-const getchannelLang = language_json_1.default.commands.getchannel;
+const cmdLang = language_json_1.default.commands.getchannel;
 class GetChannelCommand extends sheweny_1.Command {
     constructor(client) {
         super(client, {
             name: 'getchannel',
             category: 'Admin',
             // type: '', //* Default type is SLASH_COMMAND
-            description: getchannelLang.description.desc,
-            usage: getchannelLang.description.usage,
-            examples: getchannelLang.description.exemples,
+            description: cmdLang.description.desc,
+            usage: cmdLang.description.usage,
+            examples: cmdLang.description.exemples,
             options: [
                 {
                     type: 'CHANNEL',

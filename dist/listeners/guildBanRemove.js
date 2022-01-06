@@ -12,7 +12,7 @@ const appConfig_json_1 = __importDefault(require("../util/appConfig.json"));
 class GuildBanRemove extends sheweny_1.Event {
     constructor(client) {
         super(client, "guildBanRemove", {
-            description: "Permet de logger quand et qui déban un utilisateur",
+            description: eventLang.description,
             once: false,
         });
     }
@@ -22,11 +22,10 @@ class GuildBanRemove extends sheweny_1.Event {
             type: 'MEMBER_BAN_REMOVE'
         });
         const executor = auditLogs.entries.first().executor;
-        let embed = (0, export_1.LogsEmbed)();
-        embed.setColor('#59ff00');
+        let embed = (0, export_1.LogsEmbed)(executor.username, executor.id);
+        embed.setColor(eventLang.embed.color);
         embed.setAuthor(eventLang.embed.author);
-        embed.addField(`${ban.user.tag} **---**\`${ban.user.id}\`**---** a été débannis`, `Pour la raison suivante ${ban.reason}`, false);
-        embed.setFooter(`Cette action a été réalisée par ${executor.username} -> id : ${executor.id}`);
+        embed.addField(eventLang.embed.fields.unban.name.format(ban.user.tag, ban.user.id), eventLang.embed.fields.reason.name.format(ban.reason), false);
         const channel = ban.guild.channels.cache.get(appConfig_json_1.default.chanels.staff.botLog);
         channel.send({
             embeds: [embed]

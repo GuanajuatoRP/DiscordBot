@@ -1,7 +1,7 @@
 import { MessageActionRow, MessageSelectMenu, MessageEmbed } from 'discord.js'
 import fs from 'fs'
 import path from 'path'
-const lang = require('./language.json')
+import lang from './language.json'
 const cemLang = lang.embeds.CustomEmbedMenu
 
 export const saveEmbed = (embed:MessageEmbed) => {
@@ -59,8 +59,8 @@ export const CustomEmbedMenu = new MessageActionRow()
 export const DefaultEmbed = () => {
         return new MessageEmbed().setAuthor(lang.embeds.default.author, "https://www.gtplanet.net/wp-content/uploads/2021/08/ForzaHorizon5_KeyArt_Horiz_RGB_Final-800x450.jpg", "https://discord.gg/BtkWVH2Kq9").setColor('#ff8000').setFooter(lang.embeds.default.footer, "https://www.gtplanet.net/wp-content/uploads/2021/08/ForzaHorizon5_KeyArt_Horiz_RGB_Final-800x450.jpg").setTimestamp().addFields()
     }
-export const LogsEmbed = () => {
-        return new MessageEmbed().setAuthor(lang.embeds.LogsEmbed.author).setColor('#ff0000').setFooter(lang.embeds.LogsEmbed.footer).setTimestamp()
+export const LogsEmbed = (name : string, id : string) => {
+        return new MessageEmbed().setAuthor(lang.embeds.LogsEmbed.author).setColor('#ff0000').setFooter(lang.embeds.LogsEmbed.footer.format(name,id)).setTimestamp()
     }
 
 export const ChannelObject = {
@@ -75,21 +75,6 @@ export const ChannelObject = {
     messages : Array
 }
 
-// declare global {
-//     interface String  {
-//         format(args : Array<string>) : string;
-//     }
-// }
-
-// String.prototype.format = (args : Array<string>) => {
-//     let a = this! as string;
-    
-//     for (const k in args) {
-//         a = a!.toString().replace(`{${k}}`,args[k])
-//     }
-    
-//     return a.toString()
-// }
 
 declare global{
     interface String {

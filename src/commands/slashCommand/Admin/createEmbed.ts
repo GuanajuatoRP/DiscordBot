@@ -1,6 +1,6 @@
 import { Command } from 'sheweny'
-import { saveEmbed } from '../../../util/export'
-import { MessageEmbed, TextChannel } from 'discord.js'
+import { DefaultEmbed, saveEmbed } from '../../../util/export'
+import { TextChannel } from 'discord.js'
 import fs from 'fs'
 import path from 'path'
 // import { DefaultEmbed } from '../../../util/export'
@@ -8,7 +8,7 @@ import type { ShewenyClient } from 'sheweny'
 import type { CommandInteraction } from 'discord.js'
 // import appConf from '../../../util/appConfig.json'
 import lang from '../../../util/language.json'
-const commandLang = lang.commands.createembed
+const cmdLang = lang.commands.createembed
 
 
 
@@ -18,70 +18,70 @@ export class CreateEmbedCommand extends Command {
             name: 'createembed',
             category: 'Admin', //* Default category is InDev
             // type: '', //* Default type is SLASH_COMMAND
-            description: commandLang.description.desc,
-            usage : commandLang.description.usage,
-            examples : commandLang.description.exemples,
+            description: cmdLang.description.desc,
+            usage : cmdLang.description.usage,
+            examples : cmdLang.description.exemples,
             options : [
                 {
                     type : 'BOOLEAN',
                     name: 'display',
-                    description: commandLang.Options.Display.description,
+                    description: cmdLang.Options.Display.description,
                     autocomplete : false,
                     required : false,
                     },
                 {
                     type : 'STRING',
                     name: 'color',
-                    description: commandLang.Options.SetColor.description,
+                    description: cmdLang.Options.SetColor.description,
                     autocomplete : false,
                     required : false,
                     },
                 {
                     type : 'STRING',
                     name: 'title',
-                    description: commandLang.Options.SetTitle.description,
+                    description: cmdLang.Options.SetTitle.description,
                     autocomplete : false,
                     required : false,
                     },
                 {
                     type : 'STRING',
                     name: 'url',
-                    description: commandLang.Options.SetUrl.description,
+                    description: cmdLang.Options.SetUrl.description,
                     autocomplete : false,
                     required : false,
                     },
                 {
                     type : 'STRING',
                     name: 'description',
-                    description: commandLang.Options.SetDesc.description,
+                    description: cmdLang.Options.SetDesc.description,
                     autocomplete : false,
                     required : false,
                     },
                 {
                     type : 'STRING',
                     name: 'image',
-                    description: commandLang.Options.SetImage.description,
+                    description: cmdLang.Options.SetImage.description,
                     autocomplete : false,
                     required : false,
                     },
                 {
                     type : 'STRING',
                     name: 'thumbnail',
-                    description: commandLang.Options.SetThumbnail.description,
+                    description: cmdLang.Options.SetThumbnail.description,
                     autocomplete : false,
                     required : false,
                     },
                 {
                     type : 'BOOLEAN',
                     name: 'add_field',
-                    description: commandLang.Options.AddField.description,
+                    description: cmdLang.Options.AddField.description,
                     autocomplete : false,
                     required : false,
                     },
                 {
                     type : 'CHANNEL',
                     name: 'send',
-                    description: commandLang.Options.SendEmbed.description,
+                    description: cmdLang.Options.SendEmbed.description,
                     autocomplete : false,
                     required : false,
                     },
@@ -101,12 +101,12 @@ export class CreateEmbedCommand extends Command {
         this.client.emit('CommandLog', interaction as CommandInteraction)
 
         if (interaction.options.data.length === 0){
-            const embed = new MessageEmbed().setAuthor(lang.embeds.default.author, "https://www.gtplanet.net/wp-content/uploads/2021/08/ForzaHorizon5_KeyArt_Horiz_RGB_Final-800x450.jpg", "https://discord.gg/BtkWVH2Kq9").setTimestamp().addFields()
+            const embed = DefaultEmbed()
 
             saveEmbed(embed)
 
             return interaction.reply({
-                content : commandLang.interaction.newEmbed,
+                content : cmdLang.interaction.newEmbed,
                 embeds : [embed],
                 ephemeral : true
             }) 
@@ -164,7 +164,7 @@ export class CreateEmbedCommand extends Command {
                 case 'add_field':
                     const collector = interaction.channel!.createMessageCollector({max : 4});
                     interaction.reply({
-                        content : commandLang.Options.AddField.description,
+                        content : cmdLang.Options.AddField.description,
                         ephemeral : true
                     }) 
 
@@ -185,7 +185,7 @@ export class CreateEmbedCommand extends Command {
                 case 'send':
                     if (option.channel!.type !== 'GUILD_TEXT'){
                         return interaction.reply({
-                            content : commandLang.Options.SendEmbed.errorType,
+                            content : cmdLang.Options.SendEmbed.errorType,
                             ephemeral : true
                         })
                     }
@@ -203,29 +203,11 @@ export class CreateEmbedCommand extends Command {
         });
         } else {
             return interaction.reply({
-                content : commandLang.interaction.multypleOptions,
+                content : cmdLang.interaction.multypleOptions,
                 ephemeral : true
             })
         }
 
         
     }
-    // onAutocomplete(interaction: AutocompleteInteraction) {
-    //     const focusedOption = interaction.options.getFocused(true);
-    //     let choices : any;
-
-    //     if (focusedOption.name === "name") {
-    //         choices = ["faq", "install", "collection", "promise", "debug"];
-    //     }
-
-    //     if (focusedOption.name === "theme") {
-    //         choices = ["halloween", "christmas", "summer"];
-    //     }
-
-    //     const filtered = choices!.filter((choice: any) =>
-    //         choice.startsWith(focusedOption.value)
-    //     );
-    //     interaction
-    //         .respond(filtered.map((choice: any) => ({ name: choice, value: choice })))
-    // }
 }

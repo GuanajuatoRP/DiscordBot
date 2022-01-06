@@ -6,16 +6,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PingCommand = void 0;
 const sheweny_1 = require("sheweny");
 const language_json_1 = __importDefault(require("../../../util/language.json"));
-const pingLang = language_json_1.default.commands.ping;
+const cmdLang = language_json_1.default.commands.ping;
 class PingCommand extends sheweny_1.Command {
     constructor(client) {
         super(client, {
             name: "ping",
-            category: 'Dev',
+            category: 'Misc',
             // type: '', //* Default type is SLASH_COMMAND
-            description: pingLang.description.desc,
-            usage: pingLang.description.usage,
-            examples: pingLang.description.exemples,
+            description: cmdLang.description.desc,
+            usage: cmdLang.description.usage,
+            examples: cmdLang.description.exemples,
             options: [
             // {   type : 'STRING',
             // name: 'commande',

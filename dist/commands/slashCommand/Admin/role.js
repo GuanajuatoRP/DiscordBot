@@ -9,16 +9,16 @@ const discord_js_1 = require("discord.js");
 const export_1 = require("../../../util/export");
 const appConfig_json_1 = __importDefault(require("../../../util/appConfig.json"));
 const language_json_1 = __importDefault(require("../../../util/language.json"));
-const roleLang = language_json_1.default.commands.role;
+const cmdLang = language_json_1.default.commands.role;
 class RoleCommand extends sheweny_1.Command {
     constructor(client) {
         super(client, {
             name: 'role',
             category: 'Admin',
             // type: '', //* Default type is SLASH_COMMAND
-            description: roleLang.description.desc,
-            usage: roleLang.description.usage,
-            examples: roleLang.description.exemples,
+            description: cmdLang.description.desc,
+            usage: cmdLang.description.usage,
+            examples: cmdLang.description.exemples,
             options: [
             // {
             // type : 'STRING',
@@ -61,12 +61,12 @@ class RoleCommand extends sheweny_1.Command {
             });
             role.setAuthor("Répartition des équipes");
             if (membersOfChannel.length > 0) {
-                role.addField(roleLang.embed.Fields[0].teamname, `${teamA.join(",")}`, false);
-                role.addField(roleLang.embed.Fields[1].teamname, `${teamB.join(",")}`, false);
+                role.addField(cmdLang.embed.Fields[0].teamname, `${teamA.join(",")}`, false);
+                role.addField(cmdLang.embed.Fields[1].teamname, `${teamB.join(",")}`, false);
                 const btGetRole = new discord_js_1.MessageActionRow()
                     .addComponents(new discord_js_1.MessageButton()
                     .setCustomId('GetGameRole')
-                    .setLabel(roleLang.bouton.label)
+                    .setLabel(cmdLang.bouton.label)
                     .setStyle('PRIMARY'));
                 return interaction.reply({
                     embeds: [role],
@@ -75,7 +75,7 @@ class RoleCommand extends sheweny_1.Command {
             }
             else {
                 return interaction.reply({
-                    content: roleLang.interaction.error.content,
+                    content: cmdLang.interaction.error.content,
                     ephemeral: true
                 });
             }

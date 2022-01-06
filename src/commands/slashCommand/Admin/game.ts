@@ -6,7 +6,7 @@ import type { ShewenyClient } from 'sheweny'
 import type { CommandInteraction } from 'discord.js'
 import appConf from '../../../util/appConfig.json'
 import lang from '../../../util/language.json'
-const gameLang = lang.commands.game
+const cmdLang = lang.commands.game
     
     
     
@@ -16,14 +16,14 @@ export class GameCommand extends Command {
             name: 'game',
             category: 'Admin', //* Default category is InDev
             // type: '', //* Default type is SLASH_COMMAND
-            description: gameLang.description.desc,
-            usage : gameLang.description.usage,
-            examples : gameLang.description.exemples,
+            description: cmdLang.description.desc,
+            usage : cmdLang.description.usage,
+            examples : cmdLang.description.exemples,
             options : [
                 {
                     type : 'STRING',
                     name: 'game_name',
-                    description: gameLang.menu.Placeholder,
+                    description: cmdLang.menu.Placeholder,
                     autocomplete : true,
                     required : true,
                 }

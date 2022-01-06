@@ -1,6 +1,6 @@
 import { Event } from "sheweny"
 import type { ShewenyClient } from "sheweny"
-import type { CommandInteraction, TextChannel } from "discord.js"
+import type { CommandInteraction, GuildMember, TextChannel } from "discord.js"
 import lang from '../util/language.json'
 import { LogsEmbed } from "../util/export"
 import appConf from "../util/appConfig.json"
@@ -17,13 +17,12 @@ export class userMissingPermissions extends Event {
 
     execute(interaction : CommandInteraction )
     {
-        const executor = interaction.user
+        const executor = interaction.member as GuildMember
         
-        const embed = LogsEmbed()
-        embed.setAuthor('User Not Have Permission')
-        embed.fields.push({name: "Nom de la commande", value : interaction.commandName, inline: true})
-        embed.fields.push({name: "Salon d'utilisation", value : interaction.guild!.channels.cache.get(interaction.channelId)!.name, inline: true})
-        embed.setFooter(`Cette action a été réalisée par ${executor!.username} -> id : ${executor!.id}`)
+        const embed = LogsEmbed(executor.displayName, executor.id)
+        embed.setAuthor(eventLang.embed.Author)
+        embed.fields.push({name: eventLang.embed.fields.commandName.name, value : interaction.commandName, inline: true})
+        embed.fields.push({name: eventLang.embed.fields.channel.name, value : interaction.guild!.channels.cache.get(interaction.channelId)!.name, inline: true})
         const channel = interaction.guild!.channels.cache.get(appConf.chanels.staff.botLog) as TextChannel
         channel.send({
             embeds : [embed]

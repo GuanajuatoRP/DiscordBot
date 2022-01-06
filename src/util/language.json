@@ -13,6 +13,15 @@
             },
             "slashOptions": {
                 "description": "Nom de la commande sur la quelle vous voulez plus d'infos"
+            },
+            "embed" : {
+                "fields" : {
+                    "info" : {"name" : "------------", "value" : "**`/adminhelp <command>` pour des infos sur une commande spécifique **\n                    Exemples `/adminhelp ping`  || `/adminhelp embed`"}
+                }
+            },
+            "interaction" : {
+                "wrongName" : "La commande ***{0}***  n'existe pas",
+                "noRead" : "La commande ***{0}*** ne peut pas être lue depuis ce menu"
             }
         },
         "getcommandlogs": {
@@ -23,7 +32,7 @@
             },
             "interaction" : {
                 "dateError" : "La date ne correspond a aucune des dates disponibles vérifi le template qui doit être dd-mm-yyyy",
-                "content" : "Voici le fichier de CommandLogs qui correspond a la date du {0}"
+                "content" : "Voici les fichiers de CommandLogs qui correspondent a la date du {0}"
             },
             "slashOptions": {
                 "description": "Date du CommandLogs a télécharger"
@@ -103,7 +112,10 @@
             },
             "interaction": {
                 "notOwnerError": "Vous n'avez pas la permission d'utiliser cette commande, Seul le propriétaire du serveur le peut",
-                "notManagableUser": "Cette utilisateur n'est pas managable"
+                "notManagableUser": "Cette utilisateur n'est pas managable",
+                "addUser": "L'utilisateur **{0}** a bien été ajouté de la liste des administrateurs",
+                "removeUser": "L'utilisateur **{0}** a bien été retiré de la liste des administrateurs",
+                "dualOptions": "Vous ne pouvez pas ajouté et suprimer des utilisateurs en même temp"
             },
             "embed": {
                 "adminListField": "Voici la liste des administrateurs"
@@ -136,6 +148,9 @@
                 "plage": {
                     "description": "plage sur la quelle tirer les valeurs"
                 }
+            },
+            "embed" : {
+                "title" : "Voici la liste de{0} nombre{0} allant de **1 à {1}**"
             },
             "messageError": "Vous ne pouvez pas tirer un nombre supérieur a la plage"
         },
@@ -203,11 +218,12 @@
 
             },
             "bouton": {
-                "label": "Obtenir un role"
+                "label": "Je crée mon compte !"
             },
             "interaction": {
-                "error": {
-                    "content": "Le nombre minimal de personne requise pour cette commande est de 2"
+                "sendRegister" : "Vos information d'enregistrement vont vous être envoyé en privé",
+                "alreadyRegister": {
+                    "content": "Vous avez deja été enregistrer sur le Rôleplay"
                 }
             }
         },
@@ -230,12 +246,21 @@
             "description": {
                 "desc": "La commande help renvoie la liste des commandes du bot!",
                 "usage": "help <Nom de commande>",
-                "exemples": ["help"]
+                "exemples": ["help", "help ping"]
             },
             "slashOptions": {
                 "command": {
                     "description": "Nom de la commande sur le quel vous voulez plus d'info"
                 }
+            },
+            "genericEmbed" : {
+                "fields" : {
+                    "info" : {"name" : "------------", "value" : "**`/help <command>` pour des infos sur une commande spécifique **\n                     Exemples `/help ping`  || `/help number`"}
+                }
+            },
+            "interaction" : {
+                "wrongName" : "La commande ***{0}***  n'existe pas",
+                "noRead" : "La commande ***{0}*** ne peut pas être lue depuis ce menu"
             }
         }
     },
@@ -290,11 +315,12 @@
         },
         "LogsEmbed": {
             "author": "Définir l'action",
-            "footer": "Réalisée par {Définir le membdre}"
+            "footer": "Cette action a été réalisée par {0} -> id : {1}"
         }
     },
     "event": {
         "ready": {
+            "description" : "Send message in botLog Channel when the bot as start",
             "message": "Bot is Ready !🤖"
         },
         "deletePinnedMessageAlerte": {
@@ -304,64 +330,134 @@
             "description": "Permet de logger l'utilisation de commande sans la permissions",
             "interaction": {
                 "content": "Oupss il semblerais que tu n'ais pas la permission d'utilisé cette commande"
+            },
+            "embed":{
+                "Author" : "User Not Have Permission",
+                "fields" : {
+                    "commandName" : {
+                        "name" : "Nom de la commande"
+                    },
+                    "channel" : {
+                        "name" : "Salon d'utilisation"
+                    }
+                },
+                "footer" : "Cette action a été réalisée par {0} -> id : {1}"
             }
         },
         "guildBanAdd": {
             "description": "Permet de logger quand un user a été ban, pourquoi et quand",
             "embed": {
-                "author": "Ban"
+                "author": "Ban",
+                "fields" : {
+                    "ban" : {"name" : "{0} **---**`{1}`**---** a été bannis"},
+                    "reason" : {"name" : "Pour la raison suivante {0}"}
+                }
             }
         },
         "guildBanRemove": {
             "description": "Permet de logger quand et qui déban un utilisateur",
             "embed": {
-                "author": "UnBan"
+                "color" : "#59ff00",
+                "author": "UnBan",
+                "fields" : {
+                    "unban" : {"name" : "{0} **---**`{1}`**---** a été débannis"},
+                    "reason" : {"name" : "Pour la raison suivante {0}"}
+                }
             }
         },
         "guildMemberAdd": {
             "description": "Permet de logger quand un utilisateur rejoins le serveur",
             "embed": {
-                "author": "Nouveau Membre"
+                "color" : "#34C924",
+                "author": "Nouveau Membre",
+                "description" : "{0} **--**`{1}`**--**"
             }
         },
         "guildMemberRemove": {
             "description": "Permet de logger quand un utilisateur quite le serveur",
             "embed": {
-                "author": "Un membre a quiter le serveur"
+                "color" : "#FF0000",
+                "author": "Un membre a quiter le serveur",
+                "description" : "{0} **--**`{1}`**--**"
             }
         },
         "invitationCreate": {
             "description": "Permet de logger quand quelqu'un crée une nouvelle invitation",
             "embed": {
-                "author": "Création d'un lien d'invitation"
+                "color" : "#A600FF",
+                "author": "Création d'un lien d'invitation",
+                "fields" : {
+                    "link" : {"name" : "URL du lien"},
+                    "code" : {"name" : "Code de l'invitation"},
+                    "salon" : {"name" : "Salons visé par l'invitation"}
+                }
             }
         },
         "invitationRemove": {
             "description": "Permet de logger quand quelqu'un supprime une invitation",
             "embed": {
-                "author": "Supression d'un lien d'invitation"
+                "color" : "#A600FF",
+                "author": "Supression d'un lien d'invitation",
+                "fields" : {
+                    "link" : {"name" : "URL du lien"},
+                    "code" : {"name" : "Code de l'invitation"},
+                    "salon" : {"name" : "Salons visé par l'invitation"}
+                }
             }
         },
         "roleCreate": {
             "description": "Permmet de logger la creation de role",
             "embed": {
-                "author": "Création d'un role"
+                "author": "Création d'un role",
+                "color" : "#A600FF",
+                "fields" : {
+                    "roleName" : {"name" : "Nom du role"},
+                    "roleId" : {"name" : "Id ru rôle"}
+                }
             }
         },
         "roleRemove": {
             "description": "Permmet de logger la suppression de role",
             "embed": {
-                "author": "Supression d'un role"
+                "color" : "#A600FF",
+                "author": "Supression d'un role",
+                "fields" : {
+                    "roleName" : {"name" : "Nom du role"},
+                    "roleId" : {"name" : "Id ru rôle"}
+                }
             }
         },
         "messageBulkDelete": {
             "description": "Permet de logger la supression de mass des messages",
             "embed": {
-                "author": "Commande Purge"
+                "color" : "#FF631A",
+                "author": "Commande Purge",
+                "fields" : {
+                    "salon" : {"name" : "Salons d'utilisation"}
+                }
             }
         },
-        "CommandLog": {
-            "description": "Permet de logger l'ensemble des utilisation de commande"
+        "commandLog": {
+            "description": "Permet de logger l'ensemble des utilisation de commande",
+            "embed" : {
+                "color" : "#27F9FF",
+                "author" : "Command Log",
+                "fields" : {
+                    "commandName" : {"name" : "Nom de la commande"},
+                    "salon" : {"name" : "Salon d'utilisation"}
+                }
+            }
+        },
+        "adminCommandLog": {
+            "description": "Permet de logger l'ensemble des utilisation de commande admin",
+            "embed" : {
+                "color" : "#ff0000",
+                "author" : "AdminCommand Log",
+                "fields" : {
+                    "commandName" : {"name" : "Nom de la commande"},
+                    "salon" : {"name" : "Salon d'utilisation"}
+                }
+            }
         }
     }
 }

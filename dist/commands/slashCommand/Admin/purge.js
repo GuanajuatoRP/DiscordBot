@@ -6,21 +6,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PurgeCommand = void 0;
 const sheweny_1 = require("sheweny");
 const language_json_1 = __importDefault(require("../../../util/language.json"));
-const purgeLang = language_json_1.default.commands.purge;
+const cmdLang = language_json_1.default.commands.purge;
 class PurgeCommand extends sheweny_1.Command {
     constructor(client) {
         super(client, {
             name: 'purge',
             category: 'Admin',
             // type: '', //* Default type is SLASH_COMMAND
-            description: purgeLang.description.desc,
-            usage: purgeLang.description.usage,
-            examples: purgeLang.description.exemples,
+            description: cmdLang.description.desc,
+            usage: cmdLang.description.usage,
+            examples: cmdLang.description.exemples,
             options: [
                 {
                     type: 'NUMBER',
                     name: 'nombre',
-                    description: purgeLang.slashOptions.nombre.description,
+                    description: cmdLang.slashOptions.nombre.description,
                     autocomplete: false,
                     required: true,
                 }
@@ -37,7 +37,7 @@ class PurgeCommand extends sheweny_1.Command {
         this.client.emit('CommandLog', interaction);
         if (interaction.options.getNumber('nombre') > 100) {
             return interaction.reply({
-                content: purgeLang.messageError.maxNumber,
+                content: cmdLang.messageError.maxNumber,
                 ephemeral: true,
             });
         }
@@ -55,12 +55,12 @@ class PurgeCommand extends sheweny_1.Command {
         }
         catch (error) {
             return interaction.reply({
-                content: purgeLang.messageError.maxDays,
+                content: cmdLang.messageError.maxDays,
                 ephemeral: true,
             });
         }
         return interaction.reply({
-            content: purgeLang.interaction.content,
+            content: cmdLang.interaction.content,
             ephemeral: true,
         });
     }
