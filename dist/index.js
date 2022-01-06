@@ -31,7 +31,7 @@ const client = new sheweny_1.ShewenyClient({
                 category: 'InDev',
                 channel: 'GUILD',
                 cooldown: 2,
-                examples: ['/newExample'],
+                examples: ['/newExample', '/newExample'],
                 usage: ['/newExample aaa'],
                 type: 'SLASH_COMMAND',
             }

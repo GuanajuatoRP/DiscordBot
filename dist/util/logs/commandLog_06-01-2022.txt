@@ -45,3 +45,4 @@
 06-01-2022 23:35:22, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
 06-01-2022 23:36:18, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
 06-01-2022 23:37:37, Command : purge, Option Name : nombre, value : 10, channel : log-bot User : Dercraker, UserID : 152125692618735616
+06-01-2022 23:46:28, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616

@@ -33,8 +33,9 @@ class PingCommand extends sheweny_1.Command {
         });
     }
     execute(interaction) {
-        this.client.emit('CommandLog', interaction);
+        // get latensi 
         const start = Date.now();
+        this.client.emit('CommandLog', interaction);
         interaction.reply({ content: "Pong !" }).then(() => {
             const end = Date.now();
             const time = end - start;

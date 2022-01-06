@@ -31,9 +31,10 @@ export class PingCommand extends Command {
         });
     }
     execute(interaction: CommandInteraction) {
+        // get latensi 
+        const start = Date.now()
         this.client.emit('CommandLog', interaction as CommandInteraction)
         
-        const start = Date.now()
         interaction.reply({ content: "Pong !" }).then(() => {
             const end = Date.now()
             const time = end - start

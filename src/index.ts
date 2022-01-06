@@ -6,9 +6,9 @@ import dotenv from 'dotenv';
 
 const client = new ShewenyClient({
     intents: 32767,
-    admins: appConfig.botConfig.admins, // Admins permissions for the bot
-    mode: 'development', //The mode for run application
-    presence: { // define status and activites of bot 
+    admins: appConfig.botConfig.admins, // Admins perms pour le bot
+    mode: 'development', //mode de lancement pour l'app
+    presence: { //status du bot 
         status: "online",
         afk: false,
         activities: [{
@@ -18,9 +18,9 @@ const client = new ShewenyClient({
     },
     managers: {
         commands: {
-            directory: "./commands", // Directory where commands are stored
-            loadAll: true, // Load all commands
-            guildId: appConfig.botConfig.guildid, //The guild to register commands
+            directory: "./commands", // command directory
+            loadAll: true,
+            guildId: appConfig.botConfig.guildid,
             applicationPermissions: false, //If the permissions for app commands must be required
             autoRegisterApplicationCommands: true, // Register application commands
             default : { // set default params for all commands
@@ -28,17 +28,17 @@ const client = new ShewenyClient({
                 category : 'InDev',
                 channel : 'GUILD',
                 cooldown : 2,
-                examples : ['/newExample'],
+                examples : ['/newExample','/newExample'],
                 usage : ['/newExample aaa'],
                 type : 'SLASH_COMMAND',
             }
         },
         events: {
-            directory: "./listeners",
+            directory: "./listeners", //Event directory
             loadAll: true,
         },
         buttons: {
-            directory: "./interactions/buttons",
+            directory: "./interactions/buttons", //Button directory
             loadAll: true,
         },
         // inhibitors: {
