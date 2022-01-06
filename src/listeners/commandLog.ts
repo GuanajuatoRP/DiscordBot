@@ -27,8 +27,10 @@ export class CommandLog extends Event {
         const channel = interaction.guild!.channels.cache.get(appConf.chanels.staff.commandLog) as TextChannel
 
         const d = new Date
-        const today = [d.getDate(),d.getMonth()+1,d.getFullYear()].join('-')
-        const dformat = today+' '+[d.getHours(),d.getMinutes(),d.getSeconds()].join(':');
+        const today = [d.getDate() > 9 ? d.getDate() : `0${d.getDate()}`,d.getMonth()+1 > 9 ? d.getMonth() : `0${d.getMonth()+1}`,d.getFullYear()].join('-')
+        
+        const dformat = today+' '+[d.getHours() > 9 ? d.getHours() : `0${d.getHours()}`,d.getMinutes() > 9 ? d.getMinutes() : `0${d.getMinutes()}`,d.getSeconds() > 9 ? d.getSeconds() : `0${d.getSeconds()}`].join(':');
+        
         const log = `${dformat}, Command : ${interaction.commandName}, channel : ${interaction.guild!.channels.cache.get(interaction.channelId)!.name} User : ${member.displayName}, UserID : ${member.id}`
         fs.appendFileSync(path.join(__dirname,`../util/logs/commandLog_${today}.txt`), log+'\n')
         return channel.send({

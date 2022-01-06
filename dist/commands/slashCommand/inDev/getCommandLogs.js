@@ -46,10 +46,9 @@ class GetCommandLogsCommand extends sheweny_1.Command {
             });
         }
         return interaction.reply({
-            content: ''.format(interaction.options.getString('file-date')),
-            // content : util.format('Voici le fichier de CommandLogs qui correspond a la date du {0}', interaction.options.getString('file-date')! as string),
+            content: getcommandlogsLang.interaction.content.format(interaction.options.getString('file-date')),
             files: [path_1.default.join(__dirname, `../../../util/logs/commandLog_${interaction.options.getString('file-date')}.txt`)],
-            // ephemeral : true
+            ephemeral: true
         });
     }
     onAutocomplete(interaction) {
