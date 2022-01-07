@@ -16,7 +16,7 @@
             },
             "embed": {
                 "fields": {
-                    "info": { "name": "------------", "value": "**`/adminhelp <command>` pour des infos sur une commande spécifique **\n                    Exemples `/adminhelp ping`  || `/adminhelp embed`" }
+                    "info": { "name": "------------", "value": "**`/adminhelp <command>` pour des infos sur une commande spécifique **\n                    Exemples `/adminhelp {0}`  || `/adminhelp {1}`" }
                 }
             },
             "interaction": {
@@ -258,7 +258,7 @@
             },
             "genericEmbed": {
                 "fields": {
-                    "info": { "name": "------------", "value": "**`/help <command>` pour des infos sur une commande spécifique **\n                     Exemples `/help ping`  || `/help number`" }
+                    "info": { "name": "------------", "value": "**`/help <command>` pour des infos sur une commande spécifique **\n                     Exemples `/help {0}`  || `/help {1}`" }
                 }
             },
             "interaction": {

@@ -6,6 +6,7 @@ import type { CommandInteraction, AutocompleteInteraction } from "discord.js"
 import lang from '../../../util/language.json'
 const cmdLang = lang.commands.help
 
+
 export class HelpCommand extends Command {
     constructor(client: ShewenyClient) {
         super(client, {
@@ -46,6 +47,7 @@ export class HelpCommand extends Command {
             let Embed = DefaultEmbed()
             .setDescription(lang.commands.help.description.desc)
             for (const category of allCategory) {
+                
                 Embed.addField(
                     `${category}`,
                     `${commands.filter(c => c.category === `${category}` && c.adminsOnly === false && c.type === 'SLASH_COMMAND')
@@ -53,7 +55,17 @@ export class HelpCommand extends Command {
                     .join(', ')}`
                 )
             }
-            Embed.addField(cmdLang.genericEmbed.fields.info.name,cmdLang.genericEmbed.fields.info.value)
+
+            // Define random command for /help example
+            let availableCommand : Array<string> = commands.filter(c => c.category != 'InDev' && c.category != 'Admin'  && c.adminsOnly === false && c.type === 'SLASH_COMMAND').map(c => c.name)
+            let randomCommand1 : string
+            let randomCommand2 : string
+            do {
+                randomCommand1 = availableCommand[Math.floor(Math.random() * availableCommand.length)]
+                randomCommand2 = availableCommand[Math.floor(Math.random() * availableCommand.length)]
+            } while (randomCommand1 == randomCommand2);
+            Embed.addField(cmdLang.genericEmbed.fields.info.name,cmdLang.genericEmbed.fields.info.value.format(randomCommand1,randomCommand2))
+
             return interaction.reply({
                 embeds: [Embed],
                 ephemeral: true

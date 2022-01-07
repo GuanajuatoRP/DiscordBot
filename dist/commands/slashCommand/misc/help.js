@@ -51,7 +51,15 @@ class HelpCommand extends sheweny_1.Command {
                     .map(c => `\`${c.name}\``)
                     .join(', ')}`);
             }
-            Embed.addField(cmdLang.genericEmbed.fields.info.name, cmdLang.genericEmbed.fields.info.value);
+            // Define random command for /help example
+            let availableCommand = commands.filter(c => c.category != 'InDev' && c.category != 'Admin' && c.adminsOnly === false && c.type === 'SLASH_COMMAND').map(c => c.name);
+            let randomCommand1;
+            let randomCommand2;
+            do {
+                randomCommand1 = availableCommand[Math.floor(Math.random() * availableCommand.length)];
+                randomCommand2 = availableCommand[Math.floor(Math.random() * availableCommand.length)];
+            } while (randomCommand1 == randomCommand2);
+            Embed.addField(cmdLang.genericEmbed.fields.info.name, cmdLang.genericEmbed.fields.info.value.format(randomCommand1, randomCommand2));
             return interaction.reply({
                 embeds: [Embed],
                 ephemeral: true

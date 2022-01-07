@@ -1,0 +1,20 @@
+08-01-2022 00:34:44, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+08-01-2022 00:34:48, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+08-01-2022 00:35:34, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+08-01-2022 00:36:23, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+08-01-2022 00:36:32, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+08-01-2022 00:36:36, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+08-01-2022 00:36:40, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+08-01-2022 00:37:18, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+08-01-2022 00:37:23, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+08-01-2022 00:37:30, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+08-01-2022 00:37:34, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+08-01-2022 00:39:57, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+08-01-2022 00:40:00, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+08-01-2022 00:40:12, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+08-01-2022 00:40:14, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+08-01-2022 00:40:17, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+08-01-2022 00:40:19, Command : help, channel : log-bot User : Dercraker, UserID : 152125692618735616
+08-01-2022 00:46:33, Command : help, channel : log-bot User : kilarn123, UserID : 297855909592563723
+08-01-2022 00:46:42, Command : help, channel : log-bot User : kilarn123, UserID : 297855909592563723
+08-01-2022 00:47:20, Command : adminlist, Option Name : add, value : kilarn123, channel : log-bot User : Dercraker, UserID : 152125692618735616

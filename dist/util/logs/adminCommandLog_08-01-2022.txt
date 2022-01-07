@@ -1,0 +1,8 @@
+08-01-2022 00:46:09, Command : adminhelp, channel : log-bot User : Dercraker, UserID : 152125692618735616
+08-01-2022 00:46:13, Command : adminhelp, channel : log-bot User : Dercraker, UserID : 152125692618735616
+08-01-2022 00:46:15, Command : adminhelp, channel : log-bot User : Dercraker, UserID : 152125692618735616
+08-01-2022 00:46:17, Command : adminhelp, channel : log-bot User : Dercraker, UserID : 152125692618735616
+08-01-2022 00:46:20, Command : adminhelp, channel : log-bot User : Dercraker, UserID : 152125692618735616
+08-01-2022 00:46:23, Command : adminhelp, channel : log-bot User : Dercraker, UserID : 152125692618735616
+08-01-2022 00:48:10, Command : adminhelp, channel : log-bot User : kilarn123, UserID : 297855909592563723
+08-01-2022 00:48:18, Command : adminhelp, channel : log-bot User : kilarn123, UserID : 297855909592563723

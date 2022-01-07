@@ -64,8 +64,16 @@ export class AdminHelpCommand extends Command {
                                     .join(', ')}`
                 )
             }
-            
-            Embed.addField(cmdLang.embed.fields.info.name, cmdLang.embed.fields.info.value)
+            // Define random command for /help example
+            let availableCommand : Array<string> = commands.filter(c => c.category == 'InDev' || c.category == 'Admin' && c.type === 'SLASH_COMMAND' && c.name != 'adminlist').map(c => c.name)
+            let randomCommand1 : string
+            let randomCommand2 : string
+            do {
+                randomCommand1 = availableCommand[Math.floor(Math.random() * availableCommand.length)]
+                randomCommand2 = availableCommand[Math.floor(Math.random() * availableCommand.length)]
+            } while (randomCommand1 == randomCommand2);
+            Embed.addField(cmdLang.embed.fields.info.name,cmdLang.embed.fields.info.value.format(randomCommand1,randomCommand2))
+
             return interaction.reply({
                 embeds: [Embed],
                 ephemeral: true
