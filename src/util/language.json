@@ -97,7 +97,12 @@
                 "exemples": ["getcategorie livreur", "getcategorie rally"]
             },
             "interaction": {
-                "content": "Toutes les donnée anisi que toutes les propriétée du channel on été enregistré"
+                "content": "Toutes les donnée anisi que toutes les propriétée du.des channel.s on été enregistré",
+                "needOptions": "Vous devez forcément utilisé l'une des deux commande"
+            },
+            "slashOptions" : {
+                "category" : "Nom de la catégorie a save",
+                "salon" : "Nom du salon a save"
             }
         },
         "adminlist": {
