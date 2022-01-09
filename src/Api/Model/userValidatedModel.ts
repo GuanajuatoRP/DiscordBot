@@ -1,4 +1,4 @@
 export class userValidateModel {
-    public discordId: string = '';
+    public userId: string = '';
     public token: string = '';
 }

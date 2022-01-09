@@ -17,13 +17,13 @@ export class RegisterCommand extends Command {
             usage : cmdLang.description.usage,
             examples : cmdLang.description.exemples,
             options : [
-                // {
-                    // type : 'STRING',
-                    // name: 'commande',
-                    // description: '',
-                    // autocomplete : false,
-                    // required : false,
-                    //}
+                {
+                    type : 'STRING',
+                    name: 'username',
+                    description: 'Définis le nom du compte',
+                    autocomplete : false,
+                    required : false,
+                }
             ],
             defaultPermission : true,
             // channel : '', //* Default Channel is GUILD
@@ -37,15 +37,16 @@ export class RegisterCommand extends Command {
         this.client.emit('CommandLog', interaction as CommandInteraction)
         
         // TODO: créé une requête dans le but de get la liste des user sur la bd puis check si userlist.include intercation.user
-        const userAlreadyregister : Boolean = true 
+        const userAlreadyregister : Boolean = false 
         if (userAlreadyregister){
             return interaction.reply({
                 content : cmdLang.interaction.alreadyRegister.content,
                 ephemeral : true
             }) 
         } else {
+            
             // TODO: API call pour request un token d'authentification
-            const token = 'token autentification'
+            const token = interaction.options.getString('username')
             let embed = DefaultEmbed()
                 embed.title = cmdLang.embed.title
                 embed.color = cmdLang.embed.color as unknown as number
@@ -55,12 +56,13 @@ export class RegisterCommand extends Command {
             .addComponents(
                 new MessageButton()
                     .setLabel(cmdLang.bouton.label)
-                    .setStyle('LINK')
-                    //TODO: inclure le token au lien pour l'enregistrement
-                    .setURL('https://www.youtube.com/watch?v=ORBwkXsUNEs')
+                    .setStyle('PRIMARY')
+                    .setCustomId('Register')
+
             )
             interaction.reply({
                 content : cmdLang.interaction.sendRegister,
+                components : [btNewAccount],
                 ephemeral : true
             })
             return interaction.user.send({

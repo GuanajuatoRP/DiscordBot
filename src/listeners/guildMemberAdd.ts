@@ -15,6 +15,9 @@ export class GuildMemberAdd extends Event {
     }
 
     execute(member : GuildMember){
+
+
+        // send Log
         let embed = LogsEmbed(member.displayName, member.id)
             embed.setAuthor(eventLang.embed.author)
             embed.setColor(eventLang.embed.color as ColorResolvable)

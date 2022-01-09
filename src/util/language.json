@@ -464,5 +464,14 @@
                 }
             }
         }
+    },
+    "api": {
+        "isUserOnServer" : {
+            "true": "isUserOnServer: {0} result: {1}",
+            "false": "isUserOnServer: {0} result: unknown user"
+        },
+        "uservalidated" : {
+            "registered" : "L'utilisateur {0} s'est enregistré avec succès"
+        }
     }
 }

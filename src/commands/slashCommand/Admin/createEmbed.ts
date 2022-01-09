@@ -84,6 +84,7 @@ export class CreateEmbedCommand extends Command {
                     description: cmdLang.Options.SendEmbed.description,
                     autocomplete : false,
                     required : false,
+                    channelTypes : ['GUILD_TEXT']
                     },
             ],
             defaultPermission : true,
@@ -167,29 +168,23 @@ export class CreateEmbedCommand extends Command {
                         content : cmdLang.Options.AddField.description,
                         ephemeral : true
                     }) 
-
+                    const salon = interaction.channel as TextChannel
                     collector.on('end', async collected => {
                         const collect = collected.map(m => m.content)
-                        // console.log(collect);
-                        
+
                         await embed.fields.push({
                             name: collect[1],
                             value: collect[2],
                             inline: (collect[3].toLowerCase() == "false" ? false : true)
                         }, )
                         saveEmbed(embed)
-                        interaction.channel!.send({
+                        salon.send({
                             embeds : [embed]
                         });
                     });
+                    break
                 case 'send':
-                    if (option.channel!.type !== 'GUILD_TEXT'){
-                        return interaction.reply({
-                            content : cmdLang.Options.SendEmbed.errorType,
-                            ephemeral : true
-                        })
-                    }
-                    const channel = option.channel as TextChannel
+                    const channel = interaction.options.getChannel('send') as TextChannel
                     channel.send({
                         embeds : [embed]
                     })

@@ -17,6 +17,7 @@ class GuildMemberAdd extends sheweny_1.Event {
         });
     }
     execute(member) {
+        // send Log
         let embed = (0, export_1.LogsEmbed)(member.displayName, member.id);
         embed.setAuthor(eventLang.embed.author);
         embed.setColor(eventLang.embed.color);
