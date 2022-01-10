@@ -60,7 +60,7 @@ class RegisterCommand extends sheweny_1.Command {
             interaction.reply({
                 content: cmdLang.interaction.sendRegister,
                 components: [btNewAccount],
-                ephemeral: true
+                // ephemeral : true
             });
             return interaction.user.send({
                 content: token,
