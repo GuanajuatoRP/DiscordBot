@@ -1,4 +1,2 @@
-10-01-2022 00:20:13, Command : register, Option Name : username, value : qsd, channel : log-bot User : Dercraker, UserID : 152125692618735616
-10-01-2022 00:55:15, Command : register, channel : log-bot User : Dercraker, UserID : 152125692618735616
-10-01-2022 01:17:02, Command : register, channel : log-bot User : Dercraker, UserID : 152125692618735616
-10-01-2022 11:33:04, Command : register, Option Name : username, value : aaa, channel : log-bot User : Dercraker, UserID : 152125692618735616
+10-01-2022 22:24:57, Command : purge, Option Name : nombre, value : 2, channel : log-bot User : Dercraker, UserID : 152125692618735616
+10-01-2022 23:52:12, Command : purge, Option Name : nombre, value : 30, channel : log-bot User : Dercraker, UserID : 152125692618735616

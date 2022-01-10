@@ -4,11 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.app = void 0;
-const appConfig_json_1 = __importDefault(require("../util/appConfig.json"));
 const express_1 = __importDefault(require("express"));
 const UserValidatedModel_1 = require("../Api/Model/UserValidatedModel");
 const index_1 = require("../index");
-const appConfig_json_2 = __importDefault(require("../util/appConfig.json"));
+const appConfig_json_1 = __importDefault(require("../util/appConfig.json"));
 const language_json_1 = __importDefault(require("../util/language.json"));
 exports.app = (0, express_1.default)();
 exports.app.use(express_1.default.json());
@@ -42,9 +41,9 @@ exports.app.post("/uservalidated", async (req, res) => {
     const guild = await index_1.client.guilds.fetch(appConfig_json_1.default.botConfig.guildid);
     // set new role
     const member = guild.members.cache.get(user.userId);
-    member.roles.add(member.guild.roles.cache.get(appConfig_json_2.default.Roles.INSCRIT));
+    member.roles.add(member.guild.roles.cache.get(appConfig_json_1.default.Roles.INSCRIT));
     //log in channel
-    const channel = await guild.channels.cache.get(appConfig_json_2.default.chanels.staff.botLog);
+    const channel = await guild.channels.cache.get(appConfig_json_1.default.chanels.staff.botLog);
     channel.send(language_json_1.default.api.uservalidated.registered.format(req.body.userId));
     res.sendStatus(200);
 });

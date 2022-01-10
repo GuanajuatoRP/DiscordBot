@@ -6,8 +6,8 @@ export default class ApiBase {
     static get apiAuth() {
         if (!this._apiAuth) {
             this._apiAuth = axios.create({
-                baseURL: process.env.URL_API_AUTH,
-            });
+                baseURL: process.env.API_AUTH_URL as string,
+            })
         }
         return this._apiAuth;
     }
