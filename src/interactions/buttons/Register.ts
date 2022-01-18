@@ -1,11 +1,15 @@
+
 import { Button } from "sheweny"
 import type { ShewenyClient } from "sheweny"
 import { ButtonInteraction, GuildMember, GuildMemberRoleManager} from "discord.js"
 import appConf from '../../util/appConfig.json'
+import axios from 'axios'
+
 // import { DefaultEmbed } from "../../util/export";
 // import Lang from '../../util/language.json'
 // const btLang = Lang.commands.register
 import ApiAuth from '../../AccessApi/ApiAuth'
+// import fetch from "node-fetch"
 export class RegisterBtn extends Button {
     constructor(client: ShewenyClient) {
         super(client, ["Register"]);
@@ -23,10 +27,8 @@ export class RegisterBtn extends Button {
         }
 
         // TODO: call api to get new token with user.id
-        // ApiAuth.register(member.displayName,member.id)
-        // axios POST request
 
-        
+        //* axios POST request
         const {data} = await ApiAuth.register(member.displayName,member.id)
         console.log(data);
         // axi.post('http://localhost:49154/register', {username: "Dercraker", discordid: "152125692618735616"})
