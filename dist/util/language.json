@@ -14,32 +14,31 @@
             "slashOptions": {
                 "description": "Nom de la commande sur la quelle vous voulez plus d'infos"
             },
-            "embed" : {
-                "fields" : {
-                    "info" : {"name" : "------------", "value" : "**`/adminhelp <command>` pour des infos sur une commande spécifique **\n                    Exemples `/adminhelp {0}`  || `/adminhelp {1}`"}
+            "embed": {
+                "fields": {
+                    "info": { "name": "------------", "value": "**`/adminhelp <command>` pour des infos sur une commande spécifique **\n                    Exemples `/adminhelp {0}`  || `/adminhelp {1}`" }
                 }
             },
-            "interaction" : {
-                "wrongName" : "La commande ***{0}***  n'existe pas",
-                "noRead" : "La commande ***{0}*** ne peut pas être lue depuis ce menu"
+            "interaction": {
+                "wrongName": "La commande ***{0}***  n'existe pas",
+                "noRead": "La commande ***{0}*** ne peut pas être lue depuis ce menu"
             }
         },
         "inscriptionPermis": {
             "description": {
                 "desc": "Permet de crée un nouveau formulaire d'inscription au permis ",
                 "usage": "inscription-permis {Permis}",
-                "exemples": ["inscription-permis Probatoire","inscription-permis A"]
+                "exemples": ["inscription-permis Probatoire", "inscription-permis A"]
             },
             "slashOptions": {
                 "description": "Permis sur le quel vous souhaitez vous inscrire"
             },
-            "embed" : {
-                "fields" : {
-                    "info" : {"name" : "------------", "value" : "**`/adminhelp <command>` pour des infos sur une commande spécifique **\n                    Exemples `/adminhelp {0}`  || `/adminhelp {1}`"}
+            "embed": {
+                "fields": {
+                    "info": { "name": "------------", "value": "**`/adminhelp <command>` pour des infos sur une commande spécifique **\n                    Exemples `/adminhelp {0}`  || `/adminhelp {1}`" }
                 }
             },
-            "interaction" : {
-            }
+            "interaction": {}
         },
         "getcommandlogs": {
             "description": {
@@ -47,9 +46,9 @@
                 "usage": "getcommandlogs {DateOfFile}",
                 "exemples": ["getcommandlogs 05-01-2022", "getcommandlogs 06-01-2022"]
             },
-            "interaction" : {
-                "dateError" : "La date ne correspond a aucune des dates disponibles vérifi le template qui doit être dd-mm-yyyy",
-                "content" : "Voici les fichiers de CommandLogs qui correspondent a la date du {0}"
+            "interaction": {
+                "dateError": "La date ne correspond a aucune des dates disponibles vérifi le template qui doit être dd-mm-yyyy",
+                "content": "Voici les fichiers de CommandLogs qui correspondent a la date du {0}"
             },
             "slashOptions": {
                 "description": "Date du CommandLogs a télécharger"
@@ -63,14 +62,14 @@
             },
             "interaction": {
                 "newEmbed": "Un nouvelle embed a été crée vous pouvez a présent le modifier",
-                "multypleOptions" : "Vous ne pouvez faire qu'une seul action a la fois"
+                "multypleOptions": "Vous ne pouvez faire qu'une seul action a la fois"
             },
             "Options": {
                 "Display": {
                     "description": "Permet d'afficher l'embed"
                 },
                 "SetColor": {
-                    "hexError" : "tu doit fournir une couleur HexaDécimale",
+                    "hexError": "tu doit fournir une couleur HexaDécimale",
                     "description": "Permet changer la couleur de l'embed"
                 },
                 "SetTitle": {
@@ -117,9 +116,9 @@
                 "content": "Toutes les donnée anisi que toutes les propriétée du.des channel.s on été enregistré",
                 "needOptions": "Vous devez forcément utilisé l'une des deux commande"
             },
-            "slashOptions" : {
-                "category" : "Nom de la catégorie a save",
-                "salon" : "Nom du salon a save"
+            "slashOptions": {
+                "category": "Nom de la catégorie a save",
+                "salon": "Nom du salon a save"
             }
         },
         "adminlist": {
@@ -171,8 +170,8 @@
                     "description": "plage sur la quelle tirer les valeurs"
                 }
             },
-            "embed" : {
-                "title" : "Voici la liste de{0} nombre{0} allant de **1 à {1}**"
+            "embed": {
+                "title": "Voici la liste de{0} nombre{0} allant de **1 à {1}**"
             },
             "messageError": "Vous ne pouvez pas tirer un nombre supérieur a la plage"
         },
@@ -214,7 +213,6 @@
                     { "teamname": "Team :regional_indicator_a: :" },
                     { "teamname": "Team :b: :" }
                 ]
-
             },
             "bouton": {
                 "label": "Obtenir un role"
@@ -233,17 +231,16 @@
             },
             "embed": {
                 "title": "Création de compte",
-                "color" : "#478BFF",
+                "color": "#478BFF",
                 "Fields": [
-                    { "name": "Cliquer sur le bouton suivant afain de pouvoir crée votre compte","value" : "le bouton est valide 5 minutes ne traine pas"}
+                    { "name": "Cliquer sur le bouton suivant afain de pouvoir crée votre compte", "value": "le bouton est valide 5 minutes ne traine pas" }
                 ]
-
             },
             "bouton": {
                 "label": "Je crée mon compte !"
             },
             "interaction": {
-                "sendRegister" : "Vos information d'enregistrement vont vous être envoyé en privé",
+                "sendRegister": "Vos information d'enregistrement vont vous être envoyé en privé",
                 "alreadyRegister": {
                     "content": "Vous avez deja été enregistrer sur le Rôleplay"
                 }
@@ -275,14 +272,14 @@
                     "description": "Nom de la commande sur le quel vous voulez plus d'info"
                 }
             },
-            "genericEmbed" : {
-                "fields" : {
-                    "info" : {"name" : "------------", "value" : "**`/help <command>` pour des infos sur une commande spécifique **\n                     Exemples `/help {0}`  || `/help {1}`"}
+            "genericEmbed": {
+                "fields": {
+                    "info": { "name": "------------", "value": "**`/help <command>` pour des infos sur une commande spécifique **\n                     Exemples `/help {0}`  || `/help {1}`" }
                 }
             },
-            "interaction" : {
-                "wrongName" : "La commande ***{0}***  n'existe pas",
-                "noRead" : "La commande ***{0}*** ne peut pas être lue depuis ce menu"
+            "interaction": {
+                "wrongName": "La commande ***{0}***  n'existe pas",
+                "noRead": "La commande ***{0}*** ne peut pas être lue depuis ce menu"
             }
         }
     },
@@ -342,7 +339,7 @@
     },
     "event": {
         "ready": {
-            "description" : "Send message in botLog Channel when the bot as start",
+            "description": "Send message in botLog Channel when the bot as start",
             "message": "Bot is Ready !🤖"
         },
         "deletePinnedMessageAlerte": {
@@ -353,73 +350,73 @@
             "interaction": {
                 "content": "Oupss il semblerais que tu n'ais pas la permission d'utilisé cette commande"
             },
-            "embed":{
-                "Author" : "User Not Have Permission",
-                "fields" : {
-                    "commandName" : {
-                        "name" : "Nom de la commande"
+            "embed": {
+                "Author": "User Not Have Permission",
+                "fields": {
+                    "commandName": {
+                        "name": "Nom de la commande"
                     },
-                    "channel" : {
-                        "name" : "Salon d'utilisation"
+                    "channel": {
+                        "name": "Salon d'utilisation"
                     }
                 },
-                "footer" : "Cette action a été réalisée par {0} -> id : {1}"
+                "footer": "Cette action a été réalisée par {0} -> id : {1}"
             }
         },
         "guildBanAdd": {
             "description": "Permet de logger quand un user a été ban, pourquoi et quand",
             "embed": {
                 "author": "Ban",
-                "fields" : {
-                    "ban" : {"name" : "{0} **---**`{1}`**---** a été bannis"},
-                    "reason" : {"name" : "Pour la raison suivante {0}"}
+                "fields": {
+                    "ban": { "name": "{0} **---**`{1}`**---** a été bannis" },
+                    "reason": { "name": "Pour la raison suivante {0}" }
                 }
             }
         },
         "guildBanRemove": {
             "description": "Permet de logger quand et qui déban un utilisateur",
             "embed": {
-                "color" : "#59ff00",
+                "color": "#59ff00",
                 "author": "UnBan",
-                "fields" : {
-                    "unban" : {"name" : "{0} **---**`{1}`**---** a été débannis"},
-                    "reason" : {"name" : "Pour la raison suivante {0}"}
+                "fields": {
+                    "unban": { "name": "{0} **---**`{1}`**---** a été débannis" },
+                    "reason": { "name": "Pour la raison suivante {0}" }
                 }
             }
         },
         "guildMemberAdd": {
             "description": "Permet de logger quand un utilisateur rejoins le serveur",
             "embed": {
-                "description" : "{0} a rejoind la guild"
+                "description": "{0} a rejoind la guild"
             }
         },
         "guildMemberRemove": {
             "description": "Permet de logger quand un utilisateur quite le serveur",
             "embed": {
-                "description" : "{0} a quiter la guild"
+                "description": "{0} a quiter la guild"
             }
         },
         "invitationCreate": {
             "description": "Permet de logger quand quelqu'un crée une nouvelle invitation",
             "embed": {
-                "color" : "#A600FF",
+                "color": "#A600FF",
                 "author": "Création d'un lien d'invitation",
-                "fields" : {
-                    "link" : {"name" : "URL du lien"},
-                    "code" : {"name" : "Code de l'invitation"},
-                    "salon" : {"name" : "Salons visé par l'invitation"}
+                "fields": {
+                    "link": { "name": "URL du lien" },
+                    "code": { "name": "Code de l'invitation" },
+                    "salon": { "name": "Salons visé par l'invitation" }
                 }
             }
         },
         "invitationRemove": {
             "description": "Permet de logger quand quelqu'un supprime une invitation",
             "embed": {
-                "color" : "#A600FF",
+                "color": "#A600FF",
                 "author": "Supression d'un lien d'invitation",
-                "fields" : {
-                    "link" : {"name" : "URL du lien"},
-                    "code" : {"name" : "Code de l'invitation"},
-                    "salon" : {"name" : "Salons visé par l'invitation"}
+                "fields": {
+                    "link": { "name": "URL du lien" },
+                    "code": { "name": "Code de l'invitation" },
+                    "salon": { "name": "Salons visé par l'invitation" }
                 }
             }
         },
@@ -427,91 +424,64 @@
             "description": "Permmet de logger la creation de role",
             "embed": {
                 "author": "Création d'un role",
-                "color" : "#A600FF",
-                "fields" : {
-                    "roleName" : {"name" : "Nom du role"},
-                    "roleId" : {"name" : "Id ru rôle"}
+                "color": "#A600FF",
+                "fields": {
+                    "roleName": { "name": "Nom du role" },
+                    "roleId": { "name": "Id ru rôle" }
                 }
             }
         },
         "roleRemove": {
             "description": "Permmet de logger la suppression de role",
             "embed": {
-                "color" : "#A600FF",
+                "color": "#A600FF",
                 "author": "Supression d'un role",
-                "fields" : {
-                    "roleName" : {"name" : "Nom du role"},
-                    "roleId" : {"name" : "Id ru rôle"}
+                "fields": {
+                    "roleName": { "name": "Nom du role" },
+                    "roleId": { "name": "Id ru rôle" }
                 }
             }
         },
         "messageBulkDelete": {
             "description": "Permet de logger la supression de mass des messages",
             "embed": {
-                "color" : "#FF631A",
+                "color": "#FF631A",
                 "author": "Commande Purge",
-                "fields" : {
-                    "salon" : {"name" : "Salons d'utilisation"}
+                "fields": {
+                    "salon": { "name": "Salons d'utilisation" }
                 }
             }
         },
         "commandLog": {
             "description": "Permet de logger l'ensemble des utilisation de commande",
-            "embed" : {
-                "color" : "#27F9FF",
-                "author" : "Command Log",
-                "fields" : {
-                    "commandName" : {"name" : "Nom de la commande"},
-                    "salon" : {"name" : "Salon d'utilisation"}
+            "embed": {
+                "color": "#27F9FF",
+                "author": "Command Log",
+                "fields": {
+                    "commandName": { "name": "Nom de la commande" },
+                    "salon": { "name": "Salon d'utilisation" }
                 }
             }
         },
         "adminCommandLog": {
             "description": "Permet de logger l'ensemble des utilisation de commande admin",
-            "embed" : {
-                "color" : "#ff0000",
-                "author" : "AdminCommand Log",
-                "fields" : {
-                    "commandName" : {"name" : "Nom de la commande"},
-                    "salon" : {"name" : "Salon d'utilisation"}
-                }
-            }
-        }
-    },
-    "intercation":{
-        "button":{
-            "register":{
-                "AlreadyRegistred" : "Visiblement vous êtes déjà inscrit vous ne pouvez pas refaire la commande",
-                "embedGoodResponse":{
-                    "description":"Salut a toi ! Voici ton boutton d'inscription. Courrage tu y est prèsque"
-                },
-                "button":{
-                    "label": "Lien d'inscription"
-                },
-                "buttonReply":{
-                    "content": "Tu va recevoir par message priver ton liens d'inscription. Attention! Celui-ci contient ton token unique. il est privé alors ne le divulgue pas!"
-                },
-                "embedError":{
-                    "author": "Erreur d'enregistrement",
-                    "description": "Un utilisateur a essayer de s'incrire. Une erreur c'est produite. Voici les informations.",
-                    "field": {
-                        "Err": {"name": "Erreur"},
-                        "ErrMess": {"name": "Message d'erreur"}
-                    }
-                },
-                "buttonReply2":{
-                    "content":"Oupss une erreur est survenue. Contacte un admin pour plus obtenir de l'aide"
+            "embed": {
+                "color": "#ff0000",
+                "author": "AdminCommand Log",
+                "fields": {
+                    "commandName": { "name": "Nom de la commande" },
+                    "salon": { "name": "Salon d'utilisation" }
                 }
             }
         }
     },
     "api": {
-        "isUserOnServer" : {
+        "isUserOnServer": {
             "true": "isUserOnServer: {0} result: {1}",
             "false": "isUserOnServer: {0} result: unknown user"
         },
-        "uservalidated" : {
-            "registered" : "L'utilisateur {0} s'est enregistré avec succès"
+        "uservalidated": {
+            "registered": "L'utilisateur {0} s'est enregistré avec succès"
         }
     }
 }
