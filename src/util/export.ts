@@ -21,7 +21,6 @@ export const LogsEmbed = (name : string, id : string) => {
         return new MessageEmbed().setAuthor(lang.embeds.LogsEmbed.author).setColor('#ff0000').setFooter(lang.embeds.LogsEmbed.footer.format(name,id)).setTimestamp()
 }
 
-
 //* est utilisée a la save de channelles avec la command /getcategory
 export class ChannelClass {
     public name : String = ''

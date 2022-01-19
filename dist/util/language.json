@@ -371,17 +371,13 @@
         "guildMemberAdd": {
             "description": "Permet de logger quand un utilisateur rejoins le serveur",
             "embed": {
-                "color": "#34C924",
-                "author": "Nouveau Membre",
-                "description": "{0} **--**`{1}`**--**"
+                "description": "{0} a rejoind la guild"
             }
         },
         "guildMemberRemove": {
             "description": "Permet de logger quand un utilisateur quite le serveur",
             "embed": {
-                "color": "#FF0000",
-                "author": "Un membre a quiter le serveur",
-                "description": "{0} **--**`{1}`**--**"
+                "description": "{0} a quiter la guild"
             }
         },
         "invitationCreate": {
