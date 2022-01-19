@@ -53,9 +53,6 @@ class GetChannelCommand extends sheweny_1.Command {
         }
         this.client.emit('CommandLog', interaction);
         let channlesIds = new Array();
-        let salon = Object.create(export_1.ChannelObject);
-        let permissions;
-        let permissionsList = new Array();
         switch (interaction.options.data[0].name) {
             case 'category':
                 const catId = interaction.options.getChannel('category').id;
@@ -69,40 +66,33 @@ class GetChannelCommand extends sheweny_1.Command {
             const channel = interaction.guild.channels.cache.filter(c => c.id == id);
             switch (channel.first().type) {
                 case 'GUILD_TEXT':
+                    let salon = new export_1.ChannelClass();
                     const textChannel = channel.map(c => c)[0];
-                    permissions = [...textChannel.permissionOverwrites.cache];
-                    permissions.forEach(permission => {
-                        permissionsList.push(permission[1]);
-                    });
-                    salon.channelInfo = {
-                        "type": textChannel.type,
-                        "topic": textChannel.topic,
-                        "permissionOverwrites": permissionsList,
-                        "position": textChannel.position
-                    };
+                    salon.name = textChannel.name,
+                        salon.channelInfo.type = 0 /* GUILD_TEXT */;
+                    salon.channelInfo.topic = textChannel.type;
+                    salon.channelInfo.permissionOverwrites = textChannel.permissionOverwrites.cache.toJSON();
+                    salon.channelInfo.position = textChannel.position + 1;
+                    console.log(salon.name + " " + salon.channelInfo.position);
                     textChannel.messages.fetch()
                         .then(msg => {
                         const messageTab = [...msg].reverse();
                         salon.messages = messageTab;
-                        fs_1.default.appendFile('cat.json', `${JSON.stringify(salon)},`, (err) => {
+                        fs_1.default.appendFile('cat.json', `${JSON.stringify(salon)},\n`, (err) => {
                             if (err)
                                 throw err;
                         });
                     });
                     break;
                 case 'GUILD_VOICE':
+                    let salonVocal = new export_1.ChannelClass();
                     const voiceChannel = channel.map(c => c)[0];
-                    permissions = [...voiceChannel.permissionOverwrites.cache];
-                    permissions.forEach(permission => {
-                        permissionsList.push(permission[1]);
-                    });
-                    salon.channelInfo = {
-                        "type": voiceChannel.type,
-                        "permissionOverwrites": permissionsList,
-                        "position": voiceChannel.rawPosition,
-                        "userLimit": voiceChannel.userLimit,
-                    };
-                    fs_1.default.appendFile('cat.json', `${JSON.stringify(salon)},`, (err) => {
+                    salonVocal.name = voiceChannel.name,
+                        salonVocal.channelInfo.type = 2 /* GUILD_VOICE */;
+                    salonVocal.channelInfo.permissionOverwrites = voiceChannel.permissionOverwrites.cache.toJSON();
+                    salonVocal.channelInfo.position = voiceChannel.position;
+                    salonVocal.channelInfo.userLimit = voiceChannel.userLimit;
+                    fs_1.default.appendFile('cat.json', `${JSON.stringify(salonVocal)},\n`, (err) => {
                         if (err)
                             throw err;
                     });

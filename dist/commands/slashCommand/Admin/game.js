@@ -55,16 +55,17 @@ class GameCommand extends sheweny_1.Command {
             //clientPermissions : []
         });
     }
-    execute(interaction) {
+    async execute(interaction) {
         this.client.emit('CommandLog', interaction);
         const rawData = fs.readFileSync(path.join(__dirname, '../../../util/channelGame.json')).toString();
         const channels = JSON.parse(rawData);
         channels[interaction.options.getString('game_name')].forEach((salon) => {
-            interaction.guild.channels.create(salon.name, {
-                "type": salon.channelInfo.type,
+            interaction.guild.channels.create(salon.name.toString(), {
+                "type": salon.channelInfo.type.toString() == '2' ? 2 /* GUILD_VOICE */ : 0 /* GUILD_TEXT */,
+                "parent": appConfig_json_1.default.chanels.game.categorie,
+                "position": salon.channelInfo.position
             })
                 .then((channel) => {
-                channel.setParent(appConfig_json_1.default.chanels.game.categorie);
                 channel.permissionOverwrites.set(salon.channelInfo.permissionOverwrites);
                 switch (channel.type) {
                     case 'GUILD_TEXT':
@@ -94,17 +95,14 @@ class GameCommand extends sheweny_1.Command {
                         });
                         break;
                     case 'GUILD_VOICE':
-                        channel.edit({
-                            position: salon.channelInfo.position,
-                            userLimit: salon.channelInfo.userLimit,
-                        });
+                        channel.setUserLimit(salon.channelInfo.userLimit);
                         break;
                 }
             });
         });
         interaction.reply({
             content: `Tous les salons pour le mode de jeux \*\*${interaction.options.getString('game_name')}\*\* ont été créé`,
-            ephemeral: true,
+            ephemeral: true
         });
     }
     onAutocomplete(interaction) {

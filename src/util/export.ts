@@ -1,4 +1,5 @@
-import { MessageEmbed } from 'discord.js'
+import { MessageEmbed, PermissionOverwrites } from 'discord.js'
+import { ChannelTypes } from 'discord.js/typings/enums'
 import fs from 'fs'
 import path from 'path'
 import lang from './language.json'
@@ -21,17 +22,19 @@ export const LogsEmbed = (name : string, id : string) => {
 }
 
 
-//* est utilise a la save de channelles avec la command /getcategory
-export const ChannelObject = {
-    name: String,
-    channelInfo : {
-        type : String,
-        topic : String,
-        permissionsList : Array,
-        position : Number,
-        userLimit : Number
-    },
-    messages : Array
+//* est utilisée a la save de channelles avec la command /getcategory
+export class ChannelClass {
+    public name : String = ''
+    public channelInfo : ChannelInfo = new ChannelInfo()
+    public messages : Array<any> = []
+}
+
+export class ChannelInfo {
+    public type : ChannelTypes = ChannelTypes.GUILD_TEXT as ChannelTypes || ChannelTypes.GUILD_VOICE as ChannelTypes
+    public topic : string = ''
+    public permissionOverwrites : Array<PermissionOverwrites> = []
+    public position : number = 0
+    public userLimit : number = 0
 }
 
 //* define new methode for String type

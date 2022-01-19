@@ -1,478 +1,753 @@
 {
-    "livreur": [{
-            "name": "règlement-livraison",
-            "channelInfo": {
-                "type": "GUILD_TEXT",
-                "topic": "https://discord.gg/BtkWVH2Kq9",
-                "permissionOverwrites": [{
-                        "id": "877644017255465011",
-                        "type": 0,
-                        "allow": "37078592",
-                        "deny": "2952935441"
+    "livreur": [
+        {
+            "name":"Controle-1",
+            "channelInfo":{
+                "type":2,
+                "topic":"",
+                "permissionOverwrites":[
+                    {
+                        "id":"916019762037915748",
+                        "type":0,
+                        "allow":"1071631552064",
+                        "deny":"0"
                     },
                     {
-                        "id": "877644017255465012",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "1024"
+                        "id":"877644017255465011",
+                        "type":0,
+                        "allow":"0",
+                        "deny":"1098236034897"
                     },
                     {
-                        "id": "877644017255465013",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "1024"
+                        "id":"916019914127597648",
+                        "type":0,
+                        "allow":"1071631552064",
+                        "deny":"0"
                     },
                     {
-                        "id": "877644017276428342",
-                        "type": 0,
-                        "allow": "1024",
-                        "deny": "0"
-                    },
-                    {
-                        "id": "877644017276428343",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "0"
-                    },
-                    {
-                        "id": "877644017276428345",
-                        "type": 0,
-                        "allow": "29568320",
-                        "deny": "0"
+                        "id":"877644017276428345",
+                        "type":0,
+                        "allow":"25799237632",
+                        "deny":"0"
                     }
                 ],
-                "position": 0
+                "position":2,
+                "userLimit":0
             },
-            "messages": [
-                [
-                    "914912147060981770",
+            "messages":[
+                
+            ]
+        },
+        {
+            "name":"Controle-2",
+            "channelInfo":{
+                "type":2,
+                "topic":"",
+                "permissionOverwrites":[
                     {
-                        "channelId": "877644017964314642",
-                        "guildId": "877644017255465011",
-                        "deleted": false,
-                        "id": "914912147060981770",
-                        "type": "DEFAULT",
-                        "system": false,
-                        "content": "ceci est un test",
-                        "authorId": "152125692618735616",
-                        "pinned": false,
-                        "tts": false,
-                        "nonce": null,
-                        "embeds": [],
-                        "components": [],
-                        "attachments": [],
-                        "stickers": [],
-                        "createdTimestamp": 1638202454105,
-                        "editedTimestamp": null,
-                        "webhookId": null,
-                        "groupActivityApplicationId": null,
-                        "applicationId": null,
-                        "activity": null,
-                        "flags": 0,
-                        "reference": null,
-                        "interaction": null,
-                        "cleanContent": "ceci est un test"
+                        "id":"916019762037915748",
+                        "type":0,
+                        "allow":"1071631552064",
+                        "deny":"0"
+                    },
+                    {
+                        "id":"877644017255465011",
+                        "type":0,
+                        "allow":"0",
+                        "deny":"1098236034897"
+                    },
+                    {
+                        "id":"916019914127597648",
+                        "type":0,
+                        "allow":"1071631552064",
+                        "deny":"0"
+                    },
+                    {
+                        "id":"877644017276428345",
+                        "type":0,
+                        "allow":"25799237632",
+                        "deny":"0"
+                    }
+                ],
+                "position":3,
+                "userLimit":0
+            },
+            "messages":[
+                
+            ]
+        },
+        {
+            "name":"livreur",
+            "channelInfo":{
+                "type":2,
+                "topic":"",
+                "permissionOverwrites":[
+                    {
+                        "id":"877644017255465011",
+                        "type":0,
+                        "allow":"0",
+                        "deny":"1098236034897"
+                    },
+                    {
+                        "id":"916019762037915748",
+                        "type":0,
+                        "allow":"1071631552064",
+                        "deny":"0"
+                    },
+                    {
+                        "id":"877644017276428345",
+                        "type":0,
+                        "allow":"25799237632",
+                        "deny":"0"
+                    },
+                    {
+                        "id":"916019914127597648",
+                        "type":0,
+                        "allow":"1071630503488",
+                        "deny":"0"
+                    }
+                ],
+                "position":0,
+                "userLimit":0
+            },
+            "messages":[
+                
+            ]
+        },
+        {
+            "name":"Controle-3",
+            "channelInfo":{
+                "type":2,
+                "topic":"",
+                "permissionOverwrites":[
+                    {
+                        "id":"916019762037915748",
+                        "type":0,
+                        "allow":"1071631552064",
+                        "deny":"0"
+                    },
+                    {
+                        "id":"877644017255465011",
+                        "type":0,
+                        "allow":"0",
+                        "deny":"1098236034897"
+                    },
+                    {
+                        "id":"916019914127597648",
+                        "type":0,
+                        "allow":"1071631552064",
+                        "deny":"0"
+                    },
+                    {
+                        "id":"877644017276428345",
+                        "type":0,
+                        "allow":"25799237632",
+                        "deny":"0"
+                    }
+                ],
+                "position":4,
+                "userLimit":0
+            },
+            "messages":[
+                
+            ]
+        },
+        {
+            "name":"Police",
+            "channelInfo":{
+                "type":2,
+                "topic":"",
+                "permissionOverwrites":[
+                    {
+                        "id":"877644017255465011",
+                        "type":0,
+                        "allow":"0",
+                        "deny":"1098236034897"
+                    },
+                    {
+                        "id":"877644017276428345",
+                        "type":0,
+                        "allow":"25799237632",
+                        "deny":"0"
+                    },
+                    {
+                        "id":"916019914127597648",
+                        "type":0,
+                        "allow":"1071631552064",
+                        "deny":"0"
+                    },
+                    {
+                        "id":"916019762037915748",
+                        "type":0,
+                        "allow":"1071630503488",
+                        "deny":"0"
+                    }
+                ],
+                "position":1,
+                "userLimit":0
+            },
+            "messages":[
+                
+            ]
+        },
+        {
+            "name":"règlement-livraison",
+            "channelInfo":{
+                "type":0,
+                "topic":"GUILD_TEXT",
+                "permissionOverwrites":[
+                    {
+                        "id":"877644017276428345",
+                        "type":0,
+                        "allow":"25799229440",
+                        "deny":"0"
+                    },
+                    {
+                        "id":"916019914127597648",
+                        "type":0,
+                        "allow":"1071631550016",
+                        "deny":"0"
+                    },
+                    {
+                        "id":"916019762037915748",
+                        "type":0,
+                        "allow":"693674378816",
+                        "deny":"0"
+                    },
+                    {
+                        "id":"877644017255465011",
+                        "type":0,
+                        "allow":"0",
+                        "deny":"1098236034897"
+                    }
+                ],
+                "position":1,
+                "userLimit":0
+            },
+            "messages":[
+                [
+                    "933360077082071050",
+                    {
+                        "channelId":"933356552700723240",
+                        "guildId":"877644017255465011",
+                        "deleted":false,
+                        "id":"933360077082071050",
+                        "createdTimestamp":1642600783368,
+                        "type":"DEFAULT",
+                        "system":false,
+                        "content":"```diff\n-> Les parties ne peuvent être lancé que par l’équipe du staff en fonctions de leurs disponibilités\n+ Le nombre minimum de joueur pour ce mode de jeux est de 6 joueurs\n+ Il est conseillé de passer le permis probatoire avant votre première partie.\n+ Il est obligatoire d’avoir vos voitures de Rp, Police, civils, sans permis, prête avant les débuts de partie.\n```\n\n__**`Votre Je­ux :`**__\n__**-> Réglage de la map**__\n  - *Start -> Carte du monde -> Changer de filtre -> décochez Tout*\n  ***Réactivez seulement les options suivantes***\n  _    _- *Sites du festival*\n  _    _- *Point de Repère*\n  _    _- *Maisons*\n__**-> Dégâts : simulations**__\n  _    _- *Start -> Paramètres -> Difficulté -> Dégâts et usure des pneus*\n__**-> Rembobinage : Désactiver**__\n  _    _- *Start -> Paramètres -> Difficulté -> Rembobiner*\n__**-> Nom des joueurs sur les voitures : Désactiver**__\n _    _ - *Start -> Paramètres -> ATH et Gameplay -> Noms sur Voitures*\n__**-> Mode fantôme : Désactiver**__\n  _    _- *Start -> Paramètres -> ATH et Gameplay -> Fantôme*\n__**-> Type de Boite : Manuel / Manuel + embrayage**__\n  _    _- *Start -> Paramètres -> Difficulté -> Boîte de Vitesses*\n\n```diff\n-> Les Limitations de vitesses\n```\n__**Limitation Permis Probatoire**__\n_    _- 50Km/h Dans les villes et villages\n_    _- 90Km/h Sur route secondaire \n_    _- 130Km/h Sur autoroute\n\n**__Limitations Permis B__**\n_    _- 60Km/h Dans les villes et villages\n_    _- 110Km/h Sur route secondaire \n_    _- 160Km/h Sur autoroute\n\n> La police est tenue de respecter les limitations du permis B tant qu’il n’y a pas d’intervention / délit de fuite. En cas d’intervention ou de délit de fuite la police n’a pas de limite de vitesse, ce pendant les accidents ne leurs sont pas permis, donc si la police a un accident sont intervention est terminé",
+                        "authorId":"152125692618735616",
+                        "pinned":true,
+                        "tts":false,
+                        "nonce":null,
+                        "embeds":[
+                            
+                        ],
+                        "components":[
+                            
+                        ],
+                        "attachments":[
+                            
+                        ],
+                        "stickers":[
+                            
+                        ],
+                        "editedTimestamp":1642601028031,
+                        "webhookId":null,
+                        "groupActivityApplicationId":null,
+                        "applicationId":null,
+                        "activity":null,
+                        "flags":0,
+                        "reference":null,
+                        "interaction":null,
+                        "cleanContent":"```diff\n-> Les parties ne peuvent être lancé que par l’équipe du staff en fonctions de leurs disponibilités\n+ Le nombre minimum de joueur pour ce mode de jeux est de 6 joueurs\n+ Il est conseillé de passer le permis probatoire avant votre première partie.\n+ Il est obligatoire d’avoir vos voitures de Rp, Police, civils, sans permis, prête avant les débuts de partie.\n```\n\n__**`Votre Je­ux :`**__\n__**-> Réglage de la map**__\n  - *Start -> Carte du monde -> Changer de filtre -> décochez Tout*\n  ***Réactivez seulement les options suivantes***\n  _    _- *Sites du festival*\n  _    _- *Point de Repère*\n  _    _- *Maisons*\n__**-> Dégâts : simulations**__\n  _    _- *Start -> Paramètres -> Difficulté -> Dégâts et usure des pneus*\n__**-> Rembobinage : Désactiver**__\n  _    _- *Start -> Paramètres -> Difficulté -> Rembobiner*\n__**-> Nom des joueurs sur les voitures : Désactiver**__\n _    _ - *Start -> Paramètres -> ATH et Gameplay -> Noms sur Voitures*\n__**-> Mode fantôme : Désactiver**__\n  _    _- *Start -> Paramètres -> ATH et Gameplay -> Fantôme*\n__**-> Type de Boite : Manuel / Manuel + embrayage**__\n  _    _- *Start -> Paramètres -> Difficulté -> Boîte de Vitesses*\n\n```diff\n-> Les Limitations de vitesses\n```\n__**Limitation Permis Probatoire**__\n_    _- 50Km/h Dans les villes et villages\n_    _- 90Km/h Sur route secondaire \n_    _- 130Km/h Sur autoroute\n\n**__Limitations Permis B__**\n_    _- 60Km/h Dans les villes et villages\n_    _- 110Km/h Sur route secondaire \n_    _- 160Km/h Sur autoroute\n\n> La police est tenue de respecter les limitations du permis B tant qu’il n’y a pas d’intervention / délit de fuite. En cas d’intervention ou de délit de fuite la police n’a pas de limite de vitesse, ce pendant les accidents ne leurs sont pas permis, donc si la police a un accident sont intervention est terminé"
+                    }
+                ],
+                [
+                    "933361344319729695",
+                    {
+                        "channelId":"933356552700723240",
+                        "guildId":"877644017255465011",
+                        "deleted":false,
+                        "id":"933361344319729695",
+                        "createdTimestamp":1642601085501,
+                        "type":"DEFAULT",
+                        "system":false,
+                        "content":"```diff\n-> Les Civils\n```\nLe principale but des civils est d’effectuer des livraisons d’un point A à un point B.\nCela en respectant le code de la route et en utilisant leurs voitures personnelles. Il existe deux types de livraison, les livraisons légales qui n'ont aucun risque. Et les livraisons illégales qui elle rapportes plus mais sont beaucoup plus risquée.\nSi vous êtes en délit de fuite et que vous faites un tonneau, un accident et que l’une des parties de votre voiture atteint 100% de dégâts (a l'exception des pneumatique et des carrosserie) la course poursuite est considérer comme terminer et vous serrez arrêté par la police \n\nSi pour différente raison vous avez le besoin de réparer votre voiture, vous pouvez le faire à un point de livraison sans pénalité de temps. Vous pouvez également effectuer la réparation en étant arrêté au bord de la route mais une pénalité de 1 minute, *(à l'arret)* , devras être respecté \nCependant si vous êtes poursuivit par la police la course poursuite est considérer comme terminer et vous serez arrêté par la police \n\n> Avant chaque début de partie vous devrez avoir au moins une des deux voitures sans permis ainsi que vos voitures de Rp prête à partir.",
+                        "authorId":"152125692618735616",
+                        "pinned":true,
+                        "tts":false,
+                        "nonce":null,
+                        "embeds":[
+                            
+                        ],
+                        "components":[
+                            
+                        ],
+                        "attachments":[
+                            
+                        ],
+                        "stickers":[
+                            
+                        ],
+                        "editedTimestamp":1642601443539,
+                        "webhookId":null,
+                        "groupActivityApplicationId":null,
+                        "applicationId":null,
+                        "activity":null,
+                        "flags":0,
+                        "reference":null,
+                        "interaction":null,
+                        "cleanContent":"```diff\n-> Les Civils\n```\nLe principale but des civils est d’effectuer des livraisons d’un point A à un point B.\nCela en respectant le code de la route et en utilisant leurs voitures personnelles. Il existe deux types de livraison, les livraisons légales qui n'ont aucun risque. Et les livraisons illégales qui elle rapportes plus mais sont beaucoup plus risquée.\nSi vous êtes en délit de fuite et que vous faites un tonneau, un accident et que l’une des parties de votre voiture atteint 100% de dégâts (a l'exception des pneumatique et des carrosserie) la course poursuite est considérer comme terminer et vous serrez arrêté par la police \n\nSi pour différente raison vous avez le besoin de réparer votre voiture, vous pouvez le faire à un point de livraison sans pénalité de temps. Vous pouvez également effectuer la réparation en étant arrêté au bord de la route mais une pénalité de 1 minute, *(à l'arret)* , devras être respecté \nCependant si vous êtes poursuivit par la police la course poursuite est considérer comme terminer et vous serez arrêté par la police \n\n> Avant chaque début de partie vous devrez avoir au moins une des deux voitures sans permis ainsi que vos voitures de Rp prête à partir."
+                    }
+                ],
+                [
+                    "933362310892879903",
+                    {
+                        "channelId":"933356552700723240",
+                        "guildId":"877644017255465011",
+                        "deleted":false,
+                        "id":"933362310892879903",
+                        "createdTimestamp":1642601315950,
+                        "type":"DEFAULT",
+                        "system":false,
+                        "content":"```diff\n-> Livraisons légales\n```\n- 200€/Km lingerie sexy tous types de véhicule\n- 300€/Km Voiture rouillée Voiture d'avant 1990\n- 400€/Km électro ménagé Type Van et Utilitaire + UNIMOG\n- 500€/Km Voiture ancienne Voiture d’avant 1950\n- 600€/Km Gilet jaune Voiture Française\n- 700€/Km Trajet en convois 2 véhicules minimum +200€/km par véhicule supplémentaire\n- 800€/Km Voyage historique Type Cult Cars\n- 900€/km Rasso de voitures convois de plus de 3 véhicules Tous pays, marque, confondu\n- 950€/Km Chauffeur Privé Voiture Prix d'origine à partir de 70.000\n- 1000€/Km Taxi présidentiel Cadillac STX limousine\n- 1300€/Km Testeur de voiture Voiture + de 200.000€ ( prix d'origine )\n\n```diff\n-> Livraisons illégales\n```\n- 350€/Km Lingerie Sexy Wish Tous véhicules\n- 450€/Km Pneux de voiture à partir de classe A\n- 550€/Km Trafic de cigare Véhicule 2 places\n- 650€/Km Pièces détachées 4x4\n- 700€/Km Trafique de voitures de rally type  Rally\n- 800€/Km Trafic d'être humain Voiture 100.000€ minimum\n- 950€/Km Trafic de beu Voiture de + de 300Kw\n- 1500€/Km Courses clandestine 2 véhicules minimum, de même marque, pays ou type\n- 2000€/kmTrafic d'alcool ou de cigarette Berline de 5 portes\n- 2100€/km Trafic de drogue  Break \n- 2300€/km Transport d\"énemie public Voiture d'avant 1970\n- 2500€/Km Trafic de faux papiers Voiture de plus 1.000.000€ ( prix d'origine )",
+                        "authorId":"152125692618735616",
+                        "pinned":true,
+                        "tts":false,
+                        "nonce":null,
+                        "embeds":[
+                            
+                        ],
+                        "components":[
+                            
+                        ],
+                        "attachments":[
+                            
+                        ],
+                        "stickers":[
+                            
+                        ],
+                        "editedTimestamp":null,
+                        "webhookId":null,
+                        "groupActivityApplicationId":null,
+                        "applicationId":null,
+                        "activity":null,
+                        "flags":0,
+                        "reference":null,
+                        "interaction":null,
+                        "cleanContent":"```diff\n-> Livraisons légales\n```\n- 200€/Km lingerie sexy tous types de véhicule\n- 300€/Km Voiture rouillée Voiture d'avant 1990\n- 400€/Km électro ménagé Type Van et Utilitaire + UNIMOG\n- 500€/Km Voiture ancienne Voiture d’avant 1950\n- 600€/Km Gilet jaune Voiture Française\n- 700€/Km Trajet en convois 2 véhicules minimum +200€/km par véhicule supplémentaire\n- 800€/Km Voyage historique Type Cult Cars\n- 900€/km Rasso de voitures convois de plus de 3 véhicules Tous pays, marque, confondu\n- 950€/Km Chauffeur Privé Voiture Prix d'origine à partir de 70.000\n- 1000€/Km Taxi présidentiel Cadillac STX limousine\n- 1300€/Km Testeur de voiture Voiture + de 200.000€ ( prix d'origine )\n\n```diff\n-> Livraisons illégales\n```\n- 350€/Km Lingerie Sexy Wish Tous véhicules\n- 450€/Km Pneux de voiture à partir de classe A\n- 550€/Km Trafic de cigare Véhicule 2 places\n- 650€/Km Pièces détachées 4x4\n- 700€/Km Trafique de voitures de rally type  Rally\n- 800€/Km Trafic d'être humain Voiture 100.000€ minimum\n- 950€/Km Trafic de beu Voiture de + de 300Kw\n- 1500€/Km Courses clandestine 2 véhicules minimum, de même marque, pays ou type\n- 2000€/kmTrafic d'alcool ou de cigarette Berline de 5 portes\n- 2100€/km Trafic de drogue  Break \n- 2300€/km Transport d\"énemie public Voiture d'avant 1970\n- 2500€/Km Trafic de faux papiers Voiture de plus 1.000.000€ ( prix d'origine )"
+                    }
+                ],
+                [
+                    "933362762636226570",
+                    {
+                        "channelId":"933356552700723240",
+                        "guildId":"877644017255465011",
+                        "deleted":false,
+                        "id":"933362762636226570",
+                        "createdTimestamp":1642601423654,
+                        "type":"DEFAULT",
+                        "system":false,
+                        "content":"```diff\n-> La Police\n```\nLa mission de la police est de surveiller les routes du Mexique et d’en assurer la sécurité, si vous voyez un civil enfreindre le code de la route arrêter le et donner lui une contravention en fonction du délit.\nSi le comportement d’un civil vous semble suspect vous êtes en droit de le faire s’arrêter pour le contrôler.\n\nLe drone est toléré pour la gendarmerie afin inspecter des véhicules de suspect a l'arrêt.\nUn suspect poursuivi qui n'est plus a portée de vue depuis 10 secondes est considéré comme perdu.\n\nAprès un tonneau, vous êtes obligé de vous arrêter. Si vous êtes en course poursuite, cette dernière est automatiquement arrêtée.\nIl est possible de réparer votre voiture à condition de s'arrêter sur le bord de la route et de n’être en aucun cas en course poursuite. La réparation inclue un temps de réparation de 15 secondes à attendre, *(à l'arret)* avant de pouvoir repartir.\n\n> Avant chaque début de partie vous devrez avoir au préalable préparé vos voitures de police. C'est-à-dire : peinture + klaxon + plaque\n> ***__La sirène de police est débloquée après avoir gagné un super 7__***",
+                        "authorId":"152125692618735616",
+                        "pinned":true,
+                        "tts":false,
+                        "nonce":null,
+                        "embeds":[
+                            
+                        ],
+                        "components":[
+                            
+                        ],
+                        "attachments":[
+                            
+                        ],
+                        "stickers":[
+                            
+                        ],
+                        "editedTimestamp":1642601511575,
+                        "webhookId":null,
+                        "groupActivityApplicationId":null,
+                        "applicationId":null,
+                        "activity":null,
+                        "flags":0,
+                        "reference":null,
+                        "interaction":null,
+                        "cleanContent":"```diff\n-> La Police\n```\nLa mission de la police est de surveiller les routes du Mexique et d’en assurer la sécurité, si vous voyez un civil enfreindre le code de la route arrêter le et donner lui une contravention en fonction du délit.\nSi le comportement d’un civil vous semble suspect vous êtes en droit de le faire s’arrêter pour le contrôler.\n\nLe drone est toléré pour la gendarmerie afin inspecter des véhicules de suspect a l'arrêt.\nUn suspect poursuivi qui n'est plus a portée de vue depuis 10 secondes est considéré comme perdu.\n\nAprès un tonneau, vous êtes obligé de vous arrêter. Si vous êtes en course poursuite, cette dernière est automatiquement arrêtée.\nIl est possible de réparer votre voiture à condition de s'arrêter sur le bord de la route et de n’être en aucun cas en course poursuite. La réparation inclue un temps de réparation de 15 secondes à attendre, *(à l'arret)* avant de pouvoir repartir.\n\n> Avant chaque début de partie vous devrez avoir au préalable préparé vos voitures de police. C'est-à-dire : peinture + klaxon + plaque\n> ***__La sirène de police est débloquée après avoir gagné un super 7__***"
+                    }
+                ],
+                [
+                    "933365250655395880",
+                    {
+                        "channelId":"933356552700723240",
+                        "guildId":"877644017255465011",
+                        "deleted":false,
+                        "id":"933365250655395880",
+                        "createdTimestamp":1642602016844,
+                        "type":"DEFAULT",
+                        "system":false,
+                        "content":"```diff\n-> Contraventions et délits\n```\n**`Nom du délit, Prix de l'amande €, Points retirer, Retrait de permis durée en sessions`**\n\nRefus de priorité, 750 €, -0 pts, 0 Session.s\nNon-respect de l’arrêt au stop, 1250 €, -0 pts, 0 Session.s\nNon-respect de priorité d'un véhicule prioritaire, 550 €, -0 pts, 0 Session.s\n\nPneu lisse ou non-conforme , 500 €, -0 pts, 0 Session.s\nPerte contrôle du véhicule, 350 €, -0 pts, 0 Session.s\nBurn/Drift, 950 €, -1 pts, 0 Session.s\nDegradation de bien publique, 1500 €, -0 pts, 0 Session.s\nUsage abusif du klaxon , 150 €, -0 pts, 0 Session.s\nklaxon non réglemntaire, 250 €, -0 pts, 0 Session.s\nNuisance sonore, 400 €, -0 pts, 0 Session.s\n\nFranchissement de ligne continue, 200 €, -0 pts, 0 Session.s\nDépassement sur ligne continue, 500 €, -1 pts, 0 Session.s\nUsage inapproprié de la bande d'arrêt d'urgence, 1500 €, -0 pts, 0 Session.s\n\nAccélération par conducteur sur le point d’être dépassé, 500 €, -0 pts, 0 Session.s\nExcès de vitesse < 30 km/h, 500 €, -0 pts, 0 Session.s\nExcès de vitesse ≥ 30 km/h et < 60 km/h, 1500 €, -0 pts, 0 Session.s\nExcès de vitesse ≥ 60 km/h et < 100 km/h, 2500 €, -2 pts, 0 Session.s\nExcès de vitesse ≥ 100 km/h et < 150 km/h, 5000 €, -3 pts, 0 Session.s\nExcès de vitesse ≥ 150 km/h (passage tribunal), 15000 €, -3 pts, 0 Session.s\n\nCirculation en sens interdit, 1000 €, -0 pts, 0 Session.s\nCirculer sur la voie de gauche sur Autoroute, 500 €, -0 pts, 0 Session.s\nExécution d’une marche arrière ou d’un demi-tour sur autoroute, 3500 €, -0 pts, 1 Session.s\nNon-respect de la distance de sécurité entre deux véhicules, 600 €, -0 pts, 0 Session.s\nDépassement dangereux, 1500 €, -0 pts, 0 Session.s\nDépassement par la droite , 2000 €, -1 pts, 0 Session.s\nDélit de fuite (voiture en fourrière et passage tribunal), 25000 €, -0 pts, 4 Session.s",
+                        "authorId":"152125692618735616",
+                        "pinned":true,
+                        "tts":false,
+                        "nonce":null,
+                        "embeds":[
+                            
+                        ],
+                        "components":[
+                            
+                        ],
+                        "attachments":[
+                            
+                        ],
+                        "stickers":[
+                            
+                        ],
+                        "editedTimestamp":null,
+                        "webhookId":null,
+                        "groupActivityApplicationId":null,
+                        "applicationId":null,
+                        "activity":null,
+                        "flags":0,
+                        "reference":null,
+                        "interaction":null,
+                        "cleanContent":"```diff\n-> Contraventions et délits\n```\n**`Nom du délit, Prix de l'amande €, Points retirer, Retrait de permis durée en sessions`**\n\nRefus de priorité, 750 €, -0 pts, 0 Session.s\nNon-respect de l’arrêt au stop, 1250 €, -0 pts, 0 Session.s\nNon-respect de priorité d'un véhicule prioritaire, 550 €, -0 pts, 0 Session.s\n\nPneu lisse ou non-conforme , 500 €, -0 pts, 0 Session.s\nPerte contrôle du véhicule, 350 €, -0 pts, 0 Session.s\nBurn/Drift, 950 €, -1 pts, 0 Session.s\nDegradation de bien publique, 1500 €, -0 pts, 0 Session.s\nUsage abusif du klaxon , 150 €, -0 pts, 0 Session.s\nklaxon non réglemntaire, 250 €, -0 pts, 0 Session.s\nNuisance sonore, 400 €, -0 pts, 0 Session.s\n\nFranchissement de ligne continue, 200 €, -0 pts, 0 Session.s\nDépassement sur ligne continue, 500 €, -1 pts, 0 Session.s\nUsage inapproprié de la bande d'arrêt d'urgence, 1500 €, -0 pts, 0 Session.s\n\nAccélération par conducteur sur le point d’être dépassé, 500 €, -0 pts, 0 Session.s\nExcès de vitesse < 30 km/h, 500 €, -0 pts, 0 Session.s\nExcès de vitesse ≥ 30 km/h et < 60 km/h, 1500 €, -0 pts, 0 Session.s\nExcès de vitesse ≥ 60 km/h et < 100 km/h, 2500 €, -2 pts, 0 Session.s\nExcès de vitesse ≥ 100 km/h et < 150 km/h, 5000 €, -3 pts, 0 Session.s\nExcès de vitesse ≥ 150 km/h (passage tribunal), 15000 €, -3 pts, 0 Session.s\n\nCirculation en sens interdit, 1000 €, -0 pts, 0 Session.s\nCirculer sur la voie de gauche sur Autoroute, 500 €, -0 pts, 0 Session.s\nExécution d’une marche arrière ou d’un demi-tour sur autoroute, 3500 €, -0 pts, 1 Session.s\nNon-respect de la distance de sécurité entre deux véhicules, 600 €, -0 pts, 0 Session.s\nDépassement dangereux, 1500 €, -0 pts, 0 Session.s\nDépassement par la droite , 2000 €, -1 pts, 0 Session.s\nDélit de fuite (voiture en fourrière et passage tribunal), 25000 €, -0 pts, 4 Session.s"
+                    }
+                ],
+                [
+                    "933365313456721970",
+                    {
+                        "channelId":"933356552700723240",
+                        "guildId":"877644017255465011",
+                        "deleted":false,
+                        "id":"933365313456721970",
+                        "createdTimestamp":1642602031817,
+                        "type":"DEFAULT",
+                        "system":false,
+                        "content":"_ _\nConduite sans le signe A pour un conducteur novice , 250 €, -0 pts, 0 Session.s\nConduite malgré annulation du permis de conduire, 3500 €, -0 pts, 0 Session.s\nConduite sans permis, 3500 €, -0 pts, 2 Session.s\n\nUsurpation de plaques d’immatriculation, 7500 €, -0 pts, 0 Session.s\nPlaques d'immatriculation absentes ou non réglementaires , 4500 €, -0 pts, 0 Session.s\nModification non déclarée (en fourrière + retrait carte grise), 7850 €, -0 pts, 0 Session.s\nConduite d'un véhicule sans carte grise (en fourrière), 17500 €, -0 pts, 2 Session.s\nVéhicule non homologué à la voie publique (en fourrière), 30000 €, -0 pts, 3 Session.s\n\nOutrage à agent, 500 €, -0 pts, 0 Session.s\nRefus d’obtempérer, 3000 €, -0 pts, 0 Session.s\nTentative de corruption, 4500 €, -0 pts, 0 Session.s\n\n```diff\n-> Fourrière\n```\nUn véhicule peut être envoyé en fourrière pour certains délits. Un véhicule mit en fourrière ne peut pas être utilisé.\nPour récupérer un véhicule en fourrière, le propriétaire devra payer 10% du prix d'achat du véhicule.",
+                        "authorId":"152125692618735616",
+                        "pinned":true,
+                        "tts":false,
+                        "nonce":null,
+                        "embeds":[
+                            
+                        ],
+                        "components":[
+                            
+                        ],
+                        "attachments":[
+                            
+                        ],
+                        "stickers":[
+                            
+                        ],
+                        "editedTimestamp":1642602121862,
+                        "webhookId":null,
+                        "groupActivityApplicationId":null,
+                        "applicationId":null,
+                        "activity":null,
+                        "flags":0,
+                        "reference":null,
+                        "interaction":null,
+                        "cleanContent":"_ _\nConduite sans le signe A pour un conducteur novice , 250 €, -0 pts, 0 Session.s\nConduite malgré annulation du permis de conduire, 3500 €, -0 pts, 0 Session.s\nConduite sans permis, 3500 €, -0 pts, 2 Session.s\n\nUsurpation de plaques d’immatriculation, 7500 €, -0 pts, 0 Session.s\nPlaques d'immatriculation absentes ou non réglementaires , 4500 €, -0 pts, 0 Session.s\nModification non déclarée (en fourrière + retrait carte grise), 7850 €, -0 pts, 0 Session.s\nConduite d'un véhicule sans carte grise (en fourrière), 17500 €, -0 pts, 2 Session.s\nVéhicule non homologué à la voie publique (en fourrière), 30000 €, -0 pts, 3 Session.s\n\nOutrage à agent, 500 €, -0 pts, 0 Session.s\nRefus d’obtempérer, 3000 €, -0 pts, 0 Session.s\nTentative de corruption, 4500 €, -0 pts, 0 Session.s\n\n```diff\n-> Fourrière\n```\nUn véhicule peut être envoyé en fourrière pour certains délits. Un véhicule mit en fourrière ne peut pas être utilisé.\nPour récupérer un véhicule en fourrière, le propriétaire devra payer 10% du prix d'achat du véhicule."
                     }
                 ]
             ]
         },
         {
-            "name": "session-actuelle",
-            "channelInfo": {
-                "type": "GUILD_TEXT",
-                "topic": "https://discord.gg/BtkWVH2Kq9",
-                "permissionOverwrites": [{
-                        "id": "877644017255465011",
-                        "type": 0,
-                        "allow": "37080640",
-                        "deny": "2952933393"
+            "name":"police",
+            "channelInfo":{
+                "type":0,
+                "topic":"GUILD_TEXT",
+                "permissionOverwrites":[
+                    {
+                        "id":"916019914127597648",
+                        "type":0,
+                        "allow":"1071631552064",
+                        "deny":"0"
                     },
                     {
-                        "id": "877644017255465012",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "1024"
+                        "id":"877644017276428345",
+                        "type":0,
+                        "allow":"25799237632",
+                        "deny":"0"
                     },
                     {
-                        "id": "877644017255465013",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "1024"
-                    },
-                    {
-                        "id": "877644017276428342",
-                        "type": 0,
-                        "allow": "1024",
-                        "deny": "0"
-                    },
-                    {
-                        "id": "877644017276428343",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "1024"
+                        "id":"877644017255465011",
+                        "type":0,
+                        "allow":"0",
+                        "deny":"1098236034897"
                     }
                 ],
-                "position": 1
+                "position":4,
+                "userLimit":0
             },
-            "messages": [
-
-            ]
-        },
-        {
-            "name": "livreur",
-            "channelInfo": {
-                "type": "GUILD_TEXT",
-                "topic": "https://discord.gg/BtkWVH2Kq9",
-                "permissionOverwrites": [{
-                        "id": "877644017255465011",
-                        "type": 0,
-                        "allow": "37078592",
-                        "deny": "2952935441"
-                    },
-                    {
-                        "id": "877644017255465012",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "1024"
-                    },
-                    {
-                        "id": "877644017255465013",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "1024"
-                    },
-                    {
-                        "id": "877644017276428342",
-                        "type": 0,
-                        "allow": "1024",
-                        "deny": "0"
-                    },
-                    {
-                        "id": "877644017276428343",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "1024"
-                    },
-                    {
-                        "id": "877644017276428345",
-                        "type": 0,
-                        "allow": "29568320",
-                        "deny": "0"
-                    }
-                ],
-                "position": 2
-            },
-            "messages": [
+            "messages":[
                 [
-                    "904802482230816860",
+                    "933370463047016448",
                     {
-                        "channelId": "877644018161418270",
-                        "guildId": "877644017255465011",
-                        "deleted": false,
-                        "id": "904802482230816860",
-                        "type": "DEFAULT",
-                        "system": false,
-                        "content": "aaa",
-                        "authorId": "152125692618735616",
-                        "pinned": false,
-                        "tts": false,
-                        "nonce": null,
-                        "embeds": [
-
+                        "channelId":"933356928644571146",
+                        "guildId":"877644017255465011",
+                        "deleted":false,
+                        "id":"933370463047016448",
+                        "createdTimestamp":1642603259575,
+                        "type":"DEFAULT",
+                        "system":false,
+                        "content":"```diff\n-> Les Limitations de vitesses\n```\n__**Limitation Permis Probatoire**__\n_    _- 50Km/h Dans les villes et villages\n_    _- 90Km/h Sur route secondaire \n_    _- 130Km/h Sur autoroute\n\n**__Limitations Permis B__**\n_    _- 60Km/h Dans les villes et villages\n_    _- 110Km/h Sur route secondaire \n_    _- 160Km/h Sur autoroute\n\n> La police est tenue de respecter les limitations du permis B tant qu’il n’y a pas d’intervention / délit de fuite. En cas d’intervention ou de délit de fuite la police n’a pas de limite de vitesse, ce pendant les accidents ne leurs sont pas permis, donc si la police a un accident sont intervention est terminé",
+                        "authorId":"152125692618735616",
+                        "pinned":true,
+                        "tts":false,
+                        "nonce":null,
+                        "embeds":[
+                            
                         ],
-                        "components": [
-
+                        "components":[
+                            
                         ],
-                        "attachments": [
-
+                        "attachments":[
+                            
                         ],
-                        "stickers": [
-
+                        "stickers":[
+                            
                         ],
-                        "createdTimestamp": 1635792122181,
-                        "editedTimestamp": null,
-                        "webhookId": null,
-                        "groupActivityApplicationId": null,
-                        "applicationId": null,
-                        "activity": null,
-                        "flags": 0,
-                        "reference": null,
-                        "interaction": null,
-                        "cleanContent": "aaa"
+                        "editedTimestamp":null,
+                        "webhookId":null,
+                        "groupActivityApplicationId":null,
+                        "applicationId":null,
+                        "activity":null,
+                        "flags":0,
+                        "reference":null,
+                        "interaction":null,
+                        "cleanContent":"```diff\n-> Les Limitations de vitesses\n```\n__**Limitation Permis Probatoire**__\n_    _- 50Km/h Dans les villes et villages\n_    _- 90Km/h Sur route secondaire \n_    _- 130Km/h Sur autoroute\n\n**__Limitations Permis B__**\n_    _- 60Km/h Dans les villes et villages\n_    _- 110Km/h Sur route secondaire \n_    _- 160Km/h Sur autoroute\n\n> La police est tenue de respecter les limitations du permis B tant qu’il n’y a pas d’intervention / délit de fuite. En cas d’intervention ou de délit de fuite la police n’a pas de limite de vitesse, ce pendant les accidents ne leurs sont pas permis, donc si la police a un accident sont intervention est terminé"
+                    }
+                ],
+                [
+                    "933370571209711666",
+                    {
+                        "channelId":"933356928644571146",
+                        "guildId":"877644017255465011",
+                        "deleted":false,
+                        "id":"933370571209711666",
+                        "createdTimestamp":1642603285363,
+                        "type":"DEFAULT",
+                        "system":false,
+                        "content":"```diff\n-> Contraventions et délits\n```\n**`Nom du délit, Prix de l'amande €, Points retirer, Retrait de permis durée en sessions`**\n\nRefus de priorité, 750 €, -0 pts, 0 Session.s\nNon-respect de l’arrêt au stop, 1250 €, -0 pts, 0 Session.s\nNon-respect de priorité d'un véhicule prioritaire, 550 €, -0 pts, 0 Session.s\n\nPneu lisse ou non-conforme , 500 €, -0 pts, 0 Session.s\nPerte contrôle du véhicule, 350 €, -0 pts, 0 Session.s\nBurn/Drift, 950 €, -1 pts, 0 Session.s\nDegradation de bien publique, 1500 €, -0 pts, 0 Session.s\nUsage abusif du klaxon , 150 €, -0 pts, 0 Session.s\nklaxon non réglemntaire, 250 €, -0 pts, 0 Session.s\nNuisance sonore, 400 €, -0 pts, 0 Session.s\n\nFranchissement de ligne continue, 200 €, -0 pts, 0 Session.s\nDépassement sur ligne continue, 500 €, -1 pts, 0 Session.s\nUsage inapproprié de la bande d'arrêt d'urgence, 1500 €, -0 pts, 0 Session.s\n\nAccélération par conducteur sur le point d’être dépassé, 500 €, -0 pts, 0 Session.s\nExcès de vitesse < 30 km/h, 500 €, -0 pts, 0 Session.s\nExcès de vitesse ≥ 30 km/h et < 60 km/h, 1500 €, -0 pts, 0 Session.s\nExcès de vitesse ≥ 60 km/h et < 100 km/h, 2500 €, -2 pts, 0 Session.s\nExcès de vitesse ≥ 100 km/h et < 150 km/h, 5000 €, -3 pts, 0 Session.s\nExcès de vitesse ≥ 150 km/h (passage tribunal), 15000 €, -3 pts, 0 Session.s\n\nCirculation en sens interdit, 1000 €, -0 pts, 0 Session.s\nCirculer sur la voie de gauche sur Autoroute, 500 €, -0 pts, 0 Session.s\nExécution d’une marche arrière ou d’un demi-tour sur autoroute, 3500 €, -0 pts, 1 Session.s\nNon-respect de la distance de sécurité entre deux véhicules, 600 €, -0 pts, 0 Session.s\nDépassement dangereux, 1500 €, -0 pts, 0 Session.s\nDépassement par la droite , 2000 €, -1 pts, 0 Session.s\nDélit de fuite (voiture en fourrière et passage tribunal), 25000 €, -0 pts, 4 Session.s",
+                        "authorId":"152125692618735616",
+                        "pinned":true,
+                        "tts":false,
+                        "nonce":null,
+                        "embeds":[
+                            
+                        ],
+                        "components":[
+                            
+                        ],
+                        "attachments":[
+                            
+                        ],
+                        "stickers":[
+                            
+                        ],
+                        "editedTimestamp":null,
+                        "webhookId":null,
+                        "groupActivityApplicationId":null,
+                        "applicationId":null,
+                        "activity":null,
+                        "flags":0,
+                        "reference":null,
+                        "interaction":null,
+                        "cleanContent":"```diff\n-> Contraventions et délits\n```\n**`Nom du délit, Prix de l'amande €, Points retirer, Retrait de permis durée en sessions`**\n\nRefus de priorité, 750 €, -0 pts, 0 Session.s\nNon-respect de l’arrêt au stop, 1250 €, -0 pts, 0 Session.s\nNon-respect de priorité d'un véhicule prioritaire, 550 €, -0 pts, 0 Session.s\n\nPneu lisse ou non-conforme , 500 €, -0 pts, 0 Session.s\nPerte contrôle du véhicule, 350 €, -0 pts, 0 Session.s\nBurn/Drift, 950 €, -1 pts, 0 Session.s\nDegradation de bien publique, 1500 €, -0 pts, 0 Session.s\nUsage abusif du klaxon , 150 €, -0 pts, 0 Session.s\nklaxon non réglemntaire, 250 €, -0 pts, 0 Session.s\nNuisance sonore, 400 €, -0 pts, 0 Session.s\n\nFranchissement de ligne continue, 200 €, -0 pts, 0 Session.s\nDépassement sur ligne continue, 500 €, -1 pts, 0 Session.s\nUsage inapproprié de la bande d'arrêt d'urgence, 1500 €, -0 pts, 0 Session.s\n\nAccélération par conducteur sur le point d’être dépassé, 500 €, -0 pts, 0 Session.s\nExcès de vitesse < 30 km/h, 500 €, -0 pts, 0 Session.s\nExcès de vitesse ≥ 30 km/h et < 60 km/h, 1500 €, -0 pts, 0 Session.s\nExcès de vitesse ≥ 60 km/h et < 100 km/h, 2500 €, -2 pts, 0 Session.s\nExcès de vitesse ≥ 100 km/h et < 150 km/h, 5000 €, -3 pts, 0 Session.s\nExcès de vitesse ≥ 150 km/h (passage tribunal), 15000 €, -3 pts, 0 Session.s\n\nCirculation en sens interdit, 1000 €, -0 pts, 0 Session.s\nCirculer sur la voie de gauche sur Autoroute, 500 €, -0 pts, 0 Session.s\nExécution d’une marche arrière ou d’un demi-tour sur autoroute, 3500 €, -0 pts, 1 Session.s\nNon-respect de la distance de sécurité entre deux véhicules, 600 €, -0 pts, 0 Session.s\nDépassement dangereux, 1500 €, -0 pts, 0 Session.s\nDépassement par la droite , 2000 €, -1 pts, 0 Session.s\nDélit de fuite (voiture en fourrière et passage tribunal), 25000 €, -0 pts, 4 Session.s"
+                    }
+                ],
+                [
+                    "933370640809988117",
+                    {
+                        "channelId":"933356928644571146",
+                        "guildId":"877644017255465011",
+                        "deleted":false,
+                        "id":"933370640809988117",
+                        "createdTimestamp":1642603301957,
+                        "type":"DEFAULT",
+                        "system":false,
+                        "content":"_ _\nConduite sans le signe A pour un conducteur novice , 250 €, -0 pts, 0 Session.s\nConduite malgré annulation du permis de conduire, 3500 €, -0 pts, 0 Session.s\nConduite sans permis, 3500 €, -0 pts, 2 Session.s\n\nUsurpation de plaques d’immatriculation, 7500 €, -0 pts, 0 Session.s\nPlaques d'immatriculation absentes ou non réglementaires , 4500 €, -0 pts, 0 Session.s\nModification non déclarée (en fourrière + retrait carte grise), 7850 €, -0 pts, 0 Session.s\nConduite d'un véhicule sans carte grise (en fourrière), 17500 €, -0 pts, 2 Session.s\nVéhicule non homologué à la voie publique (en fourrière), 30000 €, -0 pts, 3 Session.s\n\nOutrage à agent, 500 €, -0 pts, 0 Session.s\nRefus d’obtempérer, 3000 €, -0 pts, 0 Session.s\nTentative de corruption, 4500 €, -0 pts, 0 Session.s",
+                        "authorId":"152125692618735616",
+                        "pinned":true,
+                        "tts":false,
+                        "nonce":null,
+                        "embeds":[
+                            
+                        ],
+                        "components":[
+                            
+                        ],
+                        "attachments":[
+                            
+                        ],
+                        "stickers":[
+                            
+                        ],
+                        "editedTimestamp":null,
+                        "webhookId":null,
+                        "groupActivityApplicationId":null,
+                        "applicationId":null,
+                        "activity":null,
+                        "flags":0,
+                        "reference":null,
+                        "interaction":null,
+                        "cleanContent":"_ _\nConduite sans le signe A pour un conducteur novice , 250 €, -0 pts, 0 Session.s\nConduite malgré annulation du permis de conduire, 3500 €, -0 pts, 0 Session.s\nConduite sans permis, 3500 €, -0 pts, 2 Session.s\n\nUsurpation de plaques d’immatriculation, 7500 €, -0 pts, 0 Session.s\nPlaques d'immatriculation absentes ou non réglementaires , 4500 €, -0 pts, 0 Session.s\nModification non déclarée (en fourrière + retrait carte grise), 7850 €, -0 pts, 0 Session.s\nConduite d'un véhicule sans carte grise (en fourrière), 17500 €, -0 pts, 2 Session.s\nVéhicule non homologué à la voie publique (en fourrière), 30000 €, -0 pts, 3 Session.s\n\nOutrage à agent, 500 €, -0 pts, 0 Session.s\nRefus d’obtempérer, 3000 €, -0 pts, 0 Session.s\nTentative de corruption, 4500 €, -0 pts, 0 Session.s"
                     }
                 ]
             ]
         },
         {
-            "name": "police",
-            "channelInfo": {
-                "type": "GUILD_TEXT",
-                "topic": "https://discord.gg/BtkWVH2Kq9",
-                "permissionOverwrites": [{
-                        "id": "877644017255465011",
-                        "type": 0,
-                        "allow": "37078592",
-                        "deny": "2952935441"
+            "name":"livreur",
+            "channelInfo":{
+                "type":0,
+                "topic":"GUILD_TEXT",
+                "permissionOverwrites":[
+                    {
+                        "id":"877644017276428345",
+                        "type":0,
+                        "allow":"25799237632",
+                        "deny":"0"
                     },
                     {
-                        "id": "877644017255465012",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "1024"
+                        "id":"916019762037915748",
+                        "type":0,
+                        "allow":"1071631552064",
+                        "deny":"0"
                     },
                     {
-                        "id": "877644017255465013",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "1024"
-                    },
-                    {
-                        "id": "877644017276428342",
-                        "type": 0,
-                        "allow": "1024",
-                        "deny": "0"
-                    },
-                    {
-                        "id": "877644017276428343",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "1024"
-                    },
-                    {
-                        "id": "877644017276428345",
-                        "type": 0,
-                        "allow": "29568320",
-                        "deny": "0"
+                        "id":"877644017255465011",
+                        "type":0,
+                        "allow":"0",
+                        "deny":"1098236034897"
                     }
                 ],
-                "position": 3
+                "position":3,
+                "userLimit":0
             },
-            "messages": [
-
+            "messages":[
+                [
+                    "933369995122069564",
+                    {
+                        "channelId":"933356862244548620",
+                        "guildId":"877644017255465011",
+                        "deleted":false,
+                        "id":"933369995122069564",
+                        "createdTimestamp":1642603148013,
+                        "type":"DEFAULT",
+                        "system":false,
+                        "content":"```diff\n-> Les Limitations de vitesses\n```\n__**Limitation Permis Probatoire**__\n_    _- 50Km/h Dans les villes et villages\n_    _- 90Km/h Sur route secondaire \n_    _- 130Km/h Sur autoroute\n\n**__Limitations Permis B__**\n_    _- 60Km/h Dans les villes et villages\n_    _- 110Km/h Sur route secondaire \n_    _- 160Km/h Sur autoroute",
+                        "authorId":"152125692618735616",
+                        "pinned":true,
+                        "tts":false,
+                        "nonce":null,
+                        "embeds":[
+                            
+                        ],
+                        "components":[
+                            
+                        ],
+                        "attachments":[
+                            
+                        ],
+                        "stickers":[
+                            
+                        ],
+                        "editedTimestamp":null,
+                        "webhookId":null,
+                        "groupActivityApplicationId":null,
+                        "applicationId":null,
+                        "activity":null,
+                        "flags":0,
+                        "reference":null,
+                        "interaction":null,
+                        "cleanContent":"```diff\n-> Les Limitations de vitesses\n```\n__**Limitation Permis Probatoire**__\n_    _- 50Km/h Dans les villes et villages\n_    _- 90Km/h Sur route secondaire \n_    _- 130Km/h Sur autoroute\n\n**__Limitations Permis B__**\n_    _- 60Km/h Dans les villes et villages\n_    _- 110Km/h Sur route secondaire \n_    _- 160Km/h Sur autoroute"
+                    }
+                ],
+                [
+                    "933370035957825607",
+                    {
+                        "channelId":"933356862244548620",
+                        "guildId":"877644017255465011",
+                        "deleted":false,
+                        "id":"933370035957825607",
+                        "createdTimestamp":1642603157749,
+                        "type":"DEFAULT",
+                        "system":false,
+                        "content":"_ _\n_ _ \n***PHOTO DE LA ZONE DE JEU AVEC TOUS LES POI***\n\n\n```diff\n-> Livraisons légales\n```\n- 200€/Km lingerie sexy tous types de véhicule\n- 300€/Km Voiture rouillée Voiture d'avant 1990\n- 400€/Km électro ménagé Type Van et Utilitaire + UNIMOG\n- 500€/Km Voiture ancienne Voiture d’avant 1950\n- 600€/Km Gilet jaune Voiture Française\n- 700€/Km Trajet en convois 2 véhicules minimum +200€/km par véhicule supplémentaire\n- 800€/Km Voyage historique Type Cult Cars\n- 900€/km Rasso de voitures convois de plus de 3 véhicules Tous pays, marque, confondu\n- 950€/Km Chauffeur Privé Voiture Prix d'origine à partir de 70.000\n- 1000€/Km Taxi présidentiel Cadillac STX limousine\n- 1300€/Km Testeur de voiture Voiture + de 200.000€ ( prix d'origine )\n\n```diff\n-> Livraisons illégales\n```\n- 350€/Km Lingerie Sexy Wish Tous véhicules\n- 450€/Km Pneux de voiture à partir de classe A\n- 550€/Km Trafic de cigare Véhicule 2 places\n- 650€/Km Pièces détachées 4x4\n- 700€/Km Trafique de voitures de rally type  Rally\n- 800€/Km Trafic d'être humain Voiture 100.000€ minimum\n- 950€/Km Trafic de beu Voiture de + de 300Kw\n- 1500€/Km Courses clandestine 2 véhicules minimum, de même marque, pays ou type\n- 2000€/kmTrafic d'alcool ou de cigarette Berline de 5 portes\n- 2100€/km Trafic de drogue  Break \n- 2300€/km Transport d\"énemie public Voiture d'avant 1970\n- 2500€/Km Trafic de faux papiers Voiture de plus 1.000.000€ ( prix d'origine )",
+                        "authorId":"152125692618735616",
+                        "pinned":true,
+                        "tts":false,
+                        "nonce":null,
+                        "embeds":[
+                            
+                        ],
+                        "components":[
+                            
+                        ],
+                        "attachments":[
+                            
+                        ],
+                        "stickers":[
+                            
+                        ],
+                        "editedTimestamp":1642603223389,
+                        "webhookId":null,
+                        "groupActivityApplicationId":null,
+                        "applicationId":null,
+                        "activity":null,
+                        "flags":0,
+                        "reference":null,
+                        "interaction":null,
+                        "cleanContent":"_ _\n_ _ \n***PHOTO DE LA ZONE DE JEU AVEC TOUS LES POI***\n\n\n```diff\n-> Livraisons légales\n```\n- 200€/Km lingerie sexy tous types de véhicule\n- 300€/Km Voiture rouillée Voiture d'avant 1990\n- 400€/Km électro ménagé Type Van et Utilitaire + UNIMOG\n- 500€/Km Voiture ancienne Voiture d’avant 1950\n- 600€/Km Gilet jaune Voiture Française\n- 700€/Km Trajet en convois 2 véhicules minimum +200€/km par véhicule supplémentaire\n- 800€/Km Voyage historique Type Cult Cars\n- 900€/km Rasso de voitures convois de plus de 3 véhicules Tous pays, marque, confondu\n- 950€/Km Chauffeur Privé Voiture Prix d'origine à partir de 70.000\n- 1000€/Km Taxi présidentiel Cadillac STX limousine\n- 1300€/Km Testeur de voiture Voiture + de 200.000€ ( prix d'origine )\n\n```diff\n-> Livraisons illégales\n```\n- 350€/Km Lingerie Sexy Wish Tous véhicules\n- 450€/Km Pneux de voiture à partir de classe A\n- 550€/Km Trafic de cigare Véhicule 2 places\n- 650€/Km Pièces détachées 4x4\n- 700€/Km Trafique de voitures de rally type  Rally\n- 800€/Km Trafic d'être humain Voiture 100.000€ minimum\n- 950€/Km Trafic de beu Voiture de + de 300Kw\n- 1500€/Km Courses clandestine 2 véhicules minimum, de même marque, pays ou type\n- 2000€/kmTrafic d'alcool ou de cigarette Berline de 5 portes\n- 2100€/km Trafic de drogue  Break \n- 2300€/km Transport d\"énemie public Voiture d'avant 1970\n- 2500€/Km Trafic de faux papiers Voiture de plus 1.000.000€ ( prix d'origine )"
+                    }
+                ]
             ]
         },
         {
-            "name": "livreur",
-            "channelInfo": {
-                "type": "GUILD_VOICE",
-                "permissionOverwrites": [{
-                        "id": "877644017255465011",
-                        "type": 0,
-                        "allow": "37078592",
-                        "deny": "2952935441"
+            "name":"général-de-session",
+            "channelInfo":{
+                "type":0,
+                "topic":"GUILD_TEXT",
+                "permissionOverwrites":[
+                    {
+                        "id":"916019914127597648",
+                        "type":0,
+                        "allow":"1071631552064",
+                        "deny":"0"
                     },
                     {
-                        "id": "877644017255465012",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "1024"
+                        "id":"877644017276428345",
+                        "type":0,
+                        "allow":"25799237632",
+                        "deny":"0"
                     },
                     {
-                        "id": "877644017255465013",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "1024"
+                        "id":"916019762037915748",
+                        "type":0,
+                        "allow":"1071631552064",
+                        "deny":"0"
                     },
                     {
-                        "id": "877644017276428342",
-                        "type": 0,
-                        "allow": "1024",
-                        "deny": "0"
-                    },
-                    {
-                        "id": "877644017276428343",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "1024"
-                    },
-                    {
-                        "id": "877644017276428345",
-                        "type": 0,
-                        "allow": "29568320",
-                        "deny": "0"
+                        "id":"877644017255465011",
+                        "type":0,
+                        "allow":"0",
+                        "deny":"1098236034897"
                     }
                 ],
-                "position": 5
-            }
-        },
-        {
-            "name": "Police",
-            "channelInfo": {
-                "type": "GUILD_VOICE",
-                "permissionOverwrites": [{
-                        "id": "877644017255465011",
-                        "type": 0,
-                        "allow": "37078592",
-                        "deny": "2952935441"
-                    },
-                    {
-                        "id": "877644017255465012",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "1024"
-                    },
-                    {
-                        "id": "877644017255465013",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "1024"
-                    },
-                    {
-                        "id": "877644017276428342",
-                        "type": 0,
-                        "allow": "1024",
-                        "deny": "0"
-                    },
-                    {
-                        "id": "877644017276428343",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "1024"
-                    },
-                    {
-                        "id": "877644017276428345",
-                        "type": 0,
-                        "allow": "29568320",
-                        "deny": "0"
-                    }
-                ],
-                "position": 6
-            }
-        },
-        {
-            "name": "controle-1",
-            "channelInfo": {
-                "type": "GUILD_VOICE",
-                "permissionOverwrites": [{
-                        "id": "877644017255465011",
-                        "type": 0,
-                        "allow": "37078592",
-                        "deny": "2952935441"
-                    },
-                    {
-                        "id": "877644017255465012",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "1024"
-                    },
-                    {
-                        "id": "877644017255465013",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "1024"
-                    },
-                    {
-                        "id": "877644017276428342",
-                        "type": 0,
-                        "allow": "1024",
-                        "deny": "0"
-                    },
-                    {
-                        "id": "877644017276428343",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "1024"
-                    },
-                    {
-                        "id": "877644017276428345",
-                        "type": 0,
-                        "allow": "29568320",
-                        "deny": "0"
-                    }
-                ],
-                "position": 7
-            }
-        },
-        {
-            "name": "controle-2",
-            "channelInfo": {
-                "type": "GUILD_VOICE",
-                "permissionOverwrites": [{
-                        "id": "877644017255465011",
-                        "type": 0,
-                        "allow": "37078592",
-                        "deny": "2952935441"
-                    },
-                    {
-                        "id": "877644017255465012",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "1024"
-                    },
-                    {
-                        "id": "877644017255465013",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "1024"
-                    },
-                    {
-                        "id": "877644017276428342",
-                        "type": 0,
-                        "allow": "1024",
-                        "deny": "0"
-                    },
-                    {
-                        "id": "877644017276428343",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "1024"
-                    },
-                    {
-                        "id": "877644017276428345",
-                        "type": 0,
-                        "allow": "29568320",
-                        "deny": "0"
-                    }
-                ],
-                "position": 8
-            }
-        },
-        {
-            "name": "controle-3",
-            "channelInfo": {
-                "type": "GUILD_VOICE",
-                "permissionOverwrites": [{
-                        "id": "877644017255465011",
-                        "type": 0,
-                        "allow": "37078592",
-                        "deny": "2952935441"
-                    },
-                    {
-                        "id": "877644017255465012",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "1024"
-                    },
-                    {
-                        "id": "877644017255465013",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "1024"
-                    },
-                    {
-                        "id": "877644017276428342",
-                        "type": 0,
-                        "allow": "1024",
-                        "deny": "0"
-                    },
-                    {
-                        "id": "877644017276428343",
-                        "type": 0,
-                        "allow": "0",
-                        "deny": "1024"
-                    },
-                    {
-                        "id": "877644017276428345",
-                        "type": 0,
-                        "allow": "29568320",
-                        "deny": "0"
-                    }
-                ],
-                "position": 9
-            }
+                "position":2,
+                "userLimit":0
+            },
+            "messages":[
+                
+            ]
         }
     ],
-    "rally": [{
+    "rally": [
+        {
             "name": "règlement-rally",
             "channelInfo": {
                 "type": "GUILD_TEXT",
@@ -705,7 +980,8 @@
 
         }
     ],
-    "Hide&Seek": [{
+    "Hide&Seek": [
+        {
             "name": "reglement-hide-and-seek",
             "channelInfo": {
                 "type": "GUILD_TEXT",
@@ -844,7 +1120,8 @@
             "messages": []
         }
     ],
-    "jeuneConducteur": [{
+    "jeuneConducteur": [
+        {
             "name": "règlement-jeune-conducteur",
             "channelInfo": {
                 "type": "GUILD_TEXT",

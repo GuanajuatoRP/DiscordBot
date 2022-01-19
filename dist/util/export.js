@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ChannelObject = exports.LogsEmbed = exports.DefaultEmbed = exports.saveEmbed = void 0;
+exports.ChannelInfo = exports.ChannelClass = exports.LogsEmbed = exports.DefaultEmbed = exports.saveEmbed = void 0;
 const discord_js_1 = require("discord.js");
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
@@ -26,18 +26,25 @@ const LogsEmbed = (name, id) => {
     return new discord_js_1.MessageEmbed().setAuthor(language_json_1.default.embeds.LogsEmbed.author).setColor('#ff0000').setFooter(language_json_1.default.embeds.LogsEmbed.footer.format(name, id)).setTimestamp();
 };
 exports.LogsEmbed = LogsEmbed;
-//* est utilise a la save de channelles avec la command /getcategory
-exports.ChannelObject = {
-    name: String,
-    channelInfo: {
-        type: String,
-        topic: String,
-        permissionsList: Array,
-        position: Number,
-        userLimit: Number
-    },
-    messages: Array
-};
+//* est utilisée a la save de channelles avec la command /getcategory
+class ChannelClass {
+    constructor() {
+        this.name = '';
+        this.channelInfo = new ChannelInfo();
+        this.messages = [];
+    }
+}
+exports.ChannelClass = ChannelClass;
+class ChannelInfo {
+    constructor() {
+        this.type = 0 /* GUILD_TEXT */ || 2 /* GUILD_VOICE */;
+        this.topic = '';
+        this.permissionOverwrites = [];
+        this.position = 0;
+        this.userLimit = 0;
+    }
+}
+exports.ChannelInfo = ChannelInfo;
 //* format method for String type
 // String.prototype.format(arg,arg,...)
 // formatter like String.format in c#

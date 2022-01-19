@@ -1,7 +1,9 @@
+import { ChannelTypes } from 'discord.js/typings/enums';
 import { Command } from 'sheweny'
 import * as fs from 'fs'
 import * as path from 'path'
 import {AutocompleteInteraction} from 'discord.js'
+import { ChannelClass } from '../../../util/export'
 import type { ShewenyClient } from 'sheweny'
 import type { CommandInteraction } from 'discord.js'
 import appConf from '../../../util/appConfig.json'
@@ -36,21 +38,24 @@ export class GameCommand extends Command {
             //clientPermissions : []
         });
     }
-    execute(interaction : CommandInteraction) {
+    async execute(interaction : CommandInteraction) {
         this.client.emit('CommandLog', interaction as CommandInteraction)
         
         const rawData = fs.readFileSync(path.join(__dirname, '../../../util/channelGame.json')).toString()
         const channels = JSON.parse(rawData)
-
-        channels[interaction.options.getString('game_name')!].forEach((salon : any)  => {
-            interaction.guild!.channels.create(salon.name, {
-                    "type": salon.channelInfo.type,
+        
+        channels[interaction.options.getString('game_name')!].forEach((salon : ChannelClass)  => {
+            interaction.guild!.channels.create(salon.name.toString(), {
+                    "type": salon.channelInfo.type.toString() == '2' ? ChannelTypes.GUILD_VOICE : ChannelTypes.GUILD_TEXT,
+                    "parent": appConf.chanels.game.categorie,
+                    "position": salon.channelInfo.position
                 })
                 .then((channel : any ) => {
-                    channel.setParent(appConf.chanels.game.categorie)
                     channel.permissionOverwrites.set(salon.channelInfo.permissionOverwrites)
+
                     switch (channel.type) {
                         case 'GUILD_TEXT':
+
                             salon.messages.forEach((el : any) => {
                                 const obj = el[1]
                                 if (obj.content) {
@@ -74,17 +79,16 @@ export class GameCommand extends Command {
                             });
                             break;
                         case 'GUILD_VOICE':
-                            channel.edit({
-                                position: salon.channelInfo.position,
-                                userLimit: salon.channelInfo.userLimit,
-                            })
+
+                            channel.setUserLimit(salon.channelInfo.userLimit)
                             break;
                     }
                 })
         });
+    
         interaction.reply({
             content: `Tous les salons pour le mode de jeux \*\*${interaction.options.getString('game_name')}\*\* ont été créé`,
-            ephemeral: true,
+            ephemeral : true
         })
     }
 

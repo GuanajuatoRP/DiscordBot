@@ -1,9 +1,11 @@
+import { ChannelTypes } from 'discord.js/typings/enums';
 import { Command } from 'sheweny'
 import fs from 'fs'
-import { ChannelObject } from '../../../util/export'
+import { ChannelClass } from '../../../util/export'
 import type { ShewenyClient } from 'sheweny'
-import type { AutocompleteInteraction, CommandInteraction, TextChannel, VoiceChannel } from 'discord.js'
+import type { AutocompleteInteraction, CommandInteraction, PermissionOverwrites, TextChannel, VoiceChannel } from 'discord.js'
 import lang from '../../../util/language.json'
+
 const cmdLang = lang.commands.getchannel
 
 export class GetChannelCommand extends Command {
@@ -51,9 +53,7 @@ export class GetChannelCommand extends Command {
 
         this.client.emit('CommandLog', interaction as CommandInteraction)
         let channlesIds : Array<String> = new Array<String>()
-        let salon = Object.create(ChannelObject)
-        let permissions : Array<any>
-        let permissionsList = new Array();
+
 
 
         switch (interaction.options.data[0].name){
@@ -66,44 +66,43 @@ export class GetChannelCommand extends Command {
                 break;
         }
 
-
+        
         channlesIds.forEach(id => {
             const channel = interaction.guild!.channels.cache.filter(c => c.id == id)
             switch (channel!.first()!.type) {
                 case 'GUILD_TEXT':
+                    let salon = new ChannelClass()
                     const textChannel : TextChannel = channel.map(c => c)[0] as TextChannel
-                    permissions = [...textChannel!.permissionOverwrites.cache]
-                    permissions.forEach(permission => {
-                        permissionsList.push(permission[1])
-                    });
-                    salon.channelInfo = {
-                        "type": textChannel.type,
-                        "topic": textChannel.topic,
-                        "permissionOverwrites": permissionsList,
-                        "position": textChannel.position
-                    }
+
+
+                    salon.name = textChannel.name,
+                    salon.channelInfo.type = ChannelTypes.GUILD_TEXT
+                    salon.channelInfo.topic = textChannel.type
+                    salon.channelInfo.permissionOverwrites = textChannel!.permissionOverwrites.cache.toJSON() as Array<PermissionOverwrites>
+                    salon.channelInfo.position = textChannel.position + 1
+                    console.log(salon.name+" "+salon.channelInfo.position);
+                    
+                    
                     textChannel.messages.fetch()
                         .then(msg => {
                             const messageTab = [...msg].reverse()
                             salon.messages = messageTab
-                            fs.appendFile('cat.json', `${JSON.stringify(salon)},`, (err) => {
+                            fs.appendFile('cat.json', `${JSON.stringify(salon)},\n`, (err) => {
                                 if (err) throw err;
                             })
                         });
                     break;
                 case 'GUILD_VOICE':
+                    let salonVocal = new ChannelClass()
                     const voiceChannel : VoiceChannel = channel.map(c => c)[0] as VoiceChannel
-                    permissions = [...voiceChannel!.permissionOverwrites.cache]
-                    permissions.forEach(permission => {
-                        permissionsList.push(permission[1])
-                    });
-                    salon.channelInfo = {
-                        "type": voiceChannel.type,
-                        "permissionOverwrites": permissionsList,
-                        "position": voiceChannel.rawPosition,
-                        "userLimit": voiceChannel.userLimit,
-                    }
-                    fs.appendFile('cat.json', `${JSON.stringify(salon)},`, (err) => {
+
+
+                    salonVocal.name = voiceChannel.name,
+                    salonVocal.channelInfo.type = ChannelTypes.GUILD_VOICE
+                    salonVocal.channelInfo.permissionOverwrites = voiceChannel!.permissionOverwrites.cache.toJSON()
+                    salonVocal.channelInfo.position = voiceChannel.position
+                    salonVocal.channelInfo.userLimit = voiceChannel.userLimit
+                    fs.appendFile('cat.json', `${JSON.stringify(salonVocal)},\n`, (err) => {
                         if (err) throw err;
                     })
                     break;

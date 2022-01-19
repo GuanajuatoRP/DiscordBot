@@ -3,7 +3,6 @@ import { Button } from "sheweny"
 import type { ShewenyClient } from "sheweny"
 import { ButtonInteraction, GuildMember, GuildMemberRoleManager} from "discord.js"
 import appConf from '../../util/appConfig.json'
-import axios from 'axios'
 
 // import { DefaultEmbed } from "../../util/export";
 // import Lang from '../../util/language.json'
