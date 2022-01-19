@@ -24,6 +24,22 @@
                 "noRead": "La commande ***{0}*** ne peut pas être lue depuis ce menu"
             }
         },
+        "inscriptionPermis": {
+            "description": {
+                "desc": "Permet de crée un nouveau formulaire d'inscription au permis ",
+                "usage": "inscription-permis {Permis}",
+                "exemples": ["inscription-permis Probatoire", "inscription-permis A"]
+            },
+            "slashOptions": {
+                "description": "Permis sur le quel vous souhaitez vous inscrire"
+            },
+            "embed": {
+                "fields": {
+                    "info": { "name": "------------", "value": "**`/adminhelp <command>` pour des infos sur une commande spécifique **\n                    Exemples `/adminhelp {0}`  || `/adminhelp {1}`" }
+                }
+            },
+            "interaction": {}
+        },
         "getcommandlogs": {
             "description": {
                 "desc": "Permet de télécharger un fichier de commandLogs",
