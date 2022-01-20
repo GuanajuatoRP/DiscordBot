@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ChannelInfo = exports.ChannelClass = exports.LogsEmbed = exports.DefaultEmbed = exports.saveEmbed = void 0;
+exports.PermisTypes = exports.ChannelInfo = exports.ChannelClass = exports.LogsEmbed = exports.DefaultEmbed = exports.saveEmbed = void 0;
 const discord_js_1 = require("discord.js");
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
@@ -58,3 +58,12 @@ if (!String.prototype.format) {
         });
     };
 }
+var PermisTypes;
+(function (PermisTypes) {
+    PermisTypes["Probatoire"] = "Probatoire";
+    PermisTypes["D\u00E9finitif"] = "D\u00E9finitif";
+    PermisTypes["Stage_B"] = "Stage_B";
+    PermisTypes["Stage_A"] = "Stage_A";
+    PermisTypes["Stage_S1"] = "Stage_S1";
+    PermisTypes["Stage_S2"] = "Stage_S2";
+})(PermisTypes = exports.PermisTypes || (exports.PermisTypes = {}));

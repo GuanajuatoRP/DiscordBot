@@ -42,6 +42,7 @@ declare global{
         format(...replacements: string[]): string;
     }
 }
+
 //* format method for String type
 // String.prototype.format(arg,arg,...)
 // formatter like String.format in c#
@@ -54,4 +55,13 @@ if (!String.prototype.format) {
         return typeof args[number] != 'undefined' ? args[number] : match
     })
     }
+}
+
+export enum PermisTypes {
+    Probatoire = "Probatoire",
+    Définitif = "Définitif",
+    Stage_B = "Stage_B",
+    Stage_A = "Stage_A",
+    Stage_S1 = "Stage_S1",
+    Stage_S2 = "Stage_S2"
 }

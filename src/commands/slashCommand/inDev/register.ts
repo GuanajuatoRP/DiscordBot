@@ -58,8 +58,8 @@ export class RegisterCommand extends Command {
                     .setLabel(cmdLang.bouton.label)
                     .setStyle('PRIMARY')
                     .setCustomId('Register')
-
             )
+
             interaction.reply({
                 content : cmdLang.interaction.sendRegister,
                 components : [btNewAccount],

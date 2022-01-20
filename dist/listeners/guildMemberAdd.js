@@ -23,7 +23,8 @@ class GuildMemberAdd extends sheweny_1.Event {
             .setAuthor("[+] {0}".format(member.user.tag))
             .setDescription(eventLang.embed.description.format(member.displayName))
             .setFooter("GuildMember Add")
-            .setTimestamp();
+            .setTimestamp()
+            .setThumbnail(member.user.displayAvatarURL());
         const channel = member.guild.channels.cache.get(appConfig_json_1.default.chanels.staff.serverLog);
         channel.send({
             embeds: [embed]
