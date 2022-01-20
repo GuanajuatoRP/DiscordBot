@@ -22,6 +22,7 @@ export class GuildMemberAdd extends Event {
             .setDescription(eventLang.embed.description.format(member.displayName))
             .setFooter("GuildMember Add")
             .setTimestamp()
+            .setThumbnail(member.user.displayAvatarURL())
 
         const channel = member.guild.channels.cache.get(appconf.chanels.staff.serverLog) as TextChannel
         channel.send({

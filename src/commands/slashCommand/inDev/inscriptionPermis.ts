@@ -1,8 +1,11 @@
+import { ColorResolvable } from 'discord.js';
+import { GuildMember, MessageActionRow, MessageButton } from 'discord.js';
 import { Command } from 'sheweny'
 import type { ShewenyClient } from 'sheweny'
 import { AutocompleteInteraction, CommandInteraction, MessageEmbed } from 'discord.js'
 import lang from '../../../util/language.json'
 const CommandLang = lang.commands.inscriptionPermis
+import { PermisTypes } from '../../../util/export'
 
 
 
@@ -34,23 +37,37 @@ export class InscriptionPermisCommand extends Command {
     }
     execute(interaction : CommandInteraction) {
         this.client.emit('CommandLog', interaction)
-        
+
+        const member = interaction.member as GuildMember
         let embed = new MessageEmbed()
-            .setTitle("Formulaire d'inscription")
-            .setDescription("Inscription au permis et aux stages de conduites")
-            .setColor("#ffa200")
-            .setFooter("Inscription de : {0}#{1}".format(interaction.member.user.username,interaction.member.user.discriminator))
+            .setTitle(CommandLang.embed.title)
+            .setDescription(CommandLang.embed.description)
+            .setColor(CommandLang.embed.color as ColorResolvable)
+            .setFooter(CommandLang.embed.footer.format(member.user.tag))
+            .setTimestamp()
+            .setThumbnail(member.displayAvatarURL())
+            // TODO : Faire une rquest api pour avoir la fiche personnel de l'utilisateur 
             .addFields(
-                {name : "First Name",value: "JeanJack", inline:true},
-                {name : "Last Name",value: "GoldMan", inline:true},
+                {name : CommandLang.embed.fields.Nom.name,value: "JeanJack", inline:true},
+                {name : CommandLang.embed.fields.Prénom.name,value: "GoldMan", inline:true},
                 {name : "Examain Souhaiter ",value: interaction.options.getString('permis')!.toString(), inline:false},
                 {name : "Permis Actuel",value: "Aucun", inline:true},
                 {name : "Points sur le permis",value: "5", inline:true},
                 {name : "Stage de conduite Actuel",value: "B, C, A", inline:true},
             )
+        
+        // TODO : Faire une request api pour validé le permis
+        const btValider = new MessageActionRow()
+            .addComponents(
+                new MessageButton()
+                    .setLabel('Valider le permis')
+                    .setStyle('SUCCESS')
+                    .setCustomId('PermisOk')
+            )
 
         return interaction.reply({
-            embeds : [embed]
+            embeds : [embed],
+            components : [btValider]
         }) 
     }
 
@@ -59,7 +76,7 @@ export class InscriptionPermisCommand extends Command {
         let choices : Array<any>;
     
         if (focusedOption.name === "permis") {
-            choices = ["Probatoire", "B", "C", "A", "S1", "S2"];
+            choices = Object.values(PermisTypes)
         }
     
         const filtered = choices!.filter((choice: any) =>

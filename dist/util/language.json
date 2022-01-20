@@ -34,8 +34,13 @@
                 "description": "Permis sur le quel vous souhaitez vous inscrire"
             },
             "embed": {
+                "title": "Formulaire d'inscription",
+                "description": "Inscription au permis et aux stages de conduites",
+                "color": "#ffa200",
+                "footer": "Inscription de : {0}",
                 "fields": {
-                    "info": { "name": "------------", "value": "**`/adminhelp <command>` pour des infos sur une commande spécifique **\n                    Exemples `/adminhelp {0}`  || `/adminhelp {1}`" }
+                    "Prénom": { "name": "Prénom" },
+                    "Nom": { "name": "Nom" }
                 }
             },
             "interaction": {}

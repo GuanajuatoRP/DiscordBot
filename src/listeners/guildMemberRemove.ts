@@ -21,6 +21,8 @@ export class GuildMemberRemove extends Event {
             .setDescription(eventLang.embed.description.format(member.displayName))
             .setFooter("GuildMember Remove")
             .setTimestamp()
+            .setThumbnail(member.user.displayAvatarURL())
+
         const channel = member.guild.channels.cache.get(appconf.chanels.staff.serverLog) as TextChannel
         channel.send({
             embeds: [embed]
