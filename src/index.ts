@@ -54,7 +54,8 @@ export const client = new ShewenyClient({
         //     directory: "./interactions/select-menu",
         //     loadAll: true,
         // },
-    },
-});
+        },
+    }
+);
 client.login(process.env.TOKEN);
 app.listen( process.env.PORT, () => console.log(`server started at http://localhost:${process.env.PORT}`));

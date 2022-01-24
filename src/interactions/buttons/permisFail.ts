@@ -1,20 +1,20 @@
+import { IsAdmin } from './../../util/export';
 import { Button } from "sheweny";
 import type { ShewenyClient } from "sheweny";
 import type { ButtonInteraction, ColorResolvable, GuildMember, Message } from "discord.js";
 import {MessageEmbed} from "discord.js"
 import lang from "../../util/language.json"
-import { IsAdmin } from "../../util/export";
-const interactionLang = lang.interaction.PermisOk
+const interactionLang = lang.interaction.PermisFail
 // import appConfig from '../../util/appConfig.json'
 
 export class Btns extends Button {
     constructor(client: ShewenyClient) {
-        super(client, ["PermisOk"]);
+        super(client, ["PermisFail"]);
     }
 
     async execute(button: ButtonInteraction) {
         const message = button.message as Message;
-        const member = button.member as GuildMember
+        const member = button.member as GuildMember;
 
         if (!IsAdmin(member,button)){
             return null
@@ -26,15 +26,7 @@ export class Btns extends Button {
             embed.setDescription(interactionLang.embed.description)
             embed.setFooter(interactionLang.embed.footer.format(member.user.tag))
             embed.setTimestamp()
-            embed.setThumbnail(member.displayAvatarURL())
-            // TODO : Faire une rquest api pour avoir la fiche personnel de l'utilisateur 
-            .addFields(
-                {name : interactionLang.embed.fields.Prénom.name,value: "JeanJack", inline:true},
-                {name : interactionLang.embed.fields.Nom.name,value: "GoldMan", inline:true},
-                {name : interactionLang.embed.fields.Permis.name,value: button.message.embeds[0].fields![2].value, inline:false},
-                {name : interactionLang.embed.fields.Pts.name,value: "12", inline:true}
-            )
-        message.react('✅')
+        message.react('❌')
         await button.update({embeds : [embed],components : []})
     }
 }

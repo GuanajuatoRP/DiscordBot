@@ -78,7 +78,7 @@ export class AdminListCommand extends Command {
                     })
                     }
                     u.roles.add(adminRole!)
-                    appConfig.botConfig.admins.push(u.id)
+                    this.client.admins.push(u.id)
 
                     fs.writeFile(path.join(__dirname, '../../../util/appConfig.json'), JSON.stringify(appConfig), function writeJSON(err) {
                         if (err) return console.log(err);

@@ -47,7 +47,9 @@
                     "Stages" : {"name" : "Stage de conduite Actuel"}
                 }
             },
-            "interaction" : {
+            "button" : {
+                "labelOk" : "Valider le permis",
+                "labelFail" : "Examen raté"
             }
         },
         "getcommandlogs": {
@@ -531,6 +533,14 @@
                     "Pts" : {"name" : "Points sur le nouveau permis"}
                 }
 >>>>>>> Permis embed String in Lang.json v2
+            }
+        },
+        "PermisFail": {
+            "embed": {
+                "color": "RED",
+                "title": "Echèc de l'examen",
+                "description": "Oupss il s'emblerais que l'éxamen a été raté",
+                "footer": "Echèc de l'éxamen de : {0}"
             }
         }
     },
