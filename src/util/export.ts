@@ -1,8 +1,12 @@
-import { MessageEmbed, PermissionOverwrites } from 'discord.js'
+import { CommandInteraction } from 'discord.js';
+import { ButtonInteraction } from 'discord.js';
+import { GuildMember, MessageEmbed, PermissionOverwrites } from 'discord.js'
 import { ChannelTypes } from 'discord.js/typings/enums'
 import fs from 'fs'
 import path from 'path'
 import lang from './language.json'
+import appConf from "../util/appConfig.json"
+import { client } from '..'
 
 //* Permet de save un embed Pour la commande créate embed
 export const saveEmbed = (embed:MessageEmbed) => {
@@ -57,6 +61,7 @@ if (!String.prototype.format) {
     }
 }
 
+//* Autocomplete /inscription
 export enum PermisTypes {
     Probatoire = "Probatoire",
     Définitif = "Définitif",
@@ -64,4 +69,16 @@ export enum PermisTypes {
     Stage_A = "Stage_A",
     Stage_S1 = "Stage_S1",
     Stage_S2 = "Stage_S2"
+}
+
+//* Permet de définir si un GuildMember est admin ou non
+export const IsAdmin = (member: GuildMember, interaction: ButtonInteraction|CommandInteraction) => {
+    if (!member.roles.cache.has(appConf.Roles.ADMIN) || !client.admins.includes(member.id)) {
+        interaction.reply({
+            content: `Il semblerais que tu ne fasse pas partis du staff, tu ne peut donc pas faire ceci`,
+            ephemeral : true
+        })
+        return false
+    }
+    return true
 }

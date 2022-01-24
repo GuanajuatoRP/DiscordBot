@@ -60,14 +60,21 @@ export class InscriptionPermisCommand extends Command {
         const btValider = new MessageActionRow()
             .addComponents(
                 new MessageButton()
-                    .setLabel('Valider le permis')
+                    .setLabel(CommandLang.button.labelOk)
                     .setStyle('SUCCESS')
                     .setCustomId('PermisOk')
+            )
+        const btFail = new MessageActionRow()
+            .addComponents(
+                new MessageButton()
+                    .setLabel(CommandLang.button.labelFail)
+                    .setStyle('DANGER')
+                    .setCustomId('PermisFail')
             )
 
         return interaction.reply({
             embeds : [embed],
-            components : [btValider]
+            components : [btFail,btValider]
         }) 
     }
 
