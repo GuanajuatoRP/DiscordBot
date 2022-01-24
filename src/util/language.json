@@ -40,7 +40,11 @@
                 "footer" : "Inscription de : {0}",
                 "fields" : {
                     "Prénom" : {"name" : "Prénom"},
-                    "Nom" : {"name" : "Nom"}
+                    "Nom" : {"name" : "Nom"},
+                    "Exam" : {"name" : "Examain Souhaiter"},
+                    "Permis" : {"name" : "Permis Actuel"},
+                    "Pts" : {"name" : "Points sur le permis"},
+                    "Stages" : {"name" : "Stage de conduite Actuel"}
                 }
             },
             "interaction" : {
@@ -480,6 +484,16 @@
                     "commandName" : {"name" : "Nom de la commande"},
                     "salon" : {"name" : "Salon d'utilisation"}
                 }
+            }
+        }
+    },
+    "interaction": {
+        "PermisOk": {
+            "embed": {
+                "color": "DARK_GREEN",
+                "title": "Validation du permis",
+                "description": "La ville de guanajuato vous félicite pour votre permis !",
+                "footer": "Validation du permis de : {0}"
             }
         }
     },
