@@ -50,10 +50,10 @@ export class InscriptionPermisCommand extends Command {
             .addFields(
                 {name : CommandLang.embed.fields.Nom.name,value: "JeanJack", inline:true},
                 {name : CommandLang.embed.fields.Prénom.name,value: "GoldMan", inline:true},
-                {name : "Examain Souhaiter ",value: interaction.options.getString('permis')!.toString(), inline:false},
-                {name : "Permis Actuel",value: "Aucun", inline:true},
-                {name : "Points sur le permis",value: "5", inline:true},
-                {name : "Stage de conduite Actuel",value: "B, C, A", inline:true},
+                {name : CommandLang.embed.fields.Exam.name,value: interaction.options.getString('permis')!.toString(), inline:false},
+                {name : CommandLang.embed.fields.Permis.name,value: "Aucun", inline:true},
+                {name : CommandLang.embed.fields.Pts.name,value: "5", inline:true},
+                {name : CommandLang.embed.fields.Stages.name,value: "B, C, A", inline:true},
             )
         
         // TODO : Faire une request api pour validé le permis
