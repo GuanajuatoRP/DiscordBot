@@ -23,10 +23,10 @@ export class Btns extends Button {
             embed.setThumbnail(member.displayAvatarURL())
             // TODO : Faire une rquest api pour avoir la fiche personnel de l'utilisateur 
             .addFields(
-                {name : "Prénom",value: "JeanJack", inline:true},
-                {name : "Nom",value: "GoldMan", inline:true},
-                {name : "Permis Obtenus",value: button.message.embeds[0].fields![2].value, inline:false},
-                {name : "Points sur le nouveau permis",value: "12", inline:true}
+                {name : interactionLang.embed.fields.Prénom.name,value: "JeanJack", inline:true},
+                {name : interactionLang.embed.fields.Nom.name,value: "GoldMan", inline:true},
+                {name : interactionLang.embed.fields.Permis.name,value: button.message.embeds[0].fields![2].value, inline:false},
+                {name : interactionLang.embed.fields.Pts.name,value: "12", inline:true}
             )
         await button.update({embeds : [embed],components : []})
         message.react('✅')
