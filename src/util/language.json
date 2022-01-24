@@ -493,7 +493,13 @@
                 "color": "DARK_GREEN",
                 "title": "Validation du permis",
                 "description": "La ville de guanajuato vous félicite pour votre permis !",
-                "footer": "Validation du permis de : {0}"
+                "footer": "Validation du permis de : {0}",
+                "fields" : {
+                    "Prénom" : {"name" : "Prénom"},
+                    "Nom" : {"name" : "Nom"},
+                    "Permis" : {"name" : "Permis Obtenus"},
+                    "Pts" : {"name" : "Points sur le nouveau permis"}
+                }
             }
         }
     },
