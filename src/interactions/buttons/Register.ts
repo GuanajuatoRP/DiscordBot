@@ -16,13 +16,17 @@ export class RegisterBtn extends Button {
         const member = button.member as GuildMember
         const memberRoles = member.roles as GuildMemberRoleManager
         const RoleInscrit = button.guild!.roles.cache.get(appConf.Roles.INSCRIT) as Role
+        let userExists = false
 
-        // Check if member has role INSCRIT
-        // TODO : call api pour check si l'utilisateur est deja inscrit
-        if (memberRoles.cache.has(appConf.Roles.INSCRIT) == true){
+        // Check if this user is already registred
+        await ApiAuth.UserExist(member.id)
+        .then(() => {
+            userExists = true
+        })
+        if (memberRoles.cache.has(appConf.Roles.INSCRIT) == true || userExists){
             memberRoles.add(RoleInscrit)
             return button.reply({
-                content : 'Visiblement vous êtes déjà inscrit vous ne pouvez pas refaire la commande',
+                content : interactionLang.AlreadyRegistred,
                 ephemeral : true
             })
         }

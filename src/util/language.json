@@ -464,6 +464,7 @@
     "intercation":{
         "button":{
             "register":{
+                "AlreadyRegistred" : "Visiblement vous êtes déjà inscrit vous ne pouvez pas refaire la commande",
                 "embedGoodResponse":{
                     "description":"Salut a toi ! Voici ton boutton d'inscription. Courrage tu y est prèsque"
                 },

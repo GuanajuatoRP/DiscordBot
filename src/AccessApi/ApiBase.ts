@@ -7,7 +7,7 @@ export default class ApiBase {
         if (!this._apiAuth) {
             this._apiAuth = axios.create({
                 baseURL: process.env.API_AUTH_URL as string,
-                timeout: 1000,
+                timeout: 10000,
                 headers: {
                 'X-Custom-Header': 'foobar',
                 'Accept': 'application/json',

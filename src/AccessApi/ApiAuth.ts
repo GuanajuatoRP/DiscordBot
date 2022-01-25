@@ -9,4 +9,8 @@ export default class ApiAuth {
         registerModel.discordId = discordId;
         return await ApiBase.apiAuth.post('/register', registerModel);
     }
+
+    static async UserExist(discordId: string) {
+        return await ApiBase.apiAuth.get('/UserExist/{0}'.format(discordId));
+    }
 }
