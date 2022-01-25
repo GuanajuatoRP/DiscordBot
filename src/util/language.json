@@ -489,7 +489,6 @@
             }
         }
     },
-<<<<<<< Dev
     "intercation":{
         "button":{
             "register":{
@@ -514,33 +513,28 @@
                 "buttonReply2":{
                     "content":"Oupss une erreur est survenue. Contacte un admin pour plus obtenir de l'aide"
                 }
-=======
-    "interaction": {
-        "PermisOk": {
-            "embed": {
-                "color": "DARK_GREEN",
-                "title": "Validation du permis",
-                "description": "La ville de guanajuato vous félicite pour votre permis !",
-<<<<<<< Dev
-                "footer": "Validation du permis de : {0}"
->>>>>>> Permis embed String in Lang.json v1
-=======
-                "footer": "Validation du permis de : {0}",
-                "fields" : {
-                    "Prénom" : {"name" : "Prénom"},
-                    "Nom" : {"name" : "Nom"},
-                    "Permis" : {"name" : "Permis Obtenus"},
-                    "Pts" : {"name" : "Points sur le nouveau permis"}
+            },
+            "PermisOk": {
+                "embed": {
+                    "color": "DARK_GREEN",
+                    "title": "Validation du permis",
+                    "description": "La ville de guanajuato vous félicite pour votre permis !",
+                    "footer": "Validation du permis de : {0}",
+                    "fields" : {
+                        "Prénom" : {"name" : "Prénom"},
+                        "Nom" : {"name" : "Nom"},
+                        "Permis" : {"name" : "Permis Obtenus"},
+                        "Pts" : {"name" : "Points sur le nouveau permis"}
+                    }
                 }
->>>>>>> Permis embed String in Lang.json v2
-            }
-        },
-        "PermisFail": {
-            "embed": {
-                "color": "RED",
-                "title": "Echèc de l'examen",
-                "description": "Oupss il s'emblerais que l'éxamen a été raté",
-                "footer": "Echèc de l'éxamen de : {0}"
+            },
+            "PermisFail": {
+                "embed": {
+                    "color": "RED",
+                    "title": "Echèc de l'examen",
+                    "description": "Oupss il s'emblerais que l'éxamen a été raté",
+                    "footer": "Echèc de l'éxamen de : {0}"
+                }
             }
         }
     },

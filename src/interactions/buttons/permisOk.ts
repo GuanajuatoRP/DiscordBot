@@ -4,7 +4,7 @@ import type { ButtonInteraction, ColorResolvable, GuildMember, Message } from "d
 import {MessageEmbed} from "discord.js"
 import lang from "../../util/language.json"
 import { IsAdmin } from "../../util/export";
-const interactionLang = lang.interaction.PermisOk
+const interactionLang = lang.intercation.button.PermisOk
 // import appConfig from '../../util/appConfig.json'
 
 export class Btns extends Button {

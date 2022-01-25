@@ -4,7 +4,7 @@ import type { ShewenyClient } from "sheweny";
 import type { ButtonInteraction, ColorResolvable, GuildMember, Message } from "discord.js";
 import {MessageEmbed} from "discord.js"
 import lang from "../../util/language.json"
-const interactionLang = lang.interaction.PermisFail
+const interactionLang = lang.intercation.button.PermisFail
 // import appConfig from '../../util/appConfig.json'
 
 export class Btns extends Button {
