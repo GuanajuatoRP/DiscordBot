@@ -7,7 +7,7 @@ import { IsAdmin } from "../../util/export";
 const interactionLang = lang.intercation.button.PermisOk
 // import appConfig from '../../util/appConfig.json'
 
-export class Btns extends Button {
+export class PermisOkBtns extends Button {
     constructor(client: ShewenyClient) {
         super(client, ["PermisOk"]);
     }

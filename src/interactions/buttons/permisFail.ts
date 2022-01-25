@@ -7,7 +7,7 @@ import lang from "../../util/language.json"
 const interactionLang = lang.intercation.button.PermisFail
 // import appConfig from '../../util/appConfig.json'
 
-export class Btns extends Button {
+export class PermisFailBtns extends Button {
     constructor(client: ShewenyClient) {
         super(client, ["PermisFail"]);
     }
