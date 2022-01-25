@@ -26,5 +26,8 @@
         "INSCRIT": "877644017276428343",
         "GMA": "916019762037915748",
         "GMB": "916019914127597648"
+    },
+    "Api":{
+        "RegisterLink": "https://localhost/register/{0}"
     }
 }

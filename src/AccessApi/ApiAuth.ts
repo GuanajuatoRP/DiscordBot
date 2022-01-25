@@ -7,8 +7,6 @@ export default class ApiAuth {
         const registerModel = new RegisterModel();
         registerModel.username = username;
         registerModel.discordId = discordId;
-        console.log(typeof registerModel)
-        console.log(JSON.stringify(registerModel))
         return await ApiBase.apiAuth.post('/register', registerModel);
     }
 }

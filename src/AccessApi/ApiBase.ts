@@ -6,7 +6,7 @@ export default class ApiBase {
     static get apiAuth() {
         if (!this._apiAuth) {
             this._apiAuth = axios.create({
-                baseURL: "http://localhost:49154" as string,
+                baseURL: process.env.API_AUTH_URL as string,
                 timeout: 1000,
                 headers: {
                 'X-Custom-Header': 'foobar',

@@ -23,13 +23,14 @@ export class userMissingPermissions extends Event {
         embed.setAuthor(eventLang.embed.Author)
         embed.fields.push({name: eventLang.embed.fields.commandName.name, value : interaction.commandName, inline: true})
         embed.fields.push({name: eventLang.embed.fields.channel.name, value : interaction.guild!.channels.cache.get(interaction.channelId)!.name, inline: true})
+
         const channel = interaction.guild!.channels.cache.get(appConf.chanels.staff.botLog) as TextChannel
         channel.send({
             embeds : [embed]
         })
+
         return interaction.reply({
             content : eventLang.interaction.content,
-            embeds : [embed],
             ephemeral : true
         })
     }

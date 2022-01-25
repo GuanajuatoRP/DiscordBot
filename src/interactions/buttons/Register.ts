@@ -1,21 +1,17 @@
-
+import { DefaultEmbed, LogsEmbed } from './../../util/export';
 import { Button } from "sheweny"
 import type { ShewenyClient } from "sheweny"
-import { ButtonInteraction, GuildMember, GuildMemberRoleManager} from "discord.js"
+import { ButtonInteraction, GuildMember, GuildMemberRoleManager, MessageActionRow, MessageButton, TextChannel} from "discord.js"
 import appConf from '../../util/appConfig.json'
-
-// import { DefaultEmbed } from "../../util/export";
-// import Lang from '../../util/language.json'
-// const btLang = Lang.commands.register
 import ApiAuth from '../../AccessApi/ApiAuth'
-// import fetch from "node-fetch"
+import lang from "../../util/language.json"
+const interactionLang = lang.intercation.button.register
 export class RegisterBtn extends Button {
     constructor(client: ShewenyClient) {
         super(client, ["Register"]);
     }
 
     async execute(button: ButtonInteraction) {
-        // if the user have 'inscrit' role, is potentialy already registred 
         const member = button.member as GuildMember
         const memberRoles = member.roles as GuildMemberRoleManager
         if (memberRoles.cache.has(appConf.Roles.INSCRIT) == true){
@@ -25,53 +21,51 @@ export class RegisterBtn extends Button {
             })
         }
 
-        // TODO: call api to get new token with user.id
 
         //* axios POST request
-        const {data} = await ApiAuth.register(member.displayName,member.id)
-        console.log(data);
-        // axi.post('http://localhost:49154/register', {username: "Dercraker", discordid: "152125692618735616"})
-        // .then((res) => {
-        // Get token in response
-        // const token = res.data.message as string
-        // const token = res.data.message as string
-        // console.log(token)
-        //  // Create response embed
-        // let embed = DefaultEmbed()
-        // embed.title = btLang.embed.title
-        // embed.color = btLang.embed.color as unknown as number
-        // embed.fields.push({name : btLang.embed.Fields[0].name, value :btLang.embed.Fields[0].value, inline : true})
+        ApiAuth.register(member.displayName,member.id)
+            .then(async (res) => {
+                const member = button.member as GuildMember
+                let embed = DefaultEmbed()
+                    embed.setDescription(interactionLang.embedGoodResponse.description)
 
-        // // Create Link Button with token
-        // const btNewAccount = new MessageActionRow()
-        // .addComponents(
-        //     new MessageButton()
-        //         .setLabel(btLang.bouton.label)
-        //         .setStyle('LINK')
-        //         .setURL('https://localhost/{0}'.format(token))
-        // )
+                const btLink = new MessageActionRow()
+                .addComponents(
+                    new MessageButton()
+                        .setLabel(interactionLang.button.label)
+                        .setStyle('LINK')
+                        .setURL(appConf.Api.RegisterLink.format(res.data.message))
+                )
+                
+                await button.reply({
+                    content:interactionLang.buttonReply.content,
+                    ephemeral : true,
+                })
+                return setTimeout(() => {
+                    member.send({
+                        embeds:[embed],
+                        components:[btLink]
+                    })
+                },2000)
+                
+            })
+            .catch(async (err) => {
 
-        
-        // // Send Ephemral responce after button in channel
-        // button.reply({
-        //     content : btLang.interaction.sendRegister,
-        //     ephemeral : true
-        // })
+                let embed = LogsEmbed(member.displayName,member.id)
+                    embed.setAuthor(interactionLang.embedError.author)
+                    embed.setDescription(interactionLang.embedError.description)
+                    embed.addField(interactionLang.embedError.field.Err.name,err.message)
+                    embed.addField(interactionLang.embedError.field.ErrMess.name,err.response.data.message)
 
-        // // Send Boutton and embed to user DM's
-        // return button.user.send({
-        //     embeds : [embed],
-        //     components : [btNewAccount]
-        // })
-        // })
-        // .catch((err) => {
-        //     console.log(err);
-        // console.log(err.message);
-        // return button.reply({
-        //     content : err.message,
-        //     ephemeral : true
-        // }) 
-        // })
-        // }
+                const logBotChannel = button.guild!.channels.cache.get(appConf.chanels.staff.botLog) as TextChannel
+                await logBotChannel.send({
+                    embeds:[embed]
+                })
+
+                return button.reply({
+                    content : interactionLang.buttonReply2.content,
+                    ephemeral : true
+                }) 
+            })
     }
 }
