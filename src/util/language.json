@@ -461,6 +461,32 @@
             }
         }
     },
+    "intercation":{
+        "button":{
+            "register":{
+                "embedGoodResponse":{
+                    "description":"Salut a toi ! Voici ton boutton d'inscription. Courrage tu y est prèsque"
+                },
+                "button":{
+                    "label": "Lien d'inscription"
+                },
+                "buttonReply":{
+                    "content": "Tu va recevoir par message priver ton liens d'inscription. Attention! Celui-ci contient ton token unique. il est privé alors ne le divulgue pas!"
+                },
+                "embedError":{
+                    "author": "Erreur d'enregistrement",
+                    "description": "Un utilisateur a essayer de s'incrire. Une erreur c'est produite. Voici les informations.",
+                    "field": {
+                        "Err": {"name": "Erreur"},
+                        "ErrMess": {"name": "Message d'erreur"}
+                    }
+                },
+                "buttonReply2":{
+                    "content":"Oupss une erreur est survenue. Contacte un admin pour plus obtenir de l'aide"
+                }
+            }
+        }
+    },
     "api": {
         "isUserOnServer" : {
             "true": "isUserOnServer: {0} result: {1}",
