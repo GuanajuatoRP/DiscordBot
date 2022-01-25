@@ -1,7 +1,7 @@
 import { DefaultEmbed, LogsEmbed } from './../../util/export';
 import { Button } from "sheweny"
 import type { ShewenyClient } from "sheweny"
-import { ButtonInteraction, GuildMember, GuildMemberRoleManager, MessageActionRow, MessageButton, TextChannel} from "discord.js"
+import { ButtonInteraction, GuildMember, GuildMemberRoleManager, MessageActionRow, MessageButton, Role, TextChannel} from "discord.js"
 import appConf from '../../util/appConfig.json'
 import ApiAuth from '../../AccessApi/ApiAuth'
 import lang from "../../util/language.json"
@@ -15,10 +15,12 @@ export class RegisterBtn extends Button {
         // Get Member and this roles
         const member = button.member as GuildMember
         const memberRoles = member.roles as GuildMemberRoleManager
+        const RoleInscrit = button.guild!.roles.cache.get(appConf.Roles.INSCRIT) as Role
 
         // Check if member has role INSCRIT
         // TODO : call api pour check si l'utilisateur est deja inscrit
         if (memberRoles.cache.has(appConf.Roles.INSCRIT) == true){
+            memberRoles.add(RoleInscrit)
             return button.reply({
                 content : 'Visiblement vous êtes déjà inscrit vous ne pouvez pas refaire la commande',
                 ephemeral : true
