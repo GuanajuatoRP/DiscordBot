@@ -23,6 +23,9 @@ export class RegisterBtn extends Button {
         .then(() => {
             userExists = true
         })
+        .catch(() => {
+            userExists = false
+        })
         if (memberRoles.cache.has(appConf.Roles.INSCRIT) == true || userExists){
             memberRoles.add(RoleInscrit)
             return button.reply({
