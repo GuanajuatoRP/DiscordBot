@@ -7,7 +7,7 @@ import lang from "../../util/language.json"
 const interactionLang = lang.intercation.button.PermisFail
 // import appConfig from '../../util/appConfig.json'
 
-export class Btns extends Button {
+export class PermisFailBtns extends Button {
     constructor(client: ShewenyClient) {
         super(client, ["PermisFail"]);
     }
@@ -16,8 +16,11 @@ export class Btns extends Button {
         const message = button.message as Message;
         const member = button.member as GuildMember;
 
-        if (!IsAdmin(member,button)){
-            return null
+        if (!IsAdmin(member)){
+            button.reply({
+                content: `Il semblerais que tu ne fasse pas partis du staff, tu ne peut donc pas faire ceci`,
+                ephemeral : true
+            })
         }
 
         let embed = new MessageEmbed() 

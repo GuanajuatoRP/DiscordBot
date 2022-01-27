@@ -1,5 +1,3 @@
-import { CommandInteraction } from 'discord.js';
-import { ButtonInteraction } from 'discord.js';
 import { GuildMember, MessageEmbed, PermissionOverwrites } from 'discord.js'
 import { ChannelTypes } from 'discord.js/typings/enums'
 import fs from 'fs'
@@ -72,13 +70,21 @@ export enum PermisTypes {
 }
 
 //* Permet de définir si un GuildMember est admin ou non
-export const IsAdmin = (member: GuildMember, interaction: ButtonInteraction|CommandInteraction) => {
-    if (!member.roles.cache.has(appConf.Roles.ADMIN) || !client.admins.includes(member.id)) {
-        interaction.reply({
-            content: `Il semblerais que tu ne fasse pas partis du staff, tu ne peut donc pas faire ceci`,
-            ephemeral : true
-        })
-        return false
+export const IsAdmin = (member: GuildMember) => {
+    // Check if the GuildMember have Admin role or he's id are in admin's id table
+    return(!member.roles.cache.has(appConf.Roles.ADMIN) || !client.admins.includes(member.id))? false : true
+}
+
+//* Permet de déterminer si un GuildMember est concerner par un embed
+//! Ne fonctionne que si il y a "xxx : GuildMember.tag" dans le footer et rien d'autre 
+export const IsEmbedOwner = (member: GuildMember, embed: MessageEmbed) => {
+    const embedMember = embed.footer!.text.split(' : ')[1] as string
+    
+    // if the GuildMember are and admin he can use embed
+    if (IsAdmin(member)){
+        return true 
     }
-    return true
+
+    // Check if the GuildMember tag is in emùbed footer 
+    return (!embedMember.includes(member.user.tag))? false : true 
 }

@@ -3,7 +3,7 @@ import type { ShewenyClient } from "sheweny";
 import type { ButtonInteraction, GuildMember, Role } from "discord.js";
 import appConfig from '../../util/appConfig.json'
 
-export class Btns extends Button {
+export class GetGameRoleBtns extends Button {
     constructor(client: ShewenyClient) {
         super(client, ["GetGameRole"]);
     }

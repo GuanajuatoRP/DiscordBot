@@ -7,7 +7,7 @@ import { IsAdmin } from "../../util/export";
 const interactionLang = lang.intercation.button.PermisOk
 // import appConfig from '../../util/appConfig.json'
 
-export class Btns extends Button {
+export class PermisOkBtns extends Button {
     constructor(client: ShewenyClient) {
         super(client, ["PermisOk"]);
     }
@@ -16,8 +16,11 @@ export class Btns extends Button {
         const message = button.message as Message;
         const member = button.member as GuildMember
 
-        if (!IsAdmin(member,button)){
-            return null
+        if (!IsAdmin(member)){
+            button.reply({
+                content: `Il semblerais que tu ne fasse pas partis du staff, tu ne peut donc pas faire ceci`,
+                ephemeral : true
+            })
         }
 
         let embed = new MessageEmbed() 

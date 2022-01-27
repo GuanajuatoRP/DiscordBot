@@ -46,12 +46,12 @@ export const client = new ShewenyClient({
             directory: "./interactions/buttons", //Button directory
             loadAll: true,
         },
+        selectMenus: {
+            directory: "./interactions/selectMenu",
+            loadAll: true,
+        },
         // inhibitors: {
         //     directory: "./inhibitors",
-        //     loadAll: true,
-        // },
-        // selectMenus: {
-        //     directory: "./interactions/select-menu",
         //     loadAll: true,
         // },
         },

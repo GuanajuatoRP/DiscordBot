@@ -24,6 +24,19 @@
                 "noRead" : "La commande ***{0}*** ne peut pas être lue depuis ce menu"
             }
         },
+        "ventePro": {
+            "description": {
+                "desc": "Permet de crée une procédure professionel de vente de voiture ",
+                "usage": "vente-pro",
+                "exemples": ["vente-pro"]
+            },
+            "SelectMenu" : {
+                "setPlaceholder" : "Choisis une voiture dans la liste"
+            },
+            "interaction":{
+                "content": "Merci de choisir une de vos voiture dans la liste suivante"
+            }
+        },
         "inscriptionPermis": {
             "description": {
                 "desc": "Permet de crée un nouveau formulaire d'inscription au permis ",
@@ -50,6 +63,9 @@
             "button" : {
                 "labelOk" : "Valider le permis",
                 "labelFail" : "Examen raté"
+            },
+            "interaction" : {
+                "wrongName" : "Le permis ***{0}***  n'existe pas"
             }
         },
         "getcommandlogs": {
@@ -528,12 +544,56 @@
                     }
                 }
             },
+            "VenteProCarMenu": {
+                "Vendre":{
+                    "embed": {
+                        "color": "DARK_GREEN",
+                        "title": "Status de la vente : Vendu",
+                        "footer": "Validation du permis de : {0}",
+                        "fields" : {
+                            "Vente" : {"name" : "{0} as vendus une voiture pour","value":"{0}€"}
+                        }
+                    },
+                    "button":{
+                        "cantUse": "Oupss visiblement tu ne peut pas vendre cette voiture"
+                    }
+                },
+                "Cancel":{
+                    "button":{
+                        "cantUse": "Oupss visiblement tu ne peut pas faire cela"
+                    },
+                    "interaction":{
+                        "content":"La demande de vente de voiture a bien été annuler"
+                    }
+                }
+            },
             "PermisFail": {
                 "embed": {
                     "color": "RED",
                     "title": "Echèc de l'examen",
                     "description": "Oupss il s'emblerais que l'éxamen a été raté",
                     "footer": "Echèc de l'éxamen de : {0}"
+                }
+            }
+        },
+        "SelectMenu":{
+            "VenteProCarMenu":{
+                "embed":{
+                    "Author":"Ventre de voiture professionnel",
+                    "title":"Status de la vente : En cours",
+                    "description":"Fiche de vente professionnel d'une voiture",
+                    "color":"PURPLE",
+                    "footer":"Voiture de : {0}",
+                    "fields":{
+                        "stats":{"name": "Stats de la voiture"}
+                    }
+                },
+                "button":{
+                    "sell":"Vendre",
+                    "cancel":"Annuler"
+                },
+                "interaction":{
+                    "content":"Merci d'avoir choisi une voiture"
                 }
             }
         }

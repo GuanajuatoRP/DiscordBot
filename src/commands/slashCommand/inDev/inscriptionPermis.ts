@@ -37,6 +37,9 @@ export class InscriptionPermisCommand extends Command {
     }
     execute(interaction : CommandInteraction) {
         this.client.emit('CommandLog', interaction)
+        if (!Object.values(PermisTypes).map(v => v.toString()).includes(interaction.options.getString('permis')!)){
+            return interaction.reply({content: CommandLang.interaction.wrongName.format(interaction.options.getString('permis')!)})
+        }
 
         const member = interaction.member as GuildMember
         let embed = new MessageEmbed()

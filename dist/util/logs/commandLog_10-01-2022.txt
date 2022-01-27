@@ -1,2 +1,0 @@
-10-01-2022 22:24:57, Command : purge, Option Name : nombre, value : 2, channel : log-bot User : Dercraker, UserID : 152125692618735616
-10-01-2022 23:52:12, Command : purge, Option Name : nombre, value : 30, channel : log-bot User : Dercraker, UserID : 152125692618735616
