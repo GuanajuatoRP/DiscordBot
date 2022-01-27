@@ -2,11 +2,11 @@ import { SelectMenu } from "sheweny";
 import type { ShewenyClient } from "sheweny";
 import { ColorResolvable, GuildMember, MessageActionRow, MessageButton, MessageEmbed, SelectMenuInteraction } from "discord.js";
 import lang from '../../util/language.json'
-const selectMenuLang = lang.intercation.SelectMenu.VenteProCarMenu
+const selectMenuLang = lang.intercation.SelectMenu.VentePersoCarMenu
 
 export class VenteProCarMenuSM extends SelectMenu {
     constructor(client: ShewenyClient) {
-        super(client, ["VenteProCarMenu"]);
+        super(client, ["VentePersoCarMenu"]);
     }
 
     execute(selectMenu: SelectMenuInteraction) {
@@ -36,7 +36,7 @@ export class VenteProCarMenuSM extends SelectMenu {
                 new MessageButton()
                     .setLabel(selectMenuLang.button.sell)
                     .setStyle('SUCCESS')
-                    .setCustomId('VenteProCarMenuVendre')
+                    .setCustomId('VentePersoCarMenuVendre')
             )
 
         selectMenu.update({

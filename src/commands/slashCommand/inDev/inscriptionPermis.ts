@@ -60,24 +60,23 @@ export class InscriptionPermisCommand extends Command {
             )
         
         // TODO : Faire une request api pour validé le permis
-        const btValider = new MessageActionRow()
-            .addComponents(
-                new MessageButton()
-                    .setLabel(CommandLang.button.labelOk)
-                    .setStyle('SUCCESS')
-                    .setCustomId('PermisOk')
-            )
-        const btFail = new MessageActionRow()
+        const BtnsPermis = new MessageActionRow()
             .addComponents(
                 new MessageButton()
                     .setLabel(CommandLang.button.labelFail)
                     .setStyle('DANGER')
                     .setCustomId('PermisFail')
             )
+            .addComponents(
+                new MessageButton()
+                    .setLabel(CommandLang.button.labelOk)
+                    .setStyle('SUCCESS')
+                    .setCustomId('PermisOk')
+            )
 
         return interaction.reply({
             embeds : [embed],
-            components : [btFail,btValider]
+            components : [BtnsPermis]
         }) 
     }
 

@@ -37,6 +37,19 @@
                 "content": "Merci de choisir une de vos voiture dans la liste suivante"
             }
         },
+        "ventePerso": {
+            "description": {
+                "desc": "Permet de crée une procédure de vente entre particulié",
+                "usage": "vente-perso",
+                "exemples": ["vente-perso"]
+            },
+            "SelectMenu" : {
+                "setPlaceholder" : "Choisis une voiture dans la liste"
+            },
+            "interaction":{
+                "content": "Merci de choisir une de vos voiture dans la liste suivante"
+            }
+        },
         "inscriptionPermis": {
             "description": {
                 "desc": "Permet de crée un nouveau formulaire d'inscription au permis ",
@@ -544,12 +557,12 @@
                     }
                 }
             },
-            "VenteProCarMenu": {
+            "VenteProCar": {
                 "Vendre":{
                     "embed": {
                         "color": "DARK_GREEN",
                         "title": "Status de la vente : Vendu",
-                        "footer": "Validation du permis de : {0}",
+                        "footer": "Voiture de : {0}",
                         "fields" : {
                             "Vente" : {"name" : "{0} as vendus une voiture pour","value":"{0}€"}
                         }
@@ -557,14 +570,46 @@
                     "button":{
                         "cantUse": "Oupss visiblement tu ne peut pas vendre cette voiture"
                     }
+                }
+            },
+            "VenteCarCancel": {
+                "button":{
+                    "cantUse": "Oupss visiblement tu ne peut pas faire cela"
                 },
-                "Cancel":{
-                    "button":{
-                        "cantUse": "Oupss visiblement tu ne peut pas faire cela"
-                    },
-                    "interaction":{
-                        "content":"La demande de vente de voiture a bien été annuler"
+                "interaction":{
+                    "content":"La demande de vente de voiture a bien été annuler"
+                }
+            },
+            "VentePersoCar": {
+                "embed": {
+                    "color": "DARK_GREEN",
+                    "title": "Status de la vente : Vendu",
+                    "footer": "Voiture de : {0}",
+                    "fields" : {
+                        "Vente" : {"name" : "{0} as vendus une voiture pour","value":"{0}€"}
                     }
+                },
+                "button":{
+                    "cantUse": "Oupss visiblement tu ne peut pas vendre cette voiture"
+                },
+                "select":{
+                    "placeholder":"Merci de choisir la personne a qui vous voulez vendre la voiture"
+                }
+            },
+            "AchatPersoCar": {
+                "embed": {
+                    "color": "DARK_GREEN",
+                    "description": "Status de la vente : Vendue",
+                    "footer": "Voiture de : {0}",
+                    "fields" : {
+                        "Vente" : {"name" : "{0} as Acheter la voiture pour la somme de","value":"{0}€"}
+                    }
+                },
+                "button":{
+                    "cantUse": "Vous ne pouvez pas acheter cette voiture"
+                },
+                "select":{
+                    "placeholder":"Merci de choisir la personne a qui vous voulez vendre la voiture"
                 }
             },
             "PermisFail": {
@@ -594,6 +639,38 @@
                 },
                 "interaction":{
                     "content":"Merci d'avoir choisi une voiture"
+                }
+            },
+            "VentePersoCarMenu":{
+                "embed":{
+                    "Author":"Ventre de voiture entre particulier",
+                    "title":"Status de la vente : En Attente",
+                    "description":"Fiche de vente particulier d'une voiture",
+                    "color":"PURPLE",
+                    "footer":"Voiture de : {0}",
+                    "fields":{
+                        "stats":{"name": "Stats de la voiture"}
+                    }
+                },
+                "button":{
+                    "sell":"Choisir un acheteur",
+                    "cancel":"Annuler"
+                },
+                "interaction":{
+                    "content":"Merci d'avoir choisi une voiture"
+                }
+            },
+            "AchatPersoCarMenu":{
+                "embed":{
+                    "title":"Status de la vente : En Cours",
+                    "description":"Proposition de vente a : {0}"
+                },
+                "button":{
+                    "sell":"Choisir un acheteur",
+                    "cancel":"Annuler"
+                },
+                "interaction":{
+                    "cantUse":"Vous ne pouvez pas vendre cette voiture"
                 }
             }
         }

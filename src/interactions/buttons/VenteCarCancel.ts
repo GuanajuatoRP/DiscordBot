@@ -4,11 +4,11 @@ import type { ButtonInteraction,  GuildMember, Message } from "discord.js";
 import {MessageEmbed} from "discord.js"
 import { IsEmbedOwner } from "../../util/export";
 import lang from "../../util/language.json"
-const interactionLang = lang.intercation.button.VenteProCarMenu.Cancel
+const interactionLang = lang.intercation.button.VenteCarCancel
 
 export class VenteProCarMenuVendreBtns extends Button {
     constructor(client: ShewenyClient) {
-        super(client, ["VenteProCarMenuCancel"]);
+        super(client, ["VenteCarCancel"]);
     }
 
     async execute(button: ButtonInteraction) {
