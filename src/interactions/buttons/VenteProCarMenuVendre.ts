@@ -3,8 +3,8 @@ import type { ShewenyClient } from "sheweny";
 import type { ButtonInteraction, ColorResolvable, GuildMember, Message } from "discord.js";
 import {MessageEmbed} from "discord.js"
 import lang from "../../util/language.json"
-const interactionLang = lang.intercation.button.VenteProCarMenuVendre
-// import appConfig from '../../util/appConfig.json'
+import { IsEmbedOwner } from "../../util/export";
+const interactionLang = lang.intercation.button.VenteProCarMenu.Vendre
 
 export class VenteProCarMenuVendreBtns extends Button {
     constructor(client: ShewenyClient) {
@@ -12,14 +12,17 @@ export class VenteProCarMenuVendreBtns extends Button {
     }
 
     async execute(button: ButtonInteraction) {
-        const message = button.message as Message;
-        const messageEmbed = message.embeds[0]
+        const message = button.message as Message
+        const messageEmbed = message.embeds[0] as MessageEmbed
         const member = button.member as GuildMember
 
-        // TODO Check si member est l'embed 'owner'
-        // if (!IsAdmin(member,button)){
-        //     return null
-        // }
+        // check if member can user button
+        if (!IsEmbedOwner(member,messageEmbed)){
+            return button.reply({
+                content:interactionLang.button.cantUse,
+                ephemeral:true,
+            })
+        }
 
         let Newembed = new MessageEmbed() 
             .setAuthor(messageEmbed.author!.name)
@@ -36,6 +39,6 @@ export class VenteProCarMenuVendreBtns extends Button {
 
         // TODO Call API Vendre la voiture et faire la transaction
         
-        await button.update({embeds : [Newembed],components : []})
+        return await button.update({embeds : [Newembed],components : []})
     }
 }

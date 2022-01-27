@@ -30,8 +30,11 @@
                 "usage": "vente-pro",
                 "exemples": ["vente-pro"]
             },
-            "interaction" : {
-                "wrongName" : "La commande ***{0}***  n'existe pas"
+            "SelectMenu" : {
+                "setPlaceholder" : "Choisis une voiture dans la liste"
+            },
+            "interaction":{
+                "content": "Merci de choisir une de vos voiture dans la liste suivante"
             }
         },
         "inscriptionPermis": {
@@ -541,13 +544,26 @@
                     }
                 }
             },
-            "VenteProCarMenuVendre": {
-                "embed": {
-                    "color": "DARK_GREEN",
-                    "title": "Status de la vente : Vendu",
-                    "footer": "Validation du permis de : {0}",
-                    "fields" : {
-                        "Vente" : {"name" : "{0} as vendus une voiture pour","value":"{0}€"}
+            "VenteProCarMenu": {
+                "Vendre":{
+                    "embed": {
+                        "color": "DARK_GREEN",
+                        "title": "Status de la vente : Vendu",
+                        "footer": "Validation du permis de : {0}",
+                        "fields" : {
+                            "Vente" : {"name" : "{0} as vendus une voiture pour","value":"{0}€"}
+                        }
+                    },
+                    "button":{
+                        "cantUse": "Oupss visiblement tu ne peut pas vendre cette voiture"
+                    }
+                },
+                "Cancel":{
+                    "button":{
+                        "cantUse": "Oupss visiblement tu ne peut pas faire cela"
+                    },
+                    "interaction":{
+                        "content":"La demande de vente de voiture a bien été annuler"
                     }
                 }
             },
@@ -573,9 +589,12 @@
                     }
                 },
                 "button":{
-                    "label":"Vendre"
+                    "sell":"Vendre",
+                    "cancel":"Annuler"
+                },
+                "interaction":{
+                    "content":"Merci d'avoir choisi une voiture"
                 }
-
             }
         }
     },

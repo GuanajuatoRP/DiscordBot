@@ -16,8 +16,11 @@ export class PermisFailBtns extends Button {
         const message = button.message as Message;
         const member = button.member as GuildMember;
 
-        if (!IsAdmin(member,button)){
-            return null
+        if (!IsAdmin(member)){
+            button.reply({
+                content: `Il semblerais que tu ne fasse pas partis du staff, tu ne peut donc pas faire ceci`,
+                ephemeral : true
+            })
         }
 
         let embed = new MessageEmbed() 

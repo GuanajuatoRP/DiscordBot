@@ -35,10 +35,6 @@ export class VenteProCommand extends Command {
     async execute(interaction : CommandInteraction) {
         this.client.emit('CommandLog', interaction)
 
-        // interaction.reply({
-        //     content : 'Merci de choisir une de vos voiture dans la liste suivante',
-        //     ephemeral:true
-        // })
 
         //TODO : Call API pour Get toutes les voiture de l'utilisateur
 
@@ -46,7 +42,7 @@ export class VenteProCommand extends Command {
             .addComponents(
                 new MessageSelectMenu()
                     .setCustomId('VenteProCarMenu')
-                    .setPlaceholder('Choisis une voiture dans la liste')
+                    .setPlaceholder(CommandLang.SelectMenu.setPlaceholder)
                     .setMaxValues(1)
                     .addOptions([
                         {
@@ -63,8 +59,9 @@ export class VenteProCommand extends Command {
             )
 
         return interaction.reply({
-            content : 'Merci de choisir une de vos voiture dans la liste suivante',
-            components:[carMenu]
+            content : CommandLang.interaction.content,
+            components:[carMenu],
+            ephemeral: true,
         }) 
     }
 }

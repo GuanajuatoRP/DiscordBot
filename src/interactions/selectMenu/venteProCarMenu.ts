@@ -12,8 +12,6 @@ export class VenteProCarMenuSM extends SelectMenu {
     execute(selectMenu: SelectMenuInteraction) {
         const member = selectMenu.member as GuildMember
 
-        // TODO check si member est le responsable de la demande 
-        
         let embed = new MessageEmbed()
             .setAuthor(selectMenuLang.embed.Author)
             .setTitle(selectMenuLang.embed.title)
@@ -26,18 +24,29 @@ export class VenteProCarMenuSM extends SelectMenu {
             .addFields(
                 {name : selectMenuLang.embed.fields.stats.name,value: "xxx", inline:true}
             )
-        
-        const btValider = new MessageActionRow()
+
+        const btnVentePro = new MessageActionRow()
             .addComponents(
                 new MessageButton()
-                    .setLabel(selectMenuLang.button.label)
+                    .setLabel(selectMenuLang.button.cancel)
+                    .setStyle("DANGER")
+                    .setCustomId('VenteProCarMenuCancel')
+            )
+            .addComponents(
+                new MessageButton()
+                    .setLabel(selectMenuLang.button.sell)
                     .setStyle('SUCCESS')
                     .setCustomId('VenteProCarMenuVendre')
             )
-        
+
         selectMenu.update({
+            content:selectMenuLang.interaction.content,
+            components:[]
+        })
+
+        selectMenu.channel!.send({
             embeds:[embed],
-            components:[btValider]
+            components:[btnVentePro]
         })
     }
 }
