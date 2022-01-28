@@ -6,7 +6,7 @@ import lang from "../../util/language.json"
 // import appConfig from '../../util/appConfig.json'
 const interactionLang = lang.intercation.button.AchatPersoCar
 
-export class VenteProCarMenuVendreBtns extends Button {
+export class VentePersoCarAchatBtn extends Button {
     constructor(client: ShewenyClient) {
         super(client, ["VentePersoCarMenuAchat"]);
     }

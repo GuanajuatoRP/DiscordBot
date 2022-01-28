@@ -24,6 +24,39 @@
                 "noRead" : "La commande ***{0}*** ne peut pas être lue depuis ce menu"
             }
         },
+        "immatriculation": {
+            "description": {
+                "desc": "Permet d'immatriculer une nouvelle voiture",
+                "usage": "immatriculation {Voiture} <CustomImmatriculation>",
+                "exemples": ["immatriculation NissanGTR -GO-FAST-", "immatriculation NissanGTR"]
+            },
+            "slashOptions": {
+                "voiture":"Choisi la voiture que tu veux immatriculer",
+                "immatriculation":"Permet de custom l'immatriculation, cela peut engender un coup suplémentaire"
+            },
+            "embed" : {
+                "Author":"Immatriculation de voiture",
+                "color":"DARK_PURPLE",
+                "footer":"Nouvelle immatriculation pour : {0}",
+                "fields" : {
+                    "stats" : {"name" : "voiture stats"},
+                    "immat" : {"name" : "Nouvelle Immatriculation"},
+                    "prix" : {"name" : "Prix"}
+                }
+            },
+            "interaction" : {
+                "wrongName" : "Visiblement la voiture : **{0}** n'est pas dans ton garrage"
+            },
+            "button":{
+                "cancel":"Annuler",
+                "reload":"Nouvelle Immatriculation",
+                "buy":"Payer l'immatriculation"
+            },
+            "export":{
+                "exist":"Cette imatriculation existe déja",
+                "len":"La longeur de cette immatriculation n'est pas correcte"
+            }
+        },
         "ventePro": {
             "description": {
                 "desc": "Permet de crée une procédure professionel de vente de voiture ",
@@ -556,6 +589,26 @@
                         "Pts" : {"name" : "Points sur le nouveau permis"}
                     }
                 }
+            },
+            "ImmatriculationBuy": {
+                "button":{
+                    "cantUse": "Tu ne peut pas faire cela, la voiture ne t'appartiens pas"
+                },
+                "embed":{
+                    "color":"DARK_GREEN",
+                    "description":"La voiture a bien été immatriculer !"
+                }
+            },
+            "ImmatriculationReload": {
+                "button":{
+                    "cantUse": "Tu ne peut pas faire cela, la voiture ne t'appartiens pas"
+                }
+            },
+            "ImmatriculationCancel": {
+                "button":{
+                    "cantUse": "Tu n'est pas a l'origine de cette demmande d'immatriculation, tu ne peut pas l'annuler"
+                },
+                "interraction":"La demmande d'immatriculation a bien été annuler"
             },
             "VenteProCar": {
                 "Vendre":{

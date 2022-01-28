@@ -5,7 +5,7 @@ import lang from '../../util/language.json'
 import { IsEmbedOwner } from "../../util/export";
 const selectMenuLang = lang.intercation.SelectMenu.AchatPersoCarMenu
 
-export class VenteProCarMenuSM extends SelectMenu {
+export class ventePersoCarMenuVendreSM extends SelectMenu {
     constructor(client: ShewenyClient) {
         super(client, ["VentePersoCarMenuVendreUser"]);
     }

@@ -88,3 +88,32 @@ export const IsEmbedOwner = (member: GuildMember, embed: MessageEmbed) => {
     // Check if the GuildMember tag is in emùbed footer 
     return (!embedMember.includes(member.user.tag))? false : true 
 }
+
+export const NewImmatriculation = (immat: string,immatLenght : number) : string => {
+    // Todo Call API get Full ImmatList on server 
+    const immatList = ["00-aaa-00","20-qsd-45"]
+
+    if (immat != "" && immatList.includes(immat)){
+        return lang.commands.immatriculation.export.exist
+    } else if (immat != "" && immat.length != immatLenght) {
+        return lang.commands.immatriculation.export.len
+    }
+
+    if (immat == "") {
+        do {
+            for(let i = 0; i < 2; i++) {
+                immat += Math.floor(Math. random() * (9 + 1))
+            }
+            immat += "-"
+            for(let i = 0; i < 3; i++) {
+                immat += String.fromCharCode(Math.floor(Math. random() * (90 - 65 + 1)) + 65)
+            }
+            immat += "-"
+            for(let i = 0; i < 2; i++) {
+                immat += Math.floor(Math. random() * (9 + 1))
+            }
+        } while (immatList.includes(immat));
+    }
+
+    return immat
+}

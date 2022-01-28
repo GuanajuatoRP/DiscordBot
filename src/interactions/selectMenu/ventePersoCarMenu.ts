@@ -4,7 +4,7 @@ import { ColorResolvable, GuildMember, MessageActionRow, MessageButton, MessageE
 import lang from '../../util/language.json'
 const selectMenuLang = lang.intercation.SelectMenu.VentePersoCarMenu
 
-export class VenteProCarMenuSM extends SelectMenu {
+export class ventePersoCarMenuSM extends SelectMenu {
     constructor(client: ShewenyClient) {
         super(client, ["VentePersoCarMenu"]);
     }

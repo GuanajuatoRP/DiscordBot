@@ -1,17 +1,16 @@
+import { IsEmbedOwner } from './../../util/export';
 import { Button } from "sheweny";
 import type { ShewenyClient } from "sheweny";
-import type { ButtonInteraction,  GuildMember, Message } from "discord.js";
-import {MessageEmbed} from "discord.js"
-import { IsEmbedOwner } from "../../util/export";
+import type { ButtonInteraction, GuildMember, Message, MessageEmbed } from "discord.js";
 import lang from "../../util/language.json"
-const interactionLang = lang.intercation.button.VenteCarCancel
+const interactionLang = lang.intercation.button.ImmatriculationCancel
 
-export class VenteCarCancelBtn extends Button {
+export class ImmatriculationCancelBtn extends Button {
     constructor(client: ShewenyClient) {
-        super(client, ["VenteCarCancel"]);
+        super(client, ["ImmatriculationCancel"]);
     }
 
-    async execute(button: ButtonInteraction) {
+    execute(button: ButtonInteraction) {
         const message = button.message as Message
         const messageEmbed = message.embeds[0] as MessageEmbed
         const member = button.member as GuildMember
@@ -27,7 +26,7 @@ export class VenteCarCancelBtn extends Button {
         message.delete()
 
         return button.reply({
-            content:interactionLang.interaction.content,
+            content:interactionLang.interraction,
             ephemeral : true
         })
     }
