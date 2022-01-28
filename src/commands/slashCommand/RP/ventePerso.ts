@@ -2,15 +2,15 @@ import { Command } from 'sheweny'
 import type { ShewenyClient } from 'sheweny'
 import { CommandInteraction, MessageActionRow, MessageSelectMenu } from 'discord.js'
 import lang from '../../../util/language.json'
-const CommandLang = lang.commands.ventePro
+const CommandLang = lang.commands.ventePerso
 
 
 
-export class VenteProCommand extends Command {
+export class VentePersoCommand extends Command {
     constructor(client: ShewenyClient) {
         super(client, {
-            name: 'vente-pro',
-            // category: '', //* Default category is InDev
+            name: 'vente-perso',
+            category: 'RôlePlay', //* Default category is InDev
             // type: '', //* Default type is SLASH_COMMAND
             description: CommandLang.description.desc,
             usage : CommandLang.description.usage,
@@ -27,7 +27,7 @@ export class VenteProCommand extends Command {
             defaultPermission : true,
             // channel : '', //* Default Channel is GUILD
             // cooldown : , //* Default cooldown set at 2sec
-            adminsOnly : true, //* Default value is false 
+            // adminsOnly : true, //* Default value is false 
             //userPermissions : [],
             //clientPermissions : []
         });
@@ -41,7 +41,7 @@ export class VenteProCommand extends Command {
         const carMenu = new MessageActionRow()
             .addComponents(
                 new MessageSelectMenu()
-                    .setCustomId('VenteProCarMenu')
+                    .setCustomId('VentePersoCarMenu')
                     .setPlaceholder(CommandLang.SelectMenu.setPlaceholder)
                     .setMaxValues(1)
                     .addOptions([
