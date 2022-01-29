@@ -150,7 +150,10 @@ const d = new Date
 export const today = [d.getDate() > 9 ? d.getDate() : `0${d.getDate()}`,d.getMonth()+1 > 9 ? d.getMonth() : `0${d.getMonth()+1}`,d.getFullYear()].join('-')
 export const dformat = today+' '+[d.getHours() > 9 ? d.getHours() : `0${d.getHours()}`,d.getMinutes() > 9 ? d.getMinutes() : `0${d.getMinutes()}`,d.getSeconds() > 9 ? d.getSeconds() : `0${d.getSeconds()}`].join(':');
 
-
+//* Crée une fonction d'attente sleep / wait 
+export const wait = (ms: number) => {
+    return new Promise( resolve => setTimeout(resolve, ms));
+} 
 
 
 
@@ -168,11 +171,12 @@ export const dformat = today+' '+[d.getHours() > 9 ? d.getHours() : `0${d.getHou
 
 export interface BackupData {
     name: string;
+    date: string;
     iconURL?: string;
     iconBase64?: string;
     verificationLevel: VerificationLevel;
     explicitContentFilter: ExplicitContentFilterLevel;
-    defaultMessageNotifications: String;
+    defaultMessageNotifications: number | "ALL_MESSAGES" | "ONLY_MENTIONS";
     afk?: AfkData;
     widget: WidgetData;
     splashURL?: string;
@@ -249,7 +253,8 @@ export interface RoleData {
     name: string;
     color: string;
     hoist: boolean;
-    permissions: number;
+    // permissions: number;
+    permissions: string
     mentionable: boolean;
     position: number;
     isEveryone?: boolean;

@@ -27,3 +27,21 @@
 29-01-2022 16:48:18, Command : test, channel : log-bot User : Dercraker, UserID : 152125692618735616
 29-01-2022 16:48:18, Command : bc, channel : log-bot User : Dercraker, UserID : 152125692618735616
 29-01-2022 16:53:27, Command : bc, channel : log-bot User : Dercraker, UserID : 152125692618735616
+29-01-2022 17:07:10, Command : bci, Option Name : id, value : 5BUE543MR, channel : log-bot User : Dercraker, UserID : 152125692618735616
+29-01-2022 18:16:47, Command : bci, Option Name : id, value : 5BUE543MR, channel : log-bot User : Dercraker, UserID : 152125692618735616
+29-01-2022 18:16:47, Command : bci, Option Name : id, value : sdf, channel : log-bot User : Dercraker, UserID : 152125692618735616
+29-01-2022 18:27:05, Command : getcommandlogs, Option Name : file-date, value : 28-01-2022, channel : log-bot User : Dercraker, UserID : 152125692618735616
+29-01-2022 18:27:05, Command : bci, Option Name : id, value : 5BUE543MR, channel : log-bot User : Dercraker, UserID : 152125692618735616
+29-01-2022 18:28:48, Command : bci, Option Name : id, value : 5BUE543MR, channel : log-bot User : Dercraker, UserID : 152125692618735616
+29-01-2022 18:29:47, Command : bci, Option Name : id, value : 5BUE543MR, channel : log-bot User : Dercraker, UserID : 152125692618735616
+29-01-2022 18:30:08, Command : bci, Option Name : id, value : 5BUE543MR, channel : log-bot User : Dercraker, UserID : 152125692618735616
+29-01-2022 18:32:50, Command : bci, Option Name : id, value : 5BUE543MR, channel : log-bot User : Dercraker, UserID : 152125692618735616
+29-01-2022 18:33:52, Command : bci, Option Name : id, value : 5BUE543MR, channel : log-bot User : Dercraker, UserID : 152125692618735616
+29-01-2022 18:34:31, Command : bci, Option Name : id, value : 5BUE543MR, channel : log-bot User : Dercraker, UserID : 152125692618735616
+29-01-2022 18:38:33, Command : bci, Option Name : id, value : 5BUE543MR, channel : log-bot User : Dercraker, UserID : 152125692618735616
+29-01-2022 18:42:59, Command : bci, Option Name : id, value : 5BUE543MR, channel : log-bot User : Dercraker, UserID : 152125692618735616
+29-01-2022 18:44:45, Command : bci, Option Name : id, value : 5BUE543MR, channel : log-bot User : Dercraker, UserID : 152125692618735616
+29-01-2022 18:45:15, Command : bci, Option Name : id, value : 5BUE543MR, channel : log-bot User : Dercraker, UserID : 152125692618735616
+29-01-2022 18:47:11, Command : bci, Option Name : id, value : 5BUE543MR, channel : annonces User : Dercraker, UserID : 152125692618735616
+29-01-2022 21:36:19, Command : help, channel : annonces User : Dercraker, UserID : 152125692618735616
+29-01-2022 21:37:29, Command : test, channel : annonces User : Dercraker, UserID : 152125692618735616

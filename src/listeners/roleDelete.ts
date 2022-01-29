@@ -1,10 +1,9 @@
 import { Event } from "sheweny"
 import type { ShewenyClient } from "sheweny"
-import type { TextChannel, Role, ColorResolvable } from "discord.js"
+import type { Role, ColorResolvable } from "discord.js"
 import { LogsEmbed } from "../util/export"
 import lang from '../util/language.json'
 const eventLang = lang.event.roleRemove
-import appConf from "../util/appConfig.json"
 
 export class RoleDelete extends Event {
     constructor(client: ShewenyClient) {
@@ -27,8 +26,8 @@ export class RoleDelete extends Event {
         Embed.addFields({ name: eventLang.embed.fields.roleName.name, value: `${role.name}`, inline: true }, { name: eventLang.embed.fields.roleId.name, value: `${role.id}`, inline: true }, )
         Embed.setFooter(`Cette action a été réalisée par {0} -> id : {1}`.format(executor!.username,executor!.id))
 
-        const channel = role.guild.channels.cache.get(appConf.chanels.staff.botLog) as TextChannel
-        channel!.send({ embeds: [Embed] })
+        //! const channel = role.guild.channels.cache.get(appConf.chanels.staff.botLog) as TextChannel
+        //! channel!.send({ embeds: [Embed] })
 
     }
 }

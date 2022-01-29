@@ -1,4 +1,4 @@
-import { BackupData, AfkData, EmojiData, BanData, RoleData, ChannelPermissionsData, CategoryData, TextChannelData, VoiceChannelData, MessageData, ChannelsData, today, RandomId, RootPath, DefaultEmbed } from './../../../util/export'
+import { BackupData, AfkData, EmojiData, BanData, RoleData, ChannelPermissionsData, CategoryData, TextChannelData, VoiceChannelData, MessageData, ChannelsData, RandomId, RootPath, DefaultEmbed, dformat } from './../../../util/export'
 import { Command } from 'sheweny'
 import path from "path"
 import fs from 'fs'
@@ -36,7 +36,7 @@ export class BackUpCreateCommand extends Command {
         });
     }
     async execute(interaction : CommandInteraction) {
-        ! this.client.emit('CommandLog', interaction)
+        //! this.client.emit('CommandLog', interaction)
         interaction.deferReply();
 
         const guild = interaction.guild as Guild
@@ -74,7 +74,7 @@ export class BackUpCreateCommand extends Command {
             role.name = r.name
             role.color = r.color.toString()
             role.hoist = r.hoist
-            role.permissions = Number(r.permissions.bitfield)
+            role.permissions = r.permissions.bitfield.toString()
             role.mentionable = r.mentionable
             role.position = r.position
             rolesTab.push(role)
@@ -177,18 +177,19 @@ export class BackUpCreateCommand extends Command {
         salons.others = otherChannel
 
 
-        backUp.name = "{0} At : {1}".format(guild.name, today)
+        backUp.name = guild.name
+        backUp.date = dformat
         backUp.iconURL = guild.iconURL() as string
-        backUp.iconBase64 = guild.icon as string
+        // backUp.iconBase64 = guild.icon as string
         backUp.verificationLevel = guild.verificationLevel
         backUp.explicitContentFilter = guild.explicitContentFilter
-        backUp.defaultMessageNotifications = guild.defaultMessageNotifications.toString()
+        backUp.defaultMessageNotifications = guild.defaultMessageNotifications
         backUp.afk = afk
         //? backUp.widget = widget
         backUp.splashURL = guild.splashURL() as string
-        backUp.splashBase64 = guild.splash as string
+        // backUp.splashBase64 = guild.splash as string
         backUp.bannerURL = guild.bannerURL() as string
-        backUp.bannerBase64 = guild.banner as string
+        // backUp.bannerBase64 = guild.banner as string
         backUp.createdTimestamp = guild.createdTimestamp
         backUp.guildID = guild.id
         backUp.id = RandomId(9)

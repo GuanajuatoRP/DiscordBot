@@ -42,6 +42,24 @@
                 }
             }
         },
+        "backUpLoad": {
+            "description": {
+                "desc": "Loading d'une backup complete du serveur",
+                "usage": "backUpLoad",
+                "exemples": ["backup-load"]
+            },
+            "embed" : {
+                "Author":"",
+                "Title":"Creation d'une nouvelle BackUp",
+                "color":"DARK_GREEN",
+                "footer":"Nouvelle immatriculation pour : {0}",
+                "fields" : {
+                    "name" : {"name" : "Name"},
+                    "Id" : {"name" : "ID"},
+                    "Usage" : {"name" : "Usages"}
+                }
+            }
+        },
         "immatriculation": {
             "description": {
                 "desc": "Permet d'immatriculer une nouvelle voiture",
