@@ -1,6 +1,7 @@
 import { Command } from 'sheweny'
 import type { ShewenyClient } from 'sheweny'
 import { CommandInteraction, } from 'discord.js'
+import { RandomId } from '../../../util/export';
 // import lang from '../../../util/language.json'
 // const CommandLang = lang.commands.test
 
@@ -35,11 +36,11 @@ export class TestCommand extends Command {
     execute(interaction : CommandInteraction) {
         this.client.emit('CommandLog', interaction)
 
-        
+        console.log(RandomId(9))
 
 
         return interaction.reply({
-            // embeds:[embed]
+            content:'aa'
         }) 
     }
 

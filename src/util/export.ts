@@ -129,7 +129,11 @@ export const RandomId = (idLen: Number) : string => {
         result = ""
 
         for(let i = 0; i < idLen; i++) {
-            result += String.fromCharCode(Math.floor(Math. random() * (126 - 33 + 1)) + 33)
+            let randomNumber : number
+            do {
+                randomNumber = Math.random() * (90 - 48 + 1) + 48
+            } while (randomNumber < 65 && randomNumber > 58);
+            result += String.fromCharCode(Math.floor(randomNumber))
         }
     } while (appConf.Config.backupIds.includes(result))
 

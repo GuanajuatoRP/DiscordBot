@@ -18,3 +18,12 @@
 29-01-2022 02:10:42, Command : test, channel : log-bot User : Dercraker, UserID : 152125692618735616
 29-01-2022 02:10:54, Command : test, channel : log-bot User : Dercraker, UserID : 152125692618735616
 29-01-2022 02:11:22, Command : test, channel : log-bot User : Dercraker, UserID : 152125692618735616
+29-01-2022 16:17:04, Command : bc, channel : log-bot User : Dercraker, UserID : 152125692618735616
+29-01-2022 16:25:56, Command : bc, channel : log-bot User : Dercraker, UserID : 152125692618735616
+29-01-2022 16:31:41, Command : bc, channel : log-bot User : Dercraker, UserID : 152125692618735616
+29-01-2022 16:33:14, Command : test, channel : log-bot User : Dercraker, UserID : 152125692618735616
+29-01-2022 16:34:17, Command : test, channel : log-bot User : Dercraker, UserID : 152125692618735616
+29-01-2022 16:48:18, Command : test, channel : log-bot User : Dercraker, UserID : 152125692618735616
+29-01-2022 16:48:18, Command : test, channel : log-bot User : Dercraker, UserID : 152125692618735616
+29-01-2022 16:48:18, Command : bc, channel : log-bot User : Dercraker, UserID : 152125692618735616
+29-01-2022 16:53:27, Command : bc, channel : log-bot User : Dercraker, UserID : 152125692618735616

@@ -24,37 +24,22 @@
                 "noRead" : "La commande ***{0}*** ne peut pas être lue depuis ce menu"
             }
         },
-        "backupcreate": {
+        "backUpCreate": {
             "description": {
-                "desc": "Permet d'immatriculer une nouvelle voiture",
-                "usage": "immatriculation {Voiture} <CustomImmatriculation>",
-                "exemples": ["immatriculation NissanGTR -GO-FAST-", "immatriculation NissanGTR"]
-            },
-            "slashOptions": {
-                "voiture":"Choisi la voiture que tu veux immatriculer",
-                "immatriculation":"Permet de custom l'immatriculation, cela peut engender un coup suplémentaire"
+                "desc": "Creation d'une backup complete du serveur",
+                "usage": "backUpCreate",
+                "exemples": ["backUpCreate"]
             },
             "embed" : {
-                "Author":"Immatriculation de voiture",
-                "color":"DARK_PURPLE",
+                "Author":"",
+                "Title":"Creation d'une nouvelle BackUp",
+                "color":"DARK_GREEN",
                 "footer":"Nouvelle immatriculation pour : {0}",
                 "fields" : {
-                    "stats" : {"name" : "voiture stats"},
-                    "immat" : {"name" : "Nouvelle Immatriculation"},
-                    "prix" : {"name" : "Prix"}
+                    "name" : {"name" : "Name"},
+                    "Id" : {"name" : "ID"},
+                    "Usage" : {"name" : "Usages"}
                 }
-            },
-            "interaction" : {
-                "wrongName" : "Visiblement la voiture : **{0}** n'est pas dans ton garrage"
-            },
-            "button":{
-                "cancel":"Annuler",
-                "reload":"Nouvelle Immatriculation",
-                "buy":"Payer l'immatriculation"
-            },
-            "export":{
-                "exist":"Cette imatriculation existe déja",
-                "len":"La longeur de cette immatriculation n'est pas correcte"
             }
         },
         "immatriculation": {
