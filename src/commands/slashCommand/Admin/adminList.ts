@@ -46,7 +46,7 @@ export class AdminListCommand extends Command {
     execute(interaction : CommandInteraction) {
         this.client.emit('CommandLog', interaction as CommandInteraction)
 
-        if (interaction.member.user.id !== appConfig.botConfig.dercrakerId){
+        if (interaction.member.user.id !== appConfig.Config.dercrakerId){
             return interaction.reply({
                 content : cmdLang.interaction.notOwnerError,
                 ephemeral : true
@@ -56,7 +56,7 @@ export class AdminListCommand extends Command {
         let adminList : Array<any> = new Array<any>()
         const adminRole = interaction.guild!.roles.cache.get(appConfig.Roles.ADMIN);
         if (interaction.options.getString('add') == null && interaction.options.getString('remove') == null){
-            const adminRoleList = interaction.guild!.roles.cache.get(appConfig.Roles.ADMIN)!.members.filter(u => appConfig.botConfig.admins.includes(u.id))
+            const adminRoleList = interaction.guild!.roles.cache.get(appConfig.Roles.ADMIN)!.members.filter(u => appConfig.Config.admins.includes(u.id))
 
             adminRoleList.forEach(u => {
                 adminList.push(u.nickname == null ? u.user.username : u.nickname)
@@ -71,7 +71,7 @@ export class AdminListCommand extends Command {
         } else if (interaction.options.getString('add') != null && interaction.options.getString('remove') == null){
             interaction.guild!.members.cache.forEach(u => {
                 if (u.user.username === interaction.options.getString('add') || u.nickname === interaction.options.getString('add')){
-                    if (u.id === appConfig.botConfig.dercrakerId){
+                    if (u.id === appConfig.Config.dercrakerId){
                         return interaction.reply({
                             content : cmdLang.interaction.notManagableUser,
                             ephemeral: true
@@ -92,13 +92,13 @@ export class AdminListCommand extends Command {
             })
         } else if (interaction.options.getString('add') == null && interaction.options.getString('remove') != null){
             interaction.guild!.roles.cache.get(appConfig.Roles.ADMIN)!.members.forEach(u => {
-                if (appConfig.botConfig.admins.includes(u.id) && u.user.username === interaction.options.getString('remove') || u.nickname === interaction.options.getString('remove')){
-                    if (u.id === appConfig.botConfig.dercrakerId){
+                if (appConfig.Config.admins.includes(u.id) && u.user.username === interaction.options.getString('remove') || u.nickname === interaction.options.getString('remove')){
+                    if (u.id === appConfig.Config.dercrakerId){
                         return interaction.reply({content : cmdLang.interaction.notManagableUser,
                         ephemeral : true})
                     }
                     u.roles.remove(adminRole!)
-                    appConfig.botConfig.admins = appConfig.botConfig.admins.filter(id => id !== u.id);
+                    appConfig.Config.admins = appConfig.Config.admins.filter(id => id !== u.id);
 
                     fs.writeFile(path.join(__dirname, '../../../util/appConfig.json'), JSON.stringify(appConfig), function writeJSON(err) {
                         if (err) return console.log(err);
@@ -123,7 +123,7 @@ export class AdminListCommand extends Command {
     
         if (focusedOption.name === "add") {
             interaction.guild!.members.cache.forEach(user => {
-                if (!user.roles.cache.map(r => r.id).includes(appConfig.Roles.ADMIN) && !choices.includes(user.user.username) && user.id != appConfig.botConfig.dercrakerId){
+                if (!user.roles.cache.map(r => r.id).includes(appConfig.Roles.ADMIN) && !choices.includes(user.user.username) && user.id != appConfig.Config.dercrakerId){
                     choices.push(user.nickname == null ? user.user.username : user.nickname)
                 }
             });
@@ -131,7 +131,7 @@ export class AdminListCommand extends Command {
     
         if (focusedOption.name === "remove") {
             interaction.guild!.members.cache.forEach(user => {
-                if (user.roles.cache.map(r => r.id).includes(appConfig.Roles.ADMIN) && !choices.includes(user.user.username) && user.id != appConfig.botConfig.dercrakerId){
+                if (user.roles.cache.map(r => r.id).includes(appConfig.Roles.ADMIN) && !choices.includes(user.user.username) && user.id != appConfig.Config.dercrakerId){
                     choices.push(user.nickname == null ? user.user.username : user.nickname)
                 }
             });

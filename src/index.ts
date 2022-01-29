@@ -3,6 +3,7 @@ import appConfig from "./util/appConfig.json"
 import lang from './util/language.json'
 import dotenv from 'dotenv'
 import {app} from './Api/api'
+
 // import express from 'express';
 // import { TextChannel } from "discord.js";
 // import { userValidateModel } from "./Api/Model/UserValidatedModel";
@@ -11,7 +12,7 @@ dotenv.config();
 
 export const client = new ShewenyClient({
     intents: 32767,
-    admins: appConfig.botConfig.admins, // Admins perms pour le bot
+    admins: appConfig.Config.admins, // Admins perms pour le bot
     mode: 'development', //mode de lancement pour l'app
     presence: { //status du bot 
         status: "online",
@@ -25,7 +26,7 @@ export const client = new ShewenyClient({
         commands: {
             directory: "./commands", // command directory
             loadAll: true,
-            guildId: appConfig.botConfig.guildid,
+            guildId: appConfig.Config.guildids,
             applicationPermissions: false, //If the permissions for app commands must be required
             autoRegisterApplicationCommands: true, // Register application commands
             default : { // set default params for all commands

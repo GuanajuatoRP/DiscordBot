@@ -1,3 +1,4 @@
+import { ExplicitContentFilterLevel, MessageAttachment, MessageComponent, MessageType, Snowflake, Sticker, VerificationLevel } from 'discord.js';
 import { GuildMember, MessageEmbed, PermissionOverwrites } from 'discord.js'
 import { ChannelTypes } from 'discord.js/typings/enums'
 import fs from 'fs'
@@ -5,6 +6,8 @@ import path from 'path'
 import lang from './language.json'
 import appConf from "../util/appConfig.json"
 import { client } from '..'
+
+export const RootPath = path.resolve(path.join(__dirname,'../../'))
 
 //* Permet de save un embed Pour la commande créate embed
 export const saveEmbed = (embed:MessageEmbed) => {
@@ -89,6 +92,7 @@ export const IsEmbedOwner = (member: GuildMember, embed: MessageEmbed) => {
     return (!embedMember.includes(member.user.tag))? false : true 
 }
 
+//* Crée une nouvelle immatriculation
 export const NewImmatriculation = (immat: string,immatLenght : number) : string => {
     // Todo Call API get Full ImmatList on server 
     const immatList = ["00-aaa-00","20-qsd-45"]
@@ -116,4 +120,137 @@ export const NewImmatriculation = (immat: string,immatLenght : number) : string 
     }
 
     return immat
+}
+
+//* Crée un nouvel Id random pour les backup
+export const RandomId = (idLen: Number) : string => {
+    let result : string
+    do {
+        result = ""
+
+        for(let i = 0; i < idLen; i++) {
+            result += String.fromCharCode(Math.floor(Math. random() * (126 - 33 + 1)) + 33)
+        }
+    } while (appConf.Config.backupIds.includes(result))
+
+    appConf.Config.backupIds.push(result)
+    fs.writeFile(path.join(__dirname, '../util/appConfig.json'), JSON.stringify(appConf), function writeJSON(err) {
+        if (err) return console.log(err);
+    })
+
+    return result
+}
+
+//* Défini la date sous deux format Date Simple et Date + heur
+const d = new Date
+export const today = [d.getDate() > 9 ? d.getDate() : `0${d.getDate()}`,d.getMonth()+1 > 9 ? d.getMonth() : `0${d.getMonth()+1}`,d.getFullYear()].join('-')
+export const dformat = today+' '+[d.getHours() > 9 ? d.getHours() : `0${d.getHours()}`,d.getMinutes() > 9 ? d.getMinutes() : `0${d.getMinutes()}`,d.getSeconds() > 9 ? d.getSeconds() : `0${d.getSeconds()}`].join(':');
+
+
+
+
+
+
+
+
+
+
+
+//* BACKUP CLASS 
+//* BACKUP CLASS 
+//* BACKUP CLASS 
+//* BACKUP CLASS
+
+
+export interface BackupData {
+    name: string;
+    iconURL?: string;
+    iconBase64?: string;
+    verificationLevel: VerificationLevel;
+    explicitContentFilter: ExplicitContentFilterLevel;
+    defaultMessageNotifications: String;
+    afk?: AfkData;
+    widget: WidgetData;
+    splashURL?: string;
+    splashBase64?: string;
+    bannerURL?: string;
+    bannerBase64?: string;
+    channels: ChannelsData;
+    roles: RoleData[];
+    bans: BanData[];
+    emojis: EmojiData[];
+    createdTimestamp: number;
+    guildID: string;
+    id: string;
+}
+export interface AfkData {
+    name: string;
+    timeout: number;
+}
+export interface BanData {
+    id: Snowflake;
+    reason: string;
+}
+export interface ChannelsData {
+    categories: CategoryData[];
+    others: Array<TextChannelData | VoiceChannelData >;
+}
+export interface CategoryData {
+    name: string;
+    permissions: ChannelPermissionsData[];
+    children?: Array<TextChannelData | VoiceChannelData>;
+}
+export interface TextChannelData extends BaseChannelData {
+    nsfw: boolean
+    parent?: string
+    topic?: string
+    messages: MessageData[]
+}
+export interface MessageData {
+    authorId: string
+    type: MessageType
+    avatar?: string
+    avatarURL?: string
+    content?: string
+    embeds?: MessageEmbed[]
+    components?: MessageComponent[]
+    attachments?: MessageAttachment[]
+    stickers?: Sticker[]
+    pinned?: boolean
+    editedTimestamp?:number
+}
+export interface VoiceChannelData extends BaseChannelData {
+    bitrate: number
+    userLimit: number
+}
+export interface BaseChannelData {
+    type: string;
+    name: string;
+    position: number
+    rawPosition: number
+    parent?: string;
+    permissions: ChannelPermissionsData[];
+}
+export interface ChannelPermissionsData {
+    roleName: string;
+    allow: number;
+    deny: number;
+}
+export interface EmojiData {
+    name: string;
+    url?: string;
+    base64?: string;
+}
+export interface RoleData {
+    name: string;
+    color: string;
+    hoist: boolean;
+    permissions: number;
+    mentionable: boolean;
+    position: number;
+    isEveryone?: boolean;
+}
+export interface WidgetData {
+    enabled: boolean;
+    channel?: string;
 }

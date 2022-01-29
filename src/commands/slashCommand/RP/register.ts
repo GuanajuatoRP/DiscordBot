@@ -1,4 +1,4 @@
-import { DefaultEmbed } from './../../../util/export';
+import { DefaultEmbed } from '../../../util/export';
 import { Command } from 'sheweny'
 import type { ShewenyClient } from 'sheweny'
 import { CommandInteraction, MessageActionRow, MessageButton } from 'discord.js'

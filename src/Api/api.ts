@@ -12,7 +12,7 @@ app.use(express.json());
 
 // Check if the user with {{userId}}
 app.get("/isUserOnServer/:userId", async (req: express.Request, res: express.Response) => {
-    const guild = await client.guilds.fetch(appConf.botConfig.guildid);
+    const guild = await client.guilds.fetch(appConf.Config.guildid);
     let result = false;
     await guild.members.fetch(req.params.userId)
     .then((user) => {
@@ -27,7 +27,7 @@ app.get("/isUserOnServer/:userId", async (req: express.Request, res: express.Res
     res.send(result);
 });
 app.post("/test", async (req: express.Request, res: express.Response) => {
-    const guild = await client.guilds.fetch(appConf.botConfig.guildid);
+    const guild = await client.guilds.fetch(appConf.Config.guildid);
     const channel = await guild.channels.cache.get('902244087258828872') as TextChannel;
     
     channel.send(req.body.message);
@@ -41,7 +41,7 @@ app.post("/uservalidated", async (req: express.Request, res: express.Response) =
 
     
     // get guild
-    const guild = await client.guilds.fetch(appConf.botConfig.guildid) as Guild
+    const guild = await client.guilds.fetch(appConf.Config.guildid) as Guild
 
     // set new role
     const member = guild.members.cache.get(user.userId) as GuildMember 

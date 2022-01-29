@@ -69,6 +69,8 @@ export class GetChannelCommand extends Command {
         
         channlesIds.forEach(id => {
             const channel = interaction.guild!.channels.cache.filter(c => c.id == id)
+            console.log("{0} : type {1}".format(channel.first()!.name, channel.first()!.type));
+            
             switch (channel!.first()!.type) {
                 case 'GUILD_TEXT':
                     let salon = new ChannelClass()
@@ -80,7 +82,6 @@ export class GetChannelCommand extends Command {
                     salon.channelInfo.topic = textChannel.type
                     salon.channelInfo.permissionOverwrites = textChannel!.permissionOverwrites.cache.toJSON() as Array<PermissionOverwrites>
                     salon.channelInfo.position = textChannel.position + 1
-                    console.log(salon.name+" "+salon.channelInfo.position);
                     
                     
                     textChannel.messages.fetch()

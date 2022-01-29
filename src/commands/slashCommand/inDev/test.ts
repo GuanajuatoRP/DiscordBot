@@ -1,6 +1,6 @@
 import { Command } from 'sheweny'
 import type { ShewenyClient } from 'sheweny'
-import type { CommandInteraction } from 'discord.js'
+import { CommandInteraction, } from 'discord.js'
 // import lang from '../../../util/language.json'
 // const CommandLang = lang.commands.test
 
@@ -17,12 +17,12 @@ export class TestCommand extends Command {
             examples : 'CommandLang.description.exemples',
             options : [
                 // {
-                    // type : 'STRING',
-                    // name: 'commande',
-                    // description: CommandLang,
-                    // autocomplete : false,
-                    // required : false,
-                    //}
+                //     type : 'CHANNEL',
+                //     name: 'option',
+                //     description: 'CommandLang',
+                //     autocomplete : false,
+                //     required : false,
+                //     }
             ],
             defaultPermission : true,
             // channel : '', //* Default Channel is GUILD
@@ -35,11 +35,12 @@ export class TestCommand extends Command {
     execute(interaction : CommandInteraction) {
         this.client.emit('CommandLog', interaction)
 
-        this.client.collections.commands.get('help')!.execute(interaction)
+        
 
-        // return interaction.reply({
-        //     content : 'test'
-        // }) 
+
+        return interaction.reply({
+            // embeds:[embed]
+        }) 
     }
 
 //     onAutocomplete(interaction: AutocompleteInteraction) {

@@ -1,0 +1,2 @@
+28-01-2022 01:32:37, Command : adminhelp, channel : général User : Dercraker, UserID : 152125692618735616
+28-01-2022 01:33:08, Command : adminhelp, channel : log-bot User : Dercraker, UserID : 152125692618735616
