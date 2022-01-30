@@ -26,6 +26,7 @@ export class RoleDelete extends Event {
         Embed.addFields({ name: eventLang.embed.fields.roleName.name, value: `${role.name}`, inline: true }, { name: eventLang.embed.fields.roleId.name, value: `${role.id}`, inline: true }, )
         Embed.setFooter(`Cette action a été réalisée par {0} -> id : {1}`.format(executor!.username,executor!.id))
 
+        this.client.on('',)
         //! const channel = role.guild.channels.cache.get(appConf.chanels.staff.botLog) as TextChannel
         //! channel!.send({ embeds: [Embed] })
 

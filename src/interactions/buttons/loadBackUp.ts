@@ -1,6 +1,6 @@
 import { Button } from "sheweny";
 import type { ShewenyClient } from "sheweny";
-import type { ButtonInteraction, Guild } from "discord.js";
+import type { ButtonInteraction, ColorResolvable, Guild } from "discord.js";
 import { BackupData, RootPath, wait } from "../../util/export";
 import fs from 'fs'
 import path from 'path'
@@ -100,6 +100,26 @@ export class LoadBackUpBtn extends Button {
         }
 
 
-
+        // Setup Roles
+        bc.roles.forEach(r => {
+            // Role @everyone
+            if (r.isEveryone){
+                guild.roles.cache.get(guild.id)!.edit({
+                    name: r.name,
+                    color: r.color as ColorResolvable,
+                    permissions: BigInt(r.permissions),
+                    mentionable: r.mentionable
+                });
+            } else {
+                // Any Role
+                guild.roles.create({
+                    name: r.name,
+                    color: r.color as ColorResolvable,
+                    hoist: r.hoist,
+                    permissions: BigInt(r.permissions),
+                    mentionable: r.mentionable
+                });
+            }
+        })
     }
 }

@@ -72,7 +72,7 @@ export class BackUpCreateCommand extends Command {
         guild.roles.cache.forEach(r => {
             let role = {} as RoleData
             role.name = r.name
-            role.color = r.color.toString()
+            role.color = r.hexColor
             role.hoist = r.hoist
             role.permissions = r.permissions.bitfield.toString()
             role.mentionable = r.mentionable
