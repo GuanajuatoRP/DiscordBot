@@ -69,14 +69,16 @@ export class BackUpCreateCommand extends Command {
         })
 
         let rolesTab = [] as Array<RoleData>
-        guild.roles.cache.forEach(r => {
+        let roleList = guild.roles.cache.filter(r => !r.managed).toJSON()
+        roleList = roleList.sort((a,b) => a.position < b.position? 1:-1)
+        roleList.forEach(r => {
             let role = {} as RoleData
             role.name = r.name
             role.color = r.hexColor
             role.hoist = r.hoist
             role.permissions = r.permissions.bitfield.toString()
             role.mentionable = r.mentionable
-            role.position = r.position
+            role.position = r.position +2
             rolesTab.push(role)
         })
 
@@ -89,8 +91,8 @@ export class BackUpCreateCommand extends Command {
             let channelPermissions = {} as ChannelPermissionsData
             c.permissionOverwrites.cache.each(p => {
                 channelPermissions.roleName = guild.roles.cache.get(p.id)!.name as string
-                channelPermissions.allow = Number(p.allow.toJSON())
-                channelPermissions.deny = Number(p.deny.toJSON())
+                channelPermissions.allow = p.allow.bitfield.toString()
+                channelPermissions.deny = p.deny.bitfield.toString()
                 channelPermissionsTab.push(channelPermissions)
             })
             let categoryData = {} as CategoryData
@@ -110,8 +112,8 @@ export class BackUpCreateCommand extends Command {
             c.permissionOverwrites.cache.each(p => {
                 let perm = {} as ChannelPermissionsData
                 perm.roleName = guild.roles.cache.get(p.id)!.name as string
-                perm.allow = Number(p.allow)
-                perm.deny = Number(p.deny)
+                perm.allow = p.allow.bitfield.toString()
+                perm.deny = p.deny.bitfield.toString()
                 salonpermissionTab.push(perm)
             })
 

@@ -1,6 +1,7 @@
 import { Command } from 'sheweny'
 import type { ShewenyClient } from 'sheweny'
-import { CommandInteraction, } from 'discord.js'
+import { CommandInteraction, Guild, } from 'discord.js'
+import { CategoryData, ChannelPermissionsData } from '../../../util/export';
 // import lang from '../../../util/language.json'
 // const CommandLang = lang.commands.test
 
@@ -32,10 +33,37 @@ export class TestCommand extends Command {
             //clientPermissions : []
         });
     }
-    execute(interaction : CommandInteraction) {
+    async execute(interaction : CommandInteraction) {
         // this.client.emit('CommandLog', interaction)
+        const guild = interaction.guild as Guild
+        const ChannelList = await guild.channels.fetch()
+        const catChannels = ChannelList.filter(c => c.type == "GUILD_CATEGORY")
+        let channelPermissionsTab = [] as Array<ChannelPermissionsData>
+        let categoryDataTab = [] as Array<CategoryData>
+
+        catChannels.forEach((c) => {
+            let channelPermissions = {} as ChannelPermissionsData
+            c.permissionOverwrites.cache.each(p => {
+                channelPermissions.roleName = guild.roles.cache.get(p.id)!.name as string
+                channelPermissions.allow = p.allow.bitfield.toString()
+                channelPermissions.deny = p.deny.bitfield.toString()
+                channelPermissionsTab.push(channelPermissions)
+            })
+            let categoryData = {} as CategoryData
+            categoryData.name = c.name
+            categoryData.permissions = channelPermissionsTab
+            categoryDataTab.push(categoryData)
+            if (c.name = 'ACCEUIL'){
+                let po = c.permissionOverwrites.cache.toJSON()
+                console.log(c.permissionOverwrites.cache.toJSON());
+                
+            }
+        })
 
 
+        // console.log(categoryDataTab.map(c => c.permissions));
+        
+        
         return interaction.reply({
             content:'aa'
         }) 

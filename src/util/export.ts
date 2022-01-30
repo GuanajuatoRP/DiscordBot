@@ -1,4 +1,4 @@
-import { ExplicitContentFilterLevel, MessageAttachment, MessageComponent, MessageType, Snowflake, Sticker, VerificationLevel } from 'discord.js';
+import { ExplicitContentFilterLevel, Guild, MessageAttachment, MessageComponent, MessageType, Snowflake, Sticker, VerificationLevel } from 'discord.js';
 import { GuildMember, MessageEmbed, PermissionOverwrites } from 'discord.js'
 import { ChannelTypes } from 'discord.js/typings/enums'
 import fs from 'fs'
@@ -61,6 +61,7 @@ if (!String.prototype.format) {
     })
     }
 }
+
 
 //* Autocomplete /inscription
 export enum PermisTypes {
@@ -155,11 +156,13 @@ export const wait = (ms: number) => {
     return new Promise( resolve => setTimeout(resolve, ms));
 } 
 
-
-
-
-
-
+//* Permet d'indiquer si une backup est en cours
+declare module "sheweny" {
+    interface ShewenyClient {
+        activeBackup : Set<string>;
+    }
+}
+export const fromBackup = (guild: Guild) :boolean => client.activeBackup.has(guild.id)? true : false;
 
 
 
@@ -241,8 +244,8 @@ export interface BaseChannelData {
 }
 export interface ChannelPermissionsData {
     roleName: string;
-    allow: number;
-    deny: number;
+    allow: string;
+    deny: string;
 }
 export interface EmojiData {
     name: string;

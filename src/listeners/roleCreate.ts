@@ -1,3 +1,4 @@
+import { fromBackup } from './../util/export';
 import { Event } from "sheweny"
 import type { ShewenyClient } from "sheweny"
 import type { TextChannel, Role, ColorResolvable } from "discord.js"
@@ -15,6 +16,9 @@ export class RoleCreate extends Event {
     }
 
     async execute(role : Role) {
+        if (fromBackup(role.guild)) return null
+
+
         const auditLogs = await role.guild.fetchAuditLogs({
             limit: 1,
             type: 'ROLE_CREATE'

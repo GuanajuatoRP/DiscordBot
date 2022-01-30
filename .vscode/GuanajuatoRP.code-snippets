@@ -36,6 +36,7 @@
             "    }",
             "",
             "    execute($4) {",
+            "    if (fromBackup(role.guild)) return null",
             "        console.log('EVENT');",
             "    }",
             "}"

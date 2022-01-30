@@ -1,3 +1,4 @@
+import { fromBackup } from './../util/export';
 import { Event } from "sheweny"
 import type { ShewenyClient } from "sheweny"
 import type { Role, ColorResolvable } from "discord.js"
@@ -14,6 +15,8 @@ export class RoleDelete extends Event {
     }
 
     async execute(role : Role) {
+        if (fromBackup(role.guild)) return null
+
         const auditLogs = await role.guild.fetchAuditLogs({
             limit: 1,
             type: 'ROLE_DELETE'
@@ -26,7 +29,7 @@ export class RoleDelete extends Event {
         Embed.addFields({ name: eventLang.embed.fields.roleName.name, value: `${role.name}`, inline: true }, { name: eventLang.embed.fields.roleId.name, value: `${role.id}`, inline: true }, )
         Embed.setFooter(`Cette action a été réalisée par {0} -> id : {1}`.format(executor!.username,executor!.id))
 
-        this.client.on('',)
+        
         //! const channel = role.guild.channels.cache.get(appConf.chanels.staff.botLog) as TextChannel
         //! channel!.send({ embeds: [Embed] })
 
