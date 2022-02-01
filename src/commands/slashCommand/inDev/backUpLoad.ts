@@ -67,6 +67,7 @@ export class BackUpLoadCommand extends Command {
                 .setStyle('DANGER')
                 .setCustomId('DeleteBackUp')
         )
+
         return interaction.reply({
             embeds : [embed],
             components:[btnsBackUp],

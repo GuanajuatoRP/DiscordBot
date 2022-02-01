@@ -1,7 +1,9 @@
 import { Command } from 'sheweny'
 import type { ShewenyClient } from 'sheweny'
-import { CommandInteraction, Guild, } from 'discord.js'
-import { CategoryData, ChannelPermissionsData } from '../../../util/export';
+import { CommandInteraction, Guild, OverwriteData, OverwriteResolvable, Role, } from 'discord.js'
+import fs from 'fs'
+import path from 'path'
+import { BackupData, RootPath } from '../../../util/export';
 // import lang from '../../../util/language.json'
 // const CommandLang = lang.commands.test
 
@@ -35,35 +37,29 @@ export class TestCommand extends Command {
     }
     async execute(interaction : CommandInteraction) {
         // this.client.emit('CommandLog', interaction)
+        
         const guild = interaction.guild as Guild
-        const ChannelList = await guild.channels.fetch()
-        const catChannels = ChannelList.filter(c => c.type == "GUILD_CATEGORY")
-        let channelPermissionsTab = [] as Array<ChannelPermissionsData>
-        let categoryDataTab = [] as Array<CategoryData>
+        const bc = JSON.parse(fs.readFileSync(path.join(RootPath,'/Json/BackUp/Backup_{0}.json').format('B8BCASCM7' as string)).toString()) as BackupData
 
-        catChannels.forEach((c) => {
-            let channelPermissions = {} as ChannelPermissionsData
-            c.permissionOverwrites.cache.each(p => {
-                channelPermissions.roleName = guild.roles.cache.get(p.id)!.name as string
-                channelPermissions.allow = p.allow.bitfield.toString()
-                channelPermissions.deny = p.deny.bitfield.toString()
-                channelPermissionsTab.push(channelPermissions)
+
+        bc.channels.categories.forEach((categoryData) => {
+            let finalPermissions = new Array<OverwriteResolvable>()
+
+            categoryData.permissions.forEach((perm) => {
+                const r = guild.roles.cache.find((r) => r.name == perm.roleName) as Role
+                console.log(guild.roles.cache.get(r.id)!.name)
+
+                if (r) {
+                    finalPermissions.push({
+                        id: r.id,
+                        allow: BigInt(perm.allow),
+                        deny: BigInt(perm.deny)
+                    } as OverwriteData );
+                }
             })
-            let categoryData = {} as CategoryData
-            categoryData.name = c.name
-            categoryData.permissions = channelPermissionsTab
-            categoryDataTab.push(categoryData)
-            if (c.name = 'ACCEUIL'){
-                let po = c.permissionOverwrites.cache.toJSON()
-                console.log(c.permissionOverwrites.cache.toJSON());
-                
-            }
+            // console.log(finalPermissions);
         })
 
-
-        // console.log(categoryDataTab.map(c => c.permissions));
-        
-        
         return interaction.reply({
             content:'aa'
         }) 

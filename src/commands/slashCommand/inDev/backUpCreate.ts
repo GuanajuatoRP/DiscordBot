@@ -87,9 +87,9 @@ export class BackUpCreateCommand extends Command {
         let channelPermissionsTab = [] as Array<ChannelPermissionsData>
         let categoryDataTab = [] as Array<CategoryData>
 
-        catChannels.forEach((c) => {
+        catChannels.forEach(async c => {
             let channelPermissions = {} as ChannelPermissionsData
-            c.permissionOverwrites.cache.each(p => {
+            await c.permissionOverwrites.cache.each(p => {
                 channelPermissions.roleName = guild.roles.cache.get(p.id)!.name as string
                 channelPermissions.allow = p.allow.bitfield.toString()
                 channelPermissions.deny = p.deny.bitfield.toString()

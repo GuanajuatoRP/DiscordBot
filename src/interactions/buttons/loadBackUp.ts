@@ -1,6 +1,6 @@
 import { Button } from "sheweny";
 import type { ShewenyClient } from "sheweny";
-import type { ButtonInteraction, ColorResolvable, Guild, OverwriteData, OverwriteResolvable, Role } from "discord.js";
+import type { ButtonInteraction, ColorResolvable, Guild, OverwriteData, OverwriteResolvable, Role} from "discord.js";
 import { BackupData, RootPath, wait } from "../../util/export";
 import fs from 'fs'
 import path from 'path'
@@ -50,18 +50,12 @@ export class LoadBackUpBtn extends Button {
 
         // Delete Category and channels
         await guild.channels.fetch()
-        .then(channelList => {
-            channelList.filter(c => c.type == "GUILD_CATEGORY").each(async c => {
-                await c.delete()
-                    .catch(err => console.log(err))
-                await wait(100)
-            })
-
-            channelList.each(async c => {
-                await c.delete()
-                    .catch(err => console.log(err))
-                await wait(100)
-            })
+        .then(async channelList => {
+            for (const channel of channelList) {
+                const c = channel[1]
+                c.delete()
+                await wait(200)
+            }
         })
         .catch(err => console.log(err))
 
@@ -99,57 +93,78 @@ export class LoadBackUpBtn extends Button {
         if (bc.explicitContentFilter && changeableExplicitLevel) {
             guild.setExplicitContentFilter(bc.explicitContentFilter);
         }
+        console.log("Delete Fini")
 
-
+        console.log('Start Loading');
+        
         // Load Roles
-        bc.roles.forEach(r => {
-            // Role @everyone
+        for (const r of bc.roles) {
             if (r.name == "@everyone"){
-                guild.roles.cache.get(guild.id)!.edit({
-                    name: r.name,
-                    color: r.color as ColorResolvable,
-                    permissions: BigInt(r.permissions),
-                    mentionable: r.mentionable,
-                })
-                .catch(err => console.log(err))
-            } else {
-                // Any Role
-                guild.roles.create({
+                await guild.roles.cache.get(guild.id)!.edit({
                     name: r.name,
                     color: r.color as ColorResolvable,
                     hoist: r.hoist,
                     permissions: BigInt(r.permissions),
-                    mentionable: r.mentionable,
+                    mentionable: r.mentionable
                 })
+                .then(r => console.log("Le role {0} a été modifier".format(r.name)))
+                .catch(err => console.log(err))
+            } else {
+                await guild.roles.create({
+                    name: r.name,
+                    color: r.color as ColorResolvable,
+                    hoist: r.hoist,
+                    permissions: BigInt(r.permissions),
+                    mentionable: r.mentionable
+                })
+                .then(r => console.log("Le role {0} a été crée".format(r.name)))
                 .catch(err => console.log(err))
             }
-        })
+        }
+        const NewRoleList = guild.roles.cache.toJSON()
 
 
-        // Load Catégory
-        bc.channels.categories.forEach((categoryData) => {
-            guild.channels.create(categoryData.name,{ type: 'GUILD_CATEGORY' })
-            .then((category) => {
+        // //? Load Catégory
+        const categoryList = bc.channels.categories
+        for (const categoryData of categoryList) {
+            await guild.channels.create(categoryData.name,{ type: 'GUILD_CATEGORY' })
+            .then(async category => {
                 let finalPermissions = new Array<OverwriteResolvable>()
+                const permissionList = categoryData.permissions
+                for (const perm of permissionList) {
+                    const ro = guild.roles.cache.find((r) => r.name == perm.roleName) as Role
+                    
+                    console.log(NewRoleList.map(r => r.name))
+                    console.log("perm.name => {0}".format(perm.roleName))
+                    // if (category.name == "Accueil"){
+                    //     console.log(perm.roleName)
+                    // }
 
-                categoryData.permissions.forEach((perm) => {
-                    const r = guild.roles.cache.find((r) => r.name == perm.roleName) as Role
-                    if (r) {
+                    // console.log(guild.roles.cache.get(ro.id)!.name)
+
+                    if (ro) {
                         finalPermissions.push({
-                            id: r.id,
+                            id: ro.id,
                             allow: BigInt(perm.allow),
                             deny: BigInt(perm.deny)
-                        } as OverwriteData );
+                        } as OverwriteData )
                     }
-                })
+                }
+
+                // console.log(finalPermissions)
                 category.permissionOverwrites.set(finalPermissions)
+                .catch(err => console.log(err))
             })
-        }) 
+            console.log("Channel en cours")
+        }
+        console.log("Channel Fini")
+
         // backupData.channels.others.forEach(function (channelData) {
         //     util_1.loadChannel(channelData, guild, null, options);
         // });
 
         // Indique que la backup est finie
         this.client.activeBackup.delete(bc.id)
+        console.log('Fini')
     }
 }
