@@ -1,6 +1,7 @@
+import { TextChannelData, VoiceChannelData } from './../../../util/export';
 import { Command } from 'sheweny'
 import type { ShewenyClient } from 'sheweny'
-import { CommandInteraction, Guild, OverwriteData, OverwriteResolvable, Role, } from 'discord.js'
+import { CategoryChannel, CommandInteraction, Guild} from 'discord.js'
 import fs from 'fs'
 import path from 'path'
 import { BackupData, RootPath } from '../../../util/export';
@@ -37,30 +38,68 @@ export class TestCommand extends Command {
     }
     async execute(interaction : CommandInteraction) {
         // this.client.emit('CommandLog', interaction)
-        
+        interaction.deferReply()
+
+
         const guild = interaction.guild as Guild
-        const bc = JSON.parse(fs.readFileSync(path.join(RootPath,'/Json/BackUp/Backup_{0}.json').format('B8BCASCM7' as string)).toString()) as BackupData
+        const bc = JSON.parse(fs.readFileSync(path.join(RootPath,'/Json/BackUp/Backup_{0}.json').format('5VJHLUWIG' as string)).toString()) as BackupData
 
 
-        bc.channels.categories.forEach((categoryData) => {
-            let finalPermissions = new Array<OverwriteResolvable>()
-
-            categoryData.permissions.forEach((perm) => {
-                const r = guild.roles.cache.find((r) => r.name == perm.roleName) as Role
-                console.log(guild.roles.cache.get(r.id)!.name)
-
-                if (r) {
-                    finalPermissions.push({
-                        id: r.id,
-                        allow: BigInt(perm.allow),
-                        deny: BigInt(perm.deny)
-                    } as OverwriteData );
+        const salonList = bc.channels.others
+        const categoryList = (await guild.channels.fetch()).filter(c => c.type === 'GUILD_CATEGORY').toJSON()
+        for (const salon of salonList) {
+            switch (salon.type) {
+                case 'GUILD_TEXT':
+                    const c = salon as TextChannelData
+                    await guild.channels.create(c.name,{
+                        type: 'GUILD_TEXT',
+                        topic: c.topic,
+                        nsfw: c.nsfw
+                    })
+                    .then(async channel => {
+                        await channel.setParent(categoryList.find(cat => cat.name == c.parent) as CategoryChannel)
+                        .catch(err => console.log(err));
+                        await channel.setPosition(c.position)
+                        .catch(err => console.log(err));
+                    // for (const msg of c.messages) {
+                    //         // message.attachments = msg.attachments as Array<MessageAttachment>
+                    //         // message.stickers = msg.stickers as Array<Sticker>
+                    //         channel.send({
+                    //             content:'message',
+                    //             username : 'aa'
+                    //         })
+                    //         .then(async m => {
+                    //             m.author = (await guild.members.fetch(msg.authorId)).user
+                    //             if (msg.content) m.content = msg.content as string
+                    //             if (msg.embeds) m.embeds = msg.embeds as Array<MessageEmbed>
+                    //             m.type = msg.type
+                    //             m.pinned = msg.pinned as boolean
+                    //             m.editedTimestamp = msg.editedTimestamp as number
+                    //         })
+                    //         .catch(err => console.log(err));
+                    //         break
+                    //     }
+                    })
+                    .catch(err => console.log(err));
+                    break;
+                case 'GUILD_VOICE':
+                    const v = salon as VoiceChannelData
+                    await guild.channels.create(v.name,{
+                        type: 'GUILD_VOICE',
+                        bitrate: v.bitrate,
+                        userLimit: v.userLimit
+                    })
+                    .then(async channel => {
+                        await channel.setParent(categoryList.find(cat => cat.name == v.parent) as CategoryChannel)
+                        .catch(err => console.log(err));
+                        await channel.setPosition(v.position)
+                        .catch(err => console.log(err));
+                    })
+                    break;
                 }
-            })
-            // console.log(finalPermissions);
-        })
+        }
 
-        return interaction.reply({
+        return interaction.editReply({
             content:'aa'
         }) 
     }

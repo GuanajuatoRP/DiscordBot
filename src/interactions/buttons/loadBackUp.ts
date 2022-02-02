@@ -1,7 +1,7 @@
 import { Button } from "sheweny";
 import type { ShewenyClient } from "sheweny";
-import type { ButtonInteraction, ColorResolvable, Guild, OverwriteData, OverwriteResolvable, Role} from "discord.js";
-import { BackupData, RootPath, wait } from "../../util/export";
+import type { ButtonInteraction, CategoryChannel, ColorResolvable, Guild, OverwriteData, OverwriteResolvable, Role} from "discord.js";
+import { BackupData, RootPath, TextChannelData, VoiceChannelData, wait } from "../../util/export";
 import fs from 'fs'
 import path from 'path'
 
@@ -16,12 +16,16 @@ export class LoadBackUpBtn extends Button {
             embeds:[],
             components:[]
         })
+        console.log("Start Backup")
+
 
         // Get Guild And Backup
         const guild = button.guild as Guild
         const bc = JSON.parse(fs.readFileSync(path.join(RootPath,'/Json/BackUp/Backup_{0}.json').format(button.message.embeds[0].fields![0].value as string)).toString()) as BackupData
         this.client.activeBackup = new Set([guild.id])
 
+
+        console.log("delete Emoji")
         // Delete Emooji
         await guild.emojis.fetch()
         .then(emojiList => {
@@ -31,6 +35,8 @@ export class LoadBackUpBtn extends Button {
         })
         .catch(err => console.log(err))
 
+
+        console.log("Delete Bans")
         // Delete Bans
         await guild.bans.fetch()
         .then(banList => {
@@ -41,6 +47,8 @@ export class LoadBackUpBtn extends Button {
         })
         .catch(err => console.log(err))
 
+
+        console.log("Delete Role")
         // Delete Role
         let roleList = guild.roles.cache.filter(r=> r.name != "@everyone" && !r.managed)
         roleList.each(async r => {
@@ -48,19 +56,24 @@ export class LoadBackUpBtn extends Button {
                 .catch(err => console.log(err))
         })
 
+
+        console.log("delete Category and channel")
         // Delete Category and channels
         await guild.channels.fetch()
         .then(async channelList => {
             for (const channel of channelList) {
                 const c = channel[1]
-                c.delete()
+                await c.delete()
                 await wait(200)
             }
         })
         .catch(err => console.log(err))
-
+        console.log("DELETE FINI")
         await wait(5000)
 
+
+
+        console.log('SETUP GUILD');
         // Setup Guild
         if (bc.name) {
             guild.setName(bc.name);
@@ -93,10 +106,11 @@ export class LoadBackUpBtn extends Button {
         if (bc.explicitContentFilter && changeableExplicitLevel) {
             guild.setExplicitContentFilter(bc.explicitContentFilter);
         }
-        console.log("Delete Fini")
 
-        console.log('Start Loading');
-        
+
+
+
+        console.log('\nROLE');
         // Load Roles
         for (const r of bc.roles) {
             if (r.name == "@everyone"){
@@ -121,27 +135,21 @@ export class LoadBackUpBtn extends Button {
                 .catch(err => console.log(err))
             }
         }
-        const NewRoleList = guild.roles.cache.toJSON()
+        // const NewRoleList = guild.roles.cache.toJSON()
 
 
-        // //? Load Catégory
+
+        console.log("\nCATEGORY");
+        //? Load Category
         const categoryList = bc.channels.categories
         for (const categoryData of categoryList) {
             await guild.channels.create(categoryData.name,{ type: 'GUILD_CATEGORY' })
             .then(async category => {
                 let finalPermissions = new Array<OverwriteResolvable>()
                 const permissionList = categoryData.permissions
+
                 for (const perm of permissionList) {
                     const ro = guild.roles.cache.find((r) => r.name == perm.roleName) as Role
-                    
-                    console.log(NewRoleList.map(r => r.name))
-                    console.log("perm.name => {0}".format(perm.roleName))
-                    // if (category.name == "Accueil"){
-                    //     console.log(perm.roleName)
-                    // }
-
-                    // console.log(guild.roles.cache.get(ro.id)!.name)
-
                     if (ro) {
                         finalPermissions.push({
                             id: ro.id,
@@ -150,14 +158,57 @@ export class LoadBackUpBtn extends Button {
                         } as OverwriteData )
                     }
                 }
-
-                // console.log(finalPermissions)
                 category.permissionOverwrites.set(finalPermissions)
                 .catch(err => console.log(err))
+
+
+
+                console.log("Category : {0}".format(category.name))
             })
-            console.log("Channel en cours")
         }
-        console.log("Channel Fini")
+        
+        console.log('\nSALON')
+        const salonList = bc.channels.others
+        const parentList = (await guild.channels.fetch()).filter(c => c.type === 'GUILD_CATEGORY').toJSON()
+        for (const salon of salonList) {
+            switch (salon.type) {
+                case 'GUILD_TEXT':
+                    const c = salon as TextChannelData
+                    await guild.channels.create(c.name,{
+                        type: 'GUILD_TEXT',
+                        topic: c.topic,
+                        nsfw: c.nsfw
+                    })
+                    .then(async channel => {
+                        await channel.setParent(parentList.find(cat => cat.name == c.parent) as CategoryChannel)
+                        .catch(err => console.log(err));
+                        await channel.setPosition(c.position)
+                        .catch(err => console.log(err));
+
+
+                        console.log('Salon Textuel : {0}'.format(channel.name));
+                    })
+                    .catch(err => console.log(err));
+                    break;
+                case 'GUILD_VOICE':
+                    const v = salon as VoiceChannelData
+                    await guild.channels.create(v.name,{
+                        type: 'GUILD_VOICE',
+                        bitrate: v.bitrate,
+                        userLimit: v.userLimit
+                    })
+                    .then(async channel => {
+                        await channel.setParent(parentList.find(cat => cat.name == v.parent)! as CategoryChannel)
+                        .catch(err => console.log(err));
+                        await channel.setPosition(v.position)
+                        .catch(err => console.log(err));
+
+
+                        console.log('Salon vocal : {0}'.format(channel.name));
+                    })
+                    break;
+                }
+        }
 
         // backupData.channels.others.forEach(function (channelData) {
         //     util_1.loadChannel(channelData, guild, null, options);
