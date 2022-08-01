@@ -2,7 +2,8 @@ import { ShewenyClient } from "sheweny"
 import appConfig from "./util/appConfig.json"
 import lang from './util/language.json'
 import dotenv from 'dotenv'
-import {app} from './Api/api'
+import {app} from './APIToBot/api'
+import { ActivityType } from "discord.js"
 // import express from 'express';
 // import { TextChannel } from "discord.js";
 // import { userValidateModel } from "./Api/Model/UserValidatedModel";
@@ -18,13 +19,12 @@ export const client = new ShewenyClient({
         afk: false,
         activities: [{
             name: lang.bot.status.name,
-            type: 'PLAYING',
+            type: ActivityType.Playing,
         }],
     },
     managers: {
         commands: {
             directory: "./commands", // command directory
-            loadAll: true,
             guildId: appConfig.botConfig.guildid,
             applicationPermissions: false, //If the permissions for app commands must be required
             autoRegisterApplicationCommands: true, // Register application commands
@@ -40,15 +40,12 @@ export const client = new ShewenyClient({
         },
         events: {
             directory: "./listeners", //Event directory
-            loadAll: true,
         },
         buttons: {
             directory: "./interactions/buttons", //Button directory
-            loadAll: true,
         },
         selectMenus: {
             directory: "./interactions/selectMenu",
-            loadAll: true,
         },
         // inhibitors: {
         //     directory: "./inhibitors",

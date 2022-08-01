@@ -1,6 +1,6 @@
 import express from 'express'
 import { Guild, GuildMember, Role, TextChannel } from "discord.js"
-import { userValidateModel } from "../Api/Model/UserValidatedModel"
+import { userValidateModel } from "./Model/UserValidatedModel"
 import { client } from '../index'
 import appConf from '../util/appConfig.json'
 import apiLang from '../util/language.json'

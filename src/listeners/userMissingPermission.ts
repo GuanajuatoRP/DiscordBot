@@ -20,9 +20,9 @@ export class userMissingPermissions extends Event {
         const executor = interaction.member as GuildMember
         
         const embed = LogsEmbed(executor.displayName, executor.id)
-        embed.setAuthor(eventLang.embed.Author)
-        embed.fields.push({name: eventLang.embed.fields.commandName.name, value : interaction.commandName, inline: true})
-        embed.fields.push({name: eventLang.embed.fields.channel.name, value : interaction.guild!.channels.cache.get(interaction.channelId)!.name, inline: true})
+        embed.setAuthor({ name: eventLang.embed.Author, iconURL: executor.user.displayAvatarURL() })
+        embed.data.fields!.push({name: eventLang.embed.fields.commandName.name, value : interaction.commandName, inline: true})
+        embed.data.fields!.push({name: eventLang.embed.fields.channel.name, value : interaction.guild!.channels.cache.get(interaction.channelId)!.name, inline: true})
 
         const channel = interaction.guild!.channels.cache.get(appConf.chanels.staff.botLog) as TextChannel
         channel.send({

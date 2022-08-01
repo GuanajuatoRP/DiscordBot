@@ -5,68 +5,132 @@
         }
     },
     "commands": {
+        "adminMoney": {
+            "embed": {
+                "title": "Compte bancaire de : {0}",
+                "color": "#11ff00",
+                "footer": "𝑳𝒂 𝒃𝒂𝒏𝒒𝒖𝒆",
+                "fields": [{
+                    "name": "Solde disponible :",
+                    "value": "50000€"
+                }],
+                "author": {
+                    "name": "𝑳𝒂 𝒃𝒂𝒏𝒒𝒖𝒆",
+                    "url": "https://discord.com/channels/854140376867930122/1001952467786932244/1002182894632050708"
+                }
+            },
+            "slashOptions": {
+                "User": "Nom de l'utilisateur avec qui interragir"
+            },
+            "description": {
+                "desc": "Permet aux admins d'intéragir avec le solde des utilisateurs",
+                "usage": "adminmoney",
+                "exemples": [
+                    "adminmoney"
+                ]
+            }
+        },
+        "money": {
+            "embed": {
+                "title": "Compte bancaire de : {0}",
+                "color": "#11ff00",
+                "footer": "𝑳𝒂 𝒃𝒂𝒏𝒒𝒖𝒆",
+                "fields": [{
+                    "name": "Solde disponible :",
+                    "value": "{0}"
+                }],
+                "author": {
+                    "name": "𝑳𝒂 𝒃𝒂𝒏𝒒𝒖𝒆",
+                    "url": "https://discord.com/channels/854140376867930122/1001952467786932244/1002182894632050708"
+                }
+            },
+            "description": {
+                "desc": "Permet d'intéragir avec la banque",
+                "usage": "money",
+                "exemples": [
+                    "money"
+                ]
+            }
+        },
         "adminhelp": {
             "description": {
                 "desc": "Permet de listé et avoir toute les informations des commandes de la catégorie Administration",
                 "usage": "adminhelp <CommandAlias>",
-                "exemples": ["adminhelp", "adminhelp role"]
+                "exemples": [
+                    "adminhelp",
+                    "adminhelp role"
+                ]
             },
             "slashOptions": {
                 "description": "Nom de la commande sur la quelle vous voulez plus d'infos"
             },
-            "embed" : {
-                "fields" : {
-                    "info" : {"name" : "------------", "value" : "**`/adminhelp <command>` pour des infos sur une commande spécifique **\n                    Exemples `/adminhelp {0}`  || `/adminhelp {1}`"}
+            "embed": {
+                "fields": {
+                    "info": {
+                        "name": "------------",
+                        "value": "**`/adminhelp <command>` pour des infos sur une commande spécifique **\n                    Exemples `/adminhelp {0}`  || `/adminhelp {1}`"
+                    }
                 }
             },
-            "interaction" : {
-                "wrongName" : "La commande ***{0}***  n'existe pas",
-                "noRead" : "La commande ***{0}*** ne peut pas être lue depuis ce menu"
+            "interaction": {
+                "wrongName": "La commande ***{0}***  n'existe pas",
+                "noRead": "La commande ***{0}*** ne peut pas être lue depuis ce menu"
             }
         },
         "immatriculation": {
             "description": {
                 "desc": "Permet d'immatriculer une nouvelle voiture",
                 "usage": "immatriculation {Voiture} <CustomImmatriculation>",
-                "exemples": ["immatriculation NissanGTR -GO-FAST-", "immatriculation NissanGTR"]
+                "exemples": [
+                    "immatriculation NissanGTR -GO-FAST-",
+                    "immatriculation NissanGTR"
+                ]
             },
             "slashOptions": {
-                "voiture":"Choisi la voiture que tu veux immatriculer",
-                "immatriculation":"Permet de custom l'immatriculation, cela peut engender un coup suplémentaire"
+                "voiture": "Choisi la voiture que tu veux immatriculer",
+                "immatriculation": "Permet de custom l'immatriculation, cela peut engender un coup suplémentaire"
             },
-            "embed" : {
-                "Author":"Immatriculation de voiture",
-                "color":"DARK_PURPLE",
-                "footer":"Nouvelle immatriculation pour : {0}",
-                "fields" : {
-                    "stats" : {"name" : "voiture stats"},
-                    "immat" : {"name" : "Nouvelle Immatriculation"},
-                    "prix" : {"name" : "Prix"}
+            "embed": {
+                "Author": "Immatriculation de voiture",
+                "color": "DARK_PURPLE",
+                "footer": "Nouvelle immatriculation pour : {0}",
+                "fields": {
+                    "stats": {
+                        "name": "voiture stats"
+                    },
+                    "immat": {
+                        "name": "Nouvelle Immatriculation"
+                    },
+                    "prix": {
+                        "name": "Prix"
+                    }
                 }
             },
-            "interaction" : {
-                "wrongName" : "Visiblement la voiture : **{0}** n'est pas dans ton garrage"
+            "interaction": {
+                "wrongName": "Visiblement la voiture : **{0}** n'est pas dans ton garrage"
             },
-            "button":{
-                "cancel":"Annuler",
-                "reload":"Nouvelle Immatriculation",
-                "buy":"Payer l'immatriculation"
+            "button": {
+                "cancel": "Annuler",
+                "reload": "Nouvelle Immatriculation",
+                "buy": "Payer l'immatriculation"
             },
-            "export":{
-                "exist":"Cette imatriculation existe déja",
-                "len":"La longeur de cette immatriculation n'est pas correcte"
+            "export": {
+                "exist": "Cette imatriculation existe déja",
+                "len": "La longeur de cette immatriculation n'est pas correcte"
             }
         },
         "ventePro": {
             "description": {
                 "desc": "Permet de crée une procédure professionel de vente de voiture ",
                 "usage": "vente-pro",
-                "exemples": ["vente-pro"]
+                "exemples": [
+                    "vente-pro"
+                ]
             },
-            "SelectMenu" : {
-                "setPlaceholder" : "Choisis une voiture dans la liste"
+            "SelectMenu": {
+                "setPlaceholder": "Choisis une voiture dans la liste"
             },
-            "interaction":{
+            "interaction": {
                 "content": "Merci de choisir une de vos voiture dans la liste suivante"
             }
         },
@@ -74,12 +138,14 @@
             "description": {
                 "desc": "Permet de crée une procédure de vente entre particulié",
                 "usage": "vente-perso",
-                "exemples": ["vente-perso"]
+                "exemples": [
+                    "vente-perso"
+                ]
             },
-            "SelectMenu" : {
-                "setPlaceholder" : "Choisis une voiture dans la liste"
+            "SelectMenu": {
+                "setPlaceholder": "Choisis une voiture dans la liste"
             },
-            "interaction":{
+            "interaction": {
                 "content": "Merci de choisir une de vos voiture dans la liste suivante"
             }
         },
@@ -87,42 +153,60 @@
             "description": {
                 "desc": "Permet de crée un nouveau formulaire d'inscription au permis ",
                 "usage": "inscription-permis {Permis}",
-                "exemples": ["inscription-permis Probatoire","inscription-permis A"]
+                "exemples": [
+                    "inscription-permis Probatoire",
+                    "inscription-permis A"
+                ]
             },
             "slashOptions": {
                 "description": "Permis sur le quel vous souhaitez vous inscrire"
             },
-            "embed" : {
-                "title" : "Formulaire d'inscription",
+            "embed": {
+                "title": "Formulaire d'inscription",
                 "description": "Inscription au permis et aux stages de conduites",
-                "color" : "#ffa200",
-                "footer" : "Inscription de : {0}",
-                "fields" : {
-                    "Prénom" : {"name" : "Prénom"},
-                    "Nom" : {"name" : "Nom"},
-                    "Exam" : {"name" : "Examain Souhaiter"},
-                    "Permis" : {"name" : "Permis Actuel"},
-                    "Pts" : {"name" : "Points sur le permis"},
-                    "Stages" : {"name" : "Stage de conduite Actuel"}
+                "color": "#ffa200",
+                "footer": "Inscription de : {0}",
+                "fields": {
+                    "Prénom": {
+                        "name": "Prénom"
+                    },
+                    "Nom": {
+                        "name": "Nom"
+                    },
+                    "Exam": {
+                        "name": "Examain Souhaiter"
+                    },
+                    "Permis": {
+                        "name": "Permis Actuel"
+                    },
+                    "Pts": {
+                        "name": "Points sur le permis"
+                    },
+                    "Stages": {
+                        "name": "Stage de conduite Actuel"
+                    }
                 }
             },
-            "button" : {
-                "labelOk" : "Valider le permis",
-                "labelFail" : "Examen raté"
+            "button": {
+                "labelOk": "Valider le permis",
+                "labelFail": "Examen raté"
             },
-            "interaction" : {
-                "wrongName" : "Le permis ***{0}***  n'existe pas"
+            "interaction": {
+                "wrongName": "Le permis ***{0}***  n'existe pas"
             }
         },
         "getcommandlogs": {
             "description": {
                 "desc": "Permet de télécharger un fichier de commandLogs",
                 "usage": "getcommandlogs {DateOfFile}",
-                "exemples": ["getcommandlogs 05-01-2022", "getcommandlogs 06-01-2022"]
+                "exemples": [
+                    "getcommandlogs 05-01-2022",
+                    "getcommandlogs 06-01-2022"
+                ]
             },
-            "interaction" : {
-                "dateError" : "La date ne correspond a aucune des dates disponibles vérifi le template qui doit être dd-mm-yyyy",
-                "content" : "Voici les fichiers de CommandLogs qui correspondent a la date du {0}"
+            "interaction": {
+                "dateError": "La date ne correspond a aucune des dates disponibles vérifi le template qui doit être dd-mm-yyyy",
+                "content": "Voici les fichiers de CommandLogs qui correspondent a la date du {0}"
             },
             "slashOptions": {
                 "description": "Date du CommandLogs a télécharger"
@@ -132,18 +216,20 @@
             "description": {
                 "desc": "La commande CreateEmbed permet de crée et custom un embed",
                 "usage": "createembed",
-                "exemples": ["createembed"]
+                "exemples": [
+                    "createembed"
+                ]
             },
             "interaction": {
                 "newEmbed": "Un nouvelle embed a été crée vous pouvez a présent le modifier",
-                "multypleOptions" : "Vous ne pouvez faire qu'une seul action a la fois"
+                "multypleOptions": "Vous ne pouvez faire qu'une seul action a la fois"
             },
             "Options": {
                 "Display": {
                     "description": "Permet d'afficher l'embed"
                 },
                 "SetColor": {
-                    "hexError" : "tu doit fournir une couleur HexaDécimale",
+                    "hexError": "tu doit fournir une couleur HexaDécimale",
                     "description": "Permet changer la couleur de l'embed"
                 },
                 "SetTitle": {
@@ -174,7 +260,9 @@
             "description": {
                 "desc": "Termine une session, supprime tous les salon et le rôle crée suite a une session",
                 "usage": "endgame",
-                "exemples": ["endgame"]
+                "exemples": [
+                    "endgame"
+                ]
             },
             "interaction": {
                 "content": "La session est terminée, les salons suprimé et les permission retirée"
@@ -184,22 +272,27 @@
             "description": {
                 "desc": "Enregistre toutes les donnée d'une catégorie dans fichier prédéfinis",
                 "usage": "getcategorie {catégorieName}",
-                "exemples": ["getcategorie livreur", "getcategorie rally"]
+                "exemples": [
+                    "getcategorie livreur",
+                    "getcategorie rally"
+                ]
             },
             "interaction": {
                 "content": "Toutes les donnée anisi que toutes les propriétée du.des channel.s on été enregistré",
                 "needOptions": "Vous devez forcément utilisé l'une des deux commande"
             },
-            "slashOptions" : {
-                "category" : "Nom de la catégorie a save",
-                "salon" : "Nom du salon a save"
+            "slashOptions": {
+                "category": "Nom de la catégorie a save",
+                "salon": "Nom du salon a save"
             }
         },
         "adminlist": {
             "description": {
                 "desc": "Liste toute les personnes étant admin sur le serveur et ayant accès au commande admin only",
                 "usage": "adminlist <addUser> <removeUser>",
-                "exemples": ["adminlist Dercraker"]
+                "exemples": [
+                    "adminlist Dercraker"
+                ]
             },
             "slashOptions": {
                 "add": "Ajout d'un utilisateur a la liste des administrateurs",
@@ -220,7 +313,10 @@
             "description": {
                 "desc": "Permet de crée une nouvelle session, avec tous les salons en fonction du mode de jeux",
                 "usage": "game {GamodeName}",
-                "exemples": ["game livreur", "game rally"]
+                "exemples": [
+                    "game livreur",
+                    "game rally"
+                ]
             },
             "interaction": {
                 "content": "Liste des modes de jeux :"
@@ -234,7 +330,10 @@
             "description": {
                 "desc": "Permet de tirer un ou plusieur nombre aléatoirement de 1 a un nombre choisi",
                 "usage": "number {N nombre a tirer} {Plage de tirage}",
-                "exemples": ["number 1 5", "number 15 50"]
+                "exemples": [
+                    "number 1 5",
+                    "number 15 50"
+                ]
             },
             "slashOptions": {
                 "nbval": {
@@ -244,8 +343,8 @@
                     "description": "plage sur la quelle tirer les valeurs"
                 }
             },
-            "embed" : {
-                "title" : "Voici la liste de{0} nombre{0} allant de **1 à {1}**"
+            "embed": {
+                "title": "Voici la liste de{0} nombre{0} allant de **1 à {1}**"
             },
             "messageError": "Vous ne pouvez pas tirer un nombre supérieur a la plage"
         },
@@ -253,14 +352,19 @@
             "description": {
                 "desc": "Permet d'avoir le ping du bot",
                 "usage": "ping",
-                "exemples": ["ping"]
+                "exemples": [
+                    "ping"
+                ]
             }
         },
         "purge": {
             "description": {
                 "desc": "Permet de suprimer entre 1 et 100 messages, ne permet pas de supprimer les messages épingler",
                 "usage": "purge <Nombre de message a supprimer>",
-                "exemples": ["purge", "purge 42"]
+                "exemples": [
+                    "purge",
+                    "purge 42"
+                ]
             },
             "slashOptions": {
                 "nombre": {
@@ -279,15 +383,19 @@
             "description": {
                 "desc": "Permet de répartir les membre de la salle de jeu en deux équipe",
                 "usage": "role",
-                "exemples": ["role"]
+                "exemples": [
+                    "role"
+                ]
             },
             "embed": {
                 "Author": "Répartition des équipes",
-                "Fields": [
-                    { "teamname": "Team :regional_indicator_a: :" },
-                    { "teamname": "Team :b: :" }
+                "Fields": [{
+                        "teamname": "Team :regional_indicator_a: :"
+                    },
+                    {
+                        "teamname": "Team :b: :"
+                    }
                 ]
-
             },
             "bouton": {
                 "label": "Obtenir un role"
@@ -302,21 +410,23 @@
             "description": {
                 "desc": "Permet de crée son compte sur le RP",
                 "usage": "register",
-                "exemples": ["register"]
+                "exemples": [
+                    "register"
+                ]
             },
             "embed": {
                 "title": "Création de compte",
-                "color" : "#478BFF",
-                "Fields": [
-                    { "name": "Cliquer sur le bouton suivant afain de pouvoir crée votre compte","value" : "le bouton est valide 5 minutes ne traine pas"}
-                ]
-
+                "color": "#478BFF",
+                "Fields": [{
+                    "name": "Cliquer sur le bouton suivant afain de pouvoir crée votre compte",
+                    "value": "le bouton est valide 5 minutes ne traine pas"
+                }]
             },
             "bouton": {
                 "label": "Je crée mon compte !"
             },
             "interaction": {
-                "sendRegister" : "Vos information d'enregistrement vont vous être envoyé en privé",
+                "sendRegister": "Vos information d'enregistrement vont vous être envoyé en privé",
                 "alreadyRegister": {
                     "content": "Vous avez deja été enregistrer sur le Rôleplay"
                 }
@@ -326,7 +436,10 @@
             "description": {
                 "desc": "Permet d'avoir les info d'un channel",
                 "usage": "info {ChannelName}",
-                "exemples": ["info #annonces", "info #bot-staff"]
+                "exemples": [
+                    "info #annonces",
+                    "info #bot-staff"
+                ]
             },
             "slashOptions": {
                 "channel": {
@@ -341,21 +454,27 @@
             "description": {
                 "desc": "La commande help renvoie la liste des commandes du bot!",
                 "usage": "help <Nom de commande>",
-                "exemples": ["help", "help ping"]
+                "exemples": [
+                    "help",
+                    "help ping"
+                ]
             },
             "slashOptions": {
                 "command": {
                     "description": "Nom de la commande sur le quel vous voulez plus d'info"
                 }
             },
-            "genericEmbed" : {
-                "fields" : {
-                    "info" : {"name" : "------------", "value" : "**`/help <command>` pour des infos sur une commande spécifique **\n                     Exemples `/help {0}`  || `/help {1}`"}
+            "genericEmbed": {
+                "fields": {
+                    "info": {
+                        "name": "------------",
+                        "value": "**`/help <command>` pour des infos sur une commande spécifique **\n                     Exemples `/help {0}`  || `/help {1}`"
+                    }
                 }
             },
-            "interaction" : {
-                "wrongName" : "La commande ***{0}***  n'existe pas",
-                "noRead" : "La commande ***{0}*** ne peut pas être lue depuis ce menu"
+            "interaction": {
+                "wrongName": "La commande ***{0}***  n'existe pas",
+                "noRead": "La commande ***{0}*** ne peut pas être lue depuis ce menu"
             }
         }
     },
@@ -387,7 +506,8 @@
                     "label": "SetDesc",
                     "description": "Permet de définir ou redéfir une description",
                     "value": "SetDesc"
-                }, {
+                },
+                {
                     "label": "SetImage",
                     "description": "Permet de définir ou redéfir une Image",
                     "value": "SetImage"
@@ -401,7 +521,8 @@
                     "label": "AddField",
                     "description": "Permet d'ajouter un champ (Titre + Valeur + inline)",
                     "value": "AddField"
-                }, {
+                },
+                {
                     "label": "SendEmbed",
                     "description": "Une fois votre embed finis envoyez le dans le channel souhaiter via son Id",
                     "value": "SendEmbed"
@@ -415,7 +536,7 @@
     },
     "event": {
         "ready": {
-            "description" : "Send message in botLog Channel when the bot as start",
+            "description": "Send message in botLog Channel when the bot as start",
             "message": "Bot is Ready !🤖"
         },
         "deletePinnedMessageAlerte": {
@@ -426,73 +547,93 @@
             "interaction": {
                 "content": "Oupss il semblerais que tu n'ais pas la permission d'utilisé cette commande"
             },
-            "embed":{
-                "Author" : "User Not Have Permission",
-                "fields" : {
-                    "commandName" : {
-                        "name" : "Nom de la commande"
+            "embed": {
+                "Author": "User Not Have Permission",
+                "fields": {
+                    "commandName": {
+                        "name": "Nom de la commande"
                     },
-                    "channel" : {
-                        "name" : "Salon d'utilisation"
+                    "channel": {
+                        "name": "Salon d'utilisation"
                     }
                 },
-                "footer" : "Cette action a été réalisée par {0} -> id : {1}"
+                "footer": "Cette action a été réalisée par {0} -> id : {1}"
             }
         },
         "guildBanAdd": {
             "description": "Permet de logger quand un user a été ban, pourquoi et quand",
             "embed": {
                 "author": "Ban",
-                "fields" : {
-                    "ban" : {"name" : "{0} **---**`{1}`**---** a été bannis"},
-                    "reason" : {"name" : "Pour la raison suivante {0}"}
+                "fields": {
+                    "ban": {
+                        "name": "{0} **---**`{1}`**---** a été bannis"
+                    },
+                    "reason": {
+                        "name": "Pour la raison suivante {0}"
+                    }
                 }
             }
         },
         "guildBanRemove": {
             "description": "Permet de logger quand et qui déban un utilisateur",
             "embed": {
-                "color" : "#59ff00",
+                "color": "#59ff00",
                 "author": "UnBan",
-                "fields" : {
-                    "unban" : {"name" : "{0} **---**`{1}`**---** a été débannis"},
-                    "reason" : {"name" : "Pour la raison suivante {0}"}
+                "fields": {
+                    "unban": {
+                        "name": "{0} **---**`{1}`**---** a été débannis"
+                    },
+                    "reason": {
+                        "name": "Pour la raison suivante {0}"
+                    }
                 }
             }
         },
         "guildMemberAdd": {
             "description": "Permet de logger quand un utilisateur rejoins le serveur",
             "embed": {
-                "description" : "{0} a rejoind la guild"
+                "description": "{0} a rejoind la guild"
             }
         },
         "guildMemberRemove": {
             "description": "Permet de logger quand un utilisateur quite le serveur",
             "embed": {
-                "description" : "{0} a quiter la guild"
+                "description": "{0} a quiter la guild"
             }
         },
         "invitationCreate": {
             "description": "Permet de logger quand quelqu'un crée une nouvelle invitation",
             "embed": {
-                "color" : "#A600FF",
+                "color": "#A600FF",
                 "author": "Création d'un lien d'invitation",
-                "fields" : {
-                    "link" : {"name" : "URL du lien"},
-                    "code" : {"name" : "Code de l'invitation"},
-                    "salon" : {"name" : "Salons visé par l'invitation"}
+                "fields": {
+                    "link": {
+                        "name": "URL du lien"
+                    },
+                    "code": {
+                        "name": "Code de l'invitation"
+                    },
+                    "salon": {
+                        "name": "Salons visé par l'invitation"
+                    }
                 }
             }
         },
         "invitationRemove": {
             "description": "Permet de logger quand quelqu'un supprime une invitation",
             "embed": {
-                "color" : "#A600FF",
+                "color": "#A600FF",
                 "author": "Supression d'un lien d'invitation",
-                "fields" : {
-                    "link" : {"name" : "URL du lien"},
-                    "code" : {"name" : "Code de l'invitation"},
-                    "salon" : {"name" : "Salons visé par l'invitation"}
+                "fields": {
+                    "link": {
+                        "name": "URL du lien"
+                    },
+                    "code": {
+                        "name": "Code de l'invitation"
+                    },
+                    "salon": {
+                        "name": "Salons visé par l'invitation"
+                    }
                 }
             }
         },
@@ -500,80 +641,102 @@
             "description": "Permmet de logger la creation de role",
             "embed": {
                 "author": "Création d'un role",
-                "color" : "#A600FF",
-                "fields" : {
-                    "roleName" : {"name" : "Nom du role"},
-                    "roleId" : {"name" : "Id ru rôle"}
+                "color": "#A600FF",
+                "fields": {
+                    "roleName": {
+                        "name": "Nom du role"
+                    },
+                    "roleId": {
+                        "name": "Id ru rôle"
+                    }
                 }
             }
         },
         "roleRemove": {
             "description": "Permmet de logger la suppression de role",
             "embed": {
-                "color" : "#A600FF",
+                "color": "#A600FF",
                 "author": "Supression d'un role",
-                "fields" : {
-                    "roleName" : {"name" : "Nom du role"},
-                    "roleId" : {"name" : "Id ru rôle"}
+                "fields": {
+                    "roleName": {
+                        "name": "Nom du role"
+                    },
+                    "roleId": {
+                        "name": "Id ru rôle"
+                    }
                 }
             }
         },
         "messageBulkDelete": {
             "description": "Permet de logger la supression de mass des messages",
             "embed": {
-                "color" : "#FF631A",
+                "color": "#FF631A",
                 "author": "Commande Purge",
-                "fields" : {
-                    "salon" : {"name" : "Salons d'utilisation"}
+                "fields": {
+                    "salon": {
+                        "name": "Salons d'utilisation"
+                    }
                 }
             }
         },
         "commandLog": {
             "description": "Permet de logger l'ensemble des utilisation de commande",
-            "embed" : {
-                "color" : "#27F9FF",
-                "author" : "Command Log",
-                "fields" : {
-                    "commandName" : {"name" : "Nom de la commande"},
-                    "salon" : {"name" : "Salon d'utilisation"}
+            "embed": {
+                "color": "#27F9FF",
+                "author": "Command Log",
+                "fields": {
+                    "commandName": {
+                        "name": "Nom de la commande"
+                    },
+                    "salon": {
+                        "name": "Salon d'utilisation"
+                    }
                 }
             }
         },
         "adminCommandLog": {
             "description": "Permet de logger l'ensemble des utilisation de commande admin",
-            "embed" : {
-                "color" : "#ff0000",
-                "author" : "AdminCommand Log",
-                "fields" : {
-                    "commandName" : {"name" : "Nom de la commande"},
-                    "salon" : {"name" : "Salon d'utilisation"}
+            "embed": {
+                "color": "#ff0000",
+                "author": "AdminCommand Log",
+                "fields": {
+                    "commandName": {
+                        "name": "Nom de la commande"
+                    },
+                    "salon": {
+                        "name": "Salon d'utilisation"
+                    }
                 }
             }
         }
     },
-    "intercation":{
-        "button":{
-            "register":{
-                "AlreadyRegistred" : "Visiblement vous êtes déjà inscrit vous ne pouvez pas refaire la commande",
-                "embedGoodResponse":{
-                    "description":"Salut a toi ! Voici ton boutton d'inscription. Courrage tu y est prèsque"
+    "intercation": {
+        "button": {
+            "register": {
+                "AlreadyRegistred": "Visiblement vous êtes déjà inscrit vous ne pouvez pas refaire la commande",
+                "embedGoodResponse": {
+                    "description": "Salut a toi ! Voici ton boutton d'inscription. Courrage tu y est prèsque"
                 },
-                "button":{
+                "button": {
                     "label": "Lien d'inscription"
                 },
-                "buttonReply":{
+                "buttonReply": {
                     "content": "Tu va recevoir par message priver ton liens d'inscription. Attention! Celui-ci contient ton token unique. il est privé alors ne le divulgue pas!"
                 },
-                "embedError":{
+                "embedError": {
                     "author": "Erreur d'enregistrement",
                     "description": "Un utilisateur a essayer de s'incrire. Une erreur c'est produite. Voici les informations.",
                     "field": {
-                        "Err": {"name": "Erreur"},
-                        "ErrMess": {"name": "Message d'erreur"}
+                        "Err": {
+                            "name": "Erreur"
+                        },
+                        "ErrMess": {
+                            "name": "Message d'erreur"
+                        }
                     }
                 },
-                "buttonReply2":{
-                    "content":"Oupss une erreur est survenue. Contacte un admin pour plus obtenir de l'aide"
+                "buttonReply2": {
+                    "content": "Oupss une erreur est survenue. Contacte un admin pour plus obtenir de l'aide"
                 }
             },
             "PermisOk": {
@@ -582,55 +745,66 @@
                     "title": "Validation du permis",
                     "description": "La ville de guanajuato vous félicite pour votre permis !",
                     "footer": "Validation du permis de : {0}",
-                    "fields" : {
-                        "Prénom" : {"name" : "Prénom"},
-                        "Nom" : {"name" : "Nom"},
-                        "Permis" : {"name" : "Permis Obtenus"},
-                        "Pts" : {"name" : "Points sur le nouveau permis"}
+                    "fields": {
+                        "Prénom": {
+                            "name": "Prénom"
+                        },
+                        "Nom": {
+                            "name": "Nom"
+                        },
+                        "Permis": {
+                            "name": "Permis Obtenus"
+                        },
+                        "Pts": {
+                            "name": "Points sur le nouveau permis"
+                        }
                     }
                 }
             },
             "ImmatriculationBuy": {
-                "button":{
+                "button": {
                     "cantUse": "Tu ne peut pas faire cela, la voiture ne t'appartiens pas"
                 },
-                "embed":{
-                    "color":"DARK_GREEN",
-                    "description":"La voiture a bien été immatriculer !"
+                "embed": {
+                    "color": "DARK_GREEN",
+                    "description": "La voiture a bien été immatriculer !"
                 }
             },
             "ImmatriculationReload": {
-                "button":{
+                "button": {
                     "cantUse": "Tu ne peut pas faire cela, la voiture ne t'appartiens pas"
                 }
             },
             "ImmatriculationCancel": {
-                "button":{
+                "button": {
                     "cantUse": "Tu n'est pas a l'origine de cette demmande d'immatriculation, tu ne peut pas l'annuler"
                 },
-                "interraction":"La demmande d'immatriculation a bien été annuler"
+                "interraction": "La demmande d'immatriculation a bien été annuler"
             },
             "VenteProCar": {
-                "Vendre":{
+                "Vendre": {
                     "embed": {
                         "color": "DARK_GREEN",
                         "title": "Status de la vente : Vendu",
                         "footer": "Voiture de : {0}",
-                        "fields" : {
-                            "Vente" : {"name" : "{0} as vendus une voiture pour","value":"{0}€"}
+                        "fields": {
+                            "Vente": {
+                                "name": "{0} as vendus une voiture pour",
+                                "value": "{0}€"
+                            }
                         }
                     },
-                    "button":{
+                    "button": {
                         "cantUse": "Oupss visiblement tu ne peut pas vendre cette voiture"
                     }
                 }
             },
             "VenteCarCancel": {
-                "button":{
+                "button": {
                     "cantUse": "Oupss visiblement tu ne peut pas faire cela"
                 },
-                "interaction":{
-                    "content":"La demande de vente de voiture a bien été annuler"
+                "interaction": {
+                    "content": "La demande de vente de voiture a bien été annuler"
                 }
             },
             "VentePersoCar": {
@@ -638,15 +812,18 @@
                     "color": "DARK_GREEN",
                     "title": "Status de la vente : Vendu",
                     "footer": "Voiture de : {0}",
-                    "fields" : {
-                        "Vente" : {"name" : "{0} as vendus une voiture pour","value":"{0}€"}
+                    "fields": {
+                        "Vente": {
+                            "name": "{0} as vendus une voiture pour",
+                            "value": "{0}€"
+                        }
                     }
                 },
-                "button":{
+                "button": {
                     "cantUse": "Oupss visiblement tu ne peut pas vendre cette voiture"
                 },
-                "select":{
-                    "placeholder":"Merci de choisir la personne a qui vous voulez vendre la voiture"
+                "select": {
+                    "placeholder": "Merci de choisir la personne a qui vous voulez vendre la voiture"
                 }
             },
             "AchatPersoCar": {
@@ -654,15 +831,18 @@
                     "color": "DARK_GREEN",
                     "description": "Status de la vente : Vendue",
                     "footer": "Voiture de : {0}",
-                    "fields" : {
-                        "Vente" : {"name" : "{0} as Acheter la voiture pour la somme de","value":"{0}€"}
+                    "fields": {
+                        "Vente": {
+                            "name": "{0} as Acheter la voiture pour la somme de",
+                            "value": "{0}€"
+                        }
                     }
                 },
-                "button":{
+                "button": {
                     "cantUse": "Vous ne pouvez pas acheter cette voiture"
                 },
-                "select":{
-                    "placeholder":"Merci de choisir la personne a qui vous voulez vendre la voiture"
+                "select": {
+                    "placeholder": "Merci de choisir la personne a qui vous voulez vendre la voiture"
                 }
             },
             "PermisFail": {
@@ -674,67 +854,71 @@
                 }
             }
         },
-        "SelectMenu":{
-            "VenteProCarMenu":{
-                "embed":{
-                    "Author":"Ventre de voiture professionnel",
-                    "title":"Status de la vente : En cours",
-                    "description":"Fiche de vente professionnel d'une voiture",
-                    "color":"PURPLE",
-                    "footer":"Voiture de : {0}",
-                    "fields":{
-                        "stats":{"name": "Stats de la voiture"}
+        "SelectMenu": {
+            "VenteProCarMenu": {
+                "embed": {
+                    "Author": "Ventre de voiture professionnel",
+                    "title": "Status de la vente : En cours",
+                    "description": "Fiche de vente professionnel d'une voiture",
+                    "color": "PURPLE",
+                    "footer": "Voiture de : {0}",
+                    "fields": {
+                        "stats": {
+                            "name": "Stats de la voiture"
+                        }
                     }
                 },
-                "button":{
-                    "sell":"Vendre",
-                    "cancel":"Annuler"
+                "button": {
+                    "sell": "Vendre",
+                    "cancel": "Annuler"
                 },
-                "interaction":{
-                    "content":"Merci d'avoir choisi une voiture"
+                "interaction": {
+                    "content": "Merci d'avoir choisi une voiture"
                 }
             },
-            "VentePersoCarMenu":{
-                "embed":{
-                    "Author":"Ventre de voiture entre particulier",
-                    "title":"Status de la vente : En Attente",
-                    "description":"Fiche de vente particulier d'une voiture",
-                    "color":"PURPLE",
-                    "footer":"Voiture de : {0}",
-                    "fields":{
-                        "stats":{"name": "Stats de la voiture"}
+            "VentePersoCarMenu": {
+                "embed": {
+                    "Author": "Ventre de voiture entre particulier",
+                    "title": "Status de la vente : En Attente",
+                    "description": "Fiche de vente particulier d'une voiture",
+                    "color": "PURPLE",
+                    "footer": "Voiture de : {0}",
+                    "fields": {
+                        "stats": {
+                            "name": "Stats de la voiture"
+                        }
                     }
                 },
-                "button":{
-                    "sell":"Choisir un acheteur",
-                    "cancel":"Annuler"
+                "button": {
+                    "sell": "Choisir un acheteur",
+                    "cancel": "Annuler"
                 },
-                "interaction":{
-                    "content":"Merci d'avoir choisi une voiture"
+                "interaction": {
+                    "content": "Merci d'avoir choisi une voiture"
                 }
             },
-            "AchatPersoCarMenu":{
-                "embed":{
-                    "title":"Status de la vente : En Cours",
-                    "description":"Proposition de vente a : {0}"
+            "AchatPersoCarMenu": {
+                "embed": {
+                    "title": "Status de la vente : En Cours",
+                    "description": "Proposition de vente a : {0}"
                 },
-                "button":{
-                    "sell":"Choisir un acheteur",
-                    "cancel":"Annuler"
+                "button": {
+                    "sell": "Choisir un acheteur",
+                    "cancel": "Annuler"
                 },
-                "interaction":{
-                    "cantUse":"Vous ne pouvez pas vendre cette voiture"
+                "interaction": {
+                    "cantUse": "Vous ne pouvez pas vendre cette voiture"
                 }
             }
         }
     },
     "api": {
-        "isUserOnServer" : {
+        "isUserOnServer": {
             "true": "isUserOnServer: {0} result: {1}",
             "false": "isUserOnServer: {0} result: unknown user"
         },
-        "uservalidated" : {
-            "registered" : "L'utilisateur {0} s'est enregistré avec succès"
+        "uservalidated": {
+            "registered": "L'utilisateur {0} s'est enregistré avec succès"
         }
     }
 }

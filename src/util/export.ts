@@ -1,5 +1,5 @@
-import { GuildMember, MessageEmbed, PermissionOverwrites } from 'discord.js'
-import { ChannelTypes } from 'discord.js/typings/enums'
+import { EmbedBuilder } from 'discord.js';
+import { GuildMember, PermissionOverwrites } from 'discord.js'
 import fs from 'fs'
 import path from 'path'
 import lang from './language.json'
@@ -7,7 +7,7 @@ import appConf from "../util/appConfig.json"
 import { client } from '..'
 
 //* Permet de save un embed Pour la commande créate embed
-export const saveEmbed = (embed:MessageEmbed) => {
+export const saveEmbed = (embed:EmbedBuilder) => {
     fs.writeFile(path.join(__dirname, './customEmbed.json'), JSON.stringify(embed), function writeJSON(err) {
         if (err) return console.log(err);
     })
@@ -15,12 +15,23 @@ export const saveEmbed = (embed:MessageEmbed) => {
 
 //* Embed par def 
 export const DefaultEmbed = () => {
-        return new MessageEmbed().setAuthor(lang.embeds.default.author, "https://www.gtplanet.net/wp-content/uploads/2021/08/ForzaHorizon5_KeyArt_Horiz_RGB_Final-800x450.jpg", "https://discord.gg/BtkWVH2Kq9").setColor('#ff8000').setFooter(lang.embeds.default.footer, "https://www.gtplanet.net/wp-content/uploads/2021/08/ForzaHorizon5_KeyArt_Horiz_RGB_Final-800x450.jpg").setTimestamp().addFields()
+  return new EmbedBuilder()
+    
+    .setAuthor({ name: lang.embeds.default.author, iconURL: "https://www.gtplanet.net/wp-content/uploads/2021/08/ForzaHorizon5_KeyArt_Horiz_RGB_Final-800x450.jpg", url: "https://discord.gg/BtkWVH2Kq9" })
+    .setColor('#ff8000')
+    .setFooter({ text: lang.embeds.default.footer, iconURL: "https://www.gtplanet.net/wp-content/uploads/2021/08/ForzaHorizon5_KeyArt_Horiz_RGB_Final-800x450.jpg" })
+    .setTimestamp()
+    .addFields()
     }
 
 //* Embed utilisé pour logger
 export const LogsEmbed = (name : string, id : string) => {
-        return new MessageEmbed().setAuthor(lang.embeds.LogsEmbed.author).setColor('#ff0000').setFooter(lang.embeds.LogsEmbed.footer.format(name,id)).setTimestamp()
+  return new EmbedBuilder()
+    .setAuthor({ name: lang.embeds.LogsEmbed.author })
+    .setColor('#ff0000')
+    .setTimestamp()
+    .setFooter({ text: lang.embeds.LogsEmbed.footer.format(name, id) })
+    .addFields()
 }
 
 //* est utilisée a la save de channelles avec la command /getcategory
@@ -31,7 +42,7 @@ export class ChannelClass {
 }
 
 export class ChannelInfo {
-    public type : ChannelTypes = ChannelTypes.GUILD_TEXT as ChannelTypes || ChannelTypes.GUILD_VOICE as ChannelTypes
+    public type = 0 || 2
     public topic : string = ''
     public permissionOverwrites : Array<PermissionOverwrites> = []
     public position : number = 0
@@ -77,8 +88,8 @@ export const IsAdmin = (member: GuildMember) => {
 
 //* Permet de déterminer si un GuildMember est concerner par un embed
 //! Ne fonctionne que si il y a "xxx : GuildMember.tag" dans le footer et rien d'autre 
-export const IsEmbedOwner = (member: GuildMember, embed: MessageEmbed) => {
-    const embedMember = embed.footer!.text.split(' : ')[1] as string
+export const IsEmbedOwner = (member: GuildMember, embed: EmbedBuilder) => {
+    const embedMember = embed.data.footer!.text.split(' : ')[1] as string
     
     // if the GuildMember are and admin he can use embed
     if (IsAdmin(member)){

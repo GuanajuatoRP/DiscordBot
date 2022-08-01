@@ -1,4 +1,5 @@
-import { Command } from 'sheweny'
+import { Command } from 'sheweny';
+import { ApplicationCommandOptionType } from 'discord.js';
 import { DefaultEmbed } from '../../../util/export'
 import fs from 'fs'
 import path from 'path'
@@ -21,21 +22,20 @@ export class AdminListCommand extends Command {
             examples : cmdLang.description.exemples,
             options : [
                 {
-                    type : 'STRING',
+                    type : ApplicationCommandOptionType.String,
                     name: 'add',
                     description: cmdLang.slashOptions.add,
                     autocomplete : true,
                     required : false,
                     },
                 {
-                    type : 'STRING',
+                    type : ApplicationCommandOptionType.String,
                     name: 'remove',
                     description: cmdLang.slashOptions.remove,
                     autocomplete : true,
                     required : false,
                     }
             ],
-            defaultPermission : true,
             // channel : '', //* Default Channel is GUILD
             // cooldown : , //* Default cooldown set at 2sec
             adminsOnly : true, //* Default value is false 
@@ -46,7 +46,7 @@ export class AdminListCommand extends Command {
     execute(interaction : CommandInteraction) {
         this.client.emit('CommandLog', interaction as CommandInteraction)
 
-        if (interaction.member.user.id !== appConfig.botConfig.dercrakerId){
+        if (interaction.member!.user.id !== appConfig.botConfig.dercrakerId){
             return interaction.reply({
                 content : cmdLang.interaction.notOwnerError,
                 ephemeral : true
@@ -55,22 +55,22 @@ export class AdminListCommand extends Command {
 
         let adminList : Array<any> = new Array<any>()
         const adminRole = interaction.guild!.roles.cache.get(appConfig.Roles.ADMIN);
-        if (interaction.options.getString('add') == null && interaction.options.getString('remove') == null){
+        if (interaction.options.get('add') == null && interaction.options.get('remove') == null){
             const adminRoleList = interaction.guild!.roles.cache.get(appConfig.Roles.ADMIN)!.members.filter(u => appConfig.botConfig.admins.includes(u.id))
 
             adminRoleList.forEach(u => {
                 adminList.push(u.nickname == null ? u.user.username : u.nickname)
             });
             let adminListEmbed = DefaultEmbed()
-                .addField(cmdLang.embed.adminListField, adminList.join(' , '))
+            adminListEmbed.data.fields!.push({name: cmdLang.embed.adminListField, value : adminList.join(' , ')})
 
             return interaction.reply({
                 embeds : [adminListEmbed],
                 ephemeral : true
             })
-        } else if (interaction.options.getString('add') != null && interaction.options.getString('remove') == null){
+        } else if (interaction.options.get('add') != null && interaction.options.get('remove') == null){
             interaction.guild!.members.cache.forEach(u => {
-                if (u.user.username === interaction.options.getString('add') || u.nickname === interaction.options.getString('add')){
+                if (u.user.username === interaction.options.get('add')!.value || u.nickname === interaction.options.get('add')){
                     if (u.id === appConfig.botConfig.dercrakerId){
                         return interaction.reply({
                             content : cmdLang.interaction.notManagableUser,
@@ -90,9 +90,9 @@ export class AdminListCommand extends Command {
                     }) 
                 }
             })
-        } else if (interaction.options.getString('add') == null && interaction.options.getString('remove') != null){
+        } else if (interaction.options.get('add') == null && interaction.options.get('remove') != null){
             interaction.guild!.roles.cache.get(appConfig.Roles.ADMIN)!.members.forEach(u => {
-                if (appConfig.botConfig.admins.includes(u.id) && u.user.username === interaction.options.getString('remove') || u.nickname === interaction.options.getString('remove')){
+                if (appConfig.botConfig.admins.includes(u.id) && u.user.username === interaction.options.get('remove')!.value || u.nickname === interaction.options.get('remove')){
                     if (u.id === appConfig.botConfig.dercrakerId){
                         return interaction.reply({content : cmdLang.interaction.notManagableUser,
                         ephemeral : true})

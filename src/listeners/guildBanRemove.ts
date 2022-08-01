@@ -17,13 +17,13 @@ export class GuildBanRemove extends Event {
     async execute(ban : GuildBan) {
         const auditLogs = await ban.guild.fetchAuditLogs({
             limit: 1,
-            type: 'MEMBER_BAN_REMOVE'
+            type: 23
         })
         const executor = auditLogs.entries.first()!.executor
         let embed = LogsEmbed(executor!.username,executor!.id)
             embed.setColor(eventLang.embed.color as ColorResolvable)
-            embed.setAuthor(eventLang.embed.author)
-            embed.addField(eventLang.embed.fields.unban.name.format(ban.user.tag,ban.user.id), eventLang.embed.fields.reason.name.format(ban.reason!), false)
+            embed.setAuthor({ name: eventLang.embed.author})
+            embed.addFields({name : eventLang.embed.fields.unban.name.format(ban.user.tag,ban.user.id), value: eventLang.embed.fields.reason.name.format(ban.reason!), inline:false})
 
         const channel = ban.guild.channels.cache.get(appConf.chanels.staff.botLog) as TextChannel
         channel.send({

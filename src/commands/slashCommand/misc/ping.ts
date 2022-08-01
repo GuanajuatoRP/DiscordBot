@@ -25,7 +25,6 @@ export class PingCommand extends Command {
             // channel : '', //* Default Channel is GUILD
             // cooldown : , //* Default cooldown set at 2sec
             // adminsOnly : , //* Default value is false 
-            defaultPermission : true,
             userPermissions : [],
             clientPermissions : []
         });
@@ -35,7 +34,7 @@ export class PingCommand extends Command {
         const start = Date.now()
         this.client.emit('CommandLog', interaction as CommandInteraction)
         
-        interaction.reply({ content: "Pong !", ephemeral : true}).then(() => {
+        interaction.reply({ content: "Pong !", ephemeral : false}).then(() => {
             const end = Date.now()
             const time = end - start
             interaction.editReply({content : `Pong : ${time}ms`})
