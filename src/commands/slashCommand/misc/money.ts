@@ -1,10 +1,11 @@
 import { GetMoneyDTO } from './../../../APIToUserApi/Models/GetMoneyDTO';
-import { ColorResolvable } from 'discord.js';
+import { ColorResolvable, ApplicationCommandOptionType } from 'discord.js';
 import { EmbedBuilder, GuildMember, CommandInteraction } from 'discord.js';
 import { Command } from 'sheweny'
 import type { ShewenyClient } from 'sheweny'
 import lang from '../../../util/language.json'
 import MoneyController from '../../../APIToUserApi/MoneyController';
+import { AxiosResponse } from 'axios';
 const CommandLang = lang.commands.money
 
 
@@ -15,10 +16,15 @@ export class MoneyCommand extends Command {
             name: 'money',
             category: 'Misc', //* Default category is InDev
             // type: '', //* Default type is SLASH_COMMAND
-            description: CommandLang.description.desc,
-            usage : CommandLang.description.usage,
-            examples : CommandLang.description.exemples,
-            options : [
+            description: CommandLang.description.desc as string,
+            usage : CommandLang.description.usage as string,
+            examples : CommandLang.description.exemples as string[],
+          options: [
+              
+            {   type : ApplicationCommandOptionType.User ,
+              name: 'user',
+              description: CommandLang.slashOptions.User as string,
+          }
             ],
             // channel : '', //* Default Channel is GUILD
             // cooldown : , //* Default cooldown set at 2sec
@@ -27,14 +33,17 @@ export class MoneyCommand extends Command {
             //clientPermissions : []
         });
     }
-    async execute (interaction : CommandInteraction) {
-      this.client.emit('CommandLog', interaction as CommandInteraction)
+  async execute(interaction: CommandInteraction) {
+    this.client.emit('CommandLog', interaction as CommandInteraction)
+    await interaction.deferReply()
+    const user = interaction.options.getUser('user')
 
-      await MoneyController.getMoney((interaction.member as GuildMember).id)
-        .then(response => {
-          const moneyDTO: GetMoneyDTO = response.data as GetMoneyDTO;
+    MoneyController.getMoney( user ? user.id : (interaction.member as GuildMember).id)
+      .then((response: AxiosResponse<any,any>) => {
 
-          const embedMoney = new EmbedBuilder()
+        const moneyDTO: GetMoneyDTO = response!.data as GetMoneyDTO;
+
+        const embedMoney = new EmbedBuilder()
           .setTitle(CommandLang.embed.title.format((interaction.member! as GuildMember).displayName))
           .setColor(CommandLang.embed.color as ColorResolvable)
           .addFields({
@@ -44,19 +53,18 @@ export class MoneyCommand extends Command {
           .setThumbnail((interaction.member! as GuildMember).displayAvatarURL() as string)
           .setAuthor({ name: CommandLang.embed.author.name, url: CommandLang.embed.author.url, })
           .setTimestamp()
-          .setFooter({text: CommandLang.embed.footer})
-  
-          return interaction.reply({
-            embeds: [embedMoney],
-            ephemeral: false,
-          }) 
-          
-        })
-        .catch(err => {
-          return interaction.reply({
-            content: err.response.data,
-            ephemeral: false,
+          .setFooter({ text: CommandLang.embed.footer })
+            
+        return interaction.editReply({
+              embeds: [embedMoney],
           }) 
         })
+      .catch(() => {
+        
+          return interaction.editReply({
+            content: lang.bot.errorMessage as string,
+          }) 
+        })
+      
     }
 }

@@ -22,13 +22,13 @@ export class AdminMoneyCommand extends Command {
                 {
                   type: ApplicationCommandOptionType.User,
                   name: 'user',
-                  description: CommandLang.slashOptions.User,
+                  description: CommandLang.slashOptions.user as string,
                   required: true,
               },
               {
                 type: ApplicationCommandOptionType.String,
                 name: 'action',
-                description: CommandLang.slashOptions.User,
+                description: CommandLang.slashOptions.action as string,
                 required: true,
                 choices: [
                   { name: "Add", value: "Add", },
@@ -38,13 +38,13 @@ export class AdminMoneyCommand extends Command {
               {
                 type: ApplicationCommandOptionType.Number,
                 name: 'montant',
-                description: CommandLang.slashOptions.User,
+                description: CommandLang.slashOptions.amount as string,
                 required: true
               },
               {
                 type: ApplicationCommandOptionType.String,
                 name: 'raison',
-                description: CommandLang.slashOptions.User,
+                description: CommandLang.slashOptions.reason as string,
                 required: true
               },
             ],
@@ -57,6 +57,9 @@ export class AdminMoneyCommand extends Command {
     }
     async execute(interaction : CommandInteraction) {
       this.client.emit('CommandLog', interaction as CommandInteraction)
+
+      await interaction.deferReply();
+
       const user: GuildMember = interaction.options.get('user')!.member as GuildMember;
       const action: string = interaction.options.get('action')!.value as string;
       const montant: number = interaction.options.get('montant')!.value as number;
@@ -64,10 +67,11 @@ export class AdminMoneyCommand extends Command {
 
 
       let embedMoney = new EmbedBuilder()
-        .setTitle("Compte bancaire de : {0}".format(user.displayName))
+        .setTitle(CommandLang.embed.title.format(user.displayName))
         .setThumbnail((interaction.member! as GuildMember).displayAvatarURL() as string)
         .setAuthor({ name: "𝑳𝒂 𝒃𝒂𝒏𝒒𝒖𝒆", url: "https://discord.com/channels/854140376867930122/1001952467786932244/1002182894632050708", })
         .setTimestamp()
+        .setFooter({text: `Motif : ${raison}`})
 
       try {
         switch (action) {
@@ -78,11 +82,11 @@ export class AdminMoneyCommand extends Command {
                 embedMoney.setColor("#11ff00" as ColorResolvable)
                 embedMoney.addFields(
                   {
-                    name: "Ajout d'argent :",
+                    name: CommandLang.embed.fieldsNames.add,
                     value: `${montant}€`,
                   },
                   {
-                    name: "Nouveau Solde :",
+                    name: CommandLang.embed.fieldsNames.newSolde,
                     value: `${moneyDTO.money}€`,
                   })
               })
@@ -94,11 +98,11 @@ export class AdminMoneyCommand extends Command {
                 embedMoney.setColor("#f00" as ColorResolvable)
                 embedMoney.addFields(
                   {
-                    name: "Retrait d'argent :",
+                    name: CommandLang.embed.fieldsNames.remove,
                     value: `${montant}€`,
                   },
                   {
-                    name: "Nouveau Solde :",
+                    name: CommandLang.embed.fieldsNames.newSolde,
                     value: `${moneyDTO.money}€`,
                   }
                 )
@@ -111,7 +115,7 @@ export class AdminMoneyCommand extends Command {
                 embedMoney.setColor("#FFA500" as ColorResolvable)
                 embedMoney.addFields(
                   {
-                    name: "Remise a niveau du solde :",
+                    name: CommandLang.embed.fieldsNames.set,
                     value: `${moneyDTO.money}€`,
                   }
                 )
@@ -119,18 +123,13 @@ export class AdminMoneyCommand extends Command {
             break;
         }
       } catch (error: any) {
-        return interaction.reply({
-          content: error.response.data,
-          ephemeral: false,
+        return interaction.editReply({
+          content: lang.bot.errorMessage as string,
         }) 
       }
       
-      
-      embedMoney.setFooter({text: `Motif : ${raison}`})
-
-      return interaction.reply({
+      return interaction.editReply({
         embeds: [embedMoney],
-        ephemeral: false,
       }) 
     }
 }

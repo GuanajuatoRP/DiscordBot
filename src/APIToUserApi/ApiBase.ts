@@ -6,7 +6,7 @@ export default class ApiBase {
     static get userApi() {
         if (!this._userApi) {
             this._userApi = axios.create({
-                baseURL: process.env.API_AUTH_URL as string,
+                baseURL: process.env.USER_API_URL as string,
                 timeout: 10000000,
                 headers: {
                 'X-Custom-Header': 'foobar',
@@ -14,7 +14,7 @@ export default class ApiBase {
                 'Content-Type': 'application/json'
             }
             })
-        }
+      }
         return this._userApi;
     }
 }

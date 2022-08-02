@@ -2,7 +2,8 @@
     "bot": {
         "status": {
             "name": "Apprend a apprendre"
-        }
+        },
+        "errorMessage": "Oupss il semblerais qu'une erreur c'est produite. Si cela perssiste contacte le Staff"
     },
     "commands": {
         "adminMoney": {
@@ -14,19 +15,30 @@
                     "name": "Solde disponible :",
                     "value": "50000€"
                 }],
+                "fieldsNames": {
+                    "newSolde": "Nouveau Solde :",
+                    "add": "Ajout d'argent :",
+                    "remove": "Retrait d'argent :",
+                    "set": "Remise a niveau du solde :"
+                },
                 "author": {
                     "name": "𝑳𝒂 𝒃𝒂𝒏𝒒𝒖𝒆",
                     "url": "https://discord.com/channels/854140376867930122/1001952467786932244/1002182894632050708"
                 }
             },
             "slashOptions": {
-                "User": "Nom de l'utilisateur avec qui interragir"
+                "user": "Nom de l'utilisateur avec qui interragir",
+                "action": "Que veux-tu faire avec son argent?",
+                "amount": "Quelle somme veux-tu utilisé ?",
+                "reason": "Pourquoi celas"
             },
             "description": {
                 "desc": "Permet aux admins d'intéragir avec le solde des utilisateurs",
-                "usage": "adminmoney",
+                "usage": "adminmoney {user} {action} {amount} {reason}",
                 "exemples": [
-                    "adminmoney"
+                    "adminmoney user:@UwU.#2273 action:Add montant:500 raison:don annonyme ^^",
+                    "adminmoney user:@UwU.#2273 action:Remove montant:25000 raison:Achat de voiture",
+                    "adminmoney user:@UwU.#2273 action:Set montant:358126 raison:Remise a niveau du compte suite a une erreur"
                 ]
             }
         },
@@ -44,11 +56,15 @@
                     "url": "https://discord.com/channels/854140376867930122/1001952467786932244/1002182894632050708"
                 }
             },
+            "slashOptions": {
+                "User": "Nom de l'utilisateur, ce champ peut êter vide"
+            },
             "description": {
                 "desc": "Permet d'intéragir avec la banque",
-                "usage": "money",
+                "usage": "money <@Utilisitaeur>",
                 "exemples": [
-                    "money"
+                    "money",
+                    "money user:@UwU.#2273"
                 ]
             }
         },
@@ -288,10 +304,10 @@
         },
         "adminlist": {
             "description": {
-                "desc": "Liste toute les personnes étant admin sur le serveur et ayant accès au commande admin only",
-                "usage": "adminlist <addUser> <removeUser>",
+                "desc": "Commande trop sombre pour expliquer ce quelle fait ^^ (╯°□°）╯︵ ┻━┻",
+                "usage": "No usage",
                 "exemples": [
-                    "adminlist Dercraker"
+                    "No Exemples"
                 ]
             },
             "slashOptions": {
