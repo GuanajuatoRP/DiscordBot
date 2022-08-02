@@ -31,6 +31,7 @@
         "GMB": "1001952420018008194"
     },
     "Api": {
-        "RegisterLink": "https://localhost/register/{0}"
+        "RegisterLink": "https://localhost:49153/register?discordId={0}",
+        "RegisterValidationLink": "https://localhost:49153/validation?discordId={0}&token={1}"
     }
 }

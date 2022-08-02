@@ -1,4 +1,3 @@
 export class RegisterModel {
-    public username = '';
-    public discordId = '';
+  public discordId: string = '';
 }
