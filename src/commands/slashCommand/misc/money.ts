@@ -37,6 +37,8 @@ export class MoneyCommand extends Command {
   async execute(interaction: CommandInteraction) {
     this.client.emit('CommandLog', interaction as CommandInteraction)
     await interaction.deferReply()
+    const wait = require('node:timers/promises').setTimeout;
+    await wait(5000)
     const user = interaction.options.getUser('user')
 
     await MoneyController.getMoney(user ? user.id : (interaction.member as GuildMember).id)

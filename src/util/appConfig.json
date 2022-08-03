@@ -32,6 +32,6 @@
     },
     "Api": {
         "RegisterLink": "https://localhost:49153/register?discordId={0}",
-        "RegisterValidationLink": "https://localhost:49153/validation?discordId={0}&token={1}"
+        "RegisterValidationLink": "http://localhost:8080/confirmaccount?discordId={0}&token={1}"
     }
 }

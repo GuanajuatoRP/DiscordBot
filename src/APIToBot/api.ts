@@ -4,24 +4,40 @@ import { userValidateModel } from "./Model/UserValidatedModel"
 import { client } from '../index'
 import appConf from '../util/appConfig.json'
 import appLang from '../util/language.json'
+import { userOnServerModel } from './Model/userOnServerModel'
 
 
+const cors = require('cors')
 
 export const app = express();
-app.use(express.json());
+function rawBody(req: any, res: any, next: any) {
+  req.setEncoding('utf8');
+  req.rawBody = '';
+  req.on('data', function (chunk: any) {
+    req.rawBody += chunk;
+  });
+  req.on('end', function () {
+    next();
+  });
+}
+app.use(rawBody);
+app.use(cors({ origin: '*' }));
 
 // Check if the user with {{userId}}
 app.get("/isUserOnServer/:userId", async (req: express.Request, res: express.Response) => {
   const guild = await client.guilds.fetch(appConf.botConfig.guildid);
-  let result = false;
+  let userOnServer = new userOnServerModel();
   await guild.members.fetch(req.params.userId)
     .then((user) => {
-      result = true;
+      userOnServer.isOnServeur = true;
+      userOnServer.username = user.displayName;
     })
     .catch((reason) => {
-      result = false;
+      userOnServer.isOnServeur = false;
     });
-  res.send(result);
+
+
+  res.send(userOnServer);
 });
 
 // app.post("/test", async (req: express.Request, res: express.Response) => {
@@ -36,16 +52,17 @@ app.get("/isUserOnServer/:userId", async (req: express.Request, res: express.Res
 app.post("/sendRegisterValidationButton/:userId", async (req: express.Request, res: express.Response) => {
   //Get params
   const user = new userValidateModel();
-  user.userId = req.params.userId;
-  user.token = req.body.token;
 
-  console.log(user.userId);
+
+  user.userId = req.params.userId;
+  user.token = (req as any).rawBody;
+
 
   // get guild
   const guild = await client.guilds.fetch(appConf.botConfig.guildid) as Guild
 
   let result = false;
-  await guild.members.fetch(req.params.userId)
+  await guild.members.fetch(user.userId)
     .then((user) => {
       result = true;
     })
@@ -72,7 +89,7 @@ app.post("/sendRegisterValidationButton/:userId", async (req: express.Request, r
 
   //log in channel
   const channel = await guild.channels.cache.get(appConf.chanels.staff.botLog) as TextChannel;
-  channel.send(appLang.api.uservalidated.registered.format(req.body.userId));
+  channel.send(appLang.api.uservalidated.registered.format(user.userId));
 
   res.sendStatus(200);
 })
