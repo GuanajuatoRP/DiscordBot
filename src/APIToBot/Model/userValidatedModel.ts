@@ -1,4 +1,4 @@
-export class userValidateModel {
-    public userId: string = '';
-    public token: string = '';
+export class UserValidateModel {
+  public userId: string = '';
+  public token: string = '';
 }
