@@ -17,15 +17,15 @@ export class RoleCreate extends Event {
     async execute(role : Role) {
         const auditLogs = await role.guild.fetchAuditLogs({
             limit: 1,
-            type: 'ROLE_CREATE'
+            type: 30
         })
         const executor = auditLogs.entries.first()!.executor
 
         let Embed = LogsEmbed(executor!.username,executor!.id)
         Embed.setColor(eventLang.embed.color as ColorResolvable)
-        Embed.setAuthor(eventLang.embed.author)
+        Embed.setAuthor({name: eventLang.embed.author})
         Embed.addFields({ name: eventLang.embed.fields.roleName.name, value: `${role.name}`, inline: true }, { name: eventLang.embed.fields.roleId.name, value: `${role.id}`, inline: true }, )
-        Embed.setFooter(`Cette action a été réalisée par ${executor!.username} -> id : ${executor!.id}`)
+      Embed.setFooter({ text : `Cette action a été réalisée par ${executor!.username} -> id : ${executor!.id}`})
 
         const channel = role.guild.channels.cache.get(appConf.chanels.staff.botLog) as TextChannel
         channel!.send({ embeds: [Embed] })

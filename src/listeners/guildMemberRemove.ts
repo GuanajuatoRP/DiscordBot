@@ -1,6 +1,7 @@
+import { EmbedBuilder } from 'discord.js';
 import { Event } from "sheweny";
 import type { ShewenyClient } from "sheweny";
-import { GuildMember, MessageEmbed, TextChannel } from "discord.js";
+import { GuildMember, TextChannel } from "discord.js";
 import lang from '../util/language.json'
 const eventLang = lang.event.guildMemberRemove
 import appconf from '../util/appConfig.json'
@@ -15,11 +16,11 @@ export class GuildMemberRemove extends Event {
 
     execute(member : GuildMember){
         
-        let embed = new MessageEmbed()
-            .setColor('RED')
-            .setAuthor("[-] {0}".format(member.user.tag))
+        let embed = new EmbedBuilder()
+            .setColor(0xed4245)
+            .setAuthor({name: "[-] {0}".format(member.user.tag)})
             .setDescription(eventLang.embed.description.format(member.displayName))
-            .setFooter("GuildMember Remove")
+            .setFooter({text: "GuildMember Remove"})
             .setTimestamp()
             .setThumbnail(member.user.displayAvatarURL())
 

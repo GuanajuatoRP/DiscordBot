@@ -19,10 +19,10 @@ export class CommandLog extends Event {
     execute(interaction: CommandInteraction) {
         const member = interaction.member as GuildMember
         const Embed = LogsEmbed(member.displayName,member.id)
-        Embed.setAuthor(eventLang.embed.author)
+        Embed.setAuthor({ name: eventLang.embed.author})
         Embed.setColor(eventLang.embed.color as ColorResolvable)
-        Embed.fields.push({name: eventLang.embed.fields.commandName.name, value : interaction.commandName, inline: true})
-        Embed.fields.push({name: eventLang.embed.fields.salon.name, value : interaction.guild!.channels.cache.get(interaction.channelId)!.name, inline: true})
+        Embed.data.fields!.push({name: eventLang.embed.fields.commandName.name, value : interaction.commandName, inline: true})
+        Embed.data.fields!.push({name: eventLang.embed.fields.salon.name, value : interaction.guild!.channels.cache.get(interaction.channelId)!.name, inline: true})
         Embed.setTimestamp()
         const channel = interaction.guild!.channels.cache.get(appConf.chanels.staff.commandLog) as TextChannel
         //* Get and format date at "dd-mm-YYYY hh:mm:ss"

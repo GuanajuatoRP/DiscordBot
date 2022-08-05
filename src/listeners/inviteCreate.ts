@@ -18,14 +18,14 @@ export class InviteCreate extends Event {
         const guild = invite.guild as Guild
         const auditLogs = await guild.fetchAuditLogs({
             limit : 1,
-            type : 'INVITE_CREATE'
+            type : 40
         })
         const executor = auditLogs.entries.first()!.executor
         
 
         let Embed = LogsEmbed(executor!.username,executor!.id)
             Embed.setColor(eventLang.embed.color as ColorResolvable)
-            Embed.setAuthor(eventLang.embed.author)
+            Embed.setAuthor({name :eventLang.embed.author})
             Embed.addFields({ name: eventLang.embed.fields.link.name, value: `${invite.url}`, inline: true }, { name: eventLang.embed.fields.code.name, value: `${invite.code}`, inline: true }, { name: eventLang.embed.fields.salon.name, value: `${invite.channel}`, inline: true }, )
 
         const channel = guild.channels.cache.get(appConf.chanels.staff.botLog) as TextChannel

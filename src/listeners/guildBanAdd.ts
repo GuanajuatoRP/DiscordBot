@@ -17,12 +17,12 @@ export class GuildBanAdd extends Event {
     async execute(ban : GuildBan) {
         const auditLogs = await ban.guild.fetchAuditLogs({
             limit: 1,
-            type: 'MEMBER_BAN_ADD'
+            type: 22
         })
         const executor = auditLogs.entries.first()!.executor
         let embed = LogsEmbed(executor!.username,executor!.id)
-            embed.setAuthor(eventLang.embed.author)
-            embed.addField(eventLang.embed.fields.ban.name.format(ban.user.tag,ban.user.id), eventLang.embed.fields.reason.name.format(ban.reason!), false)
+            embed.setAuthor({name: eventLang.embed.author})
+            embed.addFields({name :eventLang.embed.fields.ban.name.format(ban.user.tag,ban.user.id), value: eventLang.embed.fields.reason.name.format(ban.reason!),inline: false})
 
         const channel = ban.guild.channels.cache.get(appConf.chanels.staff.botLog) as TextChannel
         channel.send({

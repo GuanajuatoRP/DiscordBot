@@ -1,6 +1,7 @@
+import { EmbedBuilder } from 'discord.js';
 import { Event } from "sheweny";
 import type { ShewenyClient } from "sheweny";
-import { GuildMember, MessageEmbed, TextChannel } from "discord.js";
+import { GuildMember, TextChannel } from "discord.js";
 import lang from '../util/language.json'
 const eventLang = lang.event.guildMemberAdd
 import appconf from '../util/appConfig.json'
@@ -16,11 +17,11 @@ export class GuildMemberAdd extends Event {
     execute(member : GuildMember){
 
         // send Log
-        let embed = new MessageEmbed()
-            .setColor('GREEN')
-            .setAuthor("[+] {0}".format(member.user.tag))
+        let embed = new EmbedBuilder()
+            .setColor(0x57f287)
+            .setAuthor({name :"[+] {0}".format(member.user.tag)})
             .setDescription(eventLang.embed.description.format(member.displayName))
-            .setFooter("GuildMember Add")
+            .setFooter({text : "GuildMember Add"})
             .setTimestamp()
             .setThumbnail(member.user.displayAvatarURL())
 

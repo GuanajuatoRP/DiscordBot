@@ -1,3 +1,4 @@
+import { ApplicationCommandOptionType } from 'discord.js';
 import { Command } from "sheweny"
 import { DefaultEmbed} from '../../../util/export'
 import {stripIndents} from 'common-tags'
@@ -16,13 +17,13 @@ export class AdminHelpCommand extends Command {
             usage : cmdLang.description.usage,
             examples : cmdLang.description.exemples,
             options : [
-                {   type : 'STRING',
+                {
+                    type: ApplicationCommandOptionType.String,
                     name: 'commande',
                     description: cmdLang.slashOptions.description,
                     autocomplete : true,
                 }
             ],
-            defaultPermission : true,
             // channel : '', //* Default Channel is GUILD
             // cooldown : , //* Default cooldown set at 2sec
             adminsOnly : true, //* Default value is false 
@@ -33,13 +34,13 @@ export class AdminHelpCommand extends Command {
     execute(interaction : CommandInteraction) {
         this.client.emit('AdminCommandLog', interaction as CommandInteraction)
         let commandName = interaction.options
-        const commands = Array.from(this.client.util.getCommands()) //Get All Commands loaded for the bot 
+        const commands = this.client.collections.commands.map(c => c[0]) //Get All Commands loaded for the bot 
         
         
         if (!commandName.get('commande')){ //si aucune commande est donner en paramètre
             let allCategory = new Array //Get All Unnique Catégory
-            this.client.collections.commands.forEach(command => {
-                if (command.category === 'InDev' || command.category === 'Admin'){
+            this.client.collections.commands.map(c => c[0]).forEach(command => {
+                if (command.category == 'InDev' || command.category == 'Admin'){
                     if (!allCategory.includes(command.category)){
                         allCategory.push(command.category)
                     }
@@ -57,11 +58,13 @@ export class AdminHelpCommand extends Command {
 
                 if (commandOfCategory.length == 0 ) commandOfCategory.push('No Command in this Category')
                 
-                Embed.addField(
-                        `${category}`,
-                        `${commands.filter(c => c.category === `${category}` && c.adminsOnly === true && c.type === 'SLASH_COMMAND')
+                Embed.addFields(
+                  {
+                          name : `${category}`,
+                        value :`${commands.filter(c => c.category === `${category}` && c.adminsOnly === true && c.type === 'SLASH_COMMAND')
                                     .map(c => `\`${c.name}\``)
-                                    .join(', ')}`
+                    .join(', ')}`
+                                  }
                 )
             }
             // Define random command for /help example
@@ -72,7 +75,7 @@ export class AdminHelpCommand extends Command {
                 randomCommand1 = availableCommand[Math.floor(Math.random() * availableCommand.length)]
                 randomCommand2 = availableCommand[Math.floor(Math.random() * availableCommand.length)]
             } while (randomCommand1 == randomCommand2);
-            Embed.addField(cmdLang.embed.fields.info.name,cmdLang.embed.fields.info.value.format(randomCommand1,randomCommand2))
+            Embed.addFields({name : cmdLang.embed.fields.info.name, value: cmdLang.embed.fields.info.value.format(randomCommand1,randomCommand2)})
 
             return interaction.reply({
                 embeds: [Embed],
@@ -80,7 +83,7 @@ export class AdminHelpCommand extends Command {
             }) 
         } else if (commandName.get('commande')){ //si une commande est donner en paramètre
             const CName = `${commandName.get('commande')!.value}` //récupération du nom 
-            const command = this.client.collections.commands.get(CName);//récupération du nom 
+            const command = this.client.collections.commands.map(c => c[0]).filter(c => c.name == CName)[0] as Command;//récupération du nom 
             
             if (!commands.map(c => c.name).includes(CName)){
                 return interaction.reply({
@@ -120,7 +123,7 @@ export class AdminHelpCommand extends Command {
     onAutocomplete(interaction: AutocompleteInteraction) {
         const focusedOption = interaction.options.getFocused(true);
     
-        const choices: Array<string> = Array.from(this.client.util.getCommands()).filter(c => c.category == `InDev` || c.category == `Admin` && c.adminsOnly === true && c.type === 'SLASH_COMMAND').map(c => c.name)
+        const choices: Array<string> = (this.client.collections.commands.map(c => c[0]) as Command[]).filter(c => (c as Command).category == `InDev` || (c as Command).category == `Admin` && (c as Command).adminsOnly === true && (c as Command).type === 'SLASH_COMMAND').map(c => (c as Command).name)
     
         if (focusedOption.name === "commande") {
             choices

@@ -13,6 +13,6 @@ export class MessageCreate extends Event {
     }
 
     execute(message: Message) {
-        if (message.type === 'CHANNEL_PINNED_MESSAGE') setTimeout(() => message.delete(), 2000)
+        if (message.type === 6) setTimeout(() => message.delete(), 2000)
     }
 }
