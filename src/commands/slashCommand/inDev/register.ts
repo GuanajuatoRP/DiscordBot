@@ -44,8 +44,6 @@ export class RegisterCommand extends Command {
     }
 
 
-    // TODO: API call pour request un token d'authentification
-    const token: string = "un supper token" as string
     let embed = DefaultEmbed()
     embed.data.title = cmdLang.embed.title
     embed.setColor(cmdLang.embed.color as ColorResolvable)
@@ -59,14 +57,8 @@ export class RegisterCommand extends Command {
           .setStyle(ButtonStyle.Primary)
       )
 
-    await interaction.editReply({
-      content: cmdLang.interaction.sendRegister,
+    return interaction.editReply({
       components: [btNewAccount],
-    })
-    return interaction.user.send({
-      content: token,
-      embeds: [embed],
-      components: [btNewAccount]
     })
   }
 }

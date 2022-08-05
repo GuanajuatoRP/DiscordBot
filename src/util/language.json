@@ -548,6 +548,14 @@
         "LogsEmbed": {
             "author": "Définir l'action",
             "footer": "Cette action a été réalisée par {0} -> id : {1}"
+        },
+        "ActivateRegistration": {
+            "description": "Vous pouvez maintenant validé votre inscription en cliquant sur le bouton suivant",
+            "color": "0x57f287"
+        },
+        "AccountActivated": {
+            "description": "{0} a été activé son compte et reçut sont role",
+            "color": "0x3498db"
         }
     },
     "event": {
@@ -934,7 +942,8 @@
             "false": "isUserOnServer: {0} result: unknown user"
         },
         "uservalidated": {
-            "registered": "L'utilisateur {0} s'est enregistré avec succès"
+            "registered": "L'utilisateur {0} s'est enregistré avec succès",
+            "activated": "L'utilisateur {0} a été activer et a reçut son role avec succès"
         }
     }
 }

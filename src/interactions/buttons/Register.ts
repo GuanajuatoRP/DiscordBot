@@ -34,11 +34,6 @@ export class RegisterBtn extends Button {
     }
 
 
-    // const trycatch = true
-    // const registerModel: RegisterModel = { discordId: member.id }
-    //TODO :  Call Api on register endpoint to create a new token with user.id
-
-    // if (trycatch) {
     // Create new embed and button link to send in dm on member 
     let embed = DefaultEmbed()
     embed.setDescription(interactionLang.embedGoodResponse.description)
@@ -64,29 +59,5 @@ export class RegisterBtn extends Button {
         components: [btLink]
       })
     }, 2000)
-
-    //TODO: LogsEmbed
-
-    // }
-    // else {
-    //   // Create Embed With Error Informations
-    //   let embed = LogsEmbed(member.displayName, member.id)
-    //   embed.setAuthor({ name: interactionLang.embedError.author })
-    //   embed.setDescription(interactionLang.embedError.description)
-    //   embed.addFields({ name: interactionLang.embedError.field.Err.name, value: "err.message" },
-    //     { name: interactionLang.embedError.field.ErrMess.name, value: "err.response.data.message" })
-
-    //   // Get the channel named LogBot and send Embed into this channel
-    //   const logBotChannel = button.guild!.channels.cache.get(appConf.chanels.staff.botLog) as TextChannel
-    //   await logBotChannel.send({
-    //     embeds: [embed]
-    //   })
-
-    //   // Send lambda Error Message to user
-    //   return button.reply({
-    //     content: interactionLang.buttonReply2.content,
-    //     ephemeral: true
-    //   })
-    // }
   }
 }
