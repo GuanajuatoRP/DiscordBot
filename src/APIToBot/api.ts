@@ -3,10 +3,10 @@ import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ColorResolvable, EmbedBui
 import { client } from '../index'
 import appConf from '../util/appConfig.json'
 import appLang from '../util/language.json'
-import { userOnServer } from './Model/UserOnServerModel'
-import { userValidate } from './Model/UserValidatedModel'
-import { tokenValidation } from './Model/TokenValidationModel'
-import { userValidatedOnDB } from './Model/UserValidatedOnDBModel'
+import { UserOnServer } from './Model/UserOnServerModel'
+import { UserValidate } from './Model/UserValidatedModel'
+import { TokenValidation } from './Model/TokenValidationModel'
+import { UserValidatedOnDB } from './Model/UserValidatedOnDBModel'
 import { DefaultEmbed } from '../util/export'
 
 
@@ -29,7 +29,7 @@ app.use(cors({ origin: '*' }));
 // Check if the user with {{userId}}
 app.get("/isUserOnServer/:userId", async (req: express.Request, res: express.Response) => {
   const guild = await client.guilds.fetch(appConf.botConfig.guildid);
-  let userIsOnServer = new userOnServer();
+  let userIsOnServer = new UserOnServer();
   await guild.members.fetch(req.params.userId)
     .then((user) => {
       userIsOnServer.isOnServeur = true;
@@ -54,11 +54,11 @@ app.post("/test", async (req: express.Request, res: express.Response) => {
 // Check if user on serveur and send on users are on the server dm with validation button and a message
 app.post("/sendRegisterValidationButton/:userId", async (req: express.Request, res: express.Response) => {
   //Get params
-  const user = new userValidate();
+  const user = new UserValidate();
 
 
   user.userId = req.params.userId;
-  const jsonBody: tokenValidation = JSON.parse(((req as any).rawBody as string)) as tokenValidation;
+  const jsonBody: TokenValidation = JSON.parse(((req as any).rawBody as string)) as TokenValidation;
 
   user.token = jsonBody.token;
 
@@ -103,8 +103,8 @@ app.post("/sendRegisterValidationButton/:userId", async (req: express.Request, r
 app.post("/userValidatedOnDB/:userId", async (req: express.Request, res: express.Response) => {
 
   //Get params
-  const user = new userValidatedOnDB();
-  const jsonBody: userValidatedOnDB = JSON.parse(((req as any).rawBody as string)) as userValidatedOnDB;
+  const user = new UserValidatedOnDB();
+  const jsonBody: UserValidatedOnDB = JSON.parse(((req as any).rawBody as string)) as UserValidatedOnDB;
   user.userId = jsonBody.userId;
   user.discordId = jsonBody.discordId;
 
