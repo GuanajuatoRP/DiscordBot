@@ -1,3 +1,3 @@
-export class tokenValidation {
+export class TokenValidation {
   public token: string = '';
 }
