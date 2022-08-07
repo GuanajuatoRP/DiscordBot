@@ -1,4 +1,4 @@
-export class UserValidatedOnDB {
+export class UserValidatedOnDBModel {
   public userId: string = '';
   public discordId: string = '';
 }
