@@ -3,10 +3,10 @@ import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ColorResolvable, EmbedBui
 import { client } from '../index'
 import appConf from '../util/appConfig.json'
 import appLang from '../util/language.json'
-import { UserOnServer } from './Model/UserOnServerModel'
-import { UserValidate } from './Model/UserValidatedModel'
-import { TokenValidation } from './Model/TokenValidationModel'
-import { UserValidatedOnDB } from './Model/UserValidatedOnDBModel'
+import { UserOnServerModel } from './Model/UserOnServerModel'
+import { UserValidatedModel } from './Model/UserValidatedModel'
+import { TokenValidationModel } from './Model/TokenValidationModel'
+import { UserValidatedOnDBModel } from './Model/UserValidatedOnDBModel'
 import { DefaultEmbed } from '../util/export'
 
 
@@ -29,7 +29,7 @@ app.use(cors({ origin: '*' }));
 // Check if the user with {{userId}}
 app.get("/isUserOnServer/:userId", async (req: express.Request, res: express.Response) => {
   const guild = await client.guilds.fetch(appConf.botConfig.guildid);
-  let userIsOnServer = new UserOnServer();
+  let userIsOnServer = new UserOnServerModel();
   await guild.members.fetch(req.params.userId)
     .then((user) => {
       userIsOnServer.isOnServeur = true;
@@ -54,11 +54,11 @@ app.post("/test", async (req: express.Request, res: express.Response) => {
 // Check if user on serveur and send on users are on the server dm with validation button and a message
 app.post("/sendRegisterValidationButton/:userId", async (req: express.Request, res: express.Response) => {
   //Get params
-  const user = new UserValidate();
+  const user = new UserValidatedModel();
 
 
   user.userId = req.params.userId;
-  const jsonBody: TokenValidation = JSON.parse(((req as any).rawBody as string)) as TokenValidation;
+  const jsonBody: TokenValidationModel = JSON.parse(((req as any).rawBody as string)) as TokenValidationModel;
 
   user.token = jsonBody.token;
 
@@ -100,11 +100,11 @@ app.post("/sendRegisterValidationButton/:userId", async (req: express.Request, r
 })
 
 // Add Role to user after db validation
-app.post("/userValidatedOnDB/:userId", async (req: express.Request, res: express.Response) => {
+app.post("/UserValidatedOnDBModel/:userId", async (req: express.Request, res: express.Response) => {
 
   //Get params
-  const user = new UserValidatedOnDB();
-  const jsonBody: UserValidatedOnDB = JSON.parse(((req as any).rawBody as string)) as UserValidatedOnDB;
+  const user = new UserValidatedOnDBModel();
+  const jsonBody: UserValidatedOnDBModel = JSON.parse(((req as any).rawBody as string)) as UserValidatedOnDBModel;
   user.userId = jsonBody.userId;
   user.discordId = jsonBody.discordId;
 
