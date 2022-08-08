@@ -1,7 +1,6 @@
 .vs
 bin
 obj
-dist
 node_modules
 .env
 .vscode
