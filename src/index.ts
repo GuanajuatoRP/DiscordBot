@@ -2,18 +2,17 @@ import { ShewenyClient } from "sheweny"
 import appConfig from "./util/appConfig.json"
 import lang from './util/language.json'
 import dotenv from 'dotenv'
-import { app } from './APIToBot/api'
 import { ActivityType } from "discord.js"
 // import express from 'express';
 // import { TextChannel } from "discord.js";
 // import { userValidateModel } from "./Api/Model/UserValidatedModel";
 
-dotenv.config();
+
 
 export const client = new ShewenyClient({
   intents: 32767,
   admins: appConfig.botConfig.admins, // Admins perms pour le bot
-  mode: "production", //mode de lancement pour l'app
+  mode: 'production', //mode de lancement pour l'app
   presence: { //status du bot 
     status: "online",
     afk: false,
@@ -54,5 +53,7 @@ export const client = new ShewenyClient({
   },
 }
 );
+dotenv.config({ path: `.env.${client.mode}` }); //Load config.env
+console.log(client.mode);
+
 client.login(process.env.TOKEN);
-app.listen(process.env.PORT, () => console.log(`server started at http://localhost:${process.env.PORT}`));

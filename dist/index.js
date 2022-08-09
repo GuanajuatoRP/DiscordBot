@@ -8,16 +8,14 @@ const sheweny_1 = require("sheweny");
 const appConfig_json_1 = __importDefault(require("./util/appConfig.json"));
 const language_json_1 = __importDefault(require("./util/language.json"));
 const dotenv_1 = __importDefault(require("dotenv"));
-const api_1 = require("./APIToBot/api");
 const discord_js_1 = require("discord.js");
 // import express from 'express';
 // import { TextChannel } from "discord.js";
 // import { userValidateModel } from "./Api/Model/UserValidatedModel";
-dotenv_1.default.config();
 exports.client = new sheweny_1.ShewenyClient({
     intents: 32767,
     admins: appConfig_json_1.default.botConfig.admins,
-    mode: "production",
+    mode: 'production',
     presence: {
         status: "online",
         afk: false,
@@ -57,5 +55,6 @@ exports.client = new sheweny_1.ShewenyClient({
         // },
     },
 });
+dotenv_1.default.config({ path: `.env.${exports.client.mode}` }); //Load config.env
+console.log(exports.client.mode);
 exports.client.login(process.env.TOKEN);
-api_1.app.listen(process.env.PORT, () => console.log(`server started at http://localhost:${process.env.PORT}`));

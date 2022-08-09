@@ -4,6 +4,7 @@ import lang from '../util/language.json'
 const date = new Date()
 import appConfig from '../util/appConfig.json'
 import type { TextChannel } from "discord.js";
+import { app } from '../APIToBot/api'
 const eventLang = lang.event.ready
 
 
@@ -16,15 +17,7 @@ export class Ready extends Event {
     }
 
     execute() {
-        // this.client.application!.commands.set([])
-
-
-
-
-
-
-
-
+      app.listen(process.env.PORT, () => console.log(`server started at http://localhost:${process.env.PORT}`));
 
         const ReadyMessage = `${eventLang.message} at ${date.getHours()}H ${date.getMinutes() > 9 ? date.getMinutes() : `0${date.getMinutes()}`}`
         
