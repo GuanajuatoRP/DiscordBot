@@ -3,5 +3,8 @@ bin
 obj
 node_modules
 .env
+.env.*
 .vscode
 dist/util/logs/
+
+dist/
