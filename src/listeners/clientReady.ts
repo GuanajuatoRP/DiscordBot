@@ -21,6 +21,7 @@ export class Ready extends Event {
 				`server started at http://localhost:${process.env.BOT_API_PORT}`,
 			),
 		);
+		console.log(process.env.USER_API_URL);
 
 		const ReadyMessage = `${eventLang.message} at ${date.getHours()}H ${
 			date.getMinutes() > 9 ? date.getMinutes() : `0${date.getMinutes()}`
