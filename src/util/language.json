@@ -42,6 +42,32 @@
                 ]
             }
         },
+        "sendMessage": {
+            "embed": {
+                "title": "",
+                "color": "#",
+                "footer": "",
+                "fields": [{
+                    "name": "",
+                    "value": ""
+                }],
+                "author": {
+                    "name": "",
+                    "url": ""
+                }
+            },
+            "slashOptions": {
+                "message": "Id du message a envoyé",
+                "channel": "channel ou envoyé le message"
+            },
+            "description": {
+                "desc": "Permet d'envoyé un message, qui a au préalable été crée, le formatage restera tel quel.",
+                "usage": "sendMessage {Id du message a envoyé} {Channel dans le quel envoyé le message}",
+                "exemples": [
+                    "sendMessage messageid:1587569320 channel:Generale"
+                ]
+            }
+        },
         "money": {
             "embed": {
                 "title": "Compte bancaire de : {0}",

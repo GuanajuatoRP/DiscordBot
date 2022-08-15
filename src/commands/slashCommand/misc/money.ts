@@ -1,11 +1,16 @@
 import { GetMoneyDTO } from './../../../APIToUserApi/Models/GetMoneyDTO';
-import { ColorResolvable, ApplicationCommandOptionType } from 'discord.js';
-import { EmbedBuilder, GuildMember, CommandInteraction } from 'discord.js';
 import { Command } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
 import lang from '../../../util/language.json';
 import MoneyController from '../../../APIToUserApi/MoneyController';
 import { AxiosResponse } from 'axios';
+import {
+	ApplicationCommandOptionType,
+	CommandInteraction,
+	GuildMember,
+	EmbedBuilder,
+	ColorResolvable,
+} from 'discord.js';
 const CommandLang = lang.commands.money;
 
 export class MoneyCommand extends Command {

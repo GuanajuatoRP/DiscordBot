@@ -10,6 +10,8 @@ import {
 import lang from '../util/language.json';
 const eventLang = lang.event.adminCommandLog;
 import appConf from '../util/appConfig.json';
+import fs from 'fs';
+import path from 'path';
 export class CommandLog extends Event {
 	constructor(client: ShewenyClient) {
 		super(client, 'AdminCommandLog', {
@@ -39,35 +41,37 @@ export class CommandLog extends Event {
 			appConf.chanels.staff.commandLog,
 		) as TextChannel;
 
-		// //* Get and format date at "dd-mm-YYYY hh:mm:ss"
-		// const d = new Date();
-		// const today = [
-		// 	d.getDate() > 9 ? d.getDate() : `0${d.getDate()}`,
-		// 	d.getMonth() + 1 > 9 ? d.getMonth() : `0${d.getMonth() + 1}`,
-		// 	d.getFullYear(),
-		// ].join('-');
-		// const dformat =
-		// 	today +
-		// 	' ' +
-		// 	[
-		// 		d.getHours() > 9 ? d.getHours() : `0${d.getHours()}`,
-		// 		d.getMinutes() > 9 ? d.getMinutes() : `0${d.getMinutes()}`,
-		// 		d.getSeconds() > 9 ? d.getSeconds() : `0${d.getSeconds()}`,
-		// 	].join(':');
+		//* Get and format date at "dd-mm-YYYY hh:mm:ss"
+		const d = new Date();
+		const today = [
+			d.getDate() > 9 ? d.getDate() : `0${d.getDate()}`,
+			d.getMonth() + 1 > 9 ? d.getMonth() : `0${d.getMonth() + 1}`,
+			d.getFullYear(),
+		].join('-');
+		const dformat =
+			today +
+			' ' +
+			[
+				d.getHours() > 9 ? d.getHours() : `0${d.getHours()}`,
+				d.getMinutes() > 9 ? d.getMinutes() : `0${d.getMinutes()}`,
+				d.getSeconds() > 9 ? d.getSeconds() : `0${d.getSeconds()}`,
+			].join(':');
 
-		// //create string of full option dans option value of command
-		// const commandOptionValue = interaction.options.data
-		// 	.map(o => `Option Name : ${o.name}, value : ${o.value}`)
-		// 	.join(', ') as string;
-		// const log = `${dformat}, Command : ${interaction.commandName}, ${
-		// 	commandOptionValue != '' ? `${commandOptionValue}, ` : ''
-		// }channel : ${
-		// 	interaction.guild!.channels.cache.get(interaction.channelId)!.name
-		// } User : ${member.displayName}, UserID : ${member.id}`;
+		//create string of full option dans option value of command
+		const commandOptionValue = interaction.options.data
+			.map(o => `Option Name : ${o.name}, value : ${o.value}`)
+			.join(', ') as string;
+		const log = `${dformat}, Command : ${interaction.commandName}, ${
+			commandOptionValue != '' ? `${commandOptionValue}, ` : ''
+		}channel : ${
+			interaction.guild!.channels.cache.get(interaction.channelId)!.name
+		} User : ${member.displayName}, UserID : ${member.id}`;
 
-		// TODO fix docker volume
 		// send log in txt file
-		// fs.appendFileSync(path.join(__dirname,`../util/logs/adminCommandLog_${today}.txt`), log+'\n')
+		fs.appendFileSync(
+			path.join(process.cwd(), `/logs/adminCommandLog_${today}.txt`),
+			log + '\n',
+		);
 
 		// Send Embed log in channellogs on discord
 		return channel.send({
