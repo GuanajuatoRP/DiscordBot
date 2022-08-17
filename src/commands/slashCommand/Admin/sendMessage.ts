@@ -7,7 +7,7 @@ import {
 	Message,
 	TextChannel,
 } from 'discord.js';
-import lang from '../../../util/language.json';
+import lang from '../../../tools/language.json';
 const CommandLang = lang.commands.sendMessage;
 
 export class SendMessageCommand extends Command {

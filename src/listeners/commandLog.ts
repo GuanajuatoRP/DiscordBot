@@ -1,4 +1,4 @@
-import { LogsEmbed } from './../util/export';
+import { LogsEmbed } from '../tools/export';
 // import { Event } from 'sheweny';
 import { ShewenyClient, Event } from 'sheweny';
 import {
@@ -7,7 +7,7 @@ import {
 	GuildMember,
 	TextChannel,
 } from 'discord.js';
-import lang from '../util/language.json';
+import lang from '../tools/language.json';
 const eventLang = lang.event.commandLog;
 import appConf from '../util/appConfig.json';
 import fs from 'fs';

@@ -1,4 +1,4 @@
-import { DefaultEmbed } from './../../util/export';
+import { DefaultEmbed } from '../../tools/export';
 import { Button } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
 import {
@@ -11,7 +11,7 @@ import {
 	Role,
 } from 'discord.js';
 import appConf from '../../util/appConfig.json';
-import lang from '../../util/language.json';
+import lang from '../../tools/language.json';
 import RegisterController from '../../APIToUserApi/RegisterController';
 import { StatusCodes } from 'http-status-codes';
 const interactionLang = lang.intercation.button.register;

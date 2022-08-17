@@ -7,11 +7,9 @@
 // import type { ShewenyClient } from 'sheweny'
 // import type { CommandInteraction } from 'discord.js'
 // import appConf from '../../../util/appConfig.json'
-// import lang from '../../../util/language.json'
+// import lang from '../../../tools/language.json'
 // const cmdLang = lang.commands.game
-    
-    
-    
+
 // export class GameCommand extends Command {
 //     constructor(client: ShewenyClient) {
 //         super(client, {
@@ -33,17 +31,17 @@
 //             defaultPermission : true,
 //             // channel : '', //* Default Channel is GUILD
 //             // cooldown : , //* Default cooldown set at 2sec
-//             adminsOnly : true, //* Default value is false 
+//             adminsOnly : true, //* Default value is false
 //             //userPermissions : [],
 //             //clientPermissions : []
 //         });
 //     }
 //     async execute(interaction : CommandInteraction) {
 //         this.client.emit('CommandLog', interaction as CommandInteraction)
-        
+
 //         const rawData = fs.readFileSync(path.join(__dirname, '../../../util/channelGame.json')).toString()
 //         const channels = JSON.parse(rawData)
-        
+
 //         channels[interaction.options.getString('game_name')!].forEach((salon : ChannelClass)  => {
 //             interaction.guild!.channels.create(salon.name.toString(), {
 //                     "type": salon.channelInfo.type.toString() == '2' ? ChannelTypes.GUILD_VOICE : ChannelTypes.GUILD_TEXT,
@@ -85,20 +83,17 @@
 //                     }
 //                 })
 //         });
-    
+
 //         interaction.reply({
 //             content: `Tous les salons pour le mode de jeux \*\*${interaction.options.getString('game_name')}\*\* ont été créé`,
 //             ephemeral : true
 //         })
 //     }
 
-
-
 //     onAutocomplete(interaction: AutocompleteInteraction) {
 //         const focusedOption = interaction.options.getFocused(true);
 //         let choices: Array<string> = new Array<string>()
 
-        
 //         const rawData = fs.readFileSync(path.join(__dirname, '../../../util/channelGame.json')).toString()
 //         const channels = JSON.parse(rawData)
 
@@ -106,12 +101,10 @@
 //             choices.push(key)
 //         });
 
-
-    
 //         if (focusedOption.name === 'game_name') {
 //             choices
 //         }
-    
+
 //         const filtered = choices!.filter((choice: any) =>
 //             choice.startsWith(focusedOption.value)
 //         )

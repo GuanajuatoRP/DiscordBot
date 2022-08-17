@@ -2,7 +2,7 @@
 // import type { ShewenyClient } from "sheweny";
 // import type { ButtonInteraction, ColorResolvable, GuildMember, Message } from "discord.js";
 // import {MessageEmbed} from "discord.js"
-// import lang from "../../util/language.json"
+// import lang from "../../tools/language.json"
 // import { IsEmbedOwner } from "../../util/export";
 // const interactionLang = lang.intercation.button.VenteProCar.Vendre
 
@@ -34,7 +34,7 @@
 //         message.react('✅')
 
 //         // TODO Call API Vendre la voiture et faire la transaction
-        
+
 //         return await button.update({embeds : [Newembed],components : []})
 //     }
 // }

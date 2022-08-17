@@ -1,7 +1,7 @@
 // import { SelectMenu } from "sheweny";
 // import type { ShewenyClient } from "sheweny";
 // import { GuildMember, MessageActionRow, MessageButton, MessageEmbed, SelectMenuInteraction } from "discord.js";
-// import lang from '../../util/language.json'
+// import lang from '../../tools/language.json'
 // import { IsEmbedOwner } from "../../util/export";
 // const selectMenuLang = lang.intercation.SelectMenu.AchatPersoCarMenu
 
@@ -13,7 +13,7 @@
 //     execute(selectMenu: SelectMenuInteraction) {
 //         const member = selectMenu.member as GuildMember
 //         const messageEmbed = selectMenu.message.embeds[0] as MessageEmbed
-        
+
 //         // check if member can user button
 //         if (!IsEmbedOwner(member,messageEmbed)){
 //             return selectMenu.reply({
@@ -21,7 +21,6 @@
 //                 ephemeral:true,
 //             })
 //         }
-
 
 //         let Newembed = messageEmbed
 //             .setTitle(selectMenuLang.embed.title)

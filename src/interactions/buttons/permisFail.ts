@@ -3,7 +3,7 @@
 // import type { ShewenyClient } from "sheweny";
 // import type { ButtonInteraction, ColorResolvable, GuildMember, Message } from "discord.js";
 // import {MessageEmbed} from "discord.js"
-// import lang from "../../util/language.json"
+// import lang from "../../tools/language.json"
 // const interactionLang = lang.intercation.button.PermisFail
 // // import appConfig from '../../util/appConfig.json'
 
@@ -23,7 +23,7 @@
 //             })
 //         }
 
-//         let embed = new MessageEmbed() 
+//         let embed = new MessageEmbed()
 //             embed.setColor(interactionLang.embed.color as ColorResolvable)
 //             embed.setTitle(interactionLang.embed.title)
 //             embed.setDescription(interactionLang.embed.description)

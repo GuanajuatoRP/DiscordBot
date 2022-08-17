@@ -1,7 +1,7 @@
 import { Command } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
 import type { CommandInteraction } from 'discord.js';
-import lang from '../../../util/language.json';
+import lang from '../../../tools/language.json';
 const cmdLang = lang.commands.ping;
 
 export class PingCommand extends Command {

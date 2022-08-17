@@ -1,7 +1,7 @@
 import { GetMoneyDTO } from './../../../APIToUserApi/Models/GetMoneyDTO';
 import { Command } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
-import lang from '../../../util/language.json';
+import lang from '../../../tools/language.json';
 import MoneyController from '../../../APIToUserApi/MoneyController';
 import { AxiosResponse } from 'axios';
 import {

@@ -1,12 +1,10 @@
 // import { Command } from 'sheweny'
 // import type { ShewenyClient } from 'sheweny'
 // import type { AutocompleteInteraction, CommandInteraction } from 'discord.js'
-// import lang from '../../../util/language.json'
+// import lang from '../../../tools/language.json'
 // const cmdLang = lang.commands.getcommandlogs
 // import fs from 'fs'
 // import path from 'path'
-
-
 
 // export class GetCommandLogsCommand extends Command {
 //     constructor(client: ShewenyClient) {
@@ -29,7 +27,7 @@
 //             defaultPermission : true,
 //             // channel : '', //* Default Channel is GUILD
 //             // cooldown : , //* Default cooldown set at 2sec
-//             adminsOnly : true, //* Default value is false 
+//             adminsOnly : true, //* Default value is false
 //             //userPermissions : [],
 //             //clientPermissions : []
 //         });
@@ -51,17 +49,17 @@
 //             files : [path.join(__dirname,`../../../util/logs/commandLog_${interaction.options.getString('file-date')!}.txt`),
 //                     path.join(__dirname,`../../../util/logs/adminCommandLog_${interaction.options.getString('file-date')!}.txt`)],
 //             ephemeral : true
-//         }) 
+//         })
 //     }
 
 //     onAutocomplete(interaction: AutocompleteInteraction) {
 //         const focusedOption = interaction.options.getFocused(true);
 //         let choices : Array<string>;
-    
+
 //         if (focusedOption.name === "file-date") {
 //             choices = [...new Set(fs.readdirSync(path.join(__dirname,'../../../util/logs')).map(date => date.slice(-14,-4)))];
 //         }
-    
+
 //         const filtered = choices!.filter((choice: any) =>
 //             choice.startsWith(focusedOption.value)
 //         );

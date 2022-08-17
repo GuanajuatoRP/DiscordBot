@@ -2,11 +2,9 @@
 // import { Command } from 'sheweny'
 // import type { ShewenyClient } from 'sheweny'
 // import { AutocompleteInteraction, CommandInteraction, GuildMember, MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
-// import lang from '../../../util/language.json'
+// import lang from '../../../tools/language.json'
 // import { NewImmatriculation } from '../../../util/export'
 // const CommandLang = lang.commands.immatriculation
-
-
 
 // export class ImmatriculationCommand extends Command {
 //     constructor(client: ShewenyClient) {
@@ -36,7 +34,7 @@
 //             defaultPermission : true,
 //             // channel : '', //* Default Channel is GUILD
 //             // cooldown : , //* Default cooldown set at 2sec
-//             adminsOnly : true, //* Default value is false 
+//             adminsOnly : true, //* Default value is false
 //             //userPermissions : [],
 //             //clientPermissions : []
 //         });
@@ -62,7 +60,6 @@
 //                 ephemeral: true
 //             })
 //         }
-
 
 //         const embed = new MessageEmbed()
 //             .setAuthor(CommandLang.embed.Author)
@@ -101,7 +98,7 @@
 //         return interaction.reply({
 //             embeds: [embed],
 //             components:[btnsImmatriculation,btImmatriculatioBuy]
-//         }) 
+//         })
 //     }
 
 //     onAutocomplete(interaction: AutocompleteInteraction) {

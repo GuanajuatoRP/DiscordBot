@@ -8,10 +8,8 @@
 // import type { ShewenyClient } from 'sheweny'
 // import type { CommandInteraction } from 'discord.js'
 // // import appConf from '../../../util/appConfig.json'
-// import lang from '../../../util/language.json'
+// import lang from '../../../tools/language.json'
 // const cmdLang = lang.commands.createembed
-
-
 
 // export class CreateEmbedCommand extends Command {
 //     constructor(client: ShewenyClient) {
@@ -91,13 +89,11 @@
 //             defaultPermission : true,
 //             // channel : '', //* Default Channel is GUILD
 //             // cooldown : , //* Default cooldown set at 2sec
-//             adminsOnly : true, //* Default value is false 
+//             adminsOnly : true, //* Default value is false
 //             //userPermissions : [],
 //             //clientPermissions : []
 //         });
 //     }
-
-
 
 //     async execute(interaction : CommandInteraction) {
 //         this.client.emit('CommandLog', interaction as CommandInteraction)
@@ -111,7 +107,7 @@
 //                 content : cmdLang.interaction.newEmbed,
 //                 embeds : [embed],
 //                 ephemeral : true
-//             }) 
+//             })
 //         } else if (interaction.options.data.length === 1){
 //             const embed = JSON.parse(fs.readFileSync(path.join(__dirname, '../../../util/customEmbed.json')).toString())
 //             interaction.options.data.forEach(option => {
@@ -120,7 +116,7 @@
 //                     return interaction.reply({
 //                         embeds : [embed],
 //                         ephemeral : true
-//                     }) 
+//                     })
 //                 case 'color':
 //                     embed.color = option.value
 //                     saveEmbed(embed)
@@ -134,41 +130,41 @@
 //                     return interaction.reply({
 //                         embeds : [embed],
 //                         ephemeral : true
-//                     }) 
+//                     })
 //                 case 'url':
 //                     embed.url = option.value
 //                     saveEmbed(embed)
 //                     return interaction.reply({
 //                         embeds : [embed],
 //                         ephemeral : true
-//                     }) 
+//                     })
 //                 case 'description':
 //                     embed.description = option.value
 //                     saveEmbed(embed)
 //                     return interaction.reply({
 //                         embeds : [embed],
 //                         ephemeral : true
-//                     }) 
+//                     })
 //                 case 'image':
 //                     embed.image = {url : option.value}
 //                     saveEmbed(embed)
 //                     return interaction.reply({
 //                         embeds : [embed],
 //                         ephemeral : true
-//                     }) 
+//                     })
 //                 case 'thumbnail':
 //                     embed.thumbnail = {url : option.value}
 //                     saveEmbed(embed)
 //                     return interaction.reply({
 //                         embeds : [embed],
 //                         ephemeral : true
-//                     }) 
+//                     })
 //                 case 'add_field':
 //                     const collector = interaction.channel!.createMessageCollector({max : 4});
 //                     interaction.reply({
 //                         content : cmdLang.Options.AddField.description,
 //                         ephemeral : true
-//                     }) 
+//                     })
 //                     const salon = interaction.channel as TextChannel
 //                     collector.on('end', async collected => {
 //                         const collect = collected.map(m => m.content)
@@ -190,7 +186,7 @@
 //                         embeds : [embed]
 //                     })
 //                     console.log();
-                    
+
 //                     return interaction.reply({
 //                         content : `votre message a bien été envoyé dans le salon **${interaction.options.getChannel('send')!.name}**`,
 //                         ephemeral : true
@@ -204,6 +200,5 @@
 //             })
 //         }
 
-        
 //     }
 // }

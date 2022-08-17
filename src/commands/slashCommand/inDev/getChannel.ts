@@ -4,7 +4,7 @@
 // import { ChannelClass } from '../../../util/export'
 // import type { ShewenyClient } from 'sheweny'
 // import type { AutocompleteInteraction, CommandInteraction, PermissionOverwrites, TextChannel, VoiceChannel } from 'discord.js'
-// import lang from '../../../util/language.json'
+// import lang from '../../../tools/language.json'
 
 // const cmdLang = lang.commands.getchannel
 
@@ -38,7 +38,7 @@
 //             defaultPermission : true,
 //             // channel : '', //* Default Channel is GUILD
 //             // cooldown : , //* Default cooldown set at 2sec
-//             adminsOnly : true, //* Default value is false 
+//             adminsOnly : true, //* Default value is false
 //             //userPermissions : [],
 //             //clientPermissions : []
 //         });
@@ -48,13 +48,11 @@
 //             return interaction.reply({
 //                 content : cmdLang.interaction.needOptions,
 //                 ephemeral : true
-//             }) 
+//             })
 //         }
 
 //         this.client.emit('CommandLog', interaction as CommandInteraction)
 //         let channlesIds : Array<String> = new Array<String>()
-
-
 
 //         switch (interaction.options.data[0].name){
 //             case 'category':
@@ -66,7 +64,6 @@
 //                 break;
 //         }
 
-        
 //         channlesIds.forEach(id => {
 //             const channel = interaction.guild!.channels.cache.filter(c => c.id == id)
 //             switch (channel!.first()!.type) {
@@ -74,15 +71,13 @@
 //                     let salon = new ChannelClass()
 //                     const textChannel : TextChannel = channel.map(c => c)[0] as TextChannel
 
-
 //                     salon.name = textChannel.name,
 //                     salon.channelInfo.type = ChannelTypes.GUILD_TEXT
 //                     salon.channelInfo.topic = textChannel.type
 //                     salon.channelInfo.permissionOverwrites = textChannel!.permissionOverwrites.cache.toJSON() as Array<PermissionOverwrites>
 //                     salon.channelInfo.position = textChannel.position + 1
 //                     console.log(salon.name+" "+salon.channelInfo.position);
-                    
-                    
+
 //                     textChannel.messages.fetch()
 //                         .then(msg => {
 //                             const messageTab = [...msg].reverse()
@@ -96,7 +91,6 @@
 //                     let salonVocal = new ChannelClass()
 //                     const voiceChannel : VoiceChannel = channel.map(c => c)[0] as VoiceChannel
 
-
 //                     salonVocal.name = voiceChannel.name,
 //                     salonVocal.channelInfo.type = ChannelTypes.GUILD_VOICE
 //                     salonVocal.channelInfo.permissionOverwrites = voiceChannel!.permissionOverwrites.cache.toJSON()
@@ -108,26 +102,25 @@
 //                     break;
 //             }
 //         })
-        
 
 //         return interaction.reply({
 //             content : cmdLang.interaction.content,
 //             ephemeral : true
-//         }) 
+//         })
 //     }
 //     onAutocomplete(interaction: AutocompleteInteraction) {
 //         const focusedOption = interaction.options.getFocused(true);
-    
+
 //         let choices: Array<String>;
-    
+
 //         if (focusedOption.name === "category") {
 //             choices = Array.from(interaction.guild!.channels.cache.filter(c => c.type == 'GUILD_CATEGORY').map(c => c.name))
 //         }
-    
+
 //         if (focusedOption.name === "salon") {
 //             choices = Array.from(interaction.guild!.channels.cache.filter(c => c.type != 'GUILD_CATEGORY').map(c => c.name))
 //         }
-    
+
 //         const filtered = choices!.filter((choice: any) =>
 //             choice.startsWith(focusedOption.value)
 //         );

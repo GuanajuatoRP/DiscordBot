@@ -2,7 +2,7 @@
 // import { Button } from "sheweny";
 // import type { ShewenyClient } from "sheweny";
 // import type { ButtonInteraction, ColorResolvable, GuildMember, Message } from "discord.js";
-// import lang from "../../util/language.json"
+// import lang from "../../tools/language.json"
 // const interactionLang = lang.intercation.button.ImmatriculationBuy
 
 // export class ImmatriculationBuyBtn extends Button {
@@ -22,7 +22,7 @@
 //             })
 //         }
 
-//         let embed = embedMessage 
+//         let embed = embedMessage
 //         embed.setFields(embedMessage.fields[1])
 //         embed.setColor(interactionLang.embed.color as ColorResolvable)
 //         embed.setDescription(interactionLang.embed.description)

@@ -1,6 +1,6 @@
 import { Event } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
-import lang from '../util/language.json';
+import lang from '../tools/language.json';
 const date = new Date();
 import appConfig from '../util/appConfig.json';
 import type { TextChannel } from 'discord.js';

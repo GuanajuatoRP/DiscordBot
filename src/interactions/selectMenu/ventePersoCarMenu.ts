@@ -1,7 +1,7 @@
 // import { SelectMenu } from "sheweny";
 // import type { ShewenyClient } from "sheweny";
 // import { ColorResolvable, GuildMember, MessageActionRow, MessageButton, MessageEmbed, SelectMenuInteraction } from "discord.js";
-// import lang from '../../util/language.json'
+// import lang from '../../tools/language.json'
 // const selectMenuLang = lang.intercation.SelectMenu.VentePersoCarMenu
 
 // export class ventePersoCarMenuSM extends SelectMenu {

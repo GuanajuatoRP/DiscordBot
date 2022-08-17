@@ -2,7 +2,7 @@
 // import type { ShewenyClient } from "sheweny";
 // import { ButtonInteraction, ColorResolvable, GuildMember, Message} from "discord.js";
 // import {MessageEmbed} from "discord.js"
-// import lang from "../../util/language.json"
+// import lang from "../../tools/language.json"
 // // import appConfig from '../../util/appConfig.json'
 // const interactionLang = lang.intercation.button.AchatPersoCar
 
@@ -16,7 +16,6 @@
 //         const message = button.message as Message
 //         const messageEmbed = message.embeds[0] as MessageEmbed
 
-        
 //         // check if member can user button
 //         if (!messageEmbed.description!.split(' : ')[1].includes(member.user.tag)){
 //             return button.reply({
@@ -24,7 +23,6 @@
 //                 ephemeral:true,
 //             })
 //         }
-
 
 //         let Newembed = messageEmbed
 //             // .setTitle(messageEmbed.title as string)
@@ -37,7 +35,6 @@
 //         message.react('✅')
 
 //         //TODO faire les transaction et les call API
-
 
 //         button.update({
 //             embeds:[Newembed],

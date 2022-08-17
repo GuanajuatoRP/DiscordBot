@@ -2,7 +2,7 @@
 // import type { ShewenyClient } from "sheweny";
 // import { ButtonInteraction, GuildMember, Message, MessageActionRow, MessageSelectMenu, MessageSelectOptionData } from "discord.js";
 // import {MessageEmbed} from "discord.js"
-// import lang from "../../util/language.json"
+// import lang from "../../tools/language.json"
 // import appConfig from '../../util/appConfig.json'
 // import { IsEmbedOwner } from "../../util/export";
 // const interactionLang = lang.intercation.button.VentePersoCar

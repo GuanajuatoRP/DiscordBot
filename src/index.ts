@@ -1,6 +1,6 @@
 import { ShewenyClient } from 'sheweny';
 import appConfig from './util/appConfig.json';
-import lang from './util/language.json';
+import lang from './tools/language.json';
 import dotenv from 'dotenv';
 import { ActivityType } from 'discord.js';
 
@@ -32,7 +32,7 @@ export const client = new ShewenyClient({
 			autoRegisterApplicationCommands: true, // Register application commands
 			default: {
 				// set default params for all commands
-				adminOnly: true,
+				adminOnly: false,
 				category: 'InDev',
 				channel: 'GUILD',
 				cooldown: 2,

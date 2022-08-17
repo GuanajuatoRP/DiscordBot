@@ -12,12 +12,12 @@ import {
 } from 'discord.js';
 import { client } from '../index';
 import appConf from '../util/appConfig.json';
-import appLang from '../util/language.json';
+import appLang from '../tools/language.json';
 import { UserOnServerModel } from './Model/UserOnServerModel';
 import { UserValidatedModel } from './Model/UserValidatedModel';
 import { TokenValidationModel } from './Model/TokenValidationModel';
 import { UserValidatedOnDBModel } from './Model/UserValidatedOnDBModel';
-import { DefaultEmbed } from '../util/export';
+import { DefaultEmbed } from '../tools/export';
 import bodyParser from 'body-parser';
 
 const cors = require('cors');

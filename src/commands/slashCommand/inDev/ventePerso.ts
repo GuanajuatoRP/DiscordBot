@@ -1,10 +1,8 @@
 // import { Command } from 'sheweny'
 // import type { ShewenyClient } from 'sheweny'
 // import { CommandInteraction, MessageActionRow, MessageSelectMenu } from 'discord.js'
-// import lang from '../../../util/language.json'
+// import lang from '../../../tools/language.json'
 // const CommandLang = lang.commands.ventePerso
-
-
 
 // export class VentePersoCommand extends Command {
 //     constructor(client: ShewenyClient) {
@@ -27,14 +25,13 @@
 //             defaultPermission : true,
 //             // channel : '', //* Default Channel is GUILD
 //             // cooldown : , //* Default cooldown set at 2sec
-//             adminsOnly : true, //* Default value is false 
+//             adminsOnly : true, //* Default value is false
 //             //userPermissions : [],
 //             //clientPermissions : []
 //         });
 //     }
 //     async execute(interaction : CommandInteraction) {
 //         this.client.emit('CommandLog', interaction)
-
 
 //         //TODO : Call API pour Get toutes les voiture de l'utilisateur
 
@@ -62,6 +59,6 @@
 //             content : CommandLang.interaction.content,
 //             components:[carMenu],
 //             ephemeral: true,
-//         }) 
+//         })
 //     }
 // }

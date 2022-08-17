@@ -1,7 +1,7 @@
 import { Command } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
 import { CommandInteraction } from 'discord.js';
-// import lang from '../../../util/language.json'
+// import lang from '../../../tools/language.json'
 // const CommandLang = lang.commands.test
 
 export class TestCommand extends Command {

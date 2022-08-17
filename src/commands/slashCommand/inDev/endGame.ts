@@ -1,7 +1,7 @@
 // import { Command } from 'sheweny'
 // import type { ShewenyClient } from 'sheweny'
 // import type { CommandInteraction, CategoryChannel } from 'discord.js'
-// import lang from '../../../util/language.json'
+// import lang from '../../../tools/language.json'
 // const cmdLang = lang.commands.endgame
 // import appConfig from '../../../util/appConfig.json'
 // export class EndGameCommand extends Command {
@@ -25,14 +25,14 @@
 //             defaultPermission : true,
 //             // channel : '', //* Default Channel is GUILD
 //             // cooldown : , //* Default cooldown set at 2sec
-//             adminsOnly : true, //* Default value is false 
+//             adminsOnly : true, //* Default value is false
 //             //userPermissions : [],
 //             //clientPermissions : []
 //         });
 //     }
 //     execute(interaction : CommandInteraction) {
 //         this.client.emit('CommandLog', interaction as CommandInteraction)
-        
+
 //         const cat = interaction.guild!.channels.cache.get(appConfig.chanels.game.categorie)! as CategoryChannel
 //         if (cat.type !== 'GUILD_CATEGORY' ){
 //             interaction.reply({
@@ -45,7 +45,7 @@
 //                 this.client.channels.cache.get(child.id)!.delete()
 //             }
 //         });
-        
+
 //         const RoleA = interaction.guild!.roles.cache.get(appConfig.Roles.GMA);
 //         RoleA!.members.forEach(member => {
 //             member.roles.remove(RoleA!);
@@ -54,12 +54,10 @@
 //         RoleB!.members.forEach(member => {
 //             member.roles.remove(RoleB!);
 //         });
-        
-        
-        
+
 //         return interaction.reply({
 //             content : cmdLang.interaction.content,
 //             ephemeral : true
-//         }) 
+//         })
 //     }
 // }

@@ -1,7 +1,7 @@
 // import { Command } from "sheweny"
 // import type { ShewenyClient } from "sheweny"
 // import type { CommandInteraction } from "discord.js"
-// import lang from '../../../util/language.json'
+// import lang from '../../../tools/language.json'
 // import { DefaultEmbed } from "../../../util/export"
 // const cmdLang = lang.commands.number
 
@@ -33,17 +33,17 @@
 //             defaultPermission : true,
 //             // channel : '', //* Default Channel is GUILD
 //             // cooldown : , //* Default cooldown set at 2sec
-//             // adminsOnly : , //* Default value is false 
+//             // adminsOnly : , //* Default value is false
 //             // userPermissions : [],
 //             // clientPermissions : []
 //         });
 //     }
 //     execute(interaction : CommandInteraction) {
 //         this.client.emit('CommandLog', interaction as CommandInteraction)
-        
+
 //         const nbval : number = interaction.options.getNumber('nbval')!
 //         const plage : number = interaction.options.getNumber('plage')!
-        
+
 //         if (nbval > plage) {
 //             return interaction.reply({
 //                 content: cmdLang.messageError,
