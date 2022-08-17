@@ -404,10 +404,11 @@
         "purge": {
             "description": {
                 "desc": "Permet de suprimer entre 1 et 100 messages, ne permet pas de supprimer les messages épingler",
-                "usage": "purge <Nombre de message a supprimer>",
+                "usage": "purge {Nombre de message a supprimer}",
                 "exemples": [
-                    "purge",
-                    "purge 42"
+                    "purge 1",
+                    "purge 42",
+                    "purge 100"
                 ]
             },
             "slashOptions": {

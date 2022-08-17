@@ -1,3 +1,0 @@
-17-08-2022 11:46:48, Command : sendmessage, Option Name : from-channel, value : 1001952449252298792, Option Name : message-id, value : 1009237416881688727, Option Name : to-channel, value : 1001952449252298792, channel : 🤖-bot-staff User : JeanJack Goldman, UserID : 152125692618735616
-17-08-2022 13:05:53, Command : purge, Option Name : nombre, value : 5, channel : 🤖-bot-staff User : JeanJack Goldman, UserID : 152125692618735616
-17-08-2022 13:06:05, Command : purge, Option Name : nombre, value : 100, channel : 🤖-bot-staff User : JeanJack Goldman, UserID : 152125692618735616
