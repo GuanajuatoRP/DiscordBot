@@ -820,6 +820,21 @@
                     }
                 }
             }
+        },
+        "failCommandLog": {
+            "description": "Permet de logger l'ensemble des erreur du bot",
+            "embed": {
+                "color": "#ff0000",
+                "author": "Error log",
+                "fields": {
+                    "commandName": {
+                        "name": "Nom de la commande"
+                    },
+                    "salon": {
+                        "name": "Salon d'utilisation"
+                    }
+                }
+            }
         }
     },
     "intercation": {

@@ -14,7 +14,7 @@ export class GetRawMessageCommand extends Command {
 	constructor(client: ShewenyClient) {
 		super(client, {
 			name: 'rawmessage',
-			// category: '', //* Default category is InDev
+			category: 'Admin', //* Default category is InDev
 			// type: '', //* Default type is SLASH_COMMAND
 			description: cmdLang.description.desc,
 			usage: cmdLang.description.usage,
@@ -64,7 +64,8 @@ export class GetRawMessageCommand extends Command {
 				files: [attachment, ...message.attachments.values()],
 			});
 		} catch (error) {
-			return interaction.reply(lang.bot.errorMessage);
+			interaction.reply(lang.bot.errorMessage);
+			this.client.emit('FailCommandLog', interaction, error);
 		}
 	}
 }

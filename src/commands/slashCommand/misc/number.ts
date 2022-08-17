@@ -73,10 +73,8 @@ export class NumberCommand extends Command {
 				embeds: [embed],
 			});
 		} catch (error) {
-			console.log(error);
-			return interaction.reply({
-				content: lang.bot.errorMessage,
-			});
+			interaction.reply(lang.bot.errorMessage);
+			this.client.emit('FailCommandLog', interaction, error);
 		}
 	}
 }

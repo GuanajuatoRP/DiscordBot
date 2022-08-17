@@ -44,81 +44,47 @@ export class AdminListCommand extends Command {
 	execute(interaction: CommandInteraction) {
 		this.client.emit('AdminCommandLog', interaction as CommandInteraction);
 
-		if (interaction.member!.user.id !== appConfig.botConfig.dercrakerId) {
-			return interaction.reply({
-				content: cmdLang.interaction.notOwnerError,
-				ephemeral: true,
-			});
-		}
+		try {
+			if (interaction.member!.user.id !== appConfig.botConfig.dercrakerId) {
+				return interaction.reply({
+					content: cmdLang.interaction.notOwnerError,
+					ephemeral: true,
+				});
+			}
 
-		let adminList: Array<any> = new Array<any>();
-		const adminRole = interaction.guild!.roles.cache.get(appConfig.Roles.ADMIN);
-		if (
-			interaction.options.get('add') == null &&
-			interaction.options.get('remove') == null
-		) {
-			const adminRoleList = interaction
-				.guild!.roles.cache.get(appConfig.Roles.ADMIN)!
-				.members.filter(u => appConfig.botConfig.admins.includes(u.id));
+			let adminList: Array<any> = new Array<any>();
+			const adminRole = interaction.guild!.roles.cache.get(
+				appConfig.Roles.ADMIN,
+			);
+			if (
+				interaction.options.get('add') == null &&
+				interaction.options.get('remove') == null
+			) {
+				const adminRoleList = interaction
+					.guild!.roles.cache.get(appConfig.Roles.ADMIN)!
+					.members.filter(u => appConfig.botConfig.admins.includes(u.id));
 
-			adminRoleList.forEach(u => {
-				adminList.push(u.nickname == null ? u.user.username : u.nickname);
-			});
-			let adminListEmbed = DefaultEmbed();
-			adminListEmbed.data.fields!.push({
-				name: cmdLang.embed.adminListField,
-				value: adminList.join(' , '),
-			});
+				adminRoleList.forEach(u => {
+					adminList.push(u.nickname == null ? u.user.username : u.nickname);
+				});
+				let adminListEmbed = DefaultEmbed();
+				adminListEmbed.data.fields!.push({
+					name: cmdLang.embed.adminListField,
+					value: adminList.join(' , '),
+				});
 
-			return interaction.reply({
-				embeds: [adminListEmbed],
-				ephemeral: true,
-			});
-		} else if (
-			interaction.options.get('add') != null &&
-			interaction.options.get('remove') == null
-		) {
-			interaction.guild!.members.cache.forEach(u => {
-				if (
-					u.user.username === interaction.options.get('add')!.value ||
-					u.nickname === interaction.options.get('add')
-				) {
-					if (u.id === appConfig.botConfig.dercrakerId) {
-						return interaction.reply({
-							content: cmdLang.interaction.notManagableUser,
-							ephemeral: true,
-						});
-					}
-					u.roles.add(adminRole!);
-					this.client.admins.push(u.id);
-
-					fs.writeFile(
-						path.join(__dirname, '../../../util/appConfig.json'),
-						JSON.stringify(appConfig),
-						function writeJSON(err) {
-							if (err) return console.log(err);
-						},
-					);
-
-					return interaction.reply({
-						content: cmdLang.interaction.addUser.format(
-							u.nickname == null ? u.user.username : u.nickname,
-						),
-						ephemeral: true,
-					});
-				}
-			});
-		} else if (
-			interaction.options.get('add') == null &&
-			interaction.options.get('remove') != null
-		) {
-			interaction
-				.guild!.roles.cache.get(appConfig.Roles.ADMIN)!
-				.members.forEach(u => {
+				return interaction.reply({
+					embeds: [adminListEmbed],
+					ephemeral: true,
+				});
+			} else if (
+				interaction.options.get('add') != null &&
+				interaction.options.get('remove') == null
+			) {
+				interaction.guild!.members.cache.forEach(u => {
 					if (
-						(appConfig.botConfig.admins.includes(u.id) &&
-							u.user.username === interaction.options.get('remove')!.value) ||
-						u.nickname === interaction.options.get('remove')
+						u.user.username === interaction.options.get('add')!.value ||
+						u.nickname === interaction.options.get('add')
 					) {
 						if (u.id === appConfig.botConfig.dercrakerId) {
 							return interaction.reply({
@@ -126,10 +92,8 @@ export class AdminListCommand extends Command {
 								ephemeral: true,
 							});
 						}
-						u.roles.remove(adminRole!);
-						appConfig.botConfig.admins = appConfig.botConfig.admins.filter(
-							id => id !== u.id,
-						);
+						u.roles.add(adminRole!);
+						this.client.admins.push(u.id);
 
 						fs.writeFile(
 							path.join(__dirname, '../../../util/appConfig.json'),
@@ -140,18 +104,61 @@ export class AdminListCommand extends Command {
 						);
 
 						return interaction.reply({
-							content: cmdLang.interaction.removeUser.format(
+							content: cmdLang.interaction.addUser.format(
 								u.nickname == null ? u.user.username : u.nickname,
 							),
 							ephemeral: true,
 						});
 					}
 				});
-		} else {
-			return interaction.reply({
-				content: cmdLang.interaction.dualOptions,
-				ephemeral: true,
-			});
+			} else if (
+				interaction.options.get('add') == null &&
+				interaction.options.get('remove') != null
+			) {
+				interaction
+					.guild!.roles.cache.get(appConfig.Roles.ADMIN)!
+					.members.forEach(u => {
+						if (
+							(appConfig.botConfig.admins.includes(u.id) &&
+								u.user.username === interaction.options.get('remove')!.value) ||
+							u.nickname === interaction.options.get('remove')
+						) {
+							if (u.id === appConfig.botConfig.dercrakerId) {
+								return interaction.reply({
+									content: cmdLang.interaction.notManagableUser,
+									ephemeral: true,
+								});
+							}
+							u.roles.remove(adminRole!);
+							appConfig.botConfig.admins = appConfig.botConfig.admins.filter(
+								id => id !== u.id,
+							);
+
+							fs.writeFile(
+								path.join(__dirname, '../../../util/appConfig.json'),
+								JSON.stringify(appConfig),
+								function writeJSON(err) {
+									if (err) return console.log(err);
+								},
+							);
+
+							return interaction.reply({
+								content: cmdLang.interaction.removeUser.format(
+									u.nickname == null ? u.user.username : u.nickname,
+								),
+								ephemeral: true,
+							});
+						}
+					});
+			} else {
+				return interaction.reply({
+					content: cmdLang.interaction.dualOptions,
+					ephemeral: true,
+				});
+			}
+		} catch (error) {
+			interaction.reply(lang.bot.errorMessage);
+			this.client.emit('FailCommandLog', interaction, error);
 		}
 	}
 	onAutocomplete(interaction: AutocompleteInteraction) {

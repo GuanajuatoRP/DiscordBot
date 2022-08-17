@@ -30,13 +30,18 @@ export class PingCommand extends Command {
 	}
 	execute(interaction: CommandInteraction) {
 		this.client.emit('CommandLog', interaction as CommandInteraction);
-		// get latency between bot and user
-		const start = Date.now();
+		try {
+			// get latency between bot and user
+			const start = Date.now();
 
-		interaction.reply({ content: 'Pong !', ephemeral: false }).then(() => {
-			const end = Date.now();
-			const time = end - start;
-			interaction.editReply({ content: `Pong : ${time}ms` });
-		});
+			interaction.reply({ content: 'Pong !', ephemeral: false }).then(() => {
+				const end = Date.now();
+				const time = end - start;
+				interaction.editReply({ content: `Pong : ${time}ms` });
+			});
+		} catch (error) {
+			interaction.reply(lang.bot.errorMessage);
+			this.client.emit('FailCommandLog', interaction, error);
+		}
 	}
 }

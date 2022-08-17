@@ -30,27 +30,6 @@ export class TestCommand extends Command {
 		});
 	}
 	execute(interaction: CommandInteraction) {
-		// this.client.emit('CommandLog', interaction);
-		// const btNewAccount = new ActionRowBuilder<ButtonBuilder>().addComponents(
-		// 	new ButtonBuilder()
-		// 		.setCustomId('Register')
-		// 		.setLabel('register')
-		// 		.setStyle(ButtonStyle.Primary),
-		// );
-
-		// const btRegisterValidation =
-		// 	new ActionRowBuilder<ButtonBuilder>().addComponents(
-		// 		new ButtonBuilder()
-		// 			.setCustomId('RegisterValidation')
-		// 			.setLabel("Validée l'inscription")
-		// 			.setStyle(ButtonStyle.Primary),
-		// 	);
-
-		// interaction.reply({
-		// 	content: 'Bouton de reistration et validation',
-		// 	components: [btNewAccount, btRegisterValidation],
-		// });
-
 		interaction.reply({ content: 'test', ephemeral: true });
 	}
 }

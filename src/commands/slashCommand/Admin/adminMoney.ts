@@ -128,9 +128,8 @@ export class AdminMoneyCommand extends Command {
 					break;
 			}
 		} catch (error: any) {
-			return interaction.editReply({
-				content: lang.bot.errorMessage as string,
-			});
+			interaction.reply(lang.bot.errorMessage);
+			this.client.emit('FailCommandLog', interaction, error);
 		}
 
 		return interaction.editReply({

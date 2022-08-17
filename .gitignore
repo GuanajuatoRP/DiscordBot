@@ -10,3 +10,5 @@ dist/util/logs/
 dist/
 
 logs/
+
+.VSCodeCounter/

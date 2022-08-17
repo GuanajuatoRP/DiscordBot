@@ -14,7 +14,7 @@ export class UpdateMessageCommand extends Command {
 	constructor(client: ShewenyClient) {
 		super(client, {
 			name: 'updatemessage',
-			// category: '', //* Default category is InDev
+			category: 'Admin', //* Default category is InDev
 			// type: '', //* Default type is SLASH_COMMAND
 			description: cmdLang.description.desc,
 			usage: cmdLang.description.usage,

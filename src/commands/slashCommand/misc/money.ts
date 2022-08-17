@@ -38,47 +38,52 @@ export class MoneyCommand extends Command {
 	}
 	async execute(interaction: CommandInteraction) {
 		this.client.emit('CommandLog', interaction as CommandInteraction);
-		await interaction.deferReply();
+		try {
+			await interaction.deferReply();
 
-		const user = interaction.options.getUser('user');
+			const user = interaction.options.getUser('user');
 
-		await MoneyController.getMoney(
-			user ? user.id : (interaction.member as GuildMember).id,
-		)
-			.then((response: AxiosResponse<any, any>) => {
-				const moneyDTO: GetMoneyDTO = response!.data as GetMoneyDTO;
+			await MoneyController.getMoney(
+				user ? user.id : (interaction.member as GuildMember).id,
+			)
+				.then((response: AxiosResponse<any, any>) => {
+					const moneyDTO: GetMoneyDTO = response!.data as GetMoneyDTO;
 
-				const embedMoney = new EmbedBuilder()
-					.setTitle(
-						cmdLang.embed.title.format(
-							(interaction.member! as GuildMember).displayName,
-						),
-					)
-					.setColor(cmdLang.embed.color as ColorResolvable)
-					.addFields({
-						name: cmdLang.embed.fields[0].name,
-						value: `${moneyDTO.money.toString()}€`,
-					})
-					.setThumbnail(
-						(interaction.member! as GuildMember).displayAvatarURL() as string,
-					)
-					.setAuthor({
-						name: cmdLang.embed.author.name,
-						url: cmdLang.embed.author.url,
-					})
-					.setTimestamp()
-					.setFooter({ text: cmdLang.embed.footer });
+					const embedMoney = new EmbedBuilder()
+						.setTitle(
+							cmdLang.embed.title.format(
+								(interaction.member! as GuildMember).displayName,
+							),
+						)
+						.setColor(cmdLang.embed.color as ColorResolvable)
+						.addFields({
+							name: cmdLang.embed.fields[0].name,
+							value: `${moneyDTO.money.toString()}€`,
+						})
+						.setThumbnail(
+							(interaction.member! as GuildMember).displayAvatarURL() as string,
+						)
+						.setAuthor({
+							name: cmdLang.embed.author.name,
+							url: cmdLang.embed.author.url,
+						})
+						.setTimestamp()
+						.setFooter({ text: cmdLang.embed.footer });
 
-				return interaction.editReply({
-					embeds: [embedMoney],
+					return interaction.editReply({
+						embeds: [embedMoney],
+					});
+				})
+				.catch(e => {
+					console.log(e);
+
+					return interaction.editReply({
+						content: lang.bot.errorMessage as string,
+					});
 				});
-			})
-			.catch(e => {
-				console.log(e);
-
-				return interaction.editReply({
-					content: lang.bot.errorMessage as string,
-				});
-			});
+		} catch (error) {
+			interaction.reply(lang.bot.errorMessage);
+			this.client.emit('FailCommandLog', interaction, error);
+		}
 	}
 }

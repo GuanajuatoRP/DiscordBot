@@ -37,99 +37,104 @@ export class HelpCommand extends Command {
 	execute(interaction: CommandInteraction) {
 		this.client.emit('CommandLog', interaction as CommandInteraction);
 
-		let commandName = interaction.options;
+		try {
+			let commandName = interaction.options;
 
-		let allCategory = new Array(); //Get All Unnique Catégory
+			let allCategory = new Array(); //Get All Unnique Catégory
 
-		this.client.collections.commands
-			.map(c => c[0])
-			.forEach(command => {
-				// Filter all catégory without InDev and Admin
-				if (
-					!allCategory.includes(`${command.category}`) &&
-					command.category != 'InDev' &&
-					command.category != 'Admin'
-				)
-					allCategory.push(`${command.category}`);
-			});
-		const commands: Command[] = this.client.collections.commands.map(
-			c => c[0],
-		) as Command[]; //Get All Commands loaded for the bot
+			this.client.collections.commands
+				.map(c => c[0])
+				.forEach(command => {
+					// Filter all catégory without InDev and Admin
+					if (
+						!allCategory.includes(`${command.category}`) &&
+						command.category != 'InDev' &&
+						command.category != 'Admin'
+					)
+						allCategory.push(`${command.category}`);
+				});
+			const commands: Command[] = this.client.collections.commands.map(
+				c => c[0],
+			) as Command[]; //Get All Commands loaded for the bot
 
-		if (!commandName.get('commande')) {
-			let Embed = DefaultEmbed().setDescription(
-				lang.commands.help.description.desc,
-			);
-			for (const category of allCategory) {
+			if (!commandName.get('commande')) {
+				let Embed = DefaultEmbed().setDescription(
+					lang.commands.help.description.desc,
+				);
+				for (const category of allCategory) {
+					Embed.addFields({
+						name: `${category}`,
+						value: `${commands
+							.filter(
+								c =>
+									c.category === `${category}` &&
+									c.adminsOnly === false &&
+									c.type === 'SLASH_COMMAND',
+							)
+							.map(c => `\`${c.name}\``)
+							.join(', ')}`,
+					});
+				}
+
+				// Define random command for /help example
+				let availableCommand: Array<string> = commands
+					.filter(
+						c =>
+							c.category != 'InDev' &&
+							c.category != 'Admin' &&
+							c.adminsOnly === false &&
+							c.type === 'SLASH_COMMAND',
+					)
+					.map(c => c.name);
+				let randomCommand1: string;
+				let randomCommand2: string;
+				do {
+					randomCommand1 =
+						availableCommand[
+							Math.floor(Math.random() * availableCommand.length)
+						];
+					randomCommand2 =
+						availableCommand[
+							Math.floor(Math.random() * availableCommand.length)
+						];
+				} while (randomCommand1 == randomCommand2);
 				Embed.addFields({
-					name: `${category}`,
-					value: `${commands
-						.filter(
-							c =>
-								c.category === `${category}` &&
-								c.adminsOnly === false &&
-								c.type === 'SLASH_COMMAND',
-						)
-						.map(c => `\`${c.name}\``)
-						.join(', ')}`,
+					name: cmdLang.genericEmbed.fields.info.name,
+					value: cmdLang.genericEmbed.fields.info.value.format(
+						randomCommand1,
+						randomCommand2,
+					),
 				});
-			}
 
-			// Define random command for /help example
-			let availableCommand: Array<string> = commands
-				.filter(
-					c =>
-						c.category != 'InDev' &&
-						c.category != 'Admin' &&
-						c.adminsOnly === false &&
-						c.type === 'SLASH_COMMAND',
-				)
-				.map(c => c.name);
-			let randomCommand1: string;
-			let randomCommand2: string;
-			do {
-				randomCommand1 =
-					availableCommand[Math.floor(Math.random() * availableCommand.length)];
-				randomCommand2 =
-					availableCommand[Math.floor(Math.random() * availableCommand.length)];
-			} while (randomCommand1 == randomCommand2);
-			Embed.addFields({
-				name: cmdLang.genericEmbed.fields.info.name,
-				value: cmdLang.genericEmbed.fields.info.value.format(
-					randomCommand1,
-					randomCommand2,
-				),
-			});
-
-			return interaction.reply({
-				embeds: [Embed],
-				ephemeral: false,
-			});
-		} else if (commandName.get('commande')) {
-			const CName = `${commandName.get('commande')!.value}`;
-			const command = this.client.collections.commands.get(CName);
-
-			if (!commands.map(c => c.name).includes(CName)) {
 				return interaction.reply({
-					content: cmdLang.interaction.wrongName.format(CName),
+					embeds: [Embed],
 					ephemeral: false,
 				});
-			}
-			if (command![0].adminsOnly === true) {
-				return interaction.reply({
-					content: cmdLang.interaction.noRead.format(CName),
-					ephemeral: false,
-				});
-			}
+			} else if (commandName.get('commande')) {
+				const CName = `${commandName.get('commande')!.value}`;
+				const command = this.client.collections.commands.get(CName);
 
-			return interaction.reply({
-				content: stripIndents`
+				if (!commands.map(c => c.name).includes(CName)) {
+					return interaction.reply({
+						content: cmdLang.interaction.wrongName.format(CName),
+						ephemeral: false,
+					});
+				}
+				if (command![0].adminsOnly === true) {
+					return interaction.reply({
+						content: cmdLang.interaction.noRead.format(CName),
+						ephemeral: false,
+					});
+				}
+
+				return interaction.reply({
+					content: stripIndents`
                 \`\`\`makefile
                     [help : ${
 											command![0].name
 										}]                       [Category : ${
-					command![0].category
-				}]
+						command![0].category
+					}]
 
                     ${command![0].description}
 
@@ -143,8 +148,12 @@ export class HelpCommand extends Command {
                     Les caractères suivants -> <>, {} ne doivents pas être inclus dans les commandes
                 \`\`\`               
                 `,
-				ephemeral: false,
-			});
+					ephemeral: false,
+				});
+			}
+		} catch (error) {
+			interaction.reply(lang.bot.errorMessage);
+			this.client.emit('FailCommandLog', interaction, error);
 		}
 	}
 	onAutocomplete(interaction: AutocompleteInteraction) {
