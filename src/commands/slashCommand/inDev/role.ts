@@ -1,6 +1,6 @@
 // import { Command } from 'sheweny'
 // import {MessageActionRow , MessageButton} from 'discord.js'
-// import { DefaultEmbed} from '../../../util/export'
+// import { DefaultEmbed} from '../../../tools/export'
 // import type { ShewenyClient } from 'sheweny'
 // import type { CommandInteraction } from 'discord.js'
 // import appConfig from '../../../util/appConfig.json'

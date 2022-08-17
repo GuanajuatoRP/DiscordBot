@@ -24,7 +24,7 @@ export class PingCommand extends Command {
 			// channel : '', //* Default Channel is GUILD
 			// cooldown : , //* Default cooldown set at 2sec
 			// adminsOnly : , //* Default value is false
-			userPermissions: [],
+			userPermissions: ['UseApplicationCommands'],
 			clientPermissions: [],
 		});
 	}

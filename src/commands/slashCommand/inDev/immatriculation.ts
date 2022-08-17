@@ -3,7 +3,7 @@
 // import type { ShewenyClient } from 'sheweny'
 // import { AutocompleteInteraction, CommandInteraction, GuildMember, MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
 // import lang from '../../../tools/language.json'
-// import { NewImmatriculation } from '../../../util/export'
+// import { NewImmatriculation } from '../../../tools/export'
 // const CommandLang = lang.commands.immatriculation
 
 // export class ImmatriculationCommand extends Command {

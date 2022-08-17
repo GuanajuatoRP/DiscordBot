@@ -3,7 +3,7 @@
 // import * as fs from 'fs'
 // import * as path from 'path'
 // import {AutocompleteInteraction} from 'discord.js'
-// import { ChannelClass } from '../../../util/export'
+// import { ChannelClass } from '../../../tools/export'
 // import type { ShewenyClient } from 'sheweny'
 // import type { CommandInteraction } from 'discord.js'
 // import appConf from '../../../util/appConfig.json'

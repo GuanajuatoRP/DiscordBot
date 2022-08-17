@@ -55,7 +55,7 @@ export class AdminMoneyCommand extends Command {
 			// channel : '', //* Default Channel is GUILD
 			// cooldown : , //* Default cooldown set at 2sec
 			adminsOnly: true, //* Default value is false
-			//userPermissions : [],
+			userPermissions: ['UseApplicationCommands'],
 			//clientPermissions : []
 		});
 	}

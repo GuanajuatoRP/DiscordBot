@@ -1,7 +1,7 @@
 // import { ChannelTypes } from 'discord.js/typings/enums';
 // import { Command } from 'sheweny'
 // import fs from 'fs'
-// import { ChannelClass } from '../../../util/export'
+// import { ChannelClass } from '../../../tools/export'
 // import type { ShewenyClient } from 'sheweny'
 // import type { AutocompleteInteraction, CommandInteraction, PermissionOverwrites, TextChannel, VoiceChannel } from 'discord.js'
 // import lang from '../../../tools/language.json'

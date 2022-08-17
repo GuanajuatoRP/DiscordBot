@@ -28,7 +28,7 @@ export const client = new ShewenyClient({
 		commands: {
 			directory: './commands', // command directory
 			guildId: process.env.GUILD_ID,
-			applicationPermissions: false, //If the permissions for app commands must be required
+			applicationPermissions: true, //If the permissions for app commands must be required
 			autoRegisterApplicationCommands: true, // Register application commands
 			default: {
 				// set default params for all commands

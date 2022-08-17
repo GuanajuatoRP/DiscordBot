@@ -1,10 +1,10 @@
 // import { ApplicationCommandOptionType } from './../.discord.js';
 // import { Command } from 'sheweny'
-// import { DefaultEmbed, saveEmbed } from '../../../util/export'
+// import { DefaultEmbed, saveEmbed } from '../../../tools/export'
 // import { TextChannel } from 'discord.js'
 // import fs from 'fs'
 // import path from 'path'
-// // import { DefaultEmbed } from '../../../util/export'
+// // import { DefaultEmbed } from '../../../tools/export'
 // import type { ShewenyClient } from 'sheweny'
 // import type { CommandInteraction } from 'discord.js'
 // // import appConf from '../../../util/appConfig.json'

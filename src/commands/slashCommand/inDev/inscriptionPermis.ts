@@ -5,7 +5,7 @@
 // import { AutocompleteInteraction, CommandInteraction, MessageEmbed } from 'discord.js'
 // import lang from '../../../tools/language.json'
 // const CommandLang = lang.commands.inscriptionPermis
-// import { PermisTypes } from '../../../util/export'
+// import { PermisTypes } from '../../../tools/export'
 
 // export class InscriptionPermisCommand extends Command {
 //     constructor(client: ShewenyClient) {
