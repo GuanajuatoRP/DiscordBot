@@ -72,7 +72,6 @@ export class CommandLog extends Event {
 				path.join(process.cwd(), `/logs/commandLog_${today}.txt`),
 				log + '\n',
 			);
-			console.log('log created');
 		} catch (error) {
 			console.log(`Error while creating log file : ${(error as any).message}`);
 		}

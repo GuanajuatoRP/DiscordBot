@@ -33,10 +33,23 @@ function rawBody(req: any, res: any, next: any) {
 		next();
 	});
 }
-
+const origins = [
+	'localhost:53216',
+	'http://guanajuato-roleplay.fr',
+	'http://api.guanajuato-roleplay.fr',
+	'https://guanajuato-roleplay.fr',
+	'https://api.guanajuato-roleplay.fr',
+];
 const corsOptions = {
-	origin: '*',
-	methods: 'GET,PUT,POST,DELETE',
+	// origin: '*',
+	origin: function (origin: any, callback: any) {
+		if (origins.indexOf(origin) !== -1) {
+			callback(null, true);
+		} else {
+			callback(new Error('Not allowed by CORS origin : ' + origin));
+		}
+	},
+	methods: 'GET,PUT,POST,DELETE,OPTIONS',
 	preflightContinue: false,
 	optionsSuccessStatus: 204,
 };
@@ -47,6 +60,10 @@ app.use(bodyParser.json());
 app.use(rawBody);
 
 app.get('/', (req: express.Request, res: express.Response, next) => {
+	console.log(req.hostname);
+	console.log(req.headers.hostname);
+	console.log(req.headers.origin);
+
 	next();
 });
 
@@ -74,7 +91,8 @@ app.get(
 app.post(
 	'/sendRegisterValidationButton/:userId',
 	async (req: express.Request, res: express.Response) => {
-		console.log('aaaaaa');
+		console.log('BBBBBBBBB');
+		console.log(req);
 
 		//Get params
 		const user = new UserValidatedModel();
@@ -129,6 +147,7 @@ app.post(
 			components: [btRegisterValidation],
 		});
 
+		res.setHeader('Access-Control-Allow-Origin', '*');
 		res.sendStatus(200);
 	},
 );
@@ -137,6 +156,8 @@ app.post(
 app.post(
 	'/UserValidatedOnDBModel/:userId',
 	async (req: express.Request, res: express.Response) => {
+		console.log('BBBBBB');
+
 		//Get params
 		const user = new UserValidatedOnDBModel();
 		const jsonBody: UserValidatedOnDBModel = JSON.parse(
@@ -193,11 +214,15 @@ app.post(
 );
 
 app.post('/test', async (req: express.Request, res: express.Response) => {
+	console.log('origin', req.headers.origin);
+	console.log('BBBBBBBB');
+
 	const guild = await client.guilds.fetch(appConf.botConfig.guildid);
 	const channel = (await guild.channels.cache.get(
 		'1001952449252298792',
 	)) as TextChannel;
 
 	channel.send((req as any).rawBody);
+	channel.send('qsdfqsdfsqdf');
 	res.send((req as any).rawBody);
 });

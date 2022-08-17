@@ -6,6 +6,34 @@
         "errorMessage": "Oupss il semblerais qu'une erreur c'est produite. Si cela perssiste contacte le Staff"
     },
     "commands": {
+        "sendMessage": {
+            "embed": {
+                "title": "",
+                "color": "#",
+                "footer": "",
+                "fields": [{
+                    "name": "",
+                    "value": ""
+                }],
+                "author": {
+                    "name": "",
+                    "url": ""
+                }
+            },
+            "slashOptions": {
+                "messageId": "Id du message a envoyé",
+                "channelTo": "Channel ou envoyé le message",
+                "channelFrom": "Channel ou est présent le message a envoyé"
+            },
+            "description": {
+                "desc": "Permet d'envoyé un message, qui a au préalable été crée, le formatage restera tel quel.",
+                "usage": "sendMessage {Channel d'ou provien le message} {Id du message a envoyé} {Channel dans le quel envoyé le message}",
+                "exemples": [
+                    "sendMessage from-channel:help message-id:1587569320 to-channel:Generale"
+                ]
+            },
+            "validation": "Le message a bien été envoyé dans le channel {0}"
+        },
         "adminMoney": {
             "embed": {
                 "title": "Compte bancaire de : {0}",
@@ -39,32 +67,6 @@
                     "adminmoney user:@UwU.#2273 action:Add montant:500 raison:don annonyme ^^",
                     "adminmoney user:@UwU.#2273 action:Remove montant:25000 raison:Achat de voiture",
                     "adminmoney user:@UwU.#2273 action:Set montant:358126 raison:Remise a niveau du compte suite a une erreur"
-                ]
-            }
-        },
-        "sendMessage": {
-            "embed": {
-                "title": "",
-                "color": "#",
-                "footer": "",
-                "fields": [{
-                    "name": "",
-                    "value": ""
-                }],
-                "author": {
-                    "name": "",
-                    "url": ""
-                }
-            },
-            "slashOptions": {
-                "message": "Id du message a envoyé",
-                "channel": "channel ou envoyé le message"
-            },
-            "description": {
-                "desc": "Permet d'envoyé un message, qui a au préalable été crée, le formatage restera tel quel.",
-                "usage": "sendMessage {Id du message a envoyé} {Channel dans le quel envoyé le message}",
-                "exemples": [
-                    "sendMessage messageid:1587569320 channel:Generale"
                 ]
             }
         },

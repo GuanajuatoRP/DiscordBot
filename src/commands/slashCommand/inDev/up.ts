@@ -4,10 +4,10 @@ import { CommandInteraction } from 'discord.js';
 // import lang from '../../../util/language.json'
 // const CommandLang = lang.commands.test
 
-export class TestCommand extends Command {
+export class UpCommand extends Command {
 	constructor(client: ShewenyClient) {
 		super(client, {
-			name: 'test',
+			name: 'up',
 			// category: '', //* Default category is InDev
 			// type: '', //* Default type is SLASH_COMMAND
 			description: 'CommandLang.description.desc',
@@ -30,27 +30,11 @@ export class TestCommand extends Command {
 		});
 	}
 	execute(interaction: CommandInteraction) {
-		// this.client.emit('CommandLog', interaction);
-		// const btNewAccount = new ActionRowBuilder<ButtonBuilder>().addComponents(
-		// 	new ButtonBuilder()
-		// 		.setCustomId('Register')
-		// 		.setLabel('register')
-		// 		.setStyle(ButtonStyle.Primary),
-		// );
+		this.client.emit('CommandLog', interaction);
 
-		// const btRegisterValidation =
-		// 	new ActionRowBuilder<ButtonBuilder>().addComponents(
-		// 		new ButtonBuilder()
-		// 			.setCustomId('RegisterValidation')
-		// 			.setLabel("Validée l'inscription")
-		// 			.setStyle(ButtonStyle.Primary),
-		// 	);
-
-		// interaction.reply({
-		// 	content: 'Bouton de reistration et validation',
-		// 	components: [btNewAccount, btRegisterValidation],
-		// });
-
-		interaction.reply({ content: 'test', ephemeral: true });
+		interaction.reply({
+			content: 'updated',
+			ephemeral: true,
+		});
 	}
 }

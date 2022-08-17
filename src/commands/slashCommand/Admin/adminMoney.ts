@@ -56,7 +56,7 @@ export class AdminMoneyCommand extends Command {
         });
     }
     async execute(interaction : CommandInteraction) {
-      this.client.emit('CommandLog', interaction as CommandInteraction)
+      this.client.emit('AdminCommandLog', interaction as CommandInteraction)
 
       await interaction.deferReply();
 

@@ -44,7 +44,7 @@ export class AdminListCommand extends Command {
         });
     }
     execute(interaction : CommandInteraction) {
-        this.client.emit('CommandLog', interaction as CommandInteraction)
+        this.client.emit('AdminCommandLog', interaction as CommandInteraction)
 
         if (interaction.member!.user.id !== appConfig.botConfig.dercrakerId){
             return interaction.reply({

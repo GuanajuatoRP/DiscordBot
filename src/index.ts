@@ -32,7 +32,7 @@ export const client = new ShewenyClient({
 			autoRegisterApplicationCommands: true, // Register application commands
 			default: {
 				// set default params for all commands
-				adminOnly: false,
+				adminOnly: true,
 				category: 'InDev',
 				channel: 'GUILD',
 				cooldown: 2,

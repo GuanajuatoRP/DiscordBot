@@ -1,0 +1,1 @@
+17-08-2022 11:46:48, Command : sendmessage, Option Name : from-channel, value : 1001952449252298792, Option Name : message-id, value : 1009237416881688727, Option Name : to-channel, value : 1001952449252298792, channel : 🤖-bot-staff User : JeanJack Goldman, UserID : 152125692618735616

@@ -5,6 +5,7 @@
     "main": "dist/index.js",
     "scripts": {
         "start": "node dist/index.js",
+        "docker": "cls && rmdir /s /q dist && npm run build && docker build -t dercraker0/guanajuato-bot:latest . && docker push dercraker0/guanajuato-bot:latest",
         "build": "tsc",
         "dev": "nodemon -e js,ts --watch src --exec \"cls && npm run build && npm run start\""
     },
