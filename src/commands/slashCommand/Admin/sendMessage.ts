@@ -2,13 +2,14 @@ import { Command } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
 import {
 	ApplicationCommandOptionType,
+	ChannelType,
 	CommandInteraction,
 	Guild,
 	Message,
 	TextChannel,
 } from 'discord.js';
 import lang from '../../../tools/language.json';
-const CommandLang = lang.commands.sendMessage;
+const cmdLang = lang.commands.sendMessage;
 
 export class SendMessageCommand extends Command {
 	constructor(client: ShewenyClient) {
@@ -16,36 +17,28 @@ export class SendMessageCommand extends Command {
 			name: 'sendmessage',
 			category: 'Admin', //* Default category is InDev
 			// type: '', //* Default type is SLASH_COMMAND
-			// description:
-			// 	"Permet d'envoyé un message, qui a au préalable été crée, le formatage restera tel quel.",
-			description: CommandLang.description.desc,
-			// usage:
-			// 	"sendMessage {Channel d'ou provien le message} {Id du message a envoyé} {Channel dans le quel envoyé le message}",
-			usage: CommandLang.description.usage,
-			// examples: [
-			// 	'sendMessage from-channel:help message-id:1587569320 to-channel:Generale',
-			// ],
-			examples: CommandLang.description.exemples,
+			description: cmdLang.description.desc,
+			usage: cmdLang.description.usage,
+			examples: cmdLang.description.exemples,
 			options: [
 				{
 					type: ApplicationCommandOptionType.Channel,
+					channelTypes: [ChannelType.GuildText],
 					name: 'from-channel',
-					// description: 'Channel ou est présent le message a envoyé',
-					description: 'CommandLang.slashOptions.channelFrom',
+					description: cmdLang.slashOptions.channelFrom,
 					required: true,
 				},
 				{
 					type: ApplicationCommandOptionType.String,
 					name: 'message-id',
-					// description: 'Id du message a envoyé',
-					description: 'CommandLang.slashOptions.messageId',
+					description: cmdLang.slashOptions.messageId,
 					required: true,
 				},
 				{
 					type: ApplicationCommandOptionType.Channel,
+					channelTypes: [ChannelType.GuildText],
 					name: 'to-channel',
-					// description: 'Channel ou envoyé le message',
-					description: 'CommandLang.slashOptions.channelTo',
+					description: cmdLang.slashOptions.channelTo,
 					required: true,
 				},
 			],

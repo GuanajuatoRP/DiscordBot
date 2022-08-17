@@ -11,7 +11,7 @@ import {
 	EmbedBuilder,
 	ColorResolvable,
 } from 'discord.js';
-const CommandLang = lang.commands.money;
+const cmdLang = lang.commands.money;
 
 export class MoneyCommand extends Command {
 	constructor(client: ShewenyClient) {
@@ -19,14 +19,14 @@ export class MoneyCommand extends Command {
 			name: 'money',
 			category: 'Misc', //* Default category is InDev
 			// type: '', //* Default type is SLASH_COMMAND
-			description: CommandLang.description.desc as string,
-			usage: CommandLang.description.usage as string,
-			examples: CommandLang.description.exemples as string[],
+			description: cmdLang.description.desc as string,
+			usage: cmdLang.description.usage as string,
+			examples: cmdLang.description.exemples as string[],
 			options: [
 				{
 					type: ApplicationCommandOptionType.User,
 					name: 'user',
-					description: CommandLang.slashOptions.User as string,
+					description: cmdLang.slashOptions.User as string,
 				},
 			],
 			// channel : '', //* Default Channel is GUILD
@@ -50,24 +50,24 @@ export class MoneyCommand extends Command {
 
 				const embedMoney = new EmbedBuilder()
 					.setTitle(
-						CommandLang.embed.title.format(
+						cmdLang.embed.title.format(
 							(interaction.member! as GuildMember).displayName,
 						),
 					)
-					.setColor(CommandLang.embed.color as ColorResolvable)
+					.setColor(cmdLang.embed.color as ColorResolvable)
 					.addFields({
-						name: CommandLang.embed.fields[0].name,
+						name: cmdLang.embed.fields[0].name,
 						value: `${moneyDTO.money.toString()}€`,
 					})
 					.setThumbnail(
 						(interaction.member! as GuildMember).displayAvatarURL() as string,
 					)
 					.setAuthor({
-						name: CommandLang.embed.author.name,
-						url: CommandLang.embed.author.url,
+						name: cmdLang.embed.author.name,
+						url: cmdLang.embed.author.url,
 					})
 					.setTimestamp()
-					.setFooter({ text: CommandLang.embed.footer });
+					.setFooter({ text: cmdLang.embed.footer });
 
 				return interaction.editReply({
 					embeds: [embedMoney],

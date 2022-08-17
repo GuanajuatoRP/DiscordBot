@@ -10,7 +10,7 @@ import type { ShewenyClient } from 'sheweny';
 import type { CommandInteraction } from 'discord.js';
 import lang from '../../../tools/language.json';
 import MoneyController from '../../../APIToUserApi/MoneyController';
-const CommandLang = lang.commands.adminMoney;
+const cmdLang = lang.commands.adminMoney;
 
 export class AdminMoneyCommand extends Command {
 	constructor(client: ShewenyClient) {
@@ -18,20 +18,20 @@ export class AdminMoneyCommand extends Command {
 			name: 'adminmoney',
 			category: 'Admin', //* Default category is InDev
 			// type: '', //* Default type is SLASH_COMMAND
-			description: CommandLang.description.desc,
-			usage: CommandLang.description.usage,
-			examples: CommandLang.description.exemples,
+			description: cmdLang.description.desc,
+			usage: cmdLang.description.usage,
+			examples: cmdLang.description.exemples,
 			options: [
 				{
 					type: ApplicationCommandOptionType.User,
 					name: 'user',
-					description: CommandLang.slashOptions.user as string,
+					description: cmdLang.slashOptions.user as string,
 					required: true,
 				},
 				{
 					type: ApplicationCommandOptionType.String,
 					name: 'action',
-					description: CommandLang.slashOptions.action as string,
+					description: cmdLang.slashOptions.action as string,
 					required: true,
 					choices: [
 						{ name: 'Add', value: 'Add' },
@@ -42,13 +42,13 @@ export class AdminMoneyCommand extends Command {
 				{
 					type: ApplicationCommandOptionType.Number,
 					name: 'montant',
-					description: CommandLang.slashOptions.amount as string,
+					description: cmdLang.slashOptions.amount as string,
 					required: true,
 				},
 				{
 					type: ApplicationCommandOptionType.String,
 					name: 'raison',
-					description: CommandLang.slashOptions.reason as string,
+					description: cmdLang.slashOptions.reason as string,
 					required: true,
 				},
 			],
@@ -71,7 +71,7 @@ export class AdminMoneyCommand extends Command {
 		const raison: string = interaction.options.get('raison')!.value as string;
 
 		let embedMoney = new EmbedBuilder()
-			.setTitle(CommandLang.embed.title.format(user.displayName))
+			.setTitle(cmdLang.embed.title.format(user.displayName))
 			.setThumbnail(
 				(interaction.member! as GuildMember).displayAvatarURL() as string,
 			)
@@ -90,11 +90,11 @@ export class AdminMoneyCommand extends Command {
 						embedMoney.setColor('#11ff00' as ColorResolvable);
 						embedMoney.addFields(
 							{
-								name: CommandLang.embed.fieldsNames.add,
+								name: cmdLang.embed.fieldsNames.add,
 								value: `${montant}€`,
 							},
 							{
-								name: CommandLang.embed.fieldsNames.newSolde,
+								name: cmdLang.embed.fieldsNames.newSolde,
 								value: `${moneyDTO.money}€`,
 							},
 						);
@@ -106,11 +106,11 @@ export class AdminMoneyCommand extends Command {
 						embedMoney.setColor('#f00' as ColorResolvable);
 						embedMoney.addFields(
 							{
-								name: CommandLang.embed.fieldsNames.remove,
+								name: cmdLang.embed.fieldsNames.remove,
 								value: `${montant}€`,
 							},
 							{
-								name: CommandLang.embed.fieldsNames.newSolde,
+								name: cmdLang.embed.fieldsNames.newSolde,
 								value: `${moneyDTO.money}€`,
 							},
 						);
@@ -121,7 +121,7 @@ export class AdminMoneyCommand extends Command {
 						const moneyDTO: GetMoneyDTO = response.data as GetMoneyDTO;
 						embedMoney.setColor('#FFA500' as ColorResolvable);
 						embedMoney.addFields({
-							name: CommandLang.embed.fieldsNames.set,
+							name: cmdLang.embed.fieldsNames.set,
 							value: `${moneyDTO.money}€`,
 						});
 					});

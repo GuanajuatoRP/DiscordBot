@@ -12,7 +12,7 @@ else dotenv.config({ path: `.env.development` }); //Load config.env
 export const client = new ShewenyClient({
 	intents: 131071,
 	admins: appConfig.botConfig.admins, // Admins perms pour le bot
-	mode: process.env.MODE || 'development', //mode de lancement pour l'app
+	mode: process.env.MODE as 'development' | 'production', //|| 'development', //mode de lancement pour l'app
 	presence: {
 		//status du bot
 		status: 'online',

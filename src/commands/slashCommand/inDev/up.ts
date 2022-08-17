@@ -2,7 +2,7 @@ import { Command } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
 import { CommandInteraction } from 'discord.js';
 // import lang from '../../../tools/language.json'
-// const CommandLang = lang.commands.test
+// const cmdLang = lang.commands.test
 
 export class UpCommand extends Command {
 	constructor(client: ShewenyClient) {
@@ -10,14 +10,14 @@ export class UpCommand extends Command {
 			name: 'up',
 			// category: '', //* Default category is InDev
 			// type: '', //* Default type is SLASH_COMMAND
-			description: 'CommandLang.description.desc',
-			usage: 'CommandLang.description.usage',
-			examples: 'CommandLang.description.exemples',
+			description: 'cmdLang.description.desc',
+			usage: 'cmdLang.description.usage',
+			examples: 'cmdLang.description.exemples',
 			options: [
 				// {
 				// type : 'STRING',
 				// name: 'commande',
-				// description: CommandLang,
+				// description: cmdLang,
 				// autocomplete : false,
 				// required : false,
 				//}

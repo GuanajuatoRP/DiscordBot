@@ -6,6 +6,65 @@
         "errorMessage": "Oupss il semblerais qu'une erreur c'est produite. Si cela perssiste contacte le Staff"
     },
     "commands": {
+        "updateMessage": {
+            "embed": {
+                "title": "",
+                "color": "#",
+                "footer": "",
+                "fields": [{
+                    "name": "",
+                    "value": ""
+                }],
+                "author": {
+                    "name": "",
+                    "url": ""
+                }
+            },
+            "slashOptions": {
+                "channelFrom": "Channel d'origine du message a copier",
+                "messageIdFrom": "Id du message a copier",
+                "channelTo": "Channel de destination du message a mettre a jour",
+                "messageIdTo": "Id du message a mettre a jour"
+            },
+            "description": {
+                "desc": "Permet de mettre a jour un message du bot",
+                "usage": "updatemessage",
+                "exemples": [
+                    "updateMessage"
+                ]
+            },
+            "errors": {
+                "fromMessageNotFound": "Le message a copier n'a pas ete trouve",
+                "toMessageNotFound": "Le message a mettre a jour n'a pas ete trouve"
+            },
+            "validation": "le message du salon {0} a bien été mis à jour"
+        },
+        "rawMessage": {
+            "embed": {
+                "title": "",
+                "color": "#",
+                "footer": "",
+                "fields": [{
+                    "name": "",
+                    "value": ""
+                }],
+                "author": {
+                    "name": "",
+                    "url": ""
+                }
+            },
+            "slashOptions": {
+                "fromChannel": "Salon ou est présent le message a copier",
+                "messageId": "Id du message a copier"
+            },
+            "description": {
+                "desc": "Permet d'obtenir une copy d'un message en version raw",
+                "usage": "rawmessage {Channel ou est présent le message} {MessageId}",
+                "exemples": [
+                    "rawmessage #général 123456789"
+                ]
+            }
+        },
         "sendMessage": {
             "embed": {
                 "title": "",

@@ -4,7 +4,7 @@
 // import type { ShewenyClient } from 'sheweny'
 // import { AutocompleteInteraction, CommandInteraction, MessageEmbed } from 'discord.js'
 // import lang from '../../../tools/language.json'
-// const CommandLang = lang.commands.inscriptionPermis
+// const cmdLang = lang.commands.inscriptionPermis
 // import { PermisTypes } from '../../../tools/export'
 
 // export class InscriptionPermisCommand extends Command {
@@ -13,14 +13,14 @@
 //             name: 'inscription-permis',
 //             // category: '', //* Default category is InDev
 //             // type: '', //* Default type is SLASH_COMMAND
-//             description: CommandLang.description.desc,
-//             usage : CommandLang.description.usage,
-//             examples : CommandLang.description.exemples,
+//             description: cmdLang.description.desc,
+//             usage : cmdLang.description.usage,
+//             examples : cmdLang.description.exemples,
 //             options : [
 //                 {
 //                     type : 'STRING',
 //                     name: 'permis',
-//                     description: "CommandLang",
+//                     description: "cmdLang",
 //                     autocomplete : true,
 //                     required : true,
 //                     }
@@ -36,38 +36,38 @@
 //     execute(interaction : CommandInteraction) {
 //         this.client.emit('CommandLog', interaction)
 //         if (!Object.values(PermisTypes).map(v => v.toString()).includes(interaction.options.getString('permis')!)){
-//             return interaction.reply({content: CommandLang.interaction.wrongName.format(interaction.options.getString('permis')!)})
+//             return interaction.reply({content: cmdLang.interaction.wrongName.format(interaction.options.getString('permis')!)})
 //         }
 
 //         const member = interaction.member as GuildMember
 //         let embed = new MessageEmbed()
-//             .setTitle(CommandLang.embed.title)
-//             .setDescription(CommandLang.embed.description)
-//             .setColor(CommandLang.embed.color as ColorResolvable)
-//             .setFooter(CommandLang.embed.footer.format(member.user.tag))
+//             .setTitle(cmdLang.embed.title)
+//             .setDescription(cmdLang.embed.description)
+//             .setColor(cmdLang.embed.color as ColorResolvable)
+//             .setFooter(cmdLang.embed.footer.format(member.user.tag))
 //             .setTimestamp()
 //             .setThumbnail(member.displayAvatarURL())
 //             // TODO : Faire une rquest api pour avoir la fiche personnel de l'utilisateur
 //             .addFields(
-//                 {name : CommandLang.embed.fields.Nom.name,value: "JeanJack", inline:true},
-//                 {name : CommandLang.embed.fields.Prénom.name,value: "GoldMan", inline:true},
-//                 {name : CommandLang.embed.fields.Exam.name,value: interaction.options.getString('permis')!.toString(), inline:false},
-//                 {name : CommandLang.embed.fields.Permis.name,value: "Aucun", inline:true},
-//                 {name : CommandLang.embed.fields.Pts.name,value: "5", inline:true},
-//                 {name : CommandLang.embed.fields.Stages.name,value: "B, C, A", inline:true},
+//                 {name : cmdLang.embed.fields.Nom.name,value: "JeanJack", inline:true},
+//                 {name : cmdLang.embed.fields.Prénom.name,value: "GoldMan", inline:true},
+//                 {name : cmdLang.embed.fields.Exam.name,value: interaction.options.getString('permis')!.toString(), inline:false},
+//                 {name : cmdLang.embed.fields.Permis.name,value: "Aucun", inline:true},
+//                 {name : cmdLang.embed.fields.Pts.name,value: "5", inline:true},
+//                 {name : cmdLang.embed.fields.Stages.name,value: "B, C, A", inline:true},
 //             )
 
 //         // TODO : Faire une request api pour validé le permis
 //         const BtnsPermis = new MessageActionRow()
 //             .addComponents(
 //                 new MessageButton()
-//                     .setLabel(CommandLang.button.labelFail)
+//                     .setLabel(cmdLang.button.labelFail)
 //                     .setStyle('DANGER')
 //                     .setCustomId('PermisFail')
 //             )
 //             .addComponents(
 //                 new MessageButton()
-//                     .setLabel(CommandLang.button.labelOk)
+//                     .setLabel(cmdLang.button.labelOk)
 //                     .setStyle('SUCCESS')
 //                     .setCustomId('PermisOk')
 //             )

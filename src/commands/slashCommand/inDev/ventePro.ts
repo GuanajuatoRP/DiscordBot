@@ -2,7 +2,7 @@
 // import type { ShewenyClient } from 'sheweny'
 // import { CommandInteraction, MessageActionRow, MessageSelectMenu } from 'discord.js'
 // import lang from '../../../tools/language.json'
-// const CommandLang = lang.commands.ventePro
+// const cmdLang = lang.commands.ventePro
 
 // export class VenteProCommand extends Command {
 //     constructor(client: ShewenyClient) {
@@ -10,14 +10,14 @@
 //             name: 'vente-pro',
 //             // category: '', //* Default category is InDev
 //             // type: '', //* Default type is SLASH_COMMAND
-//             description: CommandLang.description.desc,
-//             usage : CommandLang.description.usage,
-//             examples : CommandLang.description.exemples,
+//             description: cmdLang.description.desc,
+//             usage : cmdLang.description.usage,
+//             examples : cmdLang.description.exemples,
 //             options : [
 //                 // {
 //                 //     type : 'STRING',
 //                 //     name: 'voiture',
-//                 //     description: "CommandLang",
+//                 //     description: "cmdLang",
 //                 //     autocomplete : false,
 //                 //     required : false,
 //                 //     }
@@ -39,7 +39,7 @@
 //             .addComponents(
 //                 new MessageSelectMenu()
 //                     .setCustomId('VenteProCarMenu')
-//                     .setPlaceholder(CommandLang.SelectMenu.setPlaceholder)
+//                     .setPlaceholder(cmdLang.SelectMenu.setPlaceholder)
 //                     .setMaxValues(1)
 //                     .addOptions([
 //                         {
@@ -56,7 +56,7 @@
 //             )
 
 //         return interaction.reply({
-//             content : CommandLang.interaction.content,
+//             content : cmdLang.interaction.content,
 //             components:[carMenu],
 //             ephemeral: true,
 //         })
