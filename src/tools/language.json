@@ -301,15 +301,24 @@
         "getcommandlogs": {
             "description": {
                 "desc": "Permet de télécharger un fichier de commandLogs",
-                "usage": "getcommandlogs {DateOfFile}",
+                "usage": "getcommandlogs admin|command {DateOfFile}",
                 "exemples": [
-                    "getcommandlogs 05-01-2022",
-                    "getcommandlogs 06-01-2022"
+                    "getcommandlogs admin file-date:05-01-2022",
+                    "getcommandlogs command file-date:06-01-2022"
                 ]
+            },
+            "subCommand": {
+                "admin": {
+                    "desc": "Permet de télécharger un fichier de adminCommandLogs"
+                },
+                "command": {
+                    "desc": "Permet de télécharger un fichier de commandLogs"
+                }
             },
             "interaction": {
                 "dateError": "La date ne correspond a aucune des dates disponibles vérifi le template qui doit être dd-mm-yyyy",
-                "content": "Voici les fichiers de CommandLogs qui correspondent a la date du {0}"
+                "commandContent": "Voici les fichiers de CommandLogs qui correspondent a la date du {0}",
+                "adminContent": "Voici les fichiers de AdminCommandLogs qui correspondent a la date du {0}"
             },
             "slashOptions": {
                 "description": "Date du CommandLogs a télécharger"
