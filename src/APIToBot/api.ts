@@ -19,9 +19,7 @@ import { TokenValidationModel } from './Model/TokenValidationModel';
 import { UserValidatedOnDBModel } from './Model/UserValidatedOnDBModel';
 import { DefaultEmbed } from '../tools/export';
 import bodyParser from 'body-parser';
-
-const cors = require('cors');
-
+import cors from 'cors';
 export const app = express();
 function rawBody(req: any, res: any, next: any) {
 	req.setEncoding('utf8');
@@ -33,43 +31,195 @@ function rawBody(req: any, res: any, next: any) {
 		next();
 	});
 }
-const origins = [
-	'localhost:53216',
+
+// const allowedOrigins = [
+// 	'http://guanajuato-roleplay.fr',
+// 	'http://api.guanajuato-roleplay.fr',
+// 	'https://guanajuato-roleplay.fr',
+// 	'https://api.guanajuato-roleplay.fr',
+// ];
+// const allowlist = [
+// 	'http://guanajuato-roleplay.fr',
+// 	'http://api.guanajuato-roleplay.fr',
+// 	'https://guanajuato-roleplay.fr',
+// 	'https://api.guanajuato-roleplay.fr',
+// ];
+// const options: cors.CorsOptions = {
+// 	origin: allowedOrigins,
+// };
+// const options: cors.CorsOptions = {
+// 	allowedHeaders: [
+// 		'Origin',
+// 		'X-Requested-With',
+// 		'Content-Type',
+// 		'Accept',
+// 		'X-Access-Token',
+// 	],
+// 	credentials: true,
+// 	methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+// 	origin: 'http://guanajuato-roleplay.fr',
+// 	preflightContinue: true,
+// };
+// var allowlist = ['http://example1.com', 'http://example2.com'];
+// var corsOptionsDelegate = function (req: express.Request, callback: any) {
+// 	let corsOptions = {
+// 		origin: false,
+// 		methods: 'GET,PUT,POST,DELETE,OPTIONS',
+// 		preflightContinue: true,
+// 		optionsSuccessStatus: 204,
+// 	};
+// 	console.log('req.method: ', req.method);
+// 	console.log("req.header('Origin'): ", req.header('Origin'));
+
+// 	if (allowlist.indexOf('http://guanajuato-roleplay.fr') !== -1) {
+// 		corsOptions.origin = true; // reflect (enable) the requested origin in the CORS response
+// 	}
+// 	callback(null, corsOptions); // callback expects two parameters: error and options
+// };
+
+// const corsOptions = {
+// 	// origin: '*',
+// 	origin: function (origin: any, callback: any) {
+// 		callback(null, true);
+// 		// if (origins.indexOf(origin) !== -1) {
+// 		// 	callback(null, true);
+// 		// } else {
+// 		// 	callback(null, true);
+// 		// 	// callback(new Error('Not allowed by CORS origin : ' + origin));
+// 		// }
+// 	},
+// 	methods: 'GET,PUT,POST,DELETE,OPTIONS',
+// 	preflightContinue: true,
+// 	optionsSuccessStatus: 204,
+// };
+
+// app.use(cors(corsOptionsDelegate));
+// app.use(cors(corsOptions));
+// app.use((req: express.Request, res: express.Response, next) => {
+// 	console.log('req.hostname : ', req.hostname);
+// 	console.log('req.headers.hostname : ', req.headers.hostname);
+// 	console.log('req.headers.origin : ', req.headers.origin);
+// 	const allowlist = [
+// 		'http://guanajuato-roleplay.fr',
+// 		'http://api.guanajuato-roleplay.fr',
+// 		'https://guanajuato-roleplay.fr',
+// 		'https://api.guanajuato-roleplay.fr',
+// 	];
+// 	const origin = req.headers.origin!;
+// 	if (allowlist.indexOf(origin) > -1) {
+// 		res.setHeader('Access-Control-Allow-Origin', origin);
+// 	}
+
+// 	res.setHeader(
+// 		'Access-Control-Allow-Methods',
+// 		'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+// 	);
+// 	res.setHeader(
+// 		'Access-Control-Allow-Headers',
+// 		'X-Requested-With,content-type, Accept',
+// 	);
+// 	res.setHeader('Access-Control-Allow-Credentials', 'true');
+// 	next();
+// });
+// app.use(express.json());
+
+// app.all('*', (req: express.Request, res: express.Response, next) => {
+// 	console.log(req.hostname);
+// 	console.log(req.headers.hostname);
+// 	console.log(req.headers.origin);
+// 	const allowlist = [
+// 		'http://guanajuato-roleplay.fr',
+// 		'http://api.guanajuato-roleplay.fr',
+// 		'https://guanajuato-roleplay.fr',
+// 		'https://api.guanajuato-roleplay.fr',
+// 	];
+// 	var origin = req.headers.origin!;
+// 	if (allowlist.indexOf(origin) > -1) {
+// 		res.setHeader('Access-Control-Allow-Origin', origin);
+// 	}
+
+// 	res.setHeader(
+// 		'Access-Control-Allow-Methods',
+// 		'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+// 	);
+// 	res.setHeader(
+// 		'Access-Control-Allow-Headers',
+// 		'X-Requested-With,content-type, Accept',
+// 	);
+// 	res.setHeader('Access-Control-Allow-Credentials', 'true');
+// 	next();
+// });
+
+// app.use((req, res, next) => {
+// 	res.setHeader('Access-Control-Allow-Origin', 'http://guanajuato-roleplay.fr');
+// 	res.setHeader(
+// 		'Access-Control-Allow-Headers',
+// 		'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+// 	);
+// 	res.setHeader(
+// 		'Access-Control-Allow-Methods',
+// 		'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+// 	);
+// 	res.setHeader(
+// 		'Access-Control-Allow-Headers',
+// 		'append,delete,entries,foreach,get,has,keys,set,values,Authorization',
+// 	);
+// 	next();
+// });
+// app.use(cors());
+
+// const corsOptions = {
+// 	origin: 'http://guanajuato-roleplay.fr',
+// 	methods: 'GET,PUT,POST,DELETE,OPTIONS',
+// 	preflightContinue: true,
+// 	optionsSuccessStatus: 200,
+// };
+// app.use(cors(corsOptions));
+
+// var allowlist = ['http://example1.com', 'http://example2.com'];
+// var corsOptionsDelegate = function (req, callback) {
+// 	var corsOptions;
+// 	if (allowlist.indexOf(req.header('Origin')) !== -1) {
+// 		corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
+// 	} else {
+// 		corsOptions = { origin: false }; // disable CORS for this request
+// 	}
+// 	callback(null, corsOptions); // callback expects two parameters: error and options
+// };
+var allowlist = [
 	'http://guanajuato-roleplay.fr',
 	'http://api.guanajuato-roleplay.fr',
-	'https://guanajuato-roleplay.fr',
-	'https://api.guanajuato-roleplay.fr',
 ];
-const corsOptions = {
-	// origin: '*',
-	origin: function (origin: any, callback: any) {
-		if (origins.indexOf(origin) !== -1) {
-			callback(null, true);
-		} else {
-			callback(new Error('Not allowed by CORS origin : ' + origin));
-		}
-	},
-	methods: 'GET,PUT,POST,DELETE,OPTIONS',
-	preflightContinue: false,
-	optionsSuccessStatus: 204,
+var corsOptionsDelegate = function (req: any, callback: any) {
+	let corsOptions = {
+		origin: true,
+		methods: 'GET,PUT,POST,DELETE,OPTIONS',
+		preflightContinue: true,
+		optionsSuccessStatus: 200,
+	};
+	console.log('hostname: ' + req.hostname);
+	console.log('methode : ', req.method);
+	console.log('req.headers.origin : ', req.headers.origin);
+	console.log('req.headers.origin2 : ', req.header('Origin'));
+	console.log('allowed : ', allowlist.indexOf(req.header('Origin')));
+
+	if (allowlist.indexOf(req.header('Origin')) !== -1) {
+		corsOptions.origin = true; // reflect (enable) the requested origin in the CORS response
+	} else {
+		corsOptions.origin = true; // disable CORS for this request
+	}
+	console.log('BUBUB&DUDUDUU');
+	callback(null, corsOptions); // callback expects two parameters: error and options
 };
 
-app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(rawBody);
 
-app.get('/', (req: express.Request, res: express.Response, next) => {
-	console.log(req.hostname);
-	console.log(req.headers.hostname);
-	console.log(req.headers.origin);
-
-	next();
-});
-
 // Check if the user with {{userId}}
 app.get(
 	'/isUserOnServer/:userId',
+	cors(corsOptionsDelegate),
 	async (req: express.Request, res: express.Response) => {
 		const guild = await client.guilds.fetch(appConf.botConfig.guildid);
 		let userIsOnServer = new UserOnServerModel();
@@ -90,9 +240,9 @@ app.get(
 // Check if user on serveur and send on users are on the server dm with validation button and a message
 app.post(
 	'/sendRegisterValidationButton/:userId',
+	cors(corsOptionsDelegate),
 	async (req: express.Request, res: express.Response) => {
-		console.log('BBBBBBBBB');
-		console.log(req);
+		console.log('sendRegisterValidationButtonnnnnnnnnnnnnnnn');
 
 		//Get params
 		const user = new UserValidatedModel();
@@ -147,7 +297,6 @@ app.post(
 			components: [btRegisterValidation],
 		});
 
-		res.setHeader('Access-Control-Allow-Origin', '*');
 		res.sendStatus(200);
 	},
 );
@@ -155,9 +304,8 @@ app.post(
 // Add Role to user after db validation
 app.post(
 	'/UserValidatedOnDBModel/:userId',
+	cors(corsOptionsDelegate),
 	async (req: express.Request, res: express.Response) => {
-		console.log('BBBBBB');
-
 		//Get params
 		const user = new UserValidatedOnDBModel();
 		const jsonBody: UserValidatedOnDBModel = JSON.parse(
@@ -213,16 +361,17 @@ app.post(
 	},
 );
 
-app.post('/test', async (req: express.Request, res: express.Response) => {
-	console.log('origin', req.headers.origin);
-	console.log('BBBBBBBB');
+app.post(
+	'/test',
+	cors(corsOptionsDelegate),
+	async (req: express.Request, res: express.Response) => {
+		const guild = await client.guilds.fetch(appConf.botConfig.guildid);
+		const channel = (await guild.channels.cache.get(
+			'1001952449252298792',
+		)) as TextChannel;
 
-	const guild = await client.guilds.fetch(appConf.botConfig.guildid);
-	const channel = (await guild.channels.cache.get(
-		'1001952449252298792',
-	)) as TextChannel;
-
-	channel.send((req as any).rawBody);
-	channel.send('qsdfqsdfsqdf');
-	res.send((req as any).rawBody);
-});
+		channel.send((req as any).rawBody);
+		channel.send('qsdfqsdfsqdf');
+		res.send((req as any).rawBody);
+	},
+);

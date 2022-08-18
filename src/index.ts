@@ -26,7 +26,7 @@ export const client = new ShewenyClient({
 	},
 	managers: {
 		commands: {
-			directory: './commands', // command directory
+			directory: './services/', // command directory
 			guildId: process.env.GUILD_ID,
 			applicationPermissions: true, //If the permissions for app commands must be required
 			autoRegisterApplicationCommands: true, // Register application commands
@@ -42,16 +42,16 @@ export const client = new ShewenyClient({
 			},
 		},
 		events: {
-			directory: './listeners', //Event directory
+			directory: './services/', //Event directory
 		},
 		buttons: {
-			directory: './interactions/buttons', //Button directory
+			directory: './services/', //Button directory
 		},
 		selectMenus: {
-			directory: './interactions/selectMenu',
+			directory: './services/',
 		},
 		// inhibitors: {
-		//     directory: "./inhibitors",
+		//     directory: "./services/",
 		//     loadAll: true,
 		// },
 	},
