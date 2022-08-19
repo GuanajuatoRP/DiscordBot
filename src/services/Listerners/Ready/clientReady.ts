@@ -24,9 +24,7 @@ export class Ready extends Event {
 			console.log(`server started at ${process.env.BOT_API_URL}`),
 		);
 
-		const ReadyMessage = `BIBOUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU ${
-			eventLang.message
-		} at ${date.getHours()}H ${
+		const ReadyMessage = `UwU ${eventLang.message} at ${date.getHours()}H ${
 			date.getMinutes() > 9 ? date.getMinutes() : `0${date.getMinutes()}`
 		}`;
 		console.log(ReadyMessage); //Send ready message in consol
