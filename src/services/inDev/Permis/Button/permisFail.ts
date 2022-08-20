@@ -1,11 +1,11 @@
-// import { IsAdmin } from './../../util/export';
+// import { IsAdmin } from './../../Util/export';
 // import { Button } from "sheweny";
 // import type { ShewenyClient } from "sheweny";
 // import type { ButtonInteraction, ColorResolvable, GuildMember, Message } from "discord.js";
 // import {MessageEmbed} from "discord.js"
 // import lang from "../../tools/language.json"
 // const interactionLang = lang.intercation.button.PermisFail
-// // import appConfig from '../../util/appConfig.json'
+// // import appConfig from '../../Util/appConfig.json'
 
 // export class PermisFailBtns extends Button {
 //     constructor(client: ShewenyClient) {

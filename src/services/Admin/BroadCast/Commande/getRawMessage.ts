@@ -7,13 +7,13 @@ import {
 	CommandInteraction,
 	TextChannel,
 } from 'discord.js';
-import lang from '../../../../tools/language.json';
+import lang from '../../../../Tools/language.json';
 const cmdLang = lang.commands.rawMessage;
 
 export class GetRawMessageCommand extends Command {
 	constructor(client: ShewenyClient) {
 		super(client, {
-			name: 'rawmessage',
+			name: 'get-raw-message',
 			category: 'Admin', //* Default category is InDev
 			// type: '', //* Default type is SLASH_COMMAND
 			description: cmdLang.description.desc,
@@ -65,7 +65,7 @@ export class GetRawMessageCommand extends Command {
 			});
 		} catch (error) {
 			interaction.reply(lang.bot.errorMessage);
-			this.client.emit('FailCommandLog', interaction, error);
+			this.client.emit('ErrorCommandLog', interaction, error);
 		}
 	}
 }

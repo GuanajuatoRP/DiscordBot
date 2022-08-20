@@ -2,7 +2,7 @@
 // import type { ShewenyClient } from "sheweny";
 // import { GuildMember, MessageActionRow, MessageButton, MessageEmbed, SelectMenuInteraction } from "discord.js";
 // import lang from '../../tools/language.json'
-// import { IsEmbedOwner } from "../../util/export";
+// import { IsEmbedOwner } from "../../Util/export";
 // const selectMenuLang = lang.intercation.SelectMenu.AchatPersoCarMenu
 
 // export class ventePersoCarMenuVendreSM extends SelectMenu {

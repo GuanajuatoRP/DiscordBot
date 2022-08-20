@@ -1,7 +1,7 @@
 import { GetMoneyDTO } from '../../../../APIToUserApi/Models/GetMoneyDTO';
 import { Command } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
-import lang from '../../../../tools/language.json';
+import lang from '../../../../Tools/language.json';
 import MoneyController from '../../../../APIToUserApi/MoneyController';
 import { AxiosResponse } from 'axios';
 import {
@@ -83,7 +83,7 @@ export class MoneyCommand extends Command {
 				});
 		} catch (error) {
 			interaction.reply(lang.bot.errorMessage);
-			this.client.emit('FailCommandLog', interaction, error);
+			this.client.emit('ErrorCommandLog', interaction, error);
 		}
 	}
 }

@@ -2,9 +2,9 @@ import { EmbedBuilder } from 'discord.js';
 import { GuildMember, PermissionOverwrites } from 'discord.js';
 import fs from 'fs';
 import path from 'path';
-import lang from './language.json';
-import appConf from '../util/appConfig.json';
-import { client } from '..';
+import lang from '../language.json';
+import appConf from '../../Util/appConfig.json';
+import { client } from '../..';
 
 //* Permet de save un embed Pour la commande créate embed
 export const saveEmbed = (embed: EmbedBuilder) => {

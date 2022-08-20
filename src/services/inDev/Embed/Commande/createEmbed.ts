@@ -7,7 +7,7 @@
 // // import { DefaultEmbed } from '../../../tools/export'
 // import type { ShewenyClient } from 'sheweny'
 // import type { CommandInteraction } from 'discord.js'
-// // import appConf from '../../../util/appConfig.json'
+// // import appConf from '../../../Util/appConfig.json'
 // import lang from '../../../../tools/language.json'
 // const cmdLang = lang.commands.createembed
 
@@ -109,7 +109,7 @@
 //                 ephemeral : true
 //             })
 //         } else if (interaction.options.data.length === 1){
-//             const embed = JSON.parse(fs.readFileSync(path.join(__dirname, '../../../util/customEmbed.json')).toString())
+//             const embed = JSON.parse(fs.readFileSync(path.join(__dirname, '../../../Util/customEmbed.json')).toString())
 //             interaction.options.data.forEach(option => {
 //             switch (option.name) {
 //                 case 'display':

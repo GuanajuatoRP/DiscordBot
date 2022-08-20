@@ -1,8 +1,8 @@
 import { Event } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
-import lang from '../../../tools/language.json';
+import lang from '../../../Tools/language.json';
 const date = new Date();
-import appConfig from '../../../util/appConfig.json';
+import appConfig from '../../../Util/appConfig.json';
 import type { TextChannel } from 'discord.js';
 import { app } from '../../../APIToBot/api';
 const eventLang = lang.event.ready;

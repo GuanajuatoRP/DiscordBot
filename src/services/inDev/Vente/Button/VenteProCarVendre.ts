@@ -3,7 +3,7 @@
 // import type { ButtonInteraction, ColorResolvable, GuildMember, Message } from "discord.js";
 // import {MessageEmbed} from "discord.js"
 // import lang from "../../tools/language.json"
-// import { IsEmbedOwner } from "../../util/export";
+// import { IsEmbedOwner } from "../../Util/export";
 // const interactionLang = lang.intercation.button.VenteProCar.Vendre
 
 // export class VenteProCarVendreBtn extends Button {

@@ -6,7 +6,7 @@
 // import { ChannelClass } from '../../../tools/export'
 // import type { ShewenyClient } from 'sheweny'
 // import type { CommandInteraction } from 'discord.js'
-// import appConf from '../../../util/appConfig.json'
+// import appConf from '../../../Util/appConfig.json'
 // import lang from '../../../../tools/language.json'
 // const cmdLang = lang.commands.game
 
@@ -39,7 +39,7 @@
 //     async execute(interaction : CommandInteraction) {
 //         this.client.emit('CommandLog', interaction as CommandInteraction)
 
-//         const rawData = fs.readFileSync(path.join(__dirname, '../../../util/channelGame.json')).toString()
+//         const rawData = fs.readFileSync(path.join(__dirname, '../../../Util/channelGame.json')).toString()
 //         const channels = JSON.parse(rawData)
 
 //         channels[interaction.options.getString('game_name')!].forEach((salon : ChannelClass)  => {
@@ -94,7 +94,7 @@
 //         const focusedOption = interaction.options.getFocused(true);
 //         let choices: Array<string> = new Array<string>()
 
-//         const rawData = fs.readFileSync(path.join(__dirname, '../../../util/channelGame.json')).toString()
+//         const rawData = fs.readFileSync(path.join(__dirname, '../../../Util/channelGame.json')).toString()
 //         const channels = JSON.parse(rawData)
 
 //         Object.keys(channels).forEach(key => {

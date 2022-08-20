@@ -1,8 +1,8 @@
 import { Command } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
 import { ApplicationCommandOptionType, CommandInteraction } from 'discord.js';
-import lang from '../../../tools/language.json';
-import { DefaultEmbed } from '../../../tools/export';
+import lang from '../../../Tools/language.json';
+import { DefaultEmbed } from '../../../Tools/Exports/export';
 const cmdLang = lang.commands.number;
 
 export class NumberCommand extends Command {
@@ -74,7 +74,7 @@ export class NumberCommand extends Command {
 			});
 		} catch (error) {
 			interaction.reply(lang.bot.errorMessage);
-			this.client.emit('FailCommandLog', interaction, error);
+			this.client.emit('ErrorCommandLog', interaction, error);
 		}
 	}
 }

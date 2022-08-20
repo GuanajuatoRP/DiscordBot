@@ -1,4 +1,4 @@
-// import { IsEmbedOwner } from './../../util/export';
+// import { IsEmbedOwner } from './../../Util/export';
 // import { Button } from "sheweny";
 // import type { ShewenyClient } from "sheweny";
 // import type { ButtonInteraction, ColorResolvable, GuildMember, Message } from "discord.js";

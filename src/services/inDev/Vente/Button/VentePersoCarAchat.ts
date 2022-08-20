@@ -3,7 +3,7 @@
 // import { ButtonInteraction, ColorResolvable, GuildMember, Message} from "discord.js";
 // import {MessageEmbed} from "discord.js"
 // import lang from "../../tools/language.json"
-// // import appConfig from '../../util/appConfig.json'
+// // import appConfig from '../../Util/appConfig.json'
 // const interactionLang = lang.intercation.button.AchatPersoCar
 
 // export class VentePersoCarAchatBtn extends Button {

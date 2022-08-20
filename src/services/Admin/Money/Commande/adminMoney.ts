@@ -8,14 +8,14 @@ import {
 import { Command } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
 import type { CommandInteraction } from 'discord.js';
-import lang from '../../../../tools/language.json';
+import lang from '../../../../Tools/language.json';
 import MoneyController from '../../../../APIToUserApi/MoneyController';
 const cmdLang = lang.commands.adminMoney;
 
 export class AdminMoneyCommand extends Command {
 	constructor(client: ShewenyClient) {
 		super(client, {
-			name: 'adminmoney',
+			name: 'admin-money',
 			category: 'Admin', //* Default category is InDev
 			// type: '', //* Default type is SLASH_COMMAND
 			description: cmdLang.description.desc,
@@ -129,7 +129,7 @@ export class AdminMoneyCommand extends Command {
 			}
 		} catch (error: any) {
 			interaction.editReply(lang.bot.errorMessage);
-			return this.client.emit('FailCommandLog', interaction, error);
+			return this.client.emit('ErrorCommandLog', interaction, error);
 		}
 
 		return interaction.editReply({

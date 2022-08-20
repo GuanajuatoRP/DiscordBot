@@ -1,5 +1,5 @@
 import { Command } from 'sheweny';
-import { DefaultEmbed } from '../../../../tools/export';
+import { DefaultEmbed } from '../../../../Tools/Exports/export';
 import { stripIndents } from 'common-tags';
 import type { ShewenyClient } from 'sheweny';
 import {
@@ -7,7 +7,7 @@ import {
 	AutocompleteInteraction,
 	ApplicationCommandOptionType,
 } from 'discord.js';
-import lang from '../../../../tools/language.json';
+import lang from '../../../../Tools/language.json';
 const cmdLang = lang.commands.help;
 
 export class HelpCommand extends Command {
@@ -153,7 +153,7 @@ export class HelpCommand extends Command {
 			}
 		} catch (error) {
 			interaction.reply(lang.bot.errorMessage);
-			this.client.emit('FailCommandLog', interaction, error);
+			this.client.emit('ErrorCommandLog', interaction, error);
 		}
 	}
 	onAutocomplete(interaction: AutocompleteInteraction) {

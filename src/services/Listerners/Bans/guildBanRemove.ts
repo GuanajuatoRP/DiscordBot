@@ -1,10 +1,10 @@
 import { Event } from 'sheweny';
 import { ColorResolvable, GuildBan, TextChannel } from 'discord.js';
-import { LogsEmbed } from '../../../tools/export';
+import { LogsEmbed } from '../../../Tools/Exports/export';
 import type { ShewenyClient } from 'sheweny';
-import lang from '../../../tools/language.json';
+import lang from '../../../Tools/language.json';
 const eventLang = lang.event.guildBanRemove;
-import appConf from '../../../util/appConfig.json';
+import appConf from '../../../Util/appConfig.json';
 
 export class GuildBanRemove extends Event {
 	constructor(client: ShewenyClient) {

@@ -11,13 +11,13 @@ import {
 	TextChannel,
 } from 'discord.js';
 import { client } from '../index';
-import appConf from '../util/appConfig.json';
-import appLang from '../tools/language.json';
+import appConf from '../Util/appConfig.json';
+import appLang from '../Tools/language.json';
 import { UserOnServerModel } from './Model/UserOnServerModel';
 import { UserValidatedModel } from './Model/UserValidatedModel';
 import { TokenValidationModel } from './Model/TokenValidationModel';
 import { UserValidatedOnDBModel } from './Model/UserValidatedOnDBModel';
-import { DefaultEmbed } from '../tools/export';
+import { DefaultEmbed } from '../Tools/Exports/export';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 export const app = express();

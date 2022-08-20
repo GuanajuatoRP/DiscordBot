@@ -5,7 +5,7 @@ import {
 	ChannelType,
 	CommandInteraction,
 } from 'discord.js';
-import lang from '../../../../tools/language.json';
+import lang from '../../../../Tools/language.json';
 const cmdLang = lang.commands.purge;
 
 export class PurgeCommand extends Command {

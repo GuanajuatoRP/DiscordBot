@@ -2,9 +2,9 @@ import { EmbedBuilder } from 'discord.js';
 import { Event } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
 import { GuildMember, TextChannel } from 'discord.js';
-import lang from '../../../tools/language.json';
+import lang from '../../../Tools/language.json';
 const eventLang = lang.event.guildMemberAdd;
-import appconf from '../../../util/appConfig.json';
+import appconf from '../../../Util/appConfig.json';
 
 export class GuildMemberAdd extends Event {
 	constructor(client: ShewenyClient) {

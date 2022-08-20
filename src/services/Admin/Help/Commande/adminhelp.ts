@@ -1,16 +1,16 @@
 import { ApplicationCommandOptionType } from 'discord.js';
 import { Command } from 'sheweny';
-import { DefaultEmbed } from '../../../../tools/export';
+import { DefaultEmbed } from '../../../../Tools/Exports/export';
 import { stripIndents } from 'common-tags';
 import type { ShewenyClient } from 'sheweny';
 import type { CommandInteraction, AutocompleteInteraction } from 'discord.js';
-import lang from '../../../../tools/language.json';
-const cmdLang = lang.commands.adminhelp;
+import lang from '../../../../Tools/language.json';
+const cmdLang = lang.commands.adminHelp;
 
 export class AdminHelpCommand extends Command {
 	constructor(client: ShewenyClient) {
 		super(client, {
-			name: 'adminhelp',
+			name: 'admin-help',
 			category: 'Admin', //* Default category is InDev
 			// type: '', //* Default type is SLASH_COMMAND
 			description: cmdLang.description.desc,
@@ -158,7 +158,7 @@ export class AdminHelpCommand extends Command {
 			}
 		} catch (error) {
 			interaction.reply(lang.bot.errorMessage);
-			this.client.emit('FailCommandLog', interaction, error);
+			this.client.emit('ErrorCommandLog', interaction, error);
 		}
 	}
 

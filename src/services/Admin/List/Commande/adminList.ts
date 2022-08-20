@@ -1,18 +1,18 @@
 import { Command } from 'sheweny';
 import { ApplicationCommandOptionType } from 'discord.js';
-import { DefaultEmbed } from '../../../../tools/export';
+import { DefaultEmbed } from '../../../../Tools/Exports/export';
 import fs from 'fs';
 import path from 'path';
 import type { ShewenyClient } from 'sheweny';
 import type { AutocompleteInteraction, CommandInteraction } from 'discord.js';
-import appConfig from '../../../../util/appConfig.json';
-import lang from '../../../../tools/language.json';
-const cmdLang = lang.commands.adminlist;
+import appConfig from '../../../../Util/appConfig.json';
+import lang from '../../../../Tools/language.json';
+const cmdLang = lang.commands.adminList;
 
 export class AdminListCommand extends Command {
 	constructor(client: ShewenyClient) {
 		super(client, {
-			name: 'adminlist',
+			name: 'admin-list',
 			category: 'Admin', //* Default category is InDev
 			// type: '', //* Default type is SLASH_COMMAND
 			description: cmdLang.description.desc,
@@ -96,7 +96,7 @@ export class AdminListCommand extends Command {
 						this.client.admins.push(u.id);
 
 						fs.writeFile(
-							path.join(__dirname, '../../../util/appConfig.json'),
+							path.join(__dirname, '../../../Util/appConfig.json'),
 							JSON.stringify(appConfig),
 							function writeJSON(err) {
 								if (err) return console.log(err);
@@ -135,7 +135,7 @@ export class AdminListCommand extends Command {
 							);
 
 							fs.writeFile(
-								path.join(__dirname, '../../../util/appConfig.json'),
+								path.join(__dirname, '../../../Util/appConfig.json'),
 								JSON.stringify(appConfig),
 								function writeJSON(err) {
 									if (err) return console.log(err);
@@ -158,7 +158,7 @@ export class AdminListCommand extends Command {
 			}
 		} catch (error) {
 			interaction.reply(lang.bot.errorMessage);
-			this.client.emit('FailCommandLog', interaction, error);
+			this.client.emit('ErrorCommandLog', interaction, error);
 		}
 	}
 	onAutocomplete(interaction: AutocompleteInteraction) {

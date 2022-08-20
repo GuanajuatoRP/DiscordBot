@@ -1,7 +1,7 @@
 import { Event } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
 import type { Message } from 'discord.js';
-import lang from '../../../tools/language.json';
+import lang from '../../../Tools/language.json';
 const eventLang = lang.event.deletePinnedMessageAlerte;
 
 export class MessageCreate extends Event {

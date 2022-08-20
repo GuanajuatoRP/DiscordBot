@@ -7,13 +7,13 @@ import {
 	Message,
 	TextChannel,
 } from 'discord.js';
-import lang from '../../../../tools/language.json';
+import lang from '../../../../Tools/language.json';
 const cmdLang = lang.commands.updateMessage;
 
 export class UpdateMessageCommand extends Command {
 	constructor(client: ShewenyClient) {
 		super(client, {
-			name: 'updatemessage',
+			name: 'update-message',
 			category: 'Admin', //* Default category is InDev
 			// type: '', //* Default type is SLASH_COMMAND
 			description: cmdLang.description.desc,

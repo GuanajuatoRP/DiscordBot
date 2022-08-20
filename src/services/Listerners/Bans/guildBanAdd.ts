@@ -1,9 +1,9 @@
 import { Event } from 'sheweny';
-import { LogsEmbed } from '../../../tools/export';
+import { LogsEmbed } from '../../../Tools/Exports/export';
 import type { ShewenyClient } from 'sheweny';
 import type { GuildBan, TextChannel } from 'discord.js';
-import appConf from '../../../util/appConfig.json';
-import lang from '../../../tools/language.json';
+import appConf from '../../../Util/appConfig.json';
+import lang from '../../../Tools/language.json';
 const eventLang = lang.event.guildBanAdd;
 
 export class GuildBanAdd extends Event {

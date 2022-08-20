@@ -1,4 +1,4 @@
-// import { IsEmbedOwner, NewImmatriculation } from './../../util/export';
+// import { IsEmbedOwner, NewImmatriculation } from './../../Util/export';
 // import { Button } from "sheweny";
 // import type { ShewenyClient } from "sheweny";
 // import type { ButtonInteraction, GuildMember, Message } from "discord.js";

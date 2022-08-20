@@ -1,6 +1,6 @@
 import { ShewenyClient } from 'sheweny';
-import appConfig from './util/appConfig.json';
-import lang from './tools/language.json';
+import appConfig from './Util/appConfig.json';
+import lang from './Tools/language.json';
 import dotenv from 'dotenv';
 import { ActivityType } from 'discord.js';
 
@@ -26,7 +26,7 @@ export const client = new ShewenyClient({
 	},
 	managers: {
 		commands: {
-			directory: './services/', // command directory
+			directory: './Services/', // command directory
 			guildId: process.env.GUILD_ID,
 			applicationPermissions: true, //If the permissions for app commands must be required
 			autoRegisterApplicationCommands: true, // Register application commands
@@ -42,13 +42,13 @@ export const client = new ShewenyClient({
 			},
 		},
 		events: {
-			directory: './services/', //Event directory
+			directory: './Services/', //Event directory
 		},
 		buttons: {
-			directory: './services/', //Button directory
+			directory: './Services/', //Button directory
 		},
 		selectMenus: {
-			directory: './services/',
+			directory: './Services/',
 		},
 		// inhibitors: {
 		//     directory: "./services/",

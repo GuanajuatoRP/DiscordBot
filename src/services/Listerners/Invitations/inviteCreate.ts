@@ -1,10 +1,10 @@
 import { Event } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
 import type { TextChannel, Invite, Guild, ColorResolvable } from 'discord.js';
-import lang from '../../../tools/language.json';
-import { LogsEmbed } from '../../../tools/export';
+import lang from '../../../Tools/language.json';
+import { LogsEmbed } from '../../../Tools/Exports/export';
 const eventLang = lang.event.invitationCreate;
-import appConf from '../../../util/appConfig.json';
+import appConf from '../../../Util/appConfig.json';
 
 export class InviteCreate extends Event {
 	constructor(client: ShewenyClient) {

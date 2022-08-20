@@ -1,10 +1,10 @@
 import { Event } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
 import type { TextChannel, Role, ColorResolvable } from 'discord.js';
-import { LogsEmbed } from '../../../tools/export';
-import lang from '../../../tools/language.json';
+import { LogsEmbed } from '../../../Tools/Exports/export';
+import lang from '../../../Tools/language.json';
 const eventLang = lang.event.roleRemove;
-import appConf from '../../../util/appConfig.json';
+import appConf from '../../../Util/appConfig.json';
 
 export class RoleDelete extends Event {
 	constructor(client: ShewenyClient) {

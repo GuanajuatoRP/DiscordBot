@@ -3,7 +3,7 @@
 // import { DefaultEmbed} from '../../../tools/export'
 // import type { ShewenyClient } from 'sheweny'
 // import type { CommandInteraction } from 'discord.js'
-// import appConfig from '../../../util/appConfig.json'
+// import appConfig from '../../../Util/appConfig.json'
 // import lang from '../../../../tools/language.json'
 // const cmdLang = lang.commands.role
 

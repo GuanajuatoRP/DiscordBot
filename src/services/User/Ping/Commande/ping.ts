@@ -1,7 +1,7 @@
 import { Command } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
 import type { CommandInteraction } from 'discord.js';
-import lang from '../../../../tools/language.json';
+import lang from '../../../../Tools/language.json';
 const cmdLang = lang.commands.ping;
 
 export class PingCommand extends Command {
@@ -41,7 +41,7 @@ export class PingCommand extends Command {
 			});
 		} catch (error) {
 			interaction.reply(lang.bot.errorMessage);
-			this.client.emit('FailCommandLog', interaction, error);
+			this.client.emit('ErrorCommandLog', interaction, error);
 		}
 	}
 }

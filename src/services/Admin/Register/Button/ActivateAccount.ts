@@ -6,8 +6,8 @@ import {
 	GuildMemberRoleManager,
 	Role,
 } from 'discord.js';
-import appConf from '../../../../util/appConfig.json';
-import lang from '../../../../tools/language.json';
+import appConf from '../../../../Util/appConfig.json';
+import lang from '../../../../Tools/language.json';
 import RegisterController from '../../../../APIToUserApi/RegisterController';
 import { StatusCodes } from 'http-status-codes';
 const iLang = lang.button.activateAccount;

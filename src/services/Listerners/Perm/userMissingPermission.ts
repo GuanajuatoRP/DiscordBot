@@ -1,9 +1,9 @@
 import { Event } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
 import type { CommandInteraction, GuildMember, TextChannel } from 'discord.js';
-import lang from '../../../tools/language.json';
-import { LogsEmbed } from '../../../tools/export';
-import appConf from '../../../util/appConfig.json';
+import lang from '../../../Tools/language.json';
+import { LogsEmbed } from '../../../Tools/Exports/export';
+import appConf from '../../../Util/appConfig.json';
 const eventLang = lang.event.userMissingPermission;
 
 export class userMissingPermissions extends Event {

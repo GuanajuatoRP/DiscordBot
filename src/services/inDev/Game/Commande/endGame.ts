@@ -3,7 +3,7 @@
 // import type { CommandInteraction, CategoryChannel } from 'discord.js'
 // import lang from '../../../../tools/language.json'
 // const cmdLang = lang.commands.endgame
-// import appConfig from '../../../util/appConfig.json'
+// import appConfig from '../../../Util/appConfig.json'
 // export class EndGameCommand extends Command {
 //     constructor(client: ShewenyClient) {
 //         super(client, {
