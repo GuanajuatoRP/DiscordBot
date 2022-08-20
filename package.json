@@ -1,12 +1,14 @@
 {
     "name": "guanajuatobot",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "description": "Bot officiel du serveur RP FH5 GuanajuatoRo",
     "main": "dist/index.js",
     "scripts": {
         "start": "node dist/index.js",
-        "build": "tsc",
-        "dev": "nodemon -e js,ts --watch src --exec \"cls && npm run build && npm run start\""
+        "docker": "cls && del /s /q dist && npm run build && docker build -t dercraker0/guanajuato-bot:latest . && docker push dercraker0/guanajuato-bot:latest",
+        "build": "del /s /q dist && tsc",
+        "dev": "nodemon -e js,ts --watch src --exec \"cls && npm run build && npm run start\"",
+        "test": "tsnd --cls --respawn src/index.ts"
     },
     "repository": {
         "type": "git",
@@ -24,15 +26,13 @@
         "body-parser": "^1.20.0",
         "common-tags": "^1.8.0",
         "cors": "^2.8.5",
-        "discord.js": "^14.1.2",
+        "discord.js": "14.2.0",
         "dotenv": "^10.0.0",
         "express": "^4.17.2",
         "express-validator": "^6.14.0",
         "fs": "^0.0.1-security",
         "http": "^0.0.1-security",
         "http-status-codes": "^2.2.0",
-        "nodemon": "^2.0.15",
-        "pm2": "^5.1.2",
         "sheweny": "^4.0.2",
         "typescript": "^4.5.4"
     },

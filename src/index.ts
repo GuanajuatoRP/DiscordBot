@@ -1,6 +1,6 @@
 import { ShewenyClient } from 'sheweny';
 import appConfig from './util/appConfig.json';
-import lang from './util/language.json';
+import lang from './tools/language.json';
 import dotenv from 'dotenv';
 import { ActivityType } from 'discord.js';
 
@@ -10,9 +10,9 @@ if (process.env.NODE_ENV)
 else dotenv.config({ path: `.env.development` }); //Load config.env
 
 export const client = new ShewenyClient({
-	intents: 32767,
+	intents: 131071,
 	admins: appConfig.botConfig.admins, // Admins perms pour le bot
-	mode: process.env.MODE || 'development', //mode de lancement pour l'app
+	mode: process.env.MODE as 'development' | 'production', //|| 'development', //mode de lancement pour l'app
 	presence: {
 		//status du bot
 		status: 'online',
@@ -26,9 +26,9 @@ export const client = new ShewenyClient({
 	},
 	managers: {
 		commands: {
-			directory: './commands', // command directory
+			directory: './services/', // command directory
 			guildId: process.env.GUILD_ID,
-			applicationPermissions: false, //If the permissions for app commands must be required
+			applicationPermissions: true, //If the permissions for app commands must be required
 			autoRegisterApplicationCommands: true, // Register application commands
 			default: {
 				// set default params for all commands
@@ -42,16 +42,16 @@ export const client = new ShewenyClient({
 			},
 		},
 		events: {
-			directory: './listeners', //Event directory
+			directory: './services/', //Event directory
 		},
 		buttons: {
-			directory: './interactions/buttons', //Button directory
+			directory: './services/', //Button directory
 		},
 		selectMenus: {
-			directory: './interactions/selectMenu',
+			directory: './services/',
 		},
 		// inhibitors: {
-		//     directory: "./inhibitors",
+		//     directory: "./services/",
 		//     loadAll: true,
 		// },
 	},
