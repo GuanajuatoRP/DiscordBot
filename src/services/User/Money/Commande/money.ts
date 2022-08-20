@@ -36,15 +36,15 @@ export class MoneyCommand extends Command {
 			//clientPermissions : []
 		});
 	}
-	async execute(interaction: CommandInteraction) {
-		this.client.emit('CommandLog', interaction as CommandInteraction);
+	async execute(i: CommandInteraction) {
+		this.client.emit('CommandLog', i as CommandInteraction);
 		try {
-			await interaction.deferReply();
+			await i.deferReply();
 
-			const user = interaction.options.getUser('user');
+			const user = i.options.getUser('user');
 
 			await MoneyController.getMoney(
-				user ? user.id : (interaction.member as GuildMember).id,
+				user ? user.id : (i.member as GuildMember).id,
 			)
 				.then((response: AxiosResponse<any, any>) => {
 					const moneyDTO: GetMoneyDTO = response!.data as GetMoneyDTO;
@@ -52,7 +52,7 @@ export class MoneyCommand extends Command {
 					const embedMoney = new EmbedBuilder()
 						.setTitle(
 							cmdLang.embed.title.format(
-								(interaction.member! as GuildMember).displayName,
+								(i.member! as GuildMember).displayName,
 							),
 						)
 						.setColor(cmdLang.embed.color as ColorResolvable)
@@ -61,7 +61,7 @@ export class MoneyCommand extends Command {
 							value: `${moneyDTO.money.toString()}€`,
 						})
 						.setThumbnail(
-							(interaction.member! as GuildMember).displayAvatarURL() as string,
+							(i.member! as GuildMember).displayAvatarURL() as string,
 						)
 						.setAuthor({
 							name: cmdLang.embed.author.name,
@@ -70,20 +70,20 @@ export class MoneyCommand extends Command {
 						.setTimestamp()
 						.setFooter({ text: cmdLang.embed.footer });
 
-					return interaction.editReply({
+					return i.editReply({
 						embeds: [embedMoney],
 					});
 				})
 				.catch(e => {
 					console.log(e);
 
-					return interaction.editReply({
+					return i.editReply({
 						content: lang.bot.errorMessage as string,
 					});
 				});
 		} catch (error) {
-			interaction.reply(lang.bot.errorMessage);
-			this.client.emit('ErrorCommandLog', interaction, error);
+			i.reply(lang.bot.errorMessage);
+			this.client.emit('ErrorCommandLog', i, error);
 		}
 	}
 }

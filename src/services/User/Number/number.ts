@@ -37,16 +37,14 @@ export class NumberCommand extends Command {
 			// clientPermissions : []
 		});
 	}
-	execute(interaction: CommandInteraction) {
-		this.client.emit('AdminCommandLog', interaction as CommandInteraction);
+	execute(i: CommandInteraction) {
+		this.client.emit('AdminCommandLog', i as CommandInteraction);
 		try {
-			const nbval: number = interaction.options.get('nbval', true)
-				.value as number;
-			const plage: number = interaction.options.get('plage', true)
-				.value as number;
+			const nbval: number = i.options.get('nbval', true).value as number;
+			const plage: number = i.options.get('plage', true).value as number;
 
 			if (nbval > plage) {
-				return interaction.reply({
+				return i.reply({
 					content: cmdLang.messageError,
 					ephemeral: true,
 				});
@@ -69,12 +67,12 @@ export class NumberCommand extends Command {
 				value: result.join(','),
 				inline: true,
 			});
-			return interaction.reply({
+			return i.reply({
 				embeds: [embed],
 			});
 		} catch (error) {
-			interaction.reply(lang.bot.errorMessage);
-			this.client.emit('ErrorCommandLog', interaction, error);
+			i.reply(lang.bot.errorMessage);
+			this.client.emit('ErrorCommandLog', i, error);
 		}
 	}
 }

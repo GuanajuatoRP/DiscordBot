@@ -41,14 +41,13 @@ export class GetRawMessageCommand extends Command {
 			//clientPermissions : []
 		});
 	}
-	async execute(interaction: CommandInteraction) {
-		this.client.emit('AdminCommandLog', interaction as CommandInteraction);
+	async execute(i: CommandInteraction) {
+		this.client.emit('AdminCommandLog', i as CommandInteraction);
 
-		const fromChannel = interaction.options.get('from-channel', true)
+		const fromChannel = i.options.get('from-channel', true)
 			.channel as TextChannel;
 
-		const messageId: string = interaction.options.get('message-id', true)
-			.value as string;
+		const messageId: string = i.options.get('message-id', true).value as string;
 
 		try {
 			const message = await fromChannel.messages.fetch(messageId);
@@ -60,12 +59,12 @@ export class GetRawMessageCommand extends Command {
 				},
 			);
 
-			return interaction.reply({
+			return i.reply({
 				files: [attachment, ...message.attachments.values()],
 			});
 		} catch (error) {
-			interaction.reply(lang.bot.errorMessage);
-			this.client.emit('ErrorCommandLog', interaction, error);
+			i.reply(lang.bot.errorMessage);
+			this.client.emit('ErrorCommandLog', i, error);
 		}
 	}
 }

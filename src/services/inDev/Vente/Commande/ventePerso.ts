@@ -1,7 +1,7 @@
 // import { Command } from 'sheweny'
 // import type { ShewenyClient } from 'sheweny'
 // import { CommandInteraction, MessageActionRow, MessageSelectMenu } from 'discord.js'
-// import lang from '../../../../tools/language.json'
+// import lang from '../../../../Tools/language.json'
 // const cmdLang = lang.commands.ventePerso
 
 // export class VentePersoCommand extends Command {
@@ -30,8 +30,8 @@
 //             //clientPermissions : []
 //         });
 //     }
-//     async execute(interaction : CommandInteraction) {
-//         this.client.emit('CommandLog', interaction)
+//     async execute(i : CommandInteraction) {
+//         this.client.emit('CommandLog', i)
 
 //         //TODO : Call API pour Get toutes les voiture de l'utilisateur
 
@@ -55,8 +55,8 @@
 //                     ])
 //             )
 
-//         return interaction.reply({
-//             content : cmdLang.interaction.content,
+//         return i.reply({
+//             content : cmdLang.i.content,
 //             components:[carMenu],
 //             ephemeral: true,
 //         })

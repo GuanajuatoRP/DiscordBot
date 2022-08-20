@@ -31,10 +31,10 @@ export class AdminHelpCommand extends Command {
 			// clientPermissions : []
 		});
 	}
-	execute(interaction: CommandInteraction) {
+	execute(i: CommandInteraction) {
 		try {
-			this.client.emit('AdminCommandLog', interaction as CommandInteraction);
-			let commandName = interaction.options;
+			this.client.emit('AdminCommandLog', i as CommandInteraction);
+			let commandName = i.options;
 			const commands = this.client.collections.commands.map(c => c[0]); //Get All Commands loaded for the bot
 
 			if (!commandName.get('commande')) {
@@ -110,7 +110,7 @@ export class AdminHelpCommand extends Command {
 					),
 				});
 
-				return interaction.reply({
+				return i.reply({
 					embeds: [Embed],
 					ephemeral: true,
 				});
@@ -122,19 +122,19 @@ export class AdminHelpCommand extends Command {
 					.filter(c => c.name == CName)[0] as Command; //récupération du nom
 
 				if (!commands.map(c => c.name).includes(CName)) {
-					return interaction.reply({
-						content: cmdLang.interaction.wrongName.format(CName),
+					return i.reply({
+						content: cmdLang.i.wrongName.format(CName),
 						ephemeral: true,
 					});
 				}
 				if (command!.adminsOnly === false) {
-					return interaction.reply({
-						content: cmdLang.interaction.noRead.format(CName),
+					return i.reply({
+						content: cmdLang.i.noRead.format(CName),
 						ephemeral: true,
 					});
 				}
 
-				return interaction.reply({
+				return i.reply({
 					content: stripIndents`
                 \`\`\`makefile
                     [AdminHelp : ${
@@ -157,13 +157,13 @@ export class AdminHelpCommand extends Command {
 				});
 			}
 		} catch (error) {
-			interaction.reply(lang.bot.errorMessage);
-			this.client.emit('ErrorCommandLog', interaction, error);
+			i.reply(lang.bot.errorMessage);
+			this.client.emit('ErrorCommandLog', i, error);
 		}
 	}
 
-	onAutocomplete(interaction: AutocompleteInteraction) {
-		const focusedOption = interaction.options.getFocused(true);
+	onAutocomplete(i: AutocompleteInteraction) {
+		const focusedOption = i.options.getFocused(true);
 
 		const choices: Array<string> = (
 			this.client.collections.commands.map(c => c[0]) as Command[]
@@ -184,8 +184,6 @@ export class AdminHelpCommand extends Command {
 		const filtered = choices!.filter((choice: any) =>
 			choice.startsWith(focusedOption.value),
 		);
-		interaction.respond(
-			filtered.map((choice: any) => ({ name: choice, value: choice })),
-		);
+		i.respond(filtered.map((choice: any) => ({ name: choice, value: choice })));
 	}
 }

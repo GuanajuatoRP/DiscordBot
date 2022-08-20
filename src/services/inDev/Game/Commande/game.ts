@@ -3,11 +3,11 @@
 // import * as fs from 'fs'
 // import * as path from 'path'
 // import {AutocompleteInteraction} from 'discord.js'
-// import { ChannelClass } from '../../../tools/export'
+// import { ChannelClass } from '../../../Tools/export'
 // import type { ShewenyClient } from 'sheweny'
 // import type { CommandInteraction } from 'discord.js'
 // import appConf from '../../../Util/appConfig.json'
-// import lang from '../../../../tools/language.json'
+// import lang from '../../../../Tools/language.json'
 // const cmdLang = lang.commands.game
 
 // export class GameCommand extends Command {
@@ -36,14 +36,14 @@
 //             //clientPermissions : []
 //         });
 //     }
-//     async execute(interaction : CommandInteraction) {
-//         this.client.emit('CommandLog', interaction as CommandInteraction)
+//     async execute(i : CommandInteraction) {
+//         this.client.emit('CommandLog', i as CommandInteraction)
 
 //         const rawData = fs.readFileSync(path.join(__dirname, '../../../Util/channelGame.json')).toString()
 //         const channels = JSON.parse(rawData)
 
-//         channels[interaction.options.getString('game_name')!].forEach((salon : ChannelClass)  => {
-//             interaction.guild!.channels.create(salon.name.toString(), {
+//         channels[i.options.getString('game_name')!].forEach((salon : ChannelClass)  => {
+//             i.guild!.channels.create(salon.name.toString(), {
 //                     "type": salon.channelInfo.type.toString() == '2' ? ChannelTypes.GUILD_VOICE : ChannelTypes.GUILD_TEXT,
 //                     "parent": appConf.chanels.game.categorie,
 //                     "position": salon.channelInfo.position
@@ -84,14 +84,14 @@
 //                 })
 //         });
 
-//         interaction.reply({
-//             content: `Tous les salons pour le mode de jeux \*\*${interaction.options.getString('game_name')}\*\* ont été créé`,
+//         i.reply({
+//             content: `Tous les salons pour le mode de jeux \*\*${i.options.getString('game_name')}\*\* ont été créé`,
 //             ephemeral : true
 //         })
 //     }
 
-//     onAutocomplete(interaction: AutocompleteInteraction) {
-//         const focusedOption = interaction.options.getFocused(true);
+//     onAutocomplete(i: AutocompleteInteraction) {
+//         const focusedOption = i.options.getFocused(true);
 //         let choices: Array<string> = new Array<string>()
 
 //         const rawData = fs.readFileSync(path.join(__dirname, '../../../Util/channelGame.json')).toString()
@@ -108,7 +108,7 @@
 //         const filtered = choices!.filter((choice: any) =>
 //             choice.startsWith(focusedOption.value)
 //         )
-//         interaction
+//         i
 //             .respond(filtered.map((choice: any) => ({ name: choice, value: choice })))
 //     }
 // }

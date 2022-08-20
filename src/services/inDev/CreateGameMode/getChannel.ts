@@ -1,10 +1,10 @@
 // import { ChannelTypes } from 'discord.js/typings/enums';
 // import { Command } from 'sheweny'
 // import fs from 'fs'
-// import { ChannelClass } from '../../../tools/export'
+// import { ChannelClass } from '../../../Tools/export'
 // import type { ShewenyClient } from 'sheweny'
 // import type { AutocompleteInteraction, CommandInteraction, PermissionOverwrites, TextChannel, VoiceChannel } from 'discord.js'
-// import lang from '../../../../tools/language.json'
+// import lang from '../../../../Tools/language.json'
 
 // const cmdLang = lang.commands.getchannel
 
@@ -43,29 +43,29 @@
 //             //clientPermissions : []
 //         });
 //     }
-//     execute(interaction : CommandInteraction) {
-//         if (interaction.options.data.length != 1) {
-//             return interaction.reply({
-//                 content : cmdLang.interaction.needOptions,
+//     execute(i : CommandInteraction) {
+//         if (i.options.data.length != 1) {
+//             return i.reply({
+//                 content : cmdLang.i.needOptions,
 //                 ephemeral : true
 //             })
 //         }
 
-//         this.client.emit('CommandLog', interaction as CommandInteraction)
+//         this.client.emit('CommandLog', i as CommandInteraction)
 //         let channlesIds : Array<String> = new Array<String>()
 
-//         switch (interaction.options.data[0].name){
+//         switch (i.options.data[0].name){
 //             case 'category':
-//                 const catId = interaction.options.getChannel('category')!.id
-//                 channlesIds = (Array.from(interaction.guild!.channels.cache.filter(c => c.parentId == catId && c.id != catId).map(c => c.id)))
+//                 const catId = i.options.getChannel('category')!.id
+//                 channlesIds = (Array.from(i.guild!.channels.cache.filter(c => c.parentId == catId && c.id != catId).map(c => c.id)))
 //                 break;
 //             case 'salon':
-//                 channlesIds.push(interaction.options.getChannel('salon')!.id)
+//                 channlesIds.push(i.options.getChannel('salon')!.id)
 //                 break;
 //         }
 
 //         channlesIds.forEach(id => {
-//             const channel = interaction.guild!.channels.cache.filter(c => c.id == id)
+//             const channel = i.guild!.channels.cache.filter(c => c.id == id)
 //             switch (channel!.first()!.type) {
 //                 case 'GUILD_TEXT':
 //                     let salon = new ChannelClass()
@@ -103,27 +103,27 @@
 //             }
 //         })
 
-//         return interaction.reply({
-//             content : cmdLang.interaction.content,
+//         return i.reply({
+//             content : cmdLang.i.content,
 //             ephemeral : true
 //         })
 //     }
-//     onAutocomplete(interaction: AutocompleteInteraction) {
-//         const focusedOption = interaction.options.getFocused(true);
+//     onAutocomplete(i: AutocompleteInteraction) {
+//         const focusedOption = i.options.getFocused(true);
 
 //         let choices: Array<String>;
 
 //         if (focusedOption.name === "category") {
-//             choices = Array.from(interaction.guild!.channels.cache.filter(c => c.type == 'GUILD_CATEGORY').map(c => c.name))
+//             choices = Array.from(i.guild!.channels.cache.filter(c => c.type == 'GUILD_CATEGORY').map(c => c.name))
 //         }
 
 //         if (focusedOption.name === "salon") {
-//             choices = Array.from(interaction.guild!.channels.cache.filter(c => c.type != 'GUILD_CATEGORY').map(c => c.name))
+//             choices = Array.from(i.guild!.channels.cache.filter(c => c.type != 'GUILD_CATEGORY').map(c => c.name))
 //         }
 
 //         const filtered = choices!.filter((choice: any) =>
 //             choice.startsWith(focusedOption.value)
 //         );
-//         interaction.respond(filtered.map((choice: any) => ({ name: choice, value: choice })))
+//         i.respond(filtered.map((choice: any) => ({ name: choice, value: choice })))
 //     }
 // }

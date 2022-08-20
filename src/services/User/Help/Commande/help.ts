@@ -34,11 +34,11 @@ export class HelpCommand extends Command {
 			clientPermissions: [],
 		});
 	}
-	execute(interaction: CommandInteraction) {
-		this.client.emit('CommandLog', interaction as CommandInteraction);
+	execute(i: CommandInteraction) {
+		this.client.emit('CommandLog', i as CommandInteraction);
 
 		try {
-			let commandName = interaction.options;
+			let commandName = i.options;
 
 			let allCategory = new Array(); //Get All Unnique Catégory
 
@@ -106,7 +106,7 @@ export class HelpCommand extends Command {
 					),
 				});
 
-				return interaction.reply({
+				return i.reply({
 					embeds: [Embed],
 					ephemeral: false,
 				});
@@ -115,19 +115,19 @@ export class HelpCommand extends Command {
 				const command = this.client.collections.commands.get(CName);
 
 				if (!commands.map(c => c.name).includes(CName)) {
-					return interaction.reply({
-						content: cmdLang.interaction.wrongName.format(CName),
+					return i.reply({
+						content: cmdLang.i.wrongName.format(CName),
 						ephemeral: false,
 					});
 				}
 				if (command![0].adminsOnly === true) {
-					return interaction.reply({
-						content: cmdLang.interaction.noRead.format(CName),
+					return i.reply({
+						content: cmdLang.i.noRead.format(CName),
 						ephemeral: false,
 					});
 				}
 
-				return interaction.reply({
+				return i.reply({
 					content: stripIndents`
                 \`\`\`makefile
                     [help : ${
@@ -152,12 +152,12 @@ export class HelpCommand extends Command {
 				});
 			}
 		} catch (error) {
-			interaction.reply(lang.bot.errorMessage);
-			this.client.emit('ErrorCommandLog', interaction, error);
+			i.reply(lang.bot.errorMessage);
+			this.client.emit('ErrorCommandLog', i, error);
 		}
 	}
-	onAutocomplete(interaction: AutocompleteInteraction) {
-		const focusedOption = interaction.options.getFocused(true);
+	onAutocomplete(i: AutocompleteInteraction) {
+		const focusedOption = i.options.getFocused(true);
 
 		const choices: Array<string> = (
 			this.client.collections.commands.map(c => c[0]) as Command[]
@@ -177,8 +177,6 @@ export class HelpCommand extends Command {
 		const filtered = choices!.filter((choice: any) =>
 			choice.startsWith(focusedOption.value),
 		);
-		interaction.respond(
-			filtered.map((choice: any) => ({ name: choice, value: choice })),
-		);
+		i.respond(filtered.map((choice: any) => ({ name: choice, value: choice })));
 	}
 }

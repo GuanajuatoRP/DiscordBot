@@ -1,7 +1,7 @@
 // import { SelectMenu } from "sheweny";
 // import type { ShewenyClient } from "sheweny";
 // import { GuildMember, MessageActionRow, MessageButton, MessageEmbed, SelectMenuInteraction } from "discord.js";
-// import lang from '../../tools/language.json'
+// import lang from '../../Tools/language.json'
 // import { IsEmbedOwner } from "../../Util/export";
 // const selectMenuLang = lang.intercation.SelectMenu.AchatPersoCarMenu
 
@@ -17,7 +17,7 @@
 //         // check if member can user button
 //         if (!IsEmbedOwner(member,messageEmbed)){
 //             return selectMenu.reply({
-//                 content:selectMenuLang.interaction.cantUse,
+//                 content:selectMenuLang.i.cantUse,
 //                 ephemeral:true,
 //             })
 //         }

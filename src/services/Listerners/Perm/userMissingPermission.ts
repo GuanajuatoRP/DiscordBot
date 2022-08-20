@@ -15,8 +15,8 @@ export class userMissingPermissions extends Event {
 		});
 	}
 
-	execute(interaction: CommandInteraction) {
-		const executor = interaction.member as GuildMember;
+	execute(i: CommandInteraction) {
+		const executor = i.member as GuildMember;
 
 		const embed = LogsEmbed(executor.displayName, executor.id);
 		embed.setAuthor({
@@ -25,24 +25,24 @@ export class userMissingPermissions extends Event {
 		});
 		embed.data.fields!.push({
 			name: eventLang.embed.fields.commandName.name,
-			value: interaction.commandName,
+			value: i.commandName,
 			inline: true,
 		});
 		embed.data.fields!.push({
 			name: eventLang.embed.fields.channel.name,
-			value: interaction.guild!.channels.cache.get(interaction.channelId)!.name,
+			value: i.guild!.channels.cache.get(i.channelId)!.name,
 			inline: true,
 		});
 
-		const channel = interaction.guild!.channels.cache.get(
+		const channel = i.guild!.channels.cache.get(
 			appConf.chanels.staff.botLog,
 		) as TextChannel;
 		channel.send({
 			embeds: [embed],
 		});
 
-		return interaction.reply({
-			content: eventLang.interaction.content,
+		return i.reply({
+			content: eventLang.i.content,
 			ephemeral: true,
 		});
 	}

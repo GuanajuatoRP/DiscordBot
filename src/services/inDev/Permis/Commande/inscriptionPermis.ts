@@ -3,9 +3,9 @@
 // import { Command } from 'sheweny'
 // import type { ShewenyClient } from 'sheweny'
 // import { AutocompleteInteraction, CommandInteraction, MessageEmbed } from 'discord.js'
-// import lang from '../../../../tools/language.json'
+// import lang from '../../../../Tools/language.json'
 // const cmdLang = lang.commands.inscriptionPermis
-// import { PermisTypes } from '../../../tools/export'
+// import { PermisTypes } from '../../../Tools/export'
 
 // export class InscriptionPermisCommand extends Command {
 //     constructor(client: ShewenyClient) {
@@ -33,13 +33,13 @@
 //             //clientPermissions : []
 //         });
 //     }
-//     execute(interaction : CommandInteraction) {
-//         this.client.emit('CommandLog', interaction)
-//         if (!Object.values(PermisTypes).map(v => v.toString()).includes(interaction.options.getString('permis')!)){
-//             return interaction.reply({content: cmdLang.interaction.wrongName.format(interaction.options.getString('permis')!)})
+//     execute(i : CommandInteraction) {
+//         this.client.emit('CommandLog', i)
+//         if (!Object.values(PermisTypes).map(v => v.toString()).includes(i.options.getString('permis')!)){
+//             return i.reply({content: cmdLang.i.wrongName.format(i.options.getString('permis')!)})
 //         }
 
-//         const member = interaction.member as GuildMember
+//         const member = i.member as GuildMember
 //         let embed = new MessageEmbed()
 //             .setTitle(cmdLang.embed.title)
 //             .setDescription(cmdLang.embed.description)
@@ -51,7 +51,7 @@
 //             .addFields(
 //                 {name : cmdLang.embed.fields.Nom.name,value: "JeanJack", inline:true},
 //                 {name : cmdLang.embed.fields.Prénom.name,value: "GoldMan", inline:true},
-//                 {name : cmdLang.embed.fields.Exam.name,value: interaction.options.getString('permis')!.toString(), inline:false},
+//                 {name : cmdLang.embed.fields.Exam.name,value: i.options.getString('permis')!.toString(), inline:false},
 //                 {name : cmdLang.embed.fields.Permis.name,value: "Aucun", inline:true},
 //                 {name : cmdLang.embed.fields.Pts.name,value: "5", inline:true},
 //                 {name : cmdLang.embed.fields.Stages.name,value: "B, C, A", inline:true},
@@ -72,14 +72,14 @@
 //                     .setCustomId('PermisOk')
 //             )
 
-//         return interaction.reply({
+//         return i.reply({
 //             embeds : [embed],
 //             components : [BtnsPermis]
 //         })
 //     }
 
-//     onAutocomplete(interaction: AutocompleteInteraction) {
-//         const focusedOption = interaction.options.getFocused(true);
+//     onAutocomplete(i: AutocompleteInteraction) {
+//         const focusedOption = i.options.getFocused(true);
 //         let choices : Array<any>;
 
 //         if (focusedOption.name === "permis") {
@@ -89,7 +89,7 @@
 //         const filtered = choices!.filter((choice: any) =>
 //             choice.startsWith(focusedOption.value)
 //         );
-//         interaction
+//         i
 //             .respond(filtered.map((choice: any) => ({ name: choice, value: choice })))
 //     }
 // }

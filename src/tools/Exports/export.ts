@@ -3,8 +3,7 @@ import { GuildMember, PermissionOverwrites } from 'discord.js';
 import fs from 'fs';
 import path from 'path';
 import lang from '../language.json';
-import appConf from '../../Util/appConfig.json';
-import { client } from '../..';
+import { IsAdmin } from './isAdmin';
 
 //* Permet de save un embed Pour la commande créate embed
 export const saveEmbed = (embed: EmbedBuilder) => {
@@ -62,6 +61,16 @@ export class ChannelInfo {
 	public userLimit: number = 0;
 }
 
+//* Autocomplete /inscription
+export enum PermisTypes {
+	Probatoire = 'Probatoire',
+	Définitif = 'Définitif',
+	Stage_B = 'Stage_B',
+	Stage_A = 'Stage_A',
+	Stage_S1 = 'Stage_S1',
+	Stage_S2 = 'Stage_S2',
+}
+
 //* define new methode for String type
 declare global {
 	interface String {
@@ -82,25 +91,6 @@ if (!String.prototype.format) {
 		});
 	};
 }
-
-//* Autocomplete /inscription
-export enum PermisTypes {
-	Probatoire = 'Probatoire',
-	Définitif = 'Définitif',
-	Stage_B = 'Stage_B',
-	Stage_A = 'Stage_A',
-	Stage_S1 = 'Stage_S1',
-	Stage_S2 = 'Stage_S2',
-}
-
-//* Permet de définir si un GuildMember est admin ou non
-export const IsAdmin = (member: GuildMember) => {
-	// Check if the GuildMember have Admin role or he's id are in admin's id table
-	return !member.roles.cache.has(appConf.Roles.ADMIN) ||
-		!client.admins.includes(member.id)
-		? false
-		: true;
-};
 
 //* Permet de déterminer si un GuildMember est concerner par un embed
 //! Ne fonctionne que si il y a "xxx : GuildMember.tag" dans le footer et rien d'autre
@@ -149,5 +139,3 @@ export const NewImmatriculation = (
 
 	return immat;
 };
-
-export const padTo2Digits = (num: number) => num.toString().padStart(2, '0');

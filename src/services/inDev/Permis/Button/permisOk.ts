@@ -2,7 +2,7 @@
 // import type { ShewenyClient } from "sheweny";
 // import type { ButtonInteraction, ColorResolvable, GuildMember, Message } from "discord.js";
 // import {MessageEmbed} from "discord.js"
-// import lang from "../../tools/language.json"
+// import lang from "../../Tools/language.json"
 // import { IsAdmin } from "../../Util/export";
 // const interactionLang = lang.intercation.button.PermisOk
 // // import appConfig from '../../Util/appConfig.json'

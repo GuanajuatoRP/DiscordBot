@@ -137,7 +137,7 @@
                     }
                 }
             },
-            "interaction": {
+            "i": {
                 "wrongName": "La commande ***{0}***  n'existe pas",
                 "noRead": "La commande ***{0}*** ne peut pas être lue depuis ce menu"
             }
@@ -171,7 +171,7 @@
                     }
                 }
             },
-            "interaction": {
+            "i": {
                 "wrongName": "Visiblement la voiture : **{0}** n'est pas dans ton garrage"
             },
             "button": {
@@ -195,7 +195,7 @@
             "SelectMenu": {
                 "setPlaceholder": "Choisis une voiture dans la liste"
             },
-            "interaction": {
+            "i": {
                 "content": "Merci de choisir une de vos voiture dans la liste suivante"
             }
         },
@@ -210,7 +210,7 @@
             "SelectMenu": {
                 "setPlaceholder": "Choisis une voiture dans la liste"
             },
-            "interaction": {
+            "i": {
                 "content": "Merci de choisir une de vos voiture dans la liste suivante"
             }
         },
@@ -256,7 +256,7 @@
                 "labelOk": "Valider le permis",
                 "labelFail": "Examen raté"
             },
-            "interaction": {
+            "i": {
                 "wrongName": "Le permis ***{0}***  n'existe pas"
             }
         },
@@ -277,7 +277,7 @@
                     "desc": "Permet de télécharger un fichier de commandLogs"
                 }
             },
-            "interaction": {
+            "i": {
                 "dateError": "La date ou l'heur ne correspond a aucun des fichiers disponibles.",
                 "commandContent": "Voici les fichiers de CommandLogs qui correspondent a la date du {0}",
                 "adminContent": "Voici les fichiers de AdminCommandLogs qui correspondent a la date du {0}",
@@ -295,7 +295,7 @@
                     "createembed"
                 ]
             },
-            "interaction": {
+            "i": {
                 "newEmbed": "Un nouvelle embed a été crée vous pouvez a présent le modifier",
                 "multypleOptions": "Vous ne pouvez faire qu'une seul action a la fois"
             },
@@ -339,7 +339,7 @@
                     "endgame"
                 ]
             },
-            "interaction": {
+            "i": {
                 "content": "La session est terminée, les salons suprimé et les permission retirée"
             }
         },
@@ -352,7 +352,7 @@
                     "getcategorie rally"
                 ]
             },
-            "interaction": {
+            "i": {
                 "content": "Toutes les donnée anisi que toutes les propriétée du.des channel.s on été enregistré",
                 "needOptions": "Vous devez forcément utilisé l'une des deux commande"
             },
@@ -373,7 +373,7 @@
                 "add": "Ajout d'un utilisateur a la liste des administrateurs",
                 "remove": "Retire un utilisateur a la liste des administrateurs"
             },
-            "interaction": {
+            "i": {
                 "notOwnerError": "Vous n'avez pas la permission d'utiliser cette commande, Seul le propriétaire du serveur le peut",
                 "notManagableUser": "Cette utilisateur n'est pas managable",
                 "addUser": "L'utilisateur **{0}** a bien été ajouté de la liste des administrateurs",
@@ -393,7 +393,7 @@
                     "game rally"
                 ]
             },
-            "interaction": {
+            "i": {
                 "content": "Liste des modes de jeux :"
             },
             "menu": {
@@ -447,7 +447,7 @@
                     "description": "Nombre de message que vous voulez supprimer, 100Max"
                 }
             },
-            "interaction": {
+            "i": {
                 "content": "La commande purge a bien été executée"
             },
             "messageError": {
@@ -476,7 +476,7 @@
             "bouton": {
                 "label": "Obtenir un role"
             },
-            "interaction": {
+            "i": {
                 "error": {
                     "content": "Le nombre minimal de personne requise pour cette commande est de 2"
                 }
@@ -501,7 +501,7 @@
             "bouton": {
                 "label": "Je crée mon compte !"
             },
-            "interaction": {
+            "i": {
                 "sendRegister": "Vos information d'enregistrement vont vous être envoyé en privé",
                 "alreadyRegister": {
                     "content": "Vous avez deja été enregistrer sur le Rôleplay"
@@ -522,7 +522,7 @@
                     "description": "Salon sur le quel vous voulez des informations"
                 }
             },
-            "interaction": {
+            "i": {
                 "content": "La commande d'information a bien été executée"
             }
         },
@@ -548,7 +548,7 @@
                     }
                 }
             },
-            "interaction": {
+            "i": {
                 "wrongName": "La commande ***{0}***  n'existe pas",
                 "noRead": "La commande ***{0}*** ne peut pas être lue depuis ce menu"
             }
@@ -628,7 +628,7 @@
         },
         "userMissingPermission": {
             "description": "Permet de logger l'utilisation de commande sans la permissions",
-            "interaction": {
+            "i": {
                 "content": "Oupss il semblerais que tu n'ais pas la permission d'utilisé cette commande"
             },
             "embed": {
@@ -879,7 +879,7 @@
             "button": {
                 "cantUse": "Oupss visiblement tu ne peut pas faire cela"
             },
-            "interaction": {
+            "i": {
                 "content": "La demande de vente de voiture a bien été annuler"
             }
         },
@@ -948,7 +948,7 @@
                 "sell": "Vendre",
                 "cancel": "Annuler"
             },
-            "interaction": {
+            "i": {
                 "content": "Merci d'avoir choisi une voiture"
             }
         },
@@ -969,7 +969,7 @@
                 "sell": "Choisir un acheteur",
                 "cancel": "Annuler"
             },
-            "interaction": {
+            "i": {
                 "content": "Merci d'avoir choisi une voiture"
             }
         },
@@ -982,7 +982,7 @@
                 "sell": "Choisir un acheteur",
                 "cancel": "Annuler"
             },
-            "interaction": {
+            "i": {
                 "cantUse": "Vous ne pouvez pas vendre cette voiture"
             }
         }

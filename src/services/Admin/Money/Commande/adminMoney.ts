@@ -59,22 +59,19 @@ export class AdminMoneyCommand extends Command {
 			//clientPermissions : []
 		});
 	}
-	async execute(interaction: CommandInteraction) {
-		this.client.emit('AdminCommandLog', interaction as CommandInteraction);
+	async execute(i: CommandInteraction) {
+		this.client.emit('AdminCommandLog', i as CommandInteraction);
 
-		await interaction.deferReply();
+		await i.deferReply();
 
-		const user: GuildMember = interaction.options.get('user')!
-			.member as GuildMember;
-		const action: string = interaction.options.get('action')!.value as string;
-		const montant: number = interaction.options.get('montant')!.value as number;
-		const raison: string = interaction.options.get('raison')!.value as string;
+		const user: GuildMember = i.options.get('user')!.member as GuildMember;
+		const action: string = i.options.get('action')!.value as string;
+		const montant: number = i.options.get('montant')!.value as number;
+		const raison: string = i.options.get('raison')!.value as string;
 
 		let embedMoney = new EmbedBuilder()
 			.setTitle(cmdLang.embed.title.format(user.displayName))
-			.setThumbnail(
-				(interaction.member! as GuildMember).displayAvatarURL() as string,
-			)
+			.setThumbnail((i.member! as GuildMember).displayAvatarURL() as string)
 			.setAuthor({
 				name: '𝑳𝒂 𝒃𝒂𝒏𝒒𝒖𝒆',
 				url: 'https://discord.com/channels/854140376867930122/1001952467786932244/1002182894632050708',
@@ -128,11 +125,11 @@ export class AdminMoneyCommand extends Command {
 					break;
 			}
 		} catch (error: any) {
-			interaction.editReply(lang.bot.errorMessage);
-			return this.client.emit('ErrorCommandLog', interaction, error);
+			i.editReply(lang.bot.errorMessage);
+			return this.client.emit('ErrorCommandLog', i, error);
 		}
 
-		return interaction.editReply({
+		return i.editReply({
 			embeds: [embedMoney],
 		});
 	}

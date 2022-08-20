@@ -1,14 +1,14 @@
 // import { ApplicationCommandOptionType } from './../.discord.js';
 // import { Command } from 'sheweny'
-// import { DefaultEmbed, saveEmbed } from '../../../tools/export'
+// import { DefaultEmbed, saveEmbed } from '../../../Tools/export'
 // import { TextChannel } from 'discord.js'
 // import fs from 'fs'
 // import path from 'path'
-// // import { DefaultEmbed } from '../../../tools/export'
+// // import { DefaultEmbed } from '../../../Tools/export'
 // import type { ShewenyClient } from 'sheweny'
 // import type { CommandInteraction } from 'discord.js'
 // // import appConf from '../../../Util/appConfig.json'
-// import lang from '../../../../tools/language.json'
+// import lang from '../../../../Tools/language.json'
 // const cmdLang = lang.commands.createembed
 
 // export class CreateEmbedCommand extends Command {
@@ -95,77 +95,77 @@
 //         });
 //     }
 
-//     async execute(interaction : CommandInteraction) {
-//         this.client.emit('CommandLog', interaction as CommandInteraction)
+//     async execute(i : CommandInteraction) {
+//         this.client.emit('CommandLog', i as CommandInteraction)
 
-//         if (interaction.options.data.length === 0){
+//         if (i.options.data.length === 0){
 //             const embed = DefaultEmbed()
 
 //             saveEmbed(embed)
 
-//             return interaction.reply({
-//                 content : cmdLang.interaction.newEmbed,
+//             return i.reply({
+//                 content : cmdLang.i.newEmbed,
 //                 embeds : [embed],
 //                 ephemeral : true
 //             })
-//         } else if (interaction.options.data.length === 1){
+//         } else if (i.options.data.length === 1){
 //             const embed = JSON.parse(fs.readFileSync(path.join(__dirname, '../../../Util/customEmbed.json')).toString())
-//             interaction.options.data.forEach(option => {
+//             i.options.data.forEach(option => {
 //             switch (option.name) {
 //                 case 'display':
-//                     return interaction.reply({
+//                     return i.reply({
 //                         embeds : [embed],
 //                         ephemeral : true
 //                     })
 //                 case 'color':
 //                     embed.color = option.value
 //                     saveEmbed(embed)
-//                     return interaction.reply({
+//                     return i.reply({
 //                         embeds : [embed],
 //                         ephemeral : true
 //                     })
 //                 case 'title':
 //                     embed.title = option.value
 //                     saveEmbed(embed)
-//                     return interaction.reply({
+//                     return i.reply({
 //                         embeds : [embed],
 //                         ephemeral : true
 //                     })
 //                 case 'url':
 //                     embed.url = option.value
 //                     saveEmbed(embed)
-//                     return interaction.reply({
+//                     return i.reply({
 //                         embeds : [embed],
 //                         ephemeral : true
 //                     })
 //                 case 'description':
 //                     embed.description = option.value
 //                     saveEmbed(embed)
-//                     return interaction.reply({
+//                     return i.reply({
 //                         embeds : [embed],
 //                         ephemeral : true
 //                     })
 //                 case 'image':
 //                     embed.image = {url : option.value}
 //                     saveEmbed(embed)
-//                     return interaction.reply({
+//                     return i.reply({
 //                         embeds : [embed],
 //                         ephemeral : true
 //                     })
 //                 case 'thumbnail':
 //                     embed.thumbnail = {url : option.value}
 //                     saveEmbed(embed)
-//                     return interaction.reply({
+//                     return i.reply({
 //                         embeds : [embed],
 //                         ephemeral : true
 //                     })
 //                 case 'add_field':
-//                     const collector = interaction.channel!.createMessageCollector({max : 4});
-//                     interaction.reply({
+//                     const collector = i.channel!.createMessageCollector({max : 4});
+//                     i.reply({
 //                         content : cmdLang.Options.AddField.description,
 //                         ephemeral : true
 //                     })
-//                     const salon = interaction.channel as TextChannel
+//                     const salon = i.channel as TextChannel
 //                     collector.on('end', async collected => {
 //                         const collect = collected.map(m => m.content)
 
@@ -181,21 +181,21 @@
 //                     });
 //                     break
 //                 case 'send':
-//                     const channel = interaction.options.getChannel('send') as TextChannel
+//                     const channel = i.options.getChannel('send') as TextChannel
 //                     channel.send({
 //                         embeds : [embed]
 //                     })
 //                     console.log();
 
-//                     return interaction.reply({
-//                         content : `votre message a bien été envoyé dans le salon **${interaction.options.getChannel('send')!.name}**`,
+//                     return i.reply({
+//                         content : `votre message a bien été envoyé dans le salon **${i.options.getChannel('send')!.name}**`,
 //                         ephemeral : true
 //                     })
 //             }
 //         });
 //         } else {
-//             return interaction.reply({
-//                 content : cmdLang.interaction.multypleOptions,
+//             return i.reply({
+//                 content : cmdLang.i.multypleOptions,
 //                 ephemeral : true
 //             })
 //         }

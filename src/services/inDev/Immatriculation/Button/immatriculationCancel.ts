@@ -2,7 +2,7 @@
 // import { Button } from "sheweny";
 // import type { ShewenyClient } from "sheweny";
 // import type { ButtonInteraction, GuildMember, Message } from "discord.js";
-// import lang from "../../tools/language.json"
+// import lang from "../../Tools/language.json"
 // const interactionLang = lang.intercation.button.ImmatriculationCancel
 
 // export class ImmatriculationCancelBtn extends Button {

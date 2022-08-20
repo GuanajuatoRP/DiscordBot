@@ -35,28 +35,27 @@ export class PurgeCommand extends Command {
 			//clientPermissions : []
 		});
 	}
-	async execute(interaction: CommandInteraction) {
-		this.client.emit('AdminCommandLog', interaction as CommandInteraction);
+	async execute(i: CommandInteraction) {
+		this.client.emit('AdminCommandLog', i as CommandInteraction);
 
-		const nombre: number = interaction.options.get('nombre', true)
-			.value as number;
-		let messages = await interaction.channel!.messages.fetch({
+		const nombre: number = i.options.get('nombre', true).value as number;
+		let messages = await i.channel!.messages.fetch({
 			limit: nombre,
-			before: interaction.id,
+			before: i.id,
 		});
 		messages = messages.filter(message => message.pinned === false);
 		try {
-			const channel = interaction.channel!;
+			const channel = i.channel!;
 			if (channel.type === ChannelType.DM) return;
 			await channel.bulkDelete(messages);
 		} catch (error) {
-			return interaction.reply({
+			return i.reply({
 				content: cmdLang.messageError.maxDays,
 				ephemeral: true,
 			});
 		}
-		return interaction.reply({
-			content: cmdLang.interaction.content,
+		return i.reply({
+			content: cmdLang.i.content,
 			ephemeral: true,
 		});
 	}

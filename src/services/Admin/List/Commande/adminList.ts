@@ -41,26 +41,21 @@ export class AdminListCommand extends Command {
 			//clientPermissions : []
 		});
 	}
-	execute(interaction: CommandInteraction) {
-		this.client.emit('AdminCommandLog', interaction as CommandInteraction);
+	execute(i: CommandInteraction) {
+		this.client.emit('AdminCommandLog', i as CommandInteraction);
 
 		try {
-			if (interaction.member!.user.id !== appConfig.botConfig.dercrakerId) {
-				return interaction.reply({
-					content: cmdLang.interaction.notOwnerError,
+			if (i.member!.user.id !== appConfig.botConfig.dercrakerId) {
+				return i.reply({
+					content: cmdLang.i.notOwnerError,
 					ephemeral: true,
 				});
 			}
 
 			let adminList: Array<any> = new Array<any>();
-			const adminRole = interaction.guild!.roles.cache.get(
-				appConfig.Roles.ADMIN,
-			);
-			if (
-				interaction.options.get('add') == null &&
-				interaction.options.get('remove') == null
-			) {
-				const adminRoleList = interaction
+			const adminRole = i.guild!.roles.cache.get(appConfig.Roles.ADMIN);
+			if (i.options.get('add') == null && i.options.get('remove') == null) {
+				const adminRoleList = i
 					.guild!.roles.cache.get(appConfig.Roles.ADMIN)!
 					.members.filter(u => appConfig.botConfig.admins.includes(u.id));
 
@@ -73,22 +68,22 @@ export class AdminListCommand extends Command {
 					value: adminList.join(' , '),
 				});
 
-				return interaction.reply({
+				return i.reply({
 					embeds: [adminListEmbed],
 					ephemeral: true,
 				});
 			} else if (
-				interaction.options.get('add') != null &&
-				interaction.options.get('remove') == null
+				i.options.get('add') != null &&
+				i.options.get('remove') == null
 			) {
-				interaction.guild!.members.cache.forEach(u => {
+				i.guild!.members.cache.forEach(u => {
 					if (
-						u.user.username === interaction.options.get('add')!.value ||
-						u.nickname === interaction.options.get('add')
+						u.user.username === i.options.get('add')!.value ||
+						u.nickname === i.options.get('add')
 					) {
 						if (u.id === appConfig.botConfig.dercrakerId) {
-							return interaction.reply({
-								content: cmdLang.interaction.notManagableUser,
+							return i.reply({
+								content: cmdLang.i.notManagableUser,
 								ephemeral: true,
 							});
 						}
@@ -103,8 +98,8 @@ export class AdminListCommand extends Command {
 							},
 						);
 
-						return interaction.reply({
-							content: cmdLang.interaction.addUser.format(
+						return i.reply({
+							content: cmdLang.i.addUser.format(
 								u.nickname == null ? u.user.username : u.nickname,
 							),
 							ephemeral: true,
@@ -112,61 +107,59 @@ export class AdminListCommand extends Command {
 					}
 				});
 			} else if (
-				interaction.options.get('add') == null &&
-				interaction.options.get('remove') != null
+				i.options.get('add') == null &&
+				i.options.get('remove') != null
 			) {
-				interaction
-					.guild!.roles.cache.get(appConfig.Roles.ADMIN)!
-					.members.forEach(u => {
-						if (
-							(appConfig.botConfig.admins.includes(u.id) &&
-								u.user.username === interaction.options.get('remove')!.value) ||
-							u.nickname === interaction.options.get('remove')
-						) {
-							if (u.id === appConfig.botConfig.dercrakerId) {
-								return interaction.reply({
-									content: cmdLang.interaction.notManagableUser,
-									ephemeral: true,
-								});
-							}
-							u.roles.remove(adminRole!);
-							appConfig.botConfig.admins = appConfig.botConfig.admins.filter(
-								id => id !== u.id,
-							);
-
-							fs.writeFile(
-								path.join(__dirname, '../../../Util/appConfig.json'),
-								JSON.stringify(appConfig),
-								function writeJSON(err) {
-									if (err) return console.log(err);
-								},
-							);
-
-							return interaction.reply({
-								content: cmdLang.interaction.removeUser.format(
-									u.nickname == null ? u.user.username : u.nickname,
-								),
+				i.guild!.roles.cache.get(appConfig.Roles.ADMIN)!.members.forEach(u => {
+					if (
+						(appConfig.botConfig.admins.includes(u.id) &&
+							u.user.username === i.options.get('remove')!.value) ||
+						u.nickname === i.options.get('remove')
+					) {
+						if (u.id === appConfig.botConfig.dercrakerId) {
+							return i.reply({
+								content: cmdLang.i.notManagableUser,
 								ephemeral: true,
 							});
 						}
-					});
+						u.roles.remove(adminRole!);
+						appConfig.botConfig.admins = appConfig.botConfig.admins.filter(
+							id => id !== u.id,
+						);
+
+						fs.writeFile(
+							path.join(__dirname, '../../../Util/appConfig.json'),
+							JSON.stringify(appConfig),
+							function writeJSON(err) {
+								if (err) return console.log(err);
+							},
+						);
+
+						return i.reply({
+							content: cmdLang.i.removeUser.format(
+								u.nickname == null ? u.user.username : u.nickname,
+							),
+							ephemeral: true,
+						});
+					}
+				});
 			} else {
-				return interaction.reply({
-					content: cmdLang.interaction.dualOptions,
+				return i.reply({
+					content: cmdLang.i.dualOptions,
 					ephemeral: true,
 				});
 			}
 		} catch (error) {
-			interaction.reply(lang.bot.errorMessage);
-			this.client.emit('ErrorCommandLog', interaction, error);
+			i.reply(lang.bot.errorMessage);
+			this.client.emit('ErrorCommandLog', i, error);
 		}
 	}
-	onAutocomplete(interaction: AutocompleteInteraction) {
-		const focusedOption = interaction.options.getFocused(true);
+	onAutocomplete(i: AutocompleteInteraction) {
+		const focusedOption = i.options.getFocused(true);
 		let choices: Array<any> = new Array<any>();
 
 		if (focusedOption.name === 'add') {
-			interaction.guild!.members.cache.forEach(user => {
+			i.guild!.members.cache.forEach(user => {
 				if (
 					!user.roles.cache.map(r => r.id).includes(appConfig.Roles.ADMIN) &&
 					!choices.includes(user.user.username) &&
@@ -180,7 +173,7 @@ export class AdminListCommand extends Command {
 		}
 
 		if (focusedOption.name === 'remove') {
-			interaction.guild!.members.cache.forEach(user => {
+			i.guild!.members.cache.forEach(user => {
 				if (
 					user.roles.cache.map(r => r.id).includes(appConfig.Roles.ADMIN) &&
 					!choices.includes(user.user.username) &&
@@ -196,8 +189,6 @@ export class AdminListCommand extends Command {
 		const filtered = choices!.filter((choice: any) =>
 			choice.startsWith(focusedOption.value),
 		);
-		interaction.respond(
-			filtered.map((choice: any) => ({ name: choice, value: choice })),
-		);
+		i.respond(filtered.map((choice: any) => ({ name: choice, value: choice })));
 	}
 }

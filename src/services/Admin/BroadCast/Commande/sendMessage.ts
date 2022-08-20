@@ -49,23 +49,23 @@ export class SendMessageCommand extends Command {
 			//clientPermissions : []
 		});
 	}
-	async execute(interaction: CommandInteraction) {
-		this.client.emit('AdminCommandLog', interaction as CommandInteraction);
+	async execute(i: CommandInteraction) {
+		this.client.emit('AdminCommandLog', i as CommandInteraction);
 
 		try {
-			const guild: Guild = interaction.guild as Guild;
+			const guild: Guild = i.guild as Guild;
 
-			const fromChannelId = interaction.options.get('from-channel', true).value;
+			const fromChannelId = i.options.get('from-channel', true).value;
 			const fromChannel = (await guild.channels.fetch(
 				fromChannelId as string,
 			)) as TextChannel;
 
-			const messageId = interaction.options.get('message-id', true).value;
+			const messageId = i.options.get('message-id', true).value;
 			const message = (await fromChannel!.messages.fetch(
 				messageId as string,
 			)) as Message;
 
-			const toChannelId = interaction.options.get('to-channel', true).value;
+			const toChannelId = i.options.get('to-channel', true).value;
 			const toChannel = (await guild.channels.fetch(
 				toChannelId as string,
 			)) as TextChannel;
@@ -76,14 +76,14 @@ export class SendMessageCommand extends Command {
 				components: message.components,
 				files: message.attachments.map(a => a),
 			});
-			return interaction.reply({
+			return i.reply({
 				content: 'Le message a bien été envoyé dans le channel {0}'.format(
 					toChannel.name,
 				),
 			});
 		} catch (error) {
-			interaction.reply(lang.bot.errorMessage);
-			this.client.emit('ErrorCommandLog', interaction, error);
+			i.reply(lang.bot.errorMessage);
+			this.client.emit('ErrorCommandLog', i, error);
 		}
 	}
 }

@@ -2,8 +2,8 @@
 // import { Command } from 'sheweny'
 // import type { ShewenyClient } from 'sheweny'
 // import { AutocompleteInteraction, CommandInteraction, GuildMember, MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
-// import lang from '../../../../tools/language.json'
-// import { NewImmatriculation } from '../../../tools/export'
+// import lang from '../../../../Tools/language.json'
+// import { NewImmatriculation } from '../../../Tools/export'
 // const cmdLang = lang.commands.immatriculation
 
 // export class ImmatriculationCommand extends Command {
@@ -39,23 +39,23 @@
 //             //clientPermissions : []
 //         });
 //     }
-//     execute(interaction : CommandInteraction) {
-//         this.client.emit('CommandLog', interaction)
+//     execute(i : CommandInteraction) {
+//         this.client.emit('CommandLog', i)
 
 //         const immatLenght = 9
-//         let immat = interaction.options.getString('immatriculation') != null ? interaction.options.getString('immatriculation') : ""
-//         const member = interaction.member as GuildMember
+//         let immat = i.options.getString('immatriculation') != null ? i.options.getString('immatriculation') : ""
+//         const member = i.member as GuildMember
 //         const carList = ["Voitue1", "Voitue2", "Car1", "Car2", "Machin1"]
 
 //         immat = NewImmatriculation(immat as string,immatLenght)
 
-//         if (!carList.includes(interaction.options.getString('voiture') as string)){
-//             return interaction.reply({
-//                 content:cmdLang.interaction.wrongName.format(interaction.options.getString('voiture') as string),
+//         if (!carList.includes(i.options.getString('voiture') as string)){
+//             return i.reply({
+//                 content:cmdLang.i.wrongName.format(i.options.getString('voiture') as string),
 //                 ephemeral: true
 //             })
 //         } else if (immat.length != immatLenght){
-//             return interaction.reply({
+//             return i.reply({
 //                 content:immat,
 //                 ephemeral: true
 //             })
@@ -63,7 +63,7 @@
 
 //         const embed = new MessageEmbed()
 //             .setAuthor(cmdLang.embed.Author)
-//             .setTitle(interaction.options.getString('voiture') as string)
+//             .setTitle(i.options.getString('voiture') as string)
 //             .setColor(cmdLang.embed.color as ColorResolvable)
 //             .setTimestamp()
 //             .setThumbnail(member.displayAvatarURL())
@@ -95,14 +95,14 @@
 //                 .setCustomId('ImmatriculationBuy')
 //         )
 
-//         return interaction.reply({
+//         return i.reply({
 //             embeds: [embed],
 //             components:[btnsImmatriculation,btImmatriculatioBuy]
 //         })
 //     }
 
-//     onAutocomplete(interaction: AutocompleteInteraction) {
-//         const focusedOption = interaction.options.getFocused(true);
+//     onAutocomplete(i: AutocompleteInteraction) {
+//         const focusedOption = i.options.getFocused(true);
 //         let choices : Array<any>;
 
 //         // TODO Get member.CarList
@@ -113,7 +113,7 @@
 //         const filtered = choices!.filter((choice: any) =>
 //             choice.startsWith(focusedOption.value)
 //         );
-//         interaction
+//         i
 //             .respond(filtered.map((choice: any) => ({ name: choice, value: choice })))
 //     }
 // }

@@ -1,11 +1,13 @@
 {
     "name": "guanajuatobot",
-    "version": "2.0.0",
+    "version": "2.20.1",
     "description": "Bot officiel du serveur RP FH5 GuanajuatoRo",
     "main": "dist/index.js",
     "scripts": {
         "start": "node dist/index.js",
-        "docker": "cls && del /s /q dist && npm run build && docker build -t dercraker0/guanajuato-bot:latest . && docker push dercraker0/guanajuato-bot:latest",
+        "docker:major": "cls && del /s /q dist && npx auto-version --major && npm run build && docker build -t dercraker0/guanajuato-bot:latest . && docker push dercraker0/guanajuato-bot:latest",
+        "docker": "cls && del /s /q dist && npx auto-version --minor && npm run build && docker build -t dercraker0/guanajuato-bot:latest . && docker push dercraker0/guanajuato-bot:latest",
+        "docker:fix": "cls && del /s /q dist && npx auto-version --patch && npm run build && docker build -t dercraker0/guanajuato-bot:latest . && docker push dercraker0/guanajuato-bot:latest",
         "build": "del /s /q dist && tsc",
         "dev": "nodemon -e js,ts --watch src --exec \"cls && npm run build && npm run start\"",
         "test": "tsnd --cls --respawn src/index.ts"
@@ -39,6 +41,7 @@
     "devDependencies": {
         "@types/common-tags": "^1.8.1",
         "@types/cors": "^2.8.12",
-        "@types/express": "^4.17.13"
+        "@types/express": "^4.17.13",
+        "auto-version-js": "^0.3.10"
     }
 }
