@@ -32,7 +32,7 @@ export class TestCommand extends Command {
 				.setLabel('Je créé mon compte !')
 				.setStyle(ButtonStyle.Link)
 				.setURL(
-					'https://discord.com/oauth2/authorize?client_id=899735680714936390&redirect_uri=http%3A%2F%2Fguanajuato-roleplay.fr%2Fregister&response_type=code&scope=identify%20guilds&prompt=none',
+					'https://discord.com/api/oauth2/authorize?client_id=877636097394475019&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fregister&response_type=code&scope=identify%20guilds',
 				),
 		);
 		const activateAcount = new ActionRowBuilder<ButtonBuilder>().addComponents(
@@ -43,6 +43,7 @@ export class TestCommand extends Command {
 		);
 
 		return i.reply({
+			content: 'LOCAL',
 			components: [register, activateAcount],
 		});
 	}

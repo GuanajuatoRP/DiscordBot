@@ -31,7 +31,7 @@ export class ActivateAccountBtn extends Button {
 			.then(res => {
 				httpCode = res.status == 200 ? StatusCodes.OK : StatusCodes.NO_CONTENT;
 				if (res.status == 200) {
-					username = res.data.username;
+					username = res.data;
 				}
 			})
 			.catch(err => console.log(err));
@@ -40,17 +40,18 @@ export class ActivateAccountBtn extends Button {
 			memberRoles.cache.has(appConf.Roles.INSCRIT) &&
 			httpCode == StatusCodes.OK
 		) {
-			await member.setNickname(username);
+			await member.setNickname(username).catch(err => console.log(err));
 			return b.editReply(iLang.alreadyActivated);
 		} else if (httpCode == StatusCodes.NO_CONTENT) {
-			await memberRoles.remove(roleInscrit);
+			await memberRoles.remove(roleInscrit).catch(err => console.log(err));
+			await member.setNickname(null).catch(err => console.log(err));
 			return b.editReply(iLang.notRegistered);
 		} else if (
 			!memberRoles.cache.has(appConf.Roles.INSCRIT) &&
 			httpCode == StatusCodes.OK
 		) {
-			await memberRoles.add(roleInscrit);
-			await member.setNickname(username);
+			await member.setNickname(username).catch(err => console.log(err));
+			await memberRoles.add(roleInscrit).catch(err => console.log(err));
 			return b.editReply(iLang.activated);
 		}
 	}
