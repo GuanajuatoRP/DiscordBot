@@ -1,5 +1,5 @@
 import { Command } from 'sheweny';
-import { ApplicationCommandOptionType } from 'discord.js';
+import { ApplicationCommandOptionType, GuildMember } from 'discord.js';
 import { DefaultEmbed } from '../../../../Tools/Exports/export';
 import fs from 'fs';
 import path from 'path';
@@ -41,68 +41,62 @@ export class AdminListCommand extends Command {
 			//clientPermissions : []
 		});
 	}
-	execute(i: CommandInteraction) {
+	async execute(i: CommandInteraction) {
 		this.client.emit('AdminCommandLog', i as CommandInteraction);
+		await i.deferReply({ ephemeral: true });
 
 		try {
 			if (i.member!.user.id !== appConfig.botConfig.dercrakerId) {
-				return i.reply({
+				return i.editReply({
 					content: cmdLang.i.notOwnerError,
-					ephemeral: true,
 				});
 			}
 
 			let adminList: Array<any> = new Array<any>();
 			const adminRole = i.guild!.roles.cache.get(appConfig.Roles.ADMIN);
-			if (i.options.get('add') == null && i.options.get('remove') == null) {
-				const adminRoleList = i
-					.guild!.roles.cache.get(appConfig.Roles.ADMIN)!
-					.members.filter(u => appConfig.botConfig.admins.includes(u.id));
 
-				adminRoleList.forEach(u => {
-					adminList.push(u.nickname == null ? u.user.username : u.nickname);
-				});
+			if (i.options.get('add') == null && i.options.get('remove') == null) {
+				adminList = i
+					.guild!.roles.cache.get(appConfig.Roles.ADMIN)!
+					.members.filter(u => appConfig.botConfig.admins.includes(u.id))
+					.map(u => u.displayName);
+
 				let adminListEmbed = DefaultEmbed();
 				adminListEmbed.data.fields!.push({
 					name: cmdLang.embed.adminListField,
-					value: adminList.join(' , '),
+					value: adminList.reverse().join(', '),
 				});
 
-				return i.reply({
+				return i.editReply({
 					embeds: [adminListEmbed],
-					ephemeral: true,
 				});
 			} else if (
 				i.options.get('add') != null &&
 				i.options.get('remove') == null
 			) {
 				i.guild!.members.cache.forEach(u => {
-					if (
-						u.user.username === i.options.get('add')!.value ||
-						u.nickname === i.options.get('add')
-					) {
+					if (u.displayName === i.options.get('add')!.value) {
 						if (u.id === appConfig.botConfig.dercrakerId) {
-							return i.reply({
+							return i.editReply({
 								content: cmdLang.i.notManagableUser,
-								ephemeral: true,
 							});
 						}
+
 						u.roles.add(adminRole!);
 						this.client.admins.push(u.id);
 
 						fs.writeFile(
-							path.join(__dirname, '../../../Util/appConfig.json'),
+							path.join(process.cwd(), 'dist/Util/appConfig.json'),
 							JSON.stringify(appConfig),
 							function writeJSON(err) {
 								if (err) return console.log(err);
 							},
 						);
 
-						return i.reply({
+						return i.editReply({
 							content: cmdLang.i.addUser.format(
 								u.nickname == null ? u.user.username : u.nickname,
 							),
-							ephemeral: true,
 						});
 					}
 				});
@@ -110,47 +104,55 @@ export class AdminListCommand extends Command {
 				i.options.get('add') == null &&
 				i.options.get('remove') != null
 			) {
-				i.guild!.roles.cache.get(appConfig.Roles.ADMIN)!.members.forEach(u => {
-					if (
-						(appConfig.botConfig.admins.includes(u.id) &&
-							u.user.username === i.options.get('remove')!.value) ||
-						u.nickname === i.options.get('remove')
-					) {
-						if (u.id === appConfig.botConfig.dercrakerId) {
-							return i.reply({
-								content: cmdLang.i.notManagableUser,
-								ephemeral: true,
-							});
-						}
-						u.roles.remove(adminRole!);
-						appConfig.botConfig.admins = appConfig.botConfig.admins.filter(
-							id => id !== u.id,
-						);
+				const u = i.guild!.members.cache.find(
+					member => member.displayName == i.options.get('remove')!.value,
+				) as GuildMember;
 
-						fs.writeFile(
-							path.join(__dirname, '../../../Util/appConfig.json'),
-							JSON.stringify(appConfig),
-							function writeJSON(err) {
-								if (err) return console.log(err);
-							},
-						);
-
-						return i.reply({
-							content: cmdLang.i.removeUser.format(
-								u.nickname == null ? u.user.username : u.nickname,
-							),
-							ephemeral: true,
+				if (
+					appConfig.botConfig.admins.includes(u.id) &&
+					u.displayName == i.options.get('remove')!.value
+				) {
+					if (u.id === appConfig.botConfig.dercrakerId) {
+						return i.editReply({
+							content: cmdLang.i.notManagableUser,
 						});
 					}
-				});
+
+					u.roles.remove(adminRole!);
+					appConfig.botConfig.admins = appConfig.botConfig.admins.filter(
+						id => id !== u.id,
+					);
+
+					fs.writeFile(
+						path.join(process.cwd(), 'dist/Util/appConfig.json'),
+						JSON.stringify(appConfig),
+						function writeJSON(err) {
+							if (err) return console.log(err);
+						},
+					);
+
+					return i.editReply({
+						content: cmdLang.i.removeUser.format(
+							u.nickname == null ? u.user.username : u.nickname,
+						),
+					});
+				} else {
+					u.roles.remove(adminRole!);
+					return i.editReply({
+						content: cmdLang.i.removeUser.format(
+							u.nickname == null ? u.user.username : u.nickname,
+						),
+					});
+				}
 			} else {
-				return i.reply({
+				return i.editReply({
 					content: cmdLang.i.dualOptions,
-					ephemeral: true,
 				});
 			}
 		} catch (error) {
-			i.reply(lang.bot.errorMessage);
+			i.editReply(lang.bot.errorMessage);
+			console.log(error);
+
 			this.client.emit('ErrorCommandLog', i, error);
 		}
 	}
@@ -165,9 +167,7 @@ export class AdminListCommand extends Command {
 					!choices.includes(user.user.username) &&
 					user.id != appConfig.botConfig.dercrakerId
 				) {
-					choices.push(
-						user.nickname == null ? user.user.username : user.nickname,
-					);
+					choices.push(user.displayName);
 				}
 			});
 		}

@@ -6,6 +6,39 @@
         "errorMessage": "Oupss il semblerais qu'une erreur c'est produite. Si cela perssiste contacte le Staff"
     },
     "commands": {
+        "find": {
+            "embed": {
+                "title": "",
+                "color": "#",
+                "footer": "",
+                "fields": [{
+                    "name": "",
+                    "value": ""
+                }],
+                "author": {
+                    "name": "",
+                    "url": ""
+                }
+            },
+            "slashOptions": {
+                "subCommandMember": "Permet d'obtenir les information d'une personne",
+                "member": "Prénom nom de la personne a rechercher",
+                "subCommandCar": "Permet d'obtenir les information d'une voiture",
+                "car": "Immatriculation de la voiture a rechercher"
+            },
+            "error": {
+                "member": "Aucun utilisateur ne porte ce nom",
+                "car": "Aucune voiture avec cette immatriculation"
+            },
+            "description": {
+                "desc": "Permet de trouvé une information, sur un individu ou une voiture",
+                "usage": "find car|member {immatriculation|UserName}",
+                "exemples": [
+                    "find car car:XX-123-XX",
+                    "find member member:@UwU.#2273"
+                ]
+            }
+        },
         "updateMessage": {
             "slashOptions": {
                 "channelFrom": "Channel d'origine du message a copier",

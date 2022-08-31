@@ -148,9 +148,10 @@ export class AdminHelpCommand extends Command {
 											Array.from(command!.examples!).length == 1 ? '' : 's'
 										}: /${Array.from(command!.examples!).join(`, /`)}
 
-
-                    <> = argument(s) optionnel(s) | {} = argument(s) obligatoire
-                    Les caractères suivants -> <>, {} ne doivents pas être inclus dans les commandes
+                    {} = argument(s) obligatoire
+                    <> = argument(s) optionnel(s)
+                    A|B = Indique que c'est soit A soit B
+                    Les caractères suivants -> {}, <>, | ne doivents pas être inclus dans les commandes
                 \`\`\`               
                 `,
 					ephemeral: true,

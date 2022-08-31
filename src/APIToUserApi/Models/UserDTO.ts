@@ -1,0 +1,81 @@
+export class UserDTO {
+	public id = '';
+	public prenom = '';
+	public nom = '';
+	public username = '';
+	public discordId = '';
+	public sexe = '';
+	public createdAt = '';
+	public argent = 0;
+	public permis = '';
+	public stage: StageDTO = new StageDTO();
+	public points = 0;
+	public nbSessionsPermis = 0;
+	public nbSessionsPolice = 0;
+	public nbSessions = 0;
+	public voitures: VoitureDTO[] = [];
+}
+
+export class StageDTO {
+	public stageId = '';
+	public name = '';
+}
+
+export class VoitureDTO {
+	public keyCar = '';
+	public idUser = '';
+	public username = '';
+	public idCar = '';
+	public carId = 0;
+	public carOrdinal = 0;
+	public maker = '';
+	public model = '';
+	public year = 0;
+	public transmission = '';
+	public gearBox = 0;
+	public type = '';
+	public rarity = '';
+	public wikiLink = '';
+	public pictureLink = '';
+	public engineConfiguration = '';
+	public originalPowerBhp = 0;
+	public originalPowerKw = 0;
+	public originalTorqueLbft = 0;
+	public originalTorqueNm = 0;
+	public originalWeightLbs = 0;
+	public originalWeightKg = 0;
+	public originalEngineDisplacement = 0;
+	public originalNbCylindre = 0;
+	public originalAspiration = '';
+	public originalEnginePosition = '';
+	public originalSpeed = 0;
+	public originalHandling = 0;
+	public originalAccelerate = 0;
+	public originalLaunch = 0;
+	public originalBraking = 0;
+	public originalOffroad = 0;
+	public originalPi = 0;
+	public originalPrice = 0;
+	public originalClass = '';
+	public powerBhp = 0;
+	public powerKw = 0;
+	public torqueLbft = 0;
+	public torqueNm = 0;
+	public weightLbs = 0;
+	public weightKg = 0;
+	public engineDisplacement = 0;
+	public nbCylindre = 0;
+	public aspiration = '';
+	public enginePosition = '';
+	public speed = 0;
+	public handling = 0;
+	public accelerate = 0;
+	public launch = 0;
+	public braking = 0;
+	public offroad = 0;
+	public pi = 0;
+	public class = '';
+	public imatriculation = '';
+	public totalPrice = 0;
+	public editPrice = 0;
+}

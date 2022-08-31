@@ -64,14 +64,14 @@ export class AdminMoneyCommand extends Command {
 
 		await i.deferReply();
 
-		const user: GuildMember = i.options.get('user')!.member as GuildMember;
+		const user: GuildMember = i.options.getMember('user') as GuildMember;
 		const action: string = i.options.get('action')!.value as string;
 		const montant: number = i.options.get('montant')!.value as number;
 		const raison: string = i.options.get('raison')!.value as string;
 
 		let embedMoney = new EmbedBuilder()
 			.setTitle(cmdLang.embed.title.format(user.displayName))
-			.setThumbnail((i.member! as GuildMember).displayAvatarURL() as string)
+			.setThumbnail(user.displayAvatarURL() as string)
 			.setAuthor({
 				name: '𝑳𝒂 𝒃𝒂𝒏𝒒𝒖𝒆',
 				url: 'https://discord.com/channels/854140376867930122/1001952467786932244/1002182894632050708',

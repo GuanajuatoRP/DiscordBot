@@ -38,26 +38,30 @@ export class HelpCommand extends Command {
 		this.client.emit('CommandLog', i as CommandInteraction);
 
 		try {
-			let commandName = i.options;
+			let commandOptions = i.options;
 
-			let allCategory = new Array(); //Get All Unnique Catégory
+			const allCategory = [
+				...new Set(
+					this.client.collections.commands
+						.map(c => c[0].category)
+						.filter(c => c != 'InDev' && c != 'Admin'),
+				),
+			]; //Get All Unnique Catégory
 
-			this.client.collections.commands
-				.map(c => c[0])
-				.forEach(command => {
-					// Filter all catégory without InDev and Admin
-					if (
-						!allCategory.includes(`${command.category}`) &&
-						command.category != 'InDev' &&
-						command.category != 'Admin'
-					)
-						allCategory.push(`${command.category}`);
-				});
-			const commands: Command[] = this.client.collections.commands.map(
-				c => c[0],
-			) as Command[]; //Get All Commands loaded for the bot
+			const commands: Command[] = [
+				...new Set(
+					this.client.collections.commands
+						.map(c => c[0])
+						.filter(
+							c =>
+								c.category != 'InDev' &&
+								c.adminsOnly == false &&
+								c.type == 'SLASH_COMMAND',
+						),
+				),
+			] as Command[]; //Get All Commands loaded for the bot
 
-			if (!commandName.get('commande')) {
+			if (!commandOptions.get('commande')) {
 				let Embed = DefaultEmbed().setDescription(
 					lang.commands.help.description.desc,
 				);
@@ -77,15 +81,8 @@ export class HelpCommand extends Command {
 				}
 
 				// Define random command for /help example
-				let availableCommand: Array<string> = commands
-					.filter(
-						c =>
-							c.category != 'InDev' &&
-							c.category != 'Admin' &&
-							c.adminsOnly === false &&
-							c.type === 'SLASH_COMMAND',
-					)
-					.map(c => c.name);
+				let availableCommand: Array<string> = commands.map(c => c.name);
+
 				let randomCommand1: string;
 				let randomCommand2: string;
 				do {
@@ -110,17 +107,17 @@ export class HelpCommand extends Command {
 					embeds: [Embed],
 					ephemeral: false,
 				});
-			} else if (commandName.get('commande')) {
-				const CName = `${commandName.get('commande')!.value}`;
-				const command = this.client.collections.commands.get(CName);
+			} else {
+				const CName = `${commandOptions.get('commande')!.value}`;
+				const command = commands.find(c => c.name === CName);
 
-				if (!commands.map(c => c.name).includes(CName)) {
+				if (!command) {
 					return i.reply({
 						content: cmdLang.i.wrongName.format(CName),
 						ephemeral: false,
 					});
 				}
-				if (command![0].adminsOnly === true) {
+				if (command.adminsOnly === true) {
 					return i.reply({
 						content: cmdLang.i.noRead.format(CName),
 						ephemeral: false,
@@ -131,21 +128,21 @@ export class HelpCommand extends Command {
 					content: stripIndents`
                 \`\`\`makefile
                     [help : ${
-											command![0].name
-										}]                       [Category : ${
-						command![0].category
-					}]
+											command.name
+										}]                       [Category : ${command.category}]
 
-                    ${command![0].description}
+                    ${command.description}
 
-                    Utilisation: /${command![0].usage}
+                    Utilisation: /${command.usage}
                     Exemple${
-											Array.from(command![0].examples!).length == 1 ? '' : 's'
-										}: /${Array.from(command![0].examples!).join(`, /`)}
+											Array.from(command.examples!).length == 1 ? '' : 's'
+										}: /${Array.from(command.examples!).join(`, /`)}
 
 
-                    <> = argument(s) optionnel(s) | {} = argument(s) obligatoire
-                    Les caractères suivants -> <>, {} ne doivents pas être inclus dans les commandes
+                    {} = argument(s) obligatoire
+                    <> = argument(s) optionnel(s)
+                    A|B = Indique que c'est soit A soit B
+                    Les caractères suivants -> {}, <>, | ne doivents pas être inclus dans les commandes
                 \`\`\`               
                 `,
 					ephemeral: false,

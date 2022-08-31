@@ -41,28 +41,22 @@ export class MoneyCommand extends Command {
 		try {
 			await i.deferReply();
 
-			const user = i.options.getUser('user');
+			let user = i.options.getMember('user') as GuildMember;
 
-			await MoneyController.getMoney(
-				user ? user.id : (i.member as GuildMember).id,
-			)
+			user = user ? user : (i.member as GuildMember);
+
+			await MoneyController.getMoney(user.id)
 				.then((response: AxiosResponse<any, any>) => {
 					const moneyDTO: GetMoneyDTO = response!.data as GetMoneyDTO;
 
 					const embedMoney = new EmbedBuilder()
-						.setTitle(
-							cmdLang.embed.title.format(
-								(i.member! as GuildMember).displayName,
-							),
-						)
+						.setTitle(cmdLang.embed.title.format(user.displayName))
 						.setColor(cmdLang.embed.color as ColorResolvable)
 						.addFields({
 							name: cmdLang.embed.fields[0].name,
 							value: `${moneyDTO.money.toString()}€`,
 						})
-						.setThumbnail(
-							(i.member! as GuildMember).displayAvatarURL() as string,
-						)
+						.setThumbnail(user.displayAvatarURL() as string)
 						.setAuthor({
 							name: cmdLang.embed.author.name,
 							url: cmdLang.embed.author.url,
@@ -76,7 +70,6 @@ export class MoneyCommand extends Command {
 				})
 				.catch(e => {
 					console.log(e);
-
 					return i.editReply({
 						content: lang.bot.errorMessage as string,
 					});
