@@ -22,13 +22,6 @@ export class SendMessageCommand extends Command {
 			examples: cmdLang.description.exemples,
 			options: [
 				{
-					type: ApplicationCommandOptionType.Channel,
-					channelTypes: [ChannelType.GuildText],
-					name: 'from-channel',
-					description: cmdLang.slashOptions.channelFrom,
-					required: true,
-				},
-				{
 					type: ApplicationCommandOptionType.String,
 					name: 'message-id',
 					description: cmdLang.slashOptions.messageId,
@@ -55,10 +48,7 @@ export class SendMessageCommand extends Command {
 		try {
 			const guild: Guild = i.guild as Guild;
 
-			const fromChannelId = i.options.get('from-channel', true).value;
-			const fromChannel = (await guild.channels.fetch(
-				fromChannelId as string,
-			)) as TextChannel;
+			const fromChannel = i.channel as TextChannel;
 
 			const messageId = i.options.get('message-id', true).value;
 			const message = (await fromChannel!.messages.fetch(

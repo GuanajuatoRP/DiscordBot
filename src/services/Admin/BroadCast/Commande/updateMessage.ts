@@ -21,13 +21,6 @@ export class UpdateMessageCommand extends Command {
 			examples: cmdLang.description.exemples,
 			options: [
 				{
-					type: ApplicationCommandOptionType.Channel,
-					channelTypes: [ChannelType.GuildText],
-					name: 'from-channel',
-					description: cmdLang.slashOptions.channelFrom,
-					required: true,
-				},
-				{
 					type: ApplicationCommandOptionType.String,
 					name: 'from-message-id',
 					description: cmdLang.slashOptions.messageIdFrom,
@@ -59,8 +52,7 @@ export class UpdateMessageCommand extends Command {
 	async execute(i: CommandInteraction) {
 		this.client.emit('AdminCommandLog', i as CommandInteraction);
 
-		const fromChannel = i.options.get('from-channel', true)
-			.channel as TextChannel;
+		const fromChannel = i.channel as TextChannel;
 		const toChannel = i.options.get('to-channel', true).channel as TextChannel;
 
 		const fromMessageId: string = i.options.get('from-message-id', true)

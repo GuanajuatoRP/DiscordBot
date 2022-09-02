@@ -63,175 +63,184 @@ export class FindCommand extends Command {
 	}
 	async execute(i: CommandInteraction) {
 		this.client.emit('CommandLog', i);
-		const iMember = i.member as GuildMember;
+		try {
+			const iMember = i.member as GuildMember;
 
-		if (!IsAdmin(iMember) && !iMember.roles.cache.has(Roles.GMB)) {
-			await this.client.emit('userMissingPermissions');
-			return i.reply({
-				ephemeral: true,
-				content: lang.event.userMissingPermission.i.content,
-			});
-		}
+			if (!IsAdmin(iMember) && !iMember.roles.cache.has(Roles.GMB)) {
+				await this.client.emit('userMissingPermissions');
+				return i.reply({
+					ephemeral: true,
+					content: lang.event.userMissingPermission.i.content,
+				});
+			}
 
-		await i.deferReply();
+			await i.deferReply();
 
-		const subCommand = i.options!.data[0];
+			const subCommand = i.options!.data[0];
 
-		switch (subCommand.name) {
-			case 'member':
-				const guildMember = subCommand.options![0].member as GuildMember;
-				await UserController.getUser(guildMember.id)
-					.then((user: UserDTO) => {
-						const embed = DefaultEmbed()
-							.setTitle('Identity Card')
-							.setColor('Green')
-							.setThumbnail(guildMember.displayAvatarURL() as string)
-							.addFields([
-								{
-									name: 'Prénom',
-									value: user.prenom,
-									inline: true,
-								},
-								{
-									name: 'Nom',
-									value: user.nom,
-									inline: true,
-								},
-								{
-									name: 'Username',
-									value: user.username,
-									inline: true,
-								},
-								{
-									name: 'Sexe',
-									value: user.sexe,
-									inline: true,
-								},
-								{
-									name: "Date d'arriver a Guanajuato",
-									value: user.createdAt,
-									inline: false,
-								},
-								{
-									name: 'Permis',
-									value: user.permis,
-									inline: true,
-								},
-								{
-									name: 'Points',
-									value: user.points.toString(),
-									inline: true,
-								},
-								{
-									name: 'Stage',
-									value: user.stage.name,
-									inline: true,
-								},
-								{
-									name: 'Argent',
-									value: user.argent.toString(),
-									inline: false,
-								},
-								{
-									name: 'Total Session',
-									value: user.nbSessions.toString(),
-									inline: true,
-								},
-								{
-									name: 'Sessions Police',
-									value: user.nbSessionsPolice.toString(),
-									inline: true,
-								},
-								{
-									name: 'Sessions Restante',
-									value: user.nbSessionsPermis.toString(),
-									inline: true,
-								},
-								{
-									name: 'Nombre de voitures',
-									value: user.voitures.length.toString(),
-									inline: true,
-								},
-							]);
-						return i.editReply({
-							content: 'find',
-							embeds: [embed],
-						});
-					})
-					.catch(err => {
-						if (
-							err.response.data == 'Aucun utilisateur trouver avec ce discordId'
-						)
+			switch (subCommand.name) {
+				case 'member':
+					const guildMember = subCommand.options![0].member as GuildMember;
+					await UserController.getUser(guildMember.id)
+						.then((user: UserDTO) => {
+							const embed = DefaultEmbed()
+								.setTitle('Identity Card')
+								.setColor('Green')
+								.setThumbnail(guildMember.displayAvatarURL() as string)
+								.addFields([
+									{
+										name: 'Prénom',
+										value: user.prenom,
+										inline: true,
+									},
+									{
+										name: 'Nom',
+										value: user.nom,
+										inline: true,
+									},
+									{
+										name: 'Username',
+										value: user.username,
+										inline: true,
+									},
+									{
+										name: 'Sexe',
+										value: user.sexe,
+										inline: true,
+									},
+									{
+										name: "Date d'arriver a Guanajuato",
+										value: user.createdAt,
+										inline: false,
+									},
+									{
+										name: 'Permis',
+										value: user.permis,
+										inline: true,
+									},
+									{
+										name: 'Points',
+										value: user.points.toString(),
+										inline: true,
+									},
+									{
+										name: 'Stage',
+										value: user.stage.name,
+										inline: true,
+									},
+									{
+										name: 'Argent',
+										value: user.argent.toString(),
+										inline: false,
+									},
+									{
+										name: 'Total Session',
+										value: user.nbSessions.toString(),
+										inline: true,
+									},
+									{
+										name: 'Sessions Police',
+										value: user.nbSessionsPolice.toString(),
+										inline: true,
+									},
+									{
+										name: 'Sessions Restante',
+										value: user.nbSessionsPermis.toString(),
+										inline: true,
+									},
+									{
+										name: 'Nombre de voitures',
+										value: user.voitures.length.toString(),
+										inline: true,
+									},
+								]);
 							return i.editReply({
-								content: cmdLang.error.member,
+								content: 'find',
+								embeds: [embed],
 							});
-						else {
+						})
+						.catch(err => {
+							if (
+								err.response.data ==
+								'Aucun utilisateur trouver avec ce discordId'
+							)
+								return i.editReply({
+									content: cmdLang.error.member,
+								});
+							else {
+								this.client.emit('ErrorCommandLog', i, err);
+								return i.editReply({
+									content: lang.bot.errorMessage,
+								});
+							}
+						});
+					break;
+				case 'car':
+					const immatriculation = subCommand.options![0].value as string;
+					let car: CarDTO | undefined;
+					await CarController.getAllCar()
+						.then((cars: CarDTO[]) => {
+							car = cars.find(
+								(c: CarDTO) => c.imatriculation === immatriculation,
+							);
+						})
+						.catch(err => {
 							this.client.emit('ErrorCommandLog', i, err);
+							console.log(err);
 							return i.editReply({
 								content: lang.bot.errorMessage,
 							});
-						}
-					});
-				break;
-			case 'car':
-				const immatriculation = subCommand.options![0].value as string;
-				let car: CarDTO | undefined;
-				await CarController.getAllCar()
-					.then((cars: CarDTO[]) => {
-						car = cars.find(
-							(c: CarDTO) => c.imatriculation === immatriculation,
-						);
-					})
-					.catch(err => {
-						this.client.emit('ErrorCommandLog', i, err);
-						console.log(err);
-						return i.editReply({
-							content: lang.bot.errorMessage,
 						});
-					});
 
-				if (!car)
-					return i.editReply({
-						content: cmdLang.error.car,
-					});
-				else {
-					const embed = DefaultEmbed()
-						.setTitle('Carte grise')
-						.setColor('Blue')
-						.addFields([
-							{
-								name: 'Propriétaire',
-								value: car.username,
-								inline: false,
-							},
-							{
-								name: 'Marque',
-								value: car.maker,
-								inline: true,
-							},
-							{
-								name: 'Model',
-								value: car.model,
-								inline: true,
-							},
-							{
-								name: 'Année',
-								value: car.year.toString(),
-								inline: true,
-							},
-							{
-								name: 'Class',
-								value: `${car.class}${car.pi}`,
-								inline: false,
-							},
-							{
-								name: 'Immatriculation',
-								value: car.imatriculation,
-								inline: false,
-							},
-						]);
-					return i.editReply({ embeds: [embed] });
-				}
+					if (!car)
+						return i.editReply({
+							content: cmdLang.error.car,
+						});
+					else {
+						const embed = DefaultEmbed()
+							.setTitle('Carte grise')
+							.setColor('Blue')
+							.addFields([
+								{
+									name: 'Propriétaire',
+									value: car.username,
+									inline: false,
+								},
+								{
+									name: 'Marque',
+									value: car.maker,
+									inline: true,
+								},
+								{
+									name: 'Model',
+									value: car.model,
+									inline: true,
+								},
+								{
+									name: 'Année',
+									value: car.year.toString(),
+									inline: true,
+								},
+								{
+									name: 'Class',
+									value: `${car.class}${car.pi}`,
+									inline: false,
+								},
+								{
+									name: 'Immatriculation',
+									value: car.imatriculation,
+									inline: false,
+								},
+							]);
+						return i.editReply({ embeds: [embed] });
+					}
+			}
+		} catch (err) {
+			this.client.emit('ErrorCommandLog', i, err);
+			console.log(err);
+			return i.editReply({
+				content: lang.bot.errorMessage,
+			});
 		}
 	}
 	async onAutocomplete(i: AutocompleteInteraction) {
