@@ -846,7 +846,7 @@
         "activateAccount": {
             "alreadyActivated": "Visiblement ton compte est déjà activé",
             "activated": "Ton compte a bien été activé",
-            "notRegistered": "Tu ne peux pas activer ton compte car tu n'est pas enregistré"
+            "notRegistered": "Tu ne peux pas activer ton compte car tu n'es pas enregistré"
         },
         "PermisOk": {
             "embed": {

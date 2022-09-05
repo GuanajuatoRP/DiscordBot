@@ -1,11 +1,7 @@
 import { Command } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
-import {
-	ActionRowBuilder,
-	ButtonBuilder,
-	ButtonStyle,
-	CommandInteraction,
-} from 'discord.js';
+import { CommandInteraction, TextChannel } from 'discord.js';
+import appConfig from '../../../../Util/appConfig.json';
 
 export class TestCommand extends Command {
 	constructor(client: ShewenyClient) {
@@ -27,24 +23,14 @@ export class TestCommand extends Command {
 	async execute(i: CommandInteraction) {
 		this.client.emit('CommandLog', i as CommandInteraction);
 
-		const register = new ActionRowBuilder<ButtonBuilder>().addComponents(
-			new ButtonBuilder()
-				.setLabel('Je créé mon compte !')
-				.setStyle(ButtonStyle.Link)
-				.setURL(
-					'https://discord.com/api/oauth2/authorize?client_id=877636097394475019&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fregister&response_type=code&scope=identify%20guilds',
-				),
-		);
-		const activateAcount = new ActionRowBuilder<ButtonBuilder>().addComponents(
-			new ButtonBuilder()
-				.setCustomId('ActivateAccount')
-				.setLabel('Activer le compte')
-				.setStyle(ButtonStyle.Primary),
-		);
+		const botDevChannel = (await i.guild!.channels.fetch(
+			appConfig.chanels.staff.botDev,
+		)) as TextChannel;
+
+		botDevChannel!.send({});
 
 		return i.reply({
-			content: 'LOCAL',
-			components: [register, activateAcount],
+			content: 'TEST',
 		});
 	}
 }
