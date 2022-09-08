@@ -223,7 +223,7 @@ export class FindCommand extends Command {
 								},
 								{
 									name: 'Class',
-									value: `${car.class}${car.pi}`,
+									value: `${car.editClass}${car.editPi}`,
 									inline: false,
 								},
 								{
