@@ -1,9 +1,8 @@
 import { EmbedBuilder } from 'discord.js';
-import { GuildMember, PermissionOverwrites } from 'discord.js';
+import { PermissionOverwrites } from 'discord.js';
 import fs from 'fs';
 import path from 'path';
 import lang from '../language.json';
-import { IsAdmin } from './isAdmin';
 
 //* Permet de save un embed Pour la commande créate embed
 export const saveEmbed = (embed: EmbedBuilder) => {
@@ -91,51 +90,3 @@ if (!String.prototype.format) {
 		});
 	};
 }
-
-//* Permet de déterminer si un GuildMember est concerner par un embed
-//! Ne fonctionne que si il y a "xxx : GuildMember.tag" dans le footer et rien d'autre
-export const IsEmbedOwner = (member: GuildMember, embed: EmbedBuilder) => {
-	const embedMember = embed.data.footer!.text.split(' : ')[1] as string;
-
-	// if the GuildMember are and admin he can use embed
-	if (IsAdmin(member)) {
-		return true;
-	}
-
-	// Check if the GuildMember tag is in emùbed footer
-	return !embedMember.includes(member.user.tag) ? false : true;
-};
-
-export const NewImmatriculation = (
-	immat: string,
-	immatLenght: number,
-): string => {
-	// Todo Call API get Full ImmatList on server
-	const immatList = ['00-aaa-00', '20-qsd-45'];
-
-	if (immat != '' && immatList.includes(immat)) {
-		return lang.commands.immatriculation.export.exist;
-	} else if (immat != '' && immat.length != immatLenght) {
-		return lang.commands.immatriculation.export.len;
-	}
-
-	if (immat == '') {
-		do {
-			for (let i = 0; i < 2; i++) {
-				immat += Math.floor(Math.random() * (9 + 1));
-			}
-			immat += '-';
-			for (let i = 0; i < 3; i++) {
-				immat += String.fromCharCode(
-					Math.floor(Math.random() * (90 - 65 + 1)) + 65,
-				);
-			}
-			immat += '-';
-			for (let i = 0; i < 2; i++) {
-				immat += Math.floor(Math.random() * (9 + 1));
-			}
-		} while (immatList.includes(immat));
-	}
-
-	return immat;
-};

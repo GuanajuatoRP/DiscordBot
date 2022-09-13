@@ -22,7 +22,12 @@ export class GetRawMessageCommand extends Command {
 			options: [
 				{
 					type: ApplicationCommandOptionType.Channel,
-					channelTypes: [ChannelType.GuildText],
+					channelTypes: [
+						ChannelType.GuildText,
+						ChannelType.GuildNews,
+						ChannelType.GuildPublicThread,
+						ChannelType.GuildPrivateThread,
+					],
 					name: 'from-channel',
 					description: cmdLang.slashOptions.fromChannel,
 					required: true,

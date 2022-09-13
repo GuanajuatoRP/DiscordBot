@@ -193,9 +193,6 @@
                 "color": "DARK_PURPLE",
                 "footer": "Nouvelle immatriculation pour : {0}",
                 "fields": {
-                    "stats": {
-                        "name": "voiture stats"
-                    },
                     "immat": {
                         "name": "Nouvelle Immatriculation"
                     },

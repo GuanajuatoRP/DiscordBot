@@ -13,6 +13,7 @@ export class MessageCreate extends Event {
 	}
 
 	execute(message: Message) {
-		if (message.type === 6) setTimeout(() => message.delete(), 2000);
+		if (message.type === 6 || message.type === 18)
+			setTimeout(() => message.delete(), 2000);
 	}
 }

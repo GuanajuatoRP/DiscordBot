@@ -29,7 +29,12 @@ export class SendMessageCommand extends Command {
 				},
 				{
 					type: ApplicationCommandOptionType.Channel,
-					channelTypes: [ChannelType.GuildText],
+					channelTypes: [
+						ChannelType.GuildText,
+						ChannelType.GuildNews,
+						ChannelType.GuildPublicThread,
+						ChannelType.GuildPrivateThread,
+					],
 					name: 'to-channel',
 					description: cmdLang.slashOptions.channelTo,
 					required: true,

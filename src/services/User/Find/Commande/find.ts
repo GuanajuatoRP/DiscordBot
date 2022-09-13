@@ -246,6 +246,7 @@ export class FindCommand extends Command {
 	async onAutocomplete(i: AutocompleteInteraction) {
 		const focusedOption = i.options.getFocused(true);
 		let choices: Array<string>;
+
 		if (focusedOption.name === 'car') {
 			await CarController.getAllCar()
 				.then((cars: CarDTO[]) => {
@@ -253,9 +254,7 @@ export class FindCommand extends Command {
 						.filter(car => car.imatriculation && car.imatriculation !== '')
 						.map(car => car.imatriculation);
 				})
-				.catch(err => {
-					console.log(err);
-				});
+				.catch(err => console.log(err));
 		}
 
 		const filtered = choices!.filter((choice: any) =>
