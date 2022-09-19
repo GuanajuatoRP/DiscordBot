@@ -1,0 +1,27 @@
+export class OrigialCarDTO {
+	public idCar = '';
+	public carId = 0;
+	public carOrdinal = 0;
+	public maker = '';
+	public model = '';
+	public year = 0;
+	public powerHp = 0;
+	public weightKg = 0;
+	public driveTrain = '';
+	public class = '';
+	public pi = 0;
+	public onRoad = true;
+	public speed = 0;
+	public handling = 0;
+	public accelerate = 0;
+	public launch = 0;
+	public braking = 0;
+	public offroad = 0;
+	public requiredDlc = false;
+	public aviability = '';
+	public price = 0;
+	public type = '';
+	public rarity = '';
+	public wikiLink = '';
+	public pictureLink = '';
+}

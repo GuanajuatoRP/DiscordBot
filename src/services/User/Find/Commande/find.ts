@@ -257,9 +257,10 @@ export class FindCommand extends Command {
 				.catch(err => console.log(err));
 		}
 
-		const filtered = choices!.filter((choice: any) =>
-			choice.startsWith(focusedOption.value),
-		);
+		const filtered = choices!
+			.filter((choice: any) => choice.startsWith(focusedOption.value))
+			.slice(0, 25);
+
 		i.respond(filtered.map((choice: any) => ({ name: choice, value: choice })));
 	}
 }

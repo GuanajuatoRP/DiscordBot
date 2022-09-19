@@ -130,6 +130,7 @@ export class AdminMoneyCommand extends Command {
 		}
 
 		return i.editReply({
+			content: cmdLang.message.content.format(user.id),
 			embeds: [embedMoney],
 		});
 	}

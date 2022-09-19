@@ -6,6 +6,31 @@
         "errorMessage": "Oupss il semblerais qu'une erreur c'est produite. Si cela perssiste contacte le Staff"
     },
     "commands": {
+        "concessionnaire": {
+            "embed": {
+                "title": "",
+                "color": "#",
+                "footer": "",
+                "fields": [{
+                    "name": "",
+                    "value": ""
+                }],
+                "author": {
+                    "name": "",
+                    "url": ""
+                }
+            },
+            "slashOptions": {
+                "optionName": "optionName"
+            },
+            "description": {
+                "desc": "Permet d'avoir des informations et plus sur une voiture",
+                "usage": "concessionnaire",
+                "exemples": [
+                    "concessionnaire"
+                ]
+            }
+        },
         "find": {
             "embed": {
                 "title": "",
@@ -122,6 +147,9 @@
                     "adminmoney user:@UwU.#2273 action:Remove montant:25000 raison:Achat de voiture",
                     "adminmoney user:@UwU.#2273 action:Set montant:358126 raison:Remise a niveau du compte suite a une erreur"
                 ]
+            },
+            "message": {
+                "content": "*<@{0}> ton compte bancaire a été modifier voici un rapport.*"
             }
         },
         "money": {
@@ -869,7 +897,7 @@
         },
         "ImmatriculationBuy": {
             "button": {
-                "cantUse": "Tu ne peut pas faire cela, la voiture ne t'appartiens pas"
+                "cantUse": "Tu ne peut pas faire cela, cette opération ne t'appartiens pas"
             },
             "embed": {
                 "color": "DARK_GREEN",

@@ -1,10 +1,11 @@
+import { removeMoneyRapport } from './../../../../Tools/Exports/embedMoney';
 import { GetMoneyDTO } from '../../../../APIToUserApi/Models/GetMoneyDTO';
 import { ToEditModel } from '../../../../APIToUserApi/Models/EditCarDTO';
 import { CarDTO } from '../../../../APIToUserApi/Models/CarDTO';
 import { IsEmbedOwner } from '../../../../Tools/Exports/isEmbedOwner';
 import { Button } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
-import { EmbedBuilder, ColorResolvable, TextChannel } from 'discord.js';
+import { EmbedBuilder } from 'discord.js';
 import type {
 	ButtonInteraction,
 	GuildMember,
@@ -14,9 +15,7 @@ import type {
 import lang from '../../../../Tools/language.json';
 import CarController from '../../../../APIToUserApi/CarController';
 import MoneyController from '../../../../APIToUserApi/MoneyController';
-import { chanels } from '../../../../Util/appConfig.json';
 const interactionLang = lang.button.ImmatriculationBuy;
-const cmdLang = lang.commands.adminMoney;
 
 export class ImmatriculationBuyBtn extends Button {
 	constructor(client: ShewenyClient) {
@@ -28,9 +27,6 @@ export class ImmatriculationBuyBtn extends Button {
 			const message = button.message as Message;
 			const member = button.member as GuildMember;
 			const embedMessage = message.embeds[0] as Embed;
-			const banqueChannel = (await button.guild!.channels.fetch(
-				chanels.staff.botDev,
-			)) as TextChannel;
 
 			if (!IsEmbedOwner(member, embedMessage)) {
 				return button.reply({
@@ -75,29 +71,11 @@ export class ImmatriculationBuyBtn extends Button {
 					).then(async res => {
 						const moneyDTO = res.data as GetMoneyDTO;
 
-						const embedMoney = new EmbedBuilder()
-							.setTitle(cmdLang.embed.title.format(member.displayName))
-							.setThumbnail(member.displayAvatarURL() as string)
-							.setAuthor({
-								name: '𝑳𝒂 𝒃𝒂𝒏𝒒𝒖𝒆',
-								url: 'https://discord.com/channels/854140376867930122/1001952467786932244/1002182894632050708',
-							});
-						embedMoney.setColor('#f00' as ColorResolvable);
-						embedMoney
-							.addFields(
-								{
-									name: cmdLang.embed.fieldsNames.remove,
-									value: `${Number(embedMessage.fields[1].value)}€`,
-								},
-								{
-									name: cmdLang.embed.fieldsNames.newSolde,
-									value: `${moneyDTO.money}€`,
-								},
-							)
-							.setTimestamp()
-							.setFooter({ text: `Motif : Immatriculation : ` });
-
-						await banqueChannel!.send({ embeds: [embedMoney] });
+						await removeMoneyRapport(
+							member,
+							moneyDTO,
+							Number(embedMessage.fields[1].value),
+						);
 					});
 				})
 				.catch(err => console.log(err));
