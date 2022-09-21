@@ -1,9 +1,17 @@
+import CarController from '../../APIToUserApi/CarController';
+import { CarDTO } from '../../APIToUserApi/Models/CarDTO';
 import lang from '../language.json';
-export const NewImmatriculation = (immat: string): string => {
-	// Todo Call API get Full ImmatList on server
-	const immatList = ['00-aaa-00', '20-qsd-45'];
+export const NewImmatriculation = async (immat: string): Promise<string> => {
+	let immatList: string[];
+	await CarController.getAllCar()
+		.then((cars: CarDTO[]) => {
+			immatList = cars
+				.filter(car => car.imatriculation && car.imatriculation !== '')
+				.map(car => car.imatriculation);
+		})
+		.catch(err => console.log(err));
 
-	if (immat != '' && immatList.includes(immat)) {
+	if (immat != '' && immatList!.includes(immat)) {
 		return lang.commands.immatriculation.export.exist;
 	}
 	if (immat == '') {
@@ -23,7 +31,7 @@ export const NewImmatriculation = (immat: string): string => {
 					Math.floor(Math.random() * (90 - 65 + 1)) + 65,
 				);
 			}
-		} while (immatList.includes(immat));
+		} while (immatList!.includes(immat));
 	}
 	return immat;
 };

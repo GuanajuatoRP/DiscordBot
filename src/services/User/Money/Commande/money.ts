@@ -52,10 +52,6 @@ export class MoneyCommand extends Command {
 					const embedMoney = new EmbedBuilder()
 						.setTitle(cmdLang.embed.title.format(user.displayName))
 						.setColor(cmdLang.embed.color as ColorResolvable)
-						.addFields({
-							name: cmdLang.embed.fields[0].name,
-							value: `${moneyDTO.money.toString()}€`,
-						})
 						.setThumbnail(user.displayAvatarURL() as string)
 						.setAuthor({
 							name: cmdLang.embed.author.name,
@@ -63,6 +59,24 @@ export class MoneyCommand extends Command {
 						})
 						.setTimestamp()
 						.setFooter({ text: cmdLang.embed.footer });
+
+					if (moneyDTO.money < 0) {
+						embedMoney.addFields(
+							{
+								name: cmdLang.embed.fields[0].name,
+								value: `⚠️⚠️${moneyDTO.money.toString()}€⚠️⚠️`,
+							},
+							{
+								name: 'Attention le compte est à découvert !',
+								value: `T'an que le compte est à découvert.\nTu ne pourras plus dépenser d'argent !`,
+							},
+						);
+					} else {
+						embedMoney.addFields({
+							name: cmdLang.embed.fields[0].name,
+							value: `${moneyDTO.money.toString()}€`,
+						});
+					}
 
 					return i.editReply({
 						embeds: [embedMoney],

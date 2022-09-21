@@ -23,6 +23,9 @@ export class ActivateAccountBtn extends Button {
 		const member = b.member as GuildMember;
 		const memberRoles = member.roles as GuildMemberRoleManager;
 		const roleInscrit = b.guild!.roles.cache.get(appConf.Roles.INSCRIT) as Role;
+		const roleSansPermis = b.guild!.roles.cache.get(
+			appConf.Roles.SANSPERMIS,
+		) as Role;
 
 		// Check if this user is already registred
 		let httpCode: StatusCodes = StatusCodes.OK | StatusCodes.NO_CONTENT;
@@ -44,6 +47,7 @@ export class ActivateAccountBtn extends Button {
 			return b.editReply(iLang.alreadyActivated);
 		} else if (httpCode == StatusCodes.NO_CONTENT) {
 			await memberRoles.remove(roleInscrit).catch(err => console.log(err));
+			await memberRoles.remove(roleSansPermis).catch(err => console.log(err));
 			await member.setNickname(null).catch(err => console.log(err));
 			return b.editReply(iLang.notRegistered);
 		} else if (
@@ -52,6 +56,7 @@ export class ActivateAccountBtn extends Button {
 		) {
 			await member.setNickname(username).catch(err => console.log(err));
 			await memberRoles.add(roleInscrit).catch(err => console.log(err));
+			await memberRoles.add(roleSansPermis).catch(err => console.log(err));
 			return b.editReply(iLang.activated);
 		}
 	}

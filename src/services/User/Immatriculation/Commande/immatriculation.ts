@@ -91,7 +91,7 @@ export class ImmatriculationCommand extends Command {
 				});
 			}
 
-			immat = NewImmatriculation(immat as string);
+			immat = await NewImmatriculation(immat as string);
 
 			const embed = new EmbedBuilder()
 				.setTitle(
@@ -111,20 +111,23 @@ export class ImmatriculationCommand extends Command {
 						value: (selectedCar.editPowerHp * immatPrice).toString(),
 					},
 				);
-
-			const btnsImmatriculation = new ActionRowBuilder<ButtonBuilder>()
-				.addComponents(
+			const btnsImmatriculation =
+				new ActionRowBuilder<ButtonBuilder>().addComponents(
 					new ButtonBuilder()
 						.setLabel(cmdLang.button.cancel)
 						.setStyle(ButtonStyle.Danger)
 						.setCustomId('ImmatriculationCancel'),
-				)
-				.addComponents(
+				);
+
+			if (!i.options.get('immatriculation')) {
+				btnsImmatriculation.addComponents(
 					new ButtonBuilder()
 						.setLabel(cmdLang.button.reload)
 						.setStyle(ButtonStyle.Primary)
 						.setCustomId('ImmatriculationReload'),
 				);
+			}
+
 			const btImmatriculatioBuy =
 				new ActionRowBuilder<ButtonBuilder>().addComponents(
 					new ButtonBuilder()

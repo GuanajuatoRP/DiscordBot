@@ -4,11 +4,11 @@ import { Button } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
 import type { ButtonInteraction, GuildMember, Message } from 'discord.js';
 import lang from '../../../../Tools/language.json';
-const interactionLang = lang.button.ImmatriculationCancel;
+const interactionLang = lang.button.CancelBuyCarBoutton;
 
-export class ImmatriculationCancelBtn extends Button {
+export class CancelBuyCarBtn extends Button {
 	constructor(client: ShewenyClient) {
-		super(client, ['ImmatriculationCancel']);
+		super(client, ['cancelBuyCarBoutton']);
 	}
 
 	execute(button: ButtonInteraction) {
@@ -20,7 +20,7 @@ export class ImmatriculationCancelBtn extends Button {
 			// check if member can user button
 			if (!IsEmbedOwner(member, messageEmbed) && !IsAdmin(member)) {
 				return button.reply({
-					content: interactionLang.button.cantUse,
+					content: interactionLang.interractions,
 					ephemeral: true,
 				});
 			}
@@ -28,7 +28,7 @@ export class ImmatriculationCancelBtn extends Button {
 			message.delete();
 
 			return button.reply({
-				content: interactionLang.interraction,
+				content: "La demmande d'achat de voiture a bien été annuler",
 				ephemeral: true,
 			});
 		} catch (err) {

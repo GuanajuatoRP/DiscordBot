@@ -21,13 +21,15 @@
                 }
             },
             "slashOptions": {
-                "optionName": "optionName"
+                "voiture": "Recherche la voiture d'ont tu souhaite avoir des informations"
             },
             "description": {
                 "desc": "Permet d'avoir des informations et plus sur une voiture",
-                "usage": "concessionnaire",
+                "usage": "concessionnaire voiture:{Valeur de recherche}",
                 "exemples": [
-                    "concessionnaire"
+                    "concessionnaire voiture:Mitsubishi Starion ESI-R 1988 (C 549)",
+                    "concessionnaire voiture:Ford Mustang Boss 302 1969 (C 581)",
+                    "concessionnaire voiture:Toyota Celica GT-Four RC ST185 1992 (C 544)"
                 ]
             }
         },
@@ -118,10 +120,12 @@
                 "title": "Compte bancaire de : {0}",
                 "color": "#11ff00",
                 "footer": "𝑳𝒂 𝒃𝒂𝒏𝒒𝒖𝒆",
-                "fields": [{
-                    "name": "Solde disponible :",
-                    "value": "50000€"
-                }],
+                "fields": {
+                    "decouvert": {
+                        "name": "Attention le compte est à découvert !",
+                        "value": "T'an que le compte est à découvert.\nTu ne pourras plus dépenser d'argent !"
+                    }
+                },
                 "fieldsNames": {
                     "newSolde": "Nouveau Solde :",
                     "add": "Ajout d'argent :",
@@ -895,7 +899,11 @@
                 }
             }
         },
+        "CancelBuyCarBoutton": {
+            "interractions": "La demmande d'achat de voiture a bien été annuler"
+        },
         "ImmatriculationBuy": {
+            "notEnoughtMoney": "Vous n'avez pas suffisament d'argent !",
             "button": {
                 "cantUse": "Tu ne peut pas faire cela, cette opération ne t'appartiens pas"
             },

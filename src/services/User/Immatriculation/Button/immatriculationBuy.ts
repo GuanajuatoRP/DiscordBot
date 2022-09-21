@@ -27,6 +27,9 @@ export class ImmatriculationBuyBtn extends Button {
 			const message = button.message as Message;
 			const member = button.member as GuildMember;
 			const embedMessage = message.embeds[0] as Embed;
+			const immatriculation = embedMessage.fields[0].value as string;
+			let isNegativeAccount = false;
+			let car: CarDTO | undefined;
 
 			if (!IsEmbedOwner(member, embedMessage)) {
 				return button.reply({
@@ -35,21 +38,6 @@ export class ImmatriculationBuyBtn extends Button {
 				});
 			}
 
-			const embed = new EmbedBuilder()
-				.setTitle(embedMessage.title)
-				.setAuthor({
-					name: embedMessage.author!.name as string,
-				})
-				.setColor(embedMessage.color)
-				.setTimestamp()
-				.setThumbnail(member.displayAvatarURL())
-				.setFooter({ text: embedMessage.footer!.text as string })
-				.addFields({
-					name: embedMessage.fields[0].name,
-					value: embedMessage.fields[0].value,
-				});
-
-			let car: CarDTO | undefined;
 			await CarController.getUserAllCar(member.id)
 				.then((cars: CarDTO[]) => {
 					car = cars.find(
@@ -60,30 +48,61 @@ export class ImmatriculationBuyBtn extends Button {
 				})
 				.catch(err => console.log(err));
 
-			if (!car) return button.reply('car not found');
-			else car.imatriculation = embedMessage.fields[0].value as string;
+			if (!car) return button.reply('Aucune voiture trouvée');
+			else car.imatriculation = immatriculation;
 
-			await CarController.editCar(ToEditModel(car))
-				.then(async () => {
-					await MoneyController.removeMoney(
-						member.id,
-						Number(embedMessage.fields[1].value),
-					).then(async res => {
-						const moneyDTO = res.data as GetMoneyDTO;
-
+			await MoneyController.removeMoney(
+				member.id,
+				Number(embedMessage.fields[1].value),
+			)
+				.then(async res => {
+					const moneyDTO = res.data as GetMoneyDTO;
+					if (
+						Number(moneyDTO.money) + Number(embedMessage.fields[1].value) <
+						0
+					) {
+						await MoneyController.addMoney(
+							member.id,
+							Number(embedMessage.fields[1].value),
+						);
+						isNegativeAccount = true;
+					} else {
+						await CarController.editCar(ToEditModel(car!));
 						await removeMoneyRapport(
 							member,
 							moneyDTO,
 							Number(embedMessage.fields[1].value),
 						);
-					});
+					}
 				})
 				.catch(err => console.log(err));
 
-			await message.react('✅');
-			return button.update({ embeds: [embed], components: [] });
-		} catch (err) {
-			console.log('Error : ', err);
+			if (isNegativeAccount) {
+				await message.react('❌');
+				return button.update({
+					content: interactionLang.notEnoughtMoney,
+					embeds: [],
+					components: [],
+				});
+			} else {
+				const embed = new EmbedBuilder()
+					.setTitle(embedMessage.title)
+					.setAuthor({
+						name: embedMessage.author!.name as string,
+					})
+					.setColor(embedMessage.color)
+					.setTimestamp()
+					.setThumbnail(member.displayAvatarURL())
+					.setFooter({ text: embedMessage.footer!.text as string })
+					.addFields({
+						name: embedMessage.fields[0].name,
+						value: embedMessage.fields[0].value,
+					});
+				await message.react('✅');
+				return button.update({ embeds: [embed], components: [] });
+			}
+		} catch (error) {
+			console.log('Error : ', error);
 			return button.reply(lang.bot.errorMessage);
 		}
 	}

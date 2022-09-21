@@ -22,8 +22,8 @@ export default class CarController {
 	}
 	static async searchCar(seachValue: string | undefined) {
 		return (
-			await ApiBase.userApi.post(
-				`api/OriginalCar/SearchDiscord?searchModel=${seachValue}`,
+			await ApiBase.userApi.get(
+				`api/OriginalCar/SearchDiscord?searchModel=${seachValue}&limit=25`,
 			)
 		).data;
 	}

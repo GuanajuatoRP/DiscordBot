@@ -12,7 +12,7 @@ export class ImmatriculationReloadBtn extends Button {
 		super(client, ['ImmatriculationReload']);
 	}
 
-	execute(button: ButtonInteraction) {
+	async execute(button: ButtonInteraction) {
 		try {
 			const message = button.message as Message;
 			const member = button.member as GuildMember;
@@ -26,7 +26,7 @@ export class ImmatriculationReloadBtn extends Button {
 			}
 
 			let embed = embedMessage;
-			embed.fields[0].value = NewImmatriculation('' as string);
+			embed.fields[0].value = await NewImmatriculation('' as string);
 
 			return button.update({ embeds: [embed] });
 		} catch (err) {
