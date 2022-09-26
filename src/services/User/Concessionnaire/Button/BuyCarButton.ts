@@ -93,7 +93,6 @@ export class CarBuyBtn extends Button {
 				searchedCar.price,
 				false,
 			).then(async res => {
-				if (res.status == 200) {
 					const moneyDTO = res.data as GetMoneyDTO;
 
 					await CarController.addCar(searchedCar, member.id).catch(err =>
@@ -105,15 +104,17 @@ export class CarBuyBtn extends Button {
 						searchedCar.price,
 					).catch(err => console.log(err));
 					return message.edit({ embeds: [embed], components: [] });
-				} else {
-					await message.react('❌');
-					return message.edit({
-						content: interactionLang.notEnoughtMoney,
-						embeds: [],
-						components: [],
-					});
-				}
-			});
+				
+			}).catch(async err => {
+                if (err.response.data == "Not Enough Money") {
+                    await message.react('❌');
+                    return button.update({
+                        content: interactionLang.notEnoughtMoney,
+                        embeds: [],
+                        components: [],
+                    });
+                }
+            });
 		} catch (error) {
 			console.log('Error : ', error);
 			return button.reply(lang.bot.errorMessage);

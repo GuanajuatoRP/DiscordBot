@@ -28,8 +28,7 @@ export class RoleCommand extends Command {
 		});
 	}
 	execute(i: CommandInteraction) {
-		this.client.emit('CommandLog', i as CommandInteraction);
-
+        this.client.emit('AdminCommandLog', i as CommandInteraction);
 		try {
 			i.guild!.channels.fetch(appConfig.chanels.game.salleDeJeux).then(
 				channel => {

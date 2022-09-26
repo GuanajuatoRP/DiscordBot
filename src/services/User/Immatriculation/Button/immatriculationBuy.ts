@@ -53,10 +53,9 @@ export class ImmatriculationBuyBtn extends Button {
 			await MoneyController.removeMoney(
 				member.id,
 				Number(embedMessage.fields[1].value),
-				true,
+				false,
 			)
 				.then(async res => {
-					if (res.status === 200) {
 						const moneyDTO = res.data as GetMoneyDTO;
 						await CarController.editCar(ToEditModel(car!));
 						await removeMoneyRapport(
@@ -80,16 +79,18 @@ export class ImmatriculationBuyBtn extends Button {
 							});
 						await message.react('✅');
 						return button.update({ embeds: [embed], components: [] });
-					} else {
-						await message.react('❌');
+					
+				})
+				.catch(async (err) => {
+                    if (err.response.data == "Not Enough Money") {
+                        await message.react('❌');
 						return button.update({
 							content: interactionLang.notEnoughtMoney,
 							embeds: [],
 							components: [],
 						});
-					}
-				})
-				.catch(err => console.log(err));
+                    }
+                });
 		} catch (error) {
 			console.log('Error : ', error);
 			return button.reply(lang.bot.errorMessage);

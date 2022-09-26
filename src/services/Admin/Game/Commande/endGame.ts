@@ -21,7 +21,7 @@ export class EndGameCommand extends Command {
 		});
 	}
 	execute(i: CommandInteraction) {
-		this.client.emit('CommandLog', i as CommandInteraction);
+		this.client.emit('AdminCommandLog', i as CommandInteraction);
 
 		try {
 			//TODO: Faire la suppression des channels quand la commande Game seras refaite

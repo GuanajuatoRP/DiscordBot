@@ -6,6 +6,31 @@
         "errorMessage": "Oupss il semblerais qu'une erreur c'est produite. Si cela perssiste contacte le Staff"
     },
     "commands": {
+        "virement": {
+            "embed": {
+                "title": "",
+                "color": "#",
+                "footer": "",
+                "fields": [{
+                    "name": "",
+                    "value": ""
+                }],
+                "author": {
+                    "name": "",
+                    "url": ""
+                }
+            },
+            "slashOptions": {
+                "optionName": "optionName"
+            },
+            "description": {
+                "desc": "Permet d'envoyé de l'argent à un utilisateur",
+                "usage": "virement utilisateur:{utilisateur a qui envoyé de l'argent} somme:{Valeur à envoyé}",
+                "exemples": [
+                    "virement"
+                ]
+            }
+        },
         "concessionnaire": {
             "embed": {
                 "title": "",
