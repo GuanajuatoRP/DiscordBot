@@ -6,10 +6,35 @@
         "errorMessage": "Oupss il semblerais qu'une erreur c'est produite. Si cela perssiste contacte le Staff"
     },
     "commands": {
+        "congedier": {
+            "embed": {
+                "title": "",
+                "color": "#",
+                "footer": "",
+                "fields": [{
+                    "name": "",
+                    "value": ""
+                }],
+                "author": {
+                    "name": "",
+                    "url": ""
+                }
+            },
+            "slashOptions": {
+                "optionName": "optionName"
+            },
+            "description": {
+                "desc": "congedier des membres",
+                "usage": "congedier",
+                "exemples": [
+                    "congedier"
+                ]
+            }
+        },
         "virement": {
             "interaction": {
-                "public": "<@{0}> a envoyé {1}€ à <@{2}>. Il lui reste {3}€ et <@{2}> a maintenant ${4}€",
-                "personal": "Vous avez envoyé ${0}€ à <@{1}>. Il vous reste {2}€ et <@{1}> a maintenant {3}€",
+                "public": "<@{0}> a envoyé {1}€ à <@{2}>. Il lui reste {3}€ et <@{2}> a maintenant {4}€",
+                "personal": "Vous avez envoyé {0}€ à <@{1}>. Il vous reste {2}€ et <@{1}> a maintenant {3}€",
                 "notEnoughMoney": "<@{0}> n'a pas assez d'argent pour envoyer {1}€ à <@{2}>",
                 "userNotExist": "<@{0}> n'as pas de compte bancaire"
             },

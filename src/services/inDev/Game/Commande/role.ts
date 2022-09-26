@@ -15,7 +15,7 @@ export class RoleCommand extends Command {
 	constructor(client: ShewenyClient) {
 		super(client, {
 			name: 'role',
-			category: 'Admin', //* Default category is InDev
+			category: '', //* Default category is InDev
 			// type: '', //* Default type is SLASH_COMMAND
 			description: cmdLang.description.desc,
 			usage: cmdLang.description.usage,
@@ -28,7 +28,7 @@ export class RoleCommand extends Command {
 		});
 	}
 	execute(i: CommandInteraction) {
-        this.client.emit('AdminCommandLog', i as CommandInteraction);
+		this.client.emit('AdminCommandLog', i as CommandInteraction);
 		try {
 			i.guild!.channels.fetch(appConfig.chanels.game.salleDeJeux).then(
 				channel => {

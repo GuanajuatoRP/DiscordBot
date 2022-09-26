@@ -7,11 +7,11 @@ export const NewImmatriculation = async (immat: string): Promise<string> => {
 		.then((cars: CarDTO[]) => {
 			immatList = cars
 				.filter(car => car.imatriculation && car.imatriculation !== '')
-				.map(car => car.imatriculation);
+				.map(car => car.imatriculation.toUpperCase());
 		})
 		.catch(err => console.log(err));
 
-	if (immat != '' && immatList!.includes(immat)) {
+	if (immat != '' && immatList!.includes(immat.toUpperCase())) {
 		return lang.commands.immatriculation.export.exist;
 	}
 	if (immat == '') {

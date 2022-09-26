@@ -104,13 +104,7 @@ export class ImmatriculationCommand extends Command {
 				.setTimestamp()
 				.setThumbnail(member.displayAvatarURL())
 				.setFooter({ text: cmdLang.embed.footer.format(member.user.tag) })
-				.addFields(
-					{ name: cmdLang.embed.fields.immat.name, value: immat },
-					{
-						name: cmdLang.embed.fields.prix.name,
-						value: (selectedCar.editPowerHp * immatPrice).toString(),
-					},
-				);
+				.addFields({ name: cmdLang.embed.fields.immat.name, value: immat });
 			const btnsImmatriculation =
 				new ActionRowBuilder<ButtonBuilder>().addComponents(
 					new ButtonBuilder()
@@ -136,10 +130,22 @@ export class ImmatriculationCommand extends Command {
 						.setCustomId('ImmatriculationBuy'),
 				);
 
-			return i.editReply({
-				embeds: [embed],
-				components: [btnsImmatriculation, btImmatriculatioBuy],
-			});
+			if (immat == lang.commands.immatriculation.export.exist) {
+				embed;
+				return i.editReply({
+					embeds: [embed],
+					components: [btnsImmatriculation],
+				});
+			} else {
+				embed.addFields({
+					name: cmdLang.embed.fields.prix.name,
+					value: (selectedCar.editPowerHp * immatPrice).toString(),
+				});
+				return i.editReply({
+					embeds: [embed],
+					components: [btnsImmatriculation, btImmatriculatioBuy],
+				});
+			}
 		} catch (err) {
 			console.log('Error : ', err);
 			await this.client.emit('ErrorCommandLog', i, err);
@@ -162,9 +168,9 @@ export class ImmatriculationCommand extends Command {
 				.catch(err => console.log(err));
 		}
 
-		const filtered = choices!.filter((choice: any) =>
-			choice.startsWith(focusedOption.value),
-		).slice(0, 25);
+		const filtered = choices!
+			.filter((choice: any) => choice.startsWith(focusedOption.value))
+			.slice(0, 25);
 		i.respond(filtered.map((choice: any) => ({ name: choice, value: choice })));
 	}
 }
