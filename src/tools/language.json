@@ -7,24 +7,18 @@
     },
     "commands": {
         "virement": {
-            "embed": {
-                "title": "",
-                "color": "#",
-                "footer": "",
-                "fields": [{
-                    "name": "",
-                    "value": ""
-                }],
-                "author": {
-                    "name": "",
-                    "url": ""
-                }
+            "interaction": {
+                "public": "<@{0}> a envoyé {1}€ à <@{2}>. Il lui reste {3}€ et <@{2}> a maintenant ${4}€",
+                "personal": "Vous avez envoyé ${0}€ à <@{1}>. Il vous reste {2}€ et <@{1}> a maintenant {3}€",
+                "notEnoughMoney": "<@{0}> n'a pas assez d'argent pour envoyer {1}€ à <@{2}>",
+                "userNotExist": "<@{0}> n'as pas de compte bancaire"
             },
             "slashOptions": {
-                "optionName": "optionName"
+                "utilisateur": "Personne à qui envoyer de l'argent",
+                "somme": "Somme d'argent a envoyer"
             },
             "description": {
-                "desc": "Permet d'envoyé de l'argent à un utilisateur",
+                "desc": "Permet d'envoyer de l'argent à un utilisateur",
                 "usage": "virement utilisateur:{utilisateur a qui envoyé de l'argent} somme:{Valeur à envoyé}",
                 "exemples": [
                     "virement"

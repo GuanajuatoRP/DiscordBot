@@ -1,16 +1,16 @@
 {
     "name": "guanajuatobot",
-    "version": "2.24.0",
+    "version": "2.25.0",
     "description": "Bot officiel du serveur RP FH5 GuanajuatoRo",
     "main": "dist/index.js",
     "scripts": {
         "start": "node dist/index.js",
-        "version:major": "npm version major",
-        "version": "npm version minor",
-        "version:fix": "npm version patch",
-        "docker:major": "cls && npm version major && npm run build && docker build -t dercraker0/guanajuato-bot:latest . && docker push dercraker0/guanajuato-bot:latest",
-        "docker": "cls && npm version minor && npm run build && docker build -t dercraker0/guanajuato-bot:latest . && docker push dercraker0/guanajuato-bot:latest",
-        "docker:fix": "cls && npm version patch && npm run build && docker build -t dercraker0/guanajuato-bot:latest . && docker push dercraker0/guanajuato-bot:latest",
+        "version:major": "npx auto-version --major",
+        "version": "npx auto-version --minor",
+        "version:fix": "npx auto-version --patch",
+        "docker:major": "cls && npx auto-version --major && npm run build && docker build -t dercraker0/guanajuato-bot:latest . && docker push dercraker0/guanajuato-bot:latest",
+        "docker": "cls && npx auto-version --minor && npm run build && docker build -t dercraker0/guanajuato-bot:latest . && docker push dercraker0/guanajuato-bot:latest",
+        "docker:fix": "cls && npx auto-version --patch && npm run build && docker build -t dercraker0/guanajuato-bot:latest . && docker push dercraker0/guanajuato-bot:latest",
         "build": "del /s /q dist && tsc",
         "dev": "nodemon -e js,ts --watch src --exec \"cls && npm run build && npm run start\"",
         "test": "tsnd --cls --respawn src/index.ts"

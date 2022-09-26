@@ -13,6 +13,7 @@ export const removeMoneyRapport = async (
 	member: GuildMember,
 	moneyDTO: GetMoneyDTO,
 	removedValue: number,
+	motif: string,
 ) => {
 	const embedMoney = new EmbedBuilder()
 		.setTitle(adminMoney.embed.title.format(member.displayName))
@@ -34,7 +35,7 @@ export const removeMoneyRapport = async (
 			},
 		)
 		.setTimestamp()
-		.setFooter({ text: `Motif : Immatriculation : ` });
+		.setFooter({ text: `Motif : ${motif}` });
 
 	const banqueChannel = (await member.guild!.channels.fetch(
 		chanels.rp.banque,

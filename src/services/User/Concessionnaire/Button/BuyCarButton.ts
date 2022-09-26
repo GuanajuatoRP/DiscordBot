@@ -102,17 +102,21 @@ export class CarBuyBtn extends Button {
 						member! as GuildMember,
 						moneyDTO,
 						searchedCar.price,
+                        `Achat véhicule: ${searchedCar.model}`,
 					).catch(err => console.log(err));
 					return message.edit({ embeds: [embed], components: [] });
 				
 			}).catch(async err => {
-                if (err.response.data == "Not Enough Money") {
+                if (err.response.data == "NOT_ENOUGH_MONEY") {
                     await message.react('❌');
                     return button.update({
                         content: interactionLang.notEnoughtMoney,
                         embeds: [],
                         components: [],
                     });
+                } else {
+                    console.log('Error : ', err);
+			return button.reply(lang.bot.errorMessage);
                 }
             });
 		} catch (error) {

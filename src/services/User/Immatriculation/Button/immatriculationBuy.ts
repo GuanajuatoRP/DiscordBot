@@ -62,6 +62,7 @@ export class ImmatriculationBuyBtn extends Button {
 							member,
 							moneyDTO,
 							Number(embedMessage.fields[1].value),
+                            `Immatriculation : ${immatriculation}`,
 						);
 
 						const embed = new EmbedBuilder()
@@ -82,7 +83,7 @@ export class ImmatriculationBuyBtn extends Button {
 					
 				})
 				.catch(async (err) => {
-                    if (err.response.data == "Not Enough Money") {
+                    if (err.response.data == "NOT_ENOUGH_MONEY") {
                         await message.react('❌');
 						return button.update({
 							content: interactionLang.notEnoughtMoney,

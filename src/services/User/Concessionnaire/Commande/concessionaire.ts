@@ -184,7 +184,7 @@ export class ConcessionnaireCommand extends Command {
 				});
 		}
 
-		const filtered = choices!;
+		const filtered = choices!.slice(0,25);
 
 		i.respond(filtered.map((choice: any) => ({ name: choice, value: choice })));
 	}

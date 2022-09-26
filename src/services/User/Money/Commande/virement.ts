@@ -4,9 +4,11 @@ import {
     ApplicationCommandOptionType,
     CommandInteraction,
     GuildMember,
+    TextChannel,
 } from 'discord.js';
 import lang from '../../../../tools/language.json';
 import MoneyController from '../../../../APIToUserApi/MoneyController';
+import { chanels } from '../../../../util/appConfig.json'
 const cmdLang = lang.commands.virement;
 
 
@@ -23,15 +25,16 @@ export class VirementCommand extends Command {
                 {
                     type: ApplicationCommandOptionType.User,
                     name: 'utilisateur',
-                    description: cmdLang.slashOptions.optionName,
+                    description: cmdLang.slashOptions.utilisateur,
                     required: true,
                 },
                 {
-                    type: ApplicationCommandOptionType.Number,
+                    type: ApplicationCommandOptionType.Integer,
                     name: 'somme',
-                    description: cmdLang.slashOptions.optionName,
+                    description: cmdLang.slashOptions.somme,
                     required: true,
-                    min_value:1
+                    min_value:1,
+                    max_value:1000000000,
                 },
             ],
             // channel : '', //* Default Channel is GUILD
@@ -45,11 +48,12 @@ export class VirementCommand extends Command {
         this.client.emit('CommandLog', i);
 
        try {
-        await i.deferReply();
+        await i.deferReply({ ephemeral: true });
 
         const memberHaveMoney: GuildMember = i.member as GuildMember; 
         const memberToSendMoney: GuildMember = i.options.getMember('utilisateur') as GuildMember;
         const moneyToSend: number = i.options.get('somme', true).value as number;
+        const banqueChannel: TextChannel = i.guild!.channels.cache.get(chanels.staff.botDev) as TextChannel;
 
         await MoneyController.removeMoney(memberHaveMoney.id, moneyToSend,false)
         .then(async (result)=> {
@@ -58,13 +62,24 @@ export class VirementCommand extends Command {
             await MoneyController.addMoney(memberToSendMoney.id, moneyToSend)
             .then(async (res) => {
                 const moneyDTO2 = res.data;
-                i.editReply(`<@${memberHaveMoney.id}> a envoyé ${moneyToSend}€ à <@${memberToSendMoney.id}>. Il lui reste ${moneyDTO.money}€ et <@${memberToSendMoney.id}> a maintenant ${moneyDTO2.money}€`);
+
+                await banqueChannel.send(cmdLang.interaction.public.format(memberHaveMoney.id,moneyToSend.toString(),memberToSendMoney.id,moneyDTO.money,moneyDTO2.money))
+
+                i.editReply({content: cmdLang.interaction.personal.format(moneyToSend.toString(),memberToSendMoney.id,moneyDTO.money,moneyDTO2.money)});
             })
         })
         .catch((err) => {
-            if (err.response.data == "Not Enough Money") {
-
-                i.editReply(`<@${memberHaveMoney.id}> n'a pas assez d'argent pour envoyer ${moneyToSend}€ à <@${memberToSendMoney.id}>`);	
+            switch (err.response.data)
+            {
+                case "NOT_ENOUGH_MONEY":
+                    return i.editReply(cmdLang.interaction.notEnoughMoney.format(memberHaveMoney.id,moneyToSend.toString(),memberToSendMoney.id));
+                case "USER_NOT_FOUND":
+                    MoneyController.addMoney(memberHaveMoney.id, moneyToSend)
+                    return i.editReply(cmdLang.interaction.userNotExist.format(memberToSendMoney.id));
+                default:
+                    console.log(err);
+			        this.client.emit('ErrorCommandLog', i, err);
+                    return i.editReply(lang.bot.errorMessage);
             }
         });
         } catch (error) {
