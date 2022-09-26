@@ -115,33 +115,35 @@ export class AdminMoneyCommand extends Command {
 					});
 					break;
 				case 'Remove':
-					await MoneyController.removeMoney(user.id, montant).then(response => {
-						const moneyDTO: GetMoneyDTO = response.data as GetMoneyDTO;
+					await MoneyController.removeMoney(user.id, montant, true).then(
+						response => {
+							const moneyDTO: GetMoneyDTO = response.data as GetMoneyDTO;
 
-						embedMoney.setColor('#f00' as ColorResolvable);
-						embedMoney.addFields({
-							name: cmdLang.embed.fieldsNames.remove,
-							value: `${montant}€`,
-						});
-
-						if (moneyDTO.money < 0) {
-							embedMoney.addFields(
-								{
-									name: cmdLang.embed.fieldsNames.newSolde,
-									value: `⚠️⚠️${moneyDTO.money}€⚠️⚠️`,
-								},
-								{
-									name: cmdLang.embed.fields.decouvert.name,
-									value: cmdLang.embed.fields.decouvert.value,
-								},
-							);
-						} else {
+							embedMoney.setColor('#f00' as ColorResolvable);
 							embedMoney.addFields({
-								name: cmdLang.embed.fieldsNames.newSolde,
-								value: `${moneyDTO.money}€`,
+								name: cmdLang.embed.fieldsNames.remove,
+								value: `${montant}€`,
 							});
-						}
-					});
+
+							if (moneyDTO.money < 0) {
+								embedMoney.addFields(
+									{
+										name: cmdLang.embed.fieldsNames.newSolde,
+										value: `⚠️⚠️${moneyDTO.money}€⚠️⚠️`,
+									},
+									{
+										name: cmdLang.embed.fields.decouvert.name,
+										value: cmdLang.embed.fields.decouvert.value,
+									},
+								);
+							} else {
+								embedMoney.addFields({
+									name: cmdLang.embed.fieldsNames.newSolde,
+									value: `${moneyDTO.money}€`,
+								});
+							}
+						},
+					);
 					break;
 				case 'Set':
 					await MoneyController.setMoney(user.id, montant).then(response => {

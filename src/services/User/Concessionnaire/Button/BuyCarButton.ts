@@ -26,7 +26,6 @@ export class CarBuyBtn extends Button {
 			const message = button.message as Message;
 			const member = button.member as GuildMember;
 			const embedMessage = message.embeds[0] as Embed;
-			let isNegativeAccount = false;
 
 			if (!IsEmbedOwner(member, embedMessage)) {
 				return button.reply({
@@ -89,40 +88,32 @@ export class CarBuyBtn extends Button {
 					},
 				);
 
-			await MoneyController.removeMoney(member.id, searchedCar.price).then(
-				async res => {
+			await MoneyController.removeMoney(
+				member.id,
+				searchedCar.price,
+				false,
+			).then(async res => {
+				if (res.status == 200) {
 					const moneyDTO = res.data as GetMoneyDTO;
 
-					if (Number(moneyDTO.money) + Number(searchedCar.price) < 0) {
-						await MoneyController.addMoney(
-							member.id,
-							Number(searchedCar.price),
-						).catch(err => console.log(err));
-						isNegativeAccount = true;
-					} else if (Number(moneyDTO.money)) {
-					} else {
-						await CarController.addCar(searchedCar, member.id).catch(err =>
-							console.log(err),
-						);
-						await removeMoneyRapport(
-							member! as GuildMember,
-							moneyDTO,
-							searchedCar.price,
-						).catch(err => console.log(err));
-					}
-				},
-			);
-
-			if (isNegativeAccount) {
-				await message.react('❌');
-				return message.edit({
-					content: interactionLang.notEnoughtMoney,
-					embeds: [],
-					components: [],
-				});
-			} else {
-				return message.edit({ embeds: [embed], components: [] });
-			}
+					await CarController.addCar(searchedCar, member.id).catch(err =>
+						console.log(err),
+					);
+					await removeMoneyRapport(
+						member! as GuildMember,
+						moneyDTO,
+						searchedCar.price,
+					).catch(err => console.log(err));
+					return message.edit({ embeds: [embed], components: [] });
+				} else {
+					await message.react('❌');
+					return message.edit({
+						content: interactionLang.notEnoughtMoney,
+						embeds: [],
+						components: [],
+					});
+				}
+			});
 		} catch (error) {
 			console.log('Error : ', error);
 			return button.reply(lang.bot.errorMessage);

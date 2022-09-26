@@ -12,10 +12,13 @@ export default class MoneyController {
 			value: montant,
 		})) as AxiosResponse<any, any>;
 	}
-	static async removeMoney(discordId: string, montant: Number) {
-		return (await ApiBase.userApi.post(`api/Money/remove/${discordId}`, {
-			value: montant,
-		})) as AxiosResponse<any, any>;
+	static async removeMoney(discordId: string, montant: Number, force: boolean) {
+		return (await ApiBase.userApi.post(
+			`api/Money/remove/${discordId}?force=${force}`,
+			{
+				value: montant,
+			},
+		)) as AxiosResponse<any, any>;
 	}
 	static async setMoney(discordId: string, montant: Number) {
 		return (await ApiBase.userApi.post(`api/Money/set/${discordId}`, {
