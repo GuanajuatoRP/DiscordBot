@@ -22,6 +22,7 @@ export class ActivateAccountBtn extends Button {
 		// Get Member and this roles
 		const member = b.member as GuildMember;
 		const memberRoles = member.roles as GuildMemberRoleManager;
+		const roleNouveau = b.guild!.roles.cache.get(appConf.Roles.NOUVEAU) as Role;
 		const roleInscrit = b.guild!.roles.cache.get(appConf.Roles.INSCRIT) as Role;
 		const roleSansPermis = b.guild!.roles.cache.get(
 			appConf.Roles.SANSPERMIS,
@@ -43,9 +44,12 @@ export class ActivateAccountBtn extends Button {
 			memberRoles.cache.has(appConf.Roles.INSCRIT) &&
 			httpCode == StatusCodes.OK
 		) {
+			//déjà insrit
 			await member.setNickname(username).catch(err => console.log(err));
 			return b.editReply(iLang.alreadyActivated);
 		} else if (httpCode == StatusCodes.NO_CONTENT) {
+			//Pas inscrit
+			await memberRoles.add(roleNouveau).catch(err => console.log(err));
 			await memberRoles.remove(roleInscrit).catch(err => console.log(err));
 			await memberRoles.remove(roleSansPermis).catch(err => console.log(err));
 			await member.setNickname(null).catch(err => console.log(err));
@@ -54,7 +58,9 @@ export class ActivateAccountBtn extends Button {
 			!memberRoles.cache.has(appConf.Roles.INSCRIT) &&
 			httpCode == StatusCodes.OK
 		) {
+			//inscrit
 			await member.setNickname(username).catch(err => console.log(err));
+			await memberRoles.remove(roleNouveau).catch(err => console.log(err));
 			await memberRoles.add(roleInscrit).catch(err => console.log(err));
 			await memberRoles.add(roleSansPermis).catch(err => console.log(err));
 			return b.editReply(iLang.activated);
