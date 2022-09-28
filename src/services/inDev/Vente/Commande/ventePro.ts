@@ -1,8 +1,11 @@
 import { Command } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
 import {
+    ActionRowBuilder,
 	ApplicationCommandOptionType,
 	AutocompleteInteraction,
+	ButtonBuilder,
+	ButtonStyle,
 	CommandInteraction,
 	EmbedBuilder,
 	GuildMember,
@@ -52,8 +55,7 @@ export class VenteProCommand extends Command {
 					c => `${c.maker} ${c.model} ${c.year}` == voitureOptions,
 				)[0] as CarDTO;
 
-				carEmbed
-					.setAuthor({
+				carEmbed.setAuthor({
 						name: lang.embeds.default.author,
 						iconURL:
 							'https://www.gtplanet.net/wp-content/uploads/2021/08/ForzaHorizon5_KeyArt_Horiz_RGB_Final-800x450.jpg',
@@ -136,6 +138,20 @@ export class VenteProCommand extends Command {
 					]);
 			})
 			.catch(err => console.log(err));
+
+            const carBoutton = new ActionRowBuilder<ButtonBuilder>()
+				.addComponents(
+					new ButtonBuilder()
+						.setStyle(ButtonStyle.Success)
+						.setLabel('Acheter')
+						.setCustomId('sellCarBoutton'),
+				)
+				.addComponents(
+					new ButtonBuilder()
+						.setStyle(ButtonStyle.Danger)
+						.setLabel('Annuler')
+						.setCustomId('cancelSellCarBoutton'),
+				);
 
 		return i.editReply({
 			content: cmdLang.i.content,
