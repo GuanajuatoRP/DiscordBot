@@ -1,7 +1,7 @@
 import { Command } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
 import {
-    ActionRowBuilder,
+	ActionRowBuilder,
 	ApplicationCommandOptionType,
 	AutocompleteInteraction,
 	ButtonBuilder,
@@ -55,7 +55,8 @@ export class VenteProCommand extends Command {
 					c => `${c.maker} ${c.model} ${c.year}` == voitureOptions,
 				)[0] as CarDTO;
 
-				carEmbed.setAuthor({
+				carEmbed
+					.setAuthor({
 						name: lang.embeds.default.author,
 						iconURL:
 							'https://www.gtplanet.net/wp-content/uploads/2021/08/ForzaHorizon5_KeyArt_Horiz_RGB_Final-800x450.jpg',
@@ -71,26 +72,6 @@ export class VenteProCommand extends Command {
 					.setThumbnail(car.pictureLink)
 					.addFields([
 						{
-							name: 'Marque',
-							value: car.maker,
-							inline: true,
-						},
-						{
-							name: 'Model',
-							value: car.model,
-							inline: true,
-						},
-						{
-							name: 'Année',
-							value: car.year.toString(),
-							inline: true,
-						},
-						{
-							name: 'Class',
-							value: `${car.editClass}${car.editPi}`,
-							inline: true,
-						},
-						{
 							name: 'Prix total',
 							value: car.totalPrice.toString(),
 							inline: false,
@@ -100,62 +81,28 @@ export class VenteProCommand extends Command {
 							value: (car.totalPrice * 0.75).toString(),
 							inline: false,
 						},
-						{
-							name: 'Vitesse',
-							value: car.editSpeed.toString(),
-							inline: true,
-						},
-						{
-							name: 'Tenue de route',
-							value: car.editHandling.toString(),
-							inline: true,
-						},
-						{
-							name: 'Accélération',
-							value: car.editAccelerate.toString(),
-							inline: true,
-						},
-						{
-							name: 'Départ arréter',
-							value: car.editLaunch.toString(),
-							inline: true,
-						},
-						{
-							name: 'Freinage',
-							value: car.editBraking.toString(),
-							inline: true,
-						},
-						{
-							name: 'Offroad',
-							value: car.editOffroad.toString(),
-							inline: true,
-						},
-						{
-							name: 'Immatriculable',
-							value: car.editOnRoad ? 'Oui' : 'Non',
-							inline: false,
-						},
 					]);
 			})
 			.catch(err => console.log(err));
 
-            const carBoutton = new ActionRowBuilder<ButtonBuilder>()
-				.addComponents(
-					new ButtonBuilder()
-						.setStyle(ButtonStyle.Success)
-						.setLabel('Acheter')
-						.setCustomId('sellCarBoutton'),
-				)
-				.addComponents(
-					new ButtonBuilder()
-						.setStyle(ButtonStyle.Danger)
-						.setLabel('Annuler')
-						.setCustomId('cancelSellCarBoutton'),
-				);
+		const carBoutton = new ActionRowBuilder<ButtonBuilder>()
+			.addComponents(
+				new ButtonBuilder()
+					.setStyle(ButtonStyle.Success)
+					.setLabel('Vendre')
+					.setCustomId('sellCarBoutton'),
+			)
+			.addComponents(
+				new ButtonBuilder()
+					.setStyle(ButtonStyle.Danger)
+					.setLabel('Annuler')
+					.setCustomId('cancelSellCarBoutton'),
+			);
 
 		return i.editReply({
 			content: cmdLang.i.content,
 			embeds: [carEmbed],
+			components: [carBoutton],
 		});
 	}
 

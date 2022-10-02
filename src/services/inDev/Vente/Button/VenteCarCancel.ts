@@ -1,34 +1,33 @@
-// import { Button } from "sheweny";
-// import type { ShewenyClient } from "sheweny";
-// import type { ButtonInteraction,  GuildMember, Message } from "discord.js";
-// import {MessageEmbed} from "discord.js"
-// import { IsEmbedOwner } from "../../Util/export";
-// import lang from "../../Tools/language.json"
-// const interactionLang = lang.intercation.button.VenteCarCancel
+import { Button } from 'sheweny';
+import type { ShewenyClient } from 'sheweny';
+import type { ButtonInteraction, GuildMember, Message } from 'discord.js';
+import { IsEmbedOwner } from '../../../../Tools/Exports/isEmbedOwner';
+import lang from '../../../../Tools/language.json';
+const interactionLang = lang.button.VenteCarCancel;
 
-// export class VenteCarCancelBtn extends Button {
-//     constructor(client: ShewenyClient) {
-//         super(client, ["VenteCarCancel"]);
-//     }
+export class VenteCarCancelBtn extends Button {
+	constructor(client: ShewenyClient) {
+		super(client, ['cancelSellCarBoutton']);
+	}
 
-//     async execute(button: ButtonInteraction) {
-//         const message = button.message as Message
-//         const messageEmbed = message.embeds[0] as MessageEmbed
-//         const member = button.member as GuildMember
+	async execute(button: ButtonInteraction) {
+		const message = button.message as Message;
+		const messageEmbed = message.embeds[0];
+		const member = button.member as GuildMember;
 
-//         // check if member can user button
-//         if (!IsEmbedOwner(member,messageEmbed)){
-//             return button.reply({
-//                 content:interactionLang.button.cantUse,
-//                 ephemeral:true,
-//             })
-//         }
+		// check if member can user button
+		if (!IsEmbedOwner(member, messageEmbed)) {
+			return button.reply({
+				content: interactionLang.button.cantUse,
+				ephemeral: true,
+			});
+		}
 
-//         message.delete()
+		message.delete();
 
-//         return button.reply({
-//             content:interactionLang.i.content,
-//             ephemeral : true
-//         })
-//     }
-// }
+		return button.reply({
+			content: interactionLang.i.content,
+			ephemeral: true,
+		});
+	}
+}

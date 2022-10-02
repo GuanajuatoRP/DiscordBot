@@ -975,7 +975,7 @@
                     "footer": "Voiture de : {0}",
                     "fields": {
                         "Vente": {
-                            "name": "{0} as vendus une voiture pour",
+                            "name": "{0} à vendus une voiture pour",
                             "value": "{0}€"
                         }
                     }

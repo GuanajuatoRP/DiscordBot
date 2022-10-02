@@ -1,6 +1,7 @@
 import { OrigialCarDTO } from './Models/OrigialCarDTO';
 import { EditCarDTO } from './Models/EditCarDTO';
 import ApiBase from './ApiBase';
+import { CarDTO } from './Models/CarDTO';
 
 export default class CarController {
 	static async getAllOriginalCar() {
@@ -18,6 +19,11 @@ export default class CarController {
 	static async addCar(car: OrigialCarDTO, DiscordId: string) {
 		return (
 			await ApiBase.userApi.post(`api/Garage/add/${DiscordId}/${car.idCar}`)
+		).data;
+	}
+	static async SellCar(DiscordId: string, car: CarDTO) {
+		return (
+			await ApiBase.userApi.put(`api/Garage/Sell/${DiscordId}/${car.keyCar}`)
 		).data;
 	}
 	static async searchCar(seachValue: string | undefined) {

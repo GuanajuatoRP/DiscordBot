@@ -1,49 +1,80 @@
-// import { Button } from 'sheweny';
-// import type { ShewenyClient } from 'sheweny';
-// import type {
-// 	ButtonInteraction,
-// 	ColorResolvable,
-// 	Embed,
-// 	GuildMember,
-// 	Message,
-// } from 'discord.js';
-// import lang from '../../Tools/language.json';
-// import { IsEmbedOwner } from '../../Util/export';
-// const interactionLang = lang.intercation.button.VenteProCar.Vendre;
+import { Button } from 'sheweny';
+import type { ShewenyClient } from 'sheweny';
+import {
+	ButtonInteraction,
+	ColorResolvable,
+	Embed,
+	EmbedBuilder,
+	GuildMember,
+	Message,
+} from 'discord.js';
+import lang from '../../../../Tools/language.json';
+import { IsEmbedOwner } from '../../../../Tools/Exports/isEmbedOwner';
+import CarController from '../../../../APIToUserApi/CarController';
+import { CarDTO } from '../../../../APIToUserApi/Models/CarDTO';
+import { removeMoneyRapport } from '../../../../Tools/Exports/embedMoney';
+import { GetMoneyDTO } from '../../../../APIToUserApi/Models/GetMoneyDTO';
+const interactionLang = lang.button.VenteProCar.Vendre;
 
-// export class VenteProCarVendreBtn extends Button {
-// 	constructor(client: ShewenyClient) {
-// 		super(client, ['VenteProCarMenuVendre']);
-// 	}
+export class VenteProCarVendreBtn extends Button {
+	constructor(client: ShewenyClient) {
+		super(client, ['sellCarBoutton']);
+	}
 
-// 	async execute(button: ButtonInteraction) {
-// 		const message = button.message as Message;
-// 		const messageEmbed = message.embeds[0] as Embed;
-// 		const member = button.member as GuildMember;
+	async execute(button: ButtonInteraction) {
+		const message = button.message as Message;
+		const messageEmbed = message.embeds[0] as Embed;
+		const member = button.member as GuildMember;
+		const carNameValue = messageEmbed.title as string;
+		const carPriceValue = messageEmbed.fields[1].value;
 
-// 		// check if member can user button
-// 		if (!IsEmbedOwner(member, messageEmbed)) {
-// 			return button.reply({
-// 				content: interactionLang.button.cantUse,
-// 				ephemeral: true,
-// 			});
-// 		}
+		// check if member can user button
+		if (!IsEmbedOwner(member, messageEmbed)) {
+			return button.reply({
+				content: interactionLang.button.cantUse,
+				ephemeral: true,
+			});
+		}
 
-// 		let Newembed = messageEmbed
-// 			.setTitle(interactionLang.embed.title)
-// 			.setColor(interactionLang.embed.color as ColorResolvable)
-// 			.setThumbnail(member.displayAvatarURL())
-// 			.addFields({
-// 				name: interactionLang.embed.fields.Vente.name.format(
-// 					member.displayName,
-// 				),
-// 				value: interactionLang.embed.fields.Vente.value.format('1000'),
-// 				inline: true,
-// 			});
-// 		message.react('✅');
+		await CarController.getUserAllCar(member.id)
+			.then(async (cars: CarDTO[]) => {
+				const car = cars.filter(
+					c => `${c.maker} ${c.model} ${c.year}` == carNameValue,
+				)[0] as CarDTO;
 
-// 		// TODO Call API Vendre la voiture et faire la transaction
+				await CarController.SellCar(member.id, car).then(async res => {
+					console.log(res);
 
-// 		return await button.update({ embeds: [Newembed], components: [] });
-// 	}
-// }
+					let Newembed = new EmbedBuilder()
+						.setTitle(interactionLang.embed.title)
+						.setColor(interactionLang.embed.color as ColorResolvable)
+						.setThumbnail(member.displayAvatarURL())
+						.addFields({
+							name: interactionLang.embed.fields.Vente.name.format(
+								member.displayName,
+							),
+							value:
+								interactionLang.embed.fields.Vente.value.format(carPriceValue),
+							inline: true,
+						})
+						.setFooter({
+							text: `Voiture vendue :  ${carNameValue}`,
+						});
+					message.react('✅');
+
+					let moneyDTO: GetMoneyDTO = new GetMoneyDTO();
+					moneyDTO.money = res;
+
+					await removeMoneyRapport(
+						member,
+						moneyDTO,
+						Number(carPriceValue),
+						'Vente de voiture',
+					);
+
+					return await button.update({ embeds: [Newembed], components: [] });
+				});
+			})
+			.catch(err => console.log(err));
+	}
+}
