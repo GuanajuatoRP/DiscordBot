@@ -6,9 +6,9 @@ import {
 	GuildMember,
 	TextChannel,
 } from 'discord.js';
-import lang from '../../../../tools/language.json';
+import lang from '../../../../Tools/language.json';
 import MoneyController from '../../../../APIToUserApi/MoneyController';
-import { chanels } from '../../../../util/appConfig.json';
+import { chanels } from '../../../../Util/appConfig.json';
 const cmdLang = lang.commands.virement;
 
 export class VirementCommand extends Command {
@@ -55,7 +55,7 @@ export class VirementCommand extends Command {
 			) as GuildMember;
 			const moneyToSend: number = i.options.get('somme', true).value as number;
 			const banqueChannel: TextChannel = i.guild!.channels.cache.get(
-				chanels.staff.botDev,
+				chanels.rp.banque,
 			) as TextChannel;
 
 			await MoneyController.removeMoney(memberHaveMoney.id, moneyToSend, false)

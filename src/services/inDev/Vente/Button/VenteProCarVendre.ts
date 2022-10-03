@@ -12,7 +12,7 @@ import lang from '../../../../Tools/language.json';
 import { IsEmbedOwner } from '../../../../Tools/Exports/isEmbedOwner';
 import CarController from '../../../../APIToUserApi/CarController';
 import { CarDTO } from '../../../../APIToUserApi/Models/CarDTO';
-import { removeMoneyRapport } from '../../../../Tools/Exports/embedMoney';
+import { addMoneyRapport } from '../../../../Tools/Exports/embedMoney';
 import { GetMoneyDTO } from '../../../../APIToUserApi/Models/GetMoneyDTO';
 const interactionLang = lang.button.VenteProCar.Vendre;
 
@@ -43,8 +43,6 @@ export class VenteProCarVendreBtn extends Button {
 				)[0] as CarDTO;
 
 				await CarController.SellCar(member.id, car).then(async res => {
-					console.log(res);
-
 					let Newembed = new EmbedBuilder()
 						.setTitle(interactionLang.embed.title)
 						.setColor(interactionLang.embed.color as ColorResolvable)
@@ -65,7 +63,7 @@ export class VenteProCarVendreBtn extends Button {
 					let moneyDTO: GetMoneyDTO = new GetMoneyDTO();
 					moneyDTO.money = res;
 
-					await removeMoneyRapport(
+					await addMoneyRapport(
 						member,
 						moneyDTO,
 						Number(carPriceValue),
@@ -75,6 +73,12 @@ export class VenteProCarVendreBtn extends Button {
 					return await button.update({ embeds: [Newembed], components: [] });
 				});
 			})
-			.catch(err => console.log(err));
+			.catch(async err => {
+				return await button.update({
+					content: lang.bot.errorMessage,
+					embeds: [],
+					components: [],
+				});
+			});
 	}
 }

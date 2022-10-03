@@ -46,3 +46,52 @@ export const removeMoneyRapport = async (
 		embeds: [embedMoney],
 	});
 };
+export const addMoneyRapport = async (
+	member: GuildMember,
+	moneyDTO: GetMoneyDTO,
+	addedValue: number,
+	motif: string,
+) => {
+	const embedMoney = new EmbedBuilder()
+		.setTitle(adminMoney.embed.title.format(member.displayName))
+		.setThumbnail(member.displayAvatarURL() as string)
+		.setAuthor({
+			name: '𝑳𝒂 𝒃𝒂𝒏𝒒𝒖𝒆',
+			url: 'https://discord.com/channels/854140376867930122/1001952467786932244/1002182894632050708',
+		});
+	embedMoney
+		.setColor('#11ff00' as ColorResolvable)
+		.addFields({
+			name: commands.adminMoney.embed.fieldsNames.add,
+			value: `${addedValue}€`,
+		})
+		.setTimestamp()
+		.setFooter({ text: `Motif : ${motif}` });
+
+	if (moneyDTO.money < 0) {
+		embedMoney.addFields(
+			{
+				name: commands.adminMoney.embed.fieldsNames.newSolde,
+				value: `⚠️⚠️${moneyDTO.money}€⚠️⚠️`,
+			},
+			{
+				name: commands.adminMoney.embed.fields.decouvert.name,
+				value: commands.adminMoney.embed.fields.decouvert.value,
+			},
+		);
+	} else {
+		embedMoney.addFields({
+			name: commands.adminMoney.embed.fieldsNames.newSolde,
+			value: `${moneyDTO.money}€`,
+		});
+	}
+
+	const banqueChannel = (await member.guild!.channels.fetch(
+		chanels.rp.banque,
+	)) as TextChannel;
+
+	await banqueChannel!.send({
+		content: adminMoney.message.content.format(member.id),
+		embeds: [embedMoney],
+	});
+};

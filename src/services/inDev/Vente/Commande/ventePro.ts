@@ -19,7 +19,7 @@ export class VenteProCommand extends Command {
 	constructor(client: ShewenyClient) {
 		super(client, {
 			name: 'vente-pro',
-			// category: '', //* Default category is InDev
+			category: 'RôlePlay', //* Default category is InDev
 			// type: '', //* Default type is SLASH_COMMAND
 			description: cmdLang.description.desc,
 			usage: cmdLang.description.usage,
@@ -28,14 +28,14 @@ export class VenteProCommand extends Command {
 				{
 					type: ApplicationCommandOptionType.String,
 					name: 'voiture',
-					description: 'Voiture a que vous souhaitez vendre',
+					description: cmdLang.slashOptions.voiture,
 					autocomplete: true,
 					required: true,
 				},
 			],
 			// channel : '', //* Default Channel is GUILD
 			// cooldown : , //* Default cooldown set at 2sec
-			adminsOnly: true, //* Default value is false
+			// adminsOnly: true, //* Default value is false
 			//userPermissions : [],
 			//clientPermissions : []
 		});

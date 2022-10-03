@@ -298,8 +298,8 @@
                     "vente-pro"
                 ]
             },
-            "SelectMenu": {
-                "setPlaceholder": "Choisis une voiture dans la liste"
+            "slashOptions": {
+                "voiture": "Choisi la voiture que tu veux vendre"
             },
             "i": {
                 "content": "Merci de choisir une de vos voiture dans la liste suivante"
