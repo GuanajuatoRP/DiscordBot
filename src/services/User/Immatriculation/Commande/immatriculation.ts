@@ -91,6 +91,10 @@ export class ImmatriculationCommand extends Command {
 				});
 			}
 
+			if (selectedCar.originalOnRoad == false)
+				return i.editReply({
+					content: cmdLang.i.notImmatriculable.format(voiture as string),
+				});
 			immat = await NewImmatriculation(immat as string);
 
 			const embed = new EmbedBuilder()
@@ -162,6 +166,7 @@ export class ImmatriculationCommand extends Command {
 			await CarController.getUserAllCar(guildMember.id)
 				.then((cars: CarDTO[]) => {
 					choices = cars
+						.filter((car: any) => car.originalOnRoad != false)
 						.filter(car => car.imatriculation == '')
 						.map(car => `${car.maker} ${car.model} ${car.year}`);
 				})

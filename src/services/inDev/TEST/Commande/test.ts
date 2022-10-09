@@ -1,7 +1,6 @@
 import { Command } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
-import { CommandInteraction, GuildMember } from 'discord.js';
-import { Roles } from '../../../../Util/appConfig.json';
+import { CommandInteraction } from 'discord.js';
 
 export class TestCommand extends Command {
 	constructor(client: ShewenyClient) {
@@ -25,27 +24,10 @@ export class TestCommand extends Command {
 
 		await i.deferReply();
 
-		const userList: GuildMember[] = [...i.guild!.members.cache.values()].filter(
-			m =>
-				!m.roles.cache.hasAny(
-					Roles.SANSPERMIS,
-					Roles.PERMISDEFINITIF,
-					Roles.PROBATOIRE,
-					Roles.STAGEA,
-				) && m.roles.cache.has(Roles.INSCRIT),
-		);
+		this.client.emit('guildMemberBoost', i.member);
 
-		await i.channel?.send(userList.length.toString());
-
-		for (const member of userList) {
-			await member.roles.add(Roles.SANSPERMIS).then(() => {
-				console.log(`Role ajouté à ${member.displayName}`);
-			});
-		}
-
-		userList.filter(m => m.roles.cache.has(Roles.SANSPERMIS));
 		return i.editReply({
-			content: `${userList.length}`,
+			content: `ok 200`,
 		});
 	}
 }

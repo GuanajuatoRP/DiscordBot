@@ -278,7 +278,8 @@
                 }
             },
             "i": {
-                "wrongName": "Visiblement la voiture : **{0}** n'est pas dans ton garrage"
+                "wrongName": "Visiblement la voiture : **{0}** n'est pas dans ton garrage",
+                "notImmatriculable": "Visiblement la voiture : **{0}** n'est pas immatriculable"
             },
             "button": {
                 "cancel": "Annuler",
@@ -728,6 +729,9 @@
         "ready": {
             "description": "Send message in botLog Channel when the bot as start",
             "message": "Bot is Ready !🤖"
+        },
+        "feurTroll": {
+            "description": "Répond automatiquement Feur a un message contenant finnisant par quoi"
         },
         "deletePinnedMessageAlerte": {
             "description": "Supprime automatiquement le message qui indique qu'une personne a épinglé un message"
