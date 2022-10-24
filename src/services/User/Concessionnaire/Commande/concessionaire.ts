@@ -45,21 +45,20 @@ export class ConcessionnaireCommand extends Command {
 		try {
 			await i.deferReply();
 
-			const voitureOptions = i.options.get('voiture', true).value;
+			const voitureOptions = i.options.get('voiture', true).value as string;
 
-			let concessionnaire: OrigialCarDTO[];
-			await CarController.searchCar(voitureOptions as string)
+			let concessionnaire: OrigialCarDTO[] = new Array<OrigialCarDTO>();
+			await CarController.searchCar(encodeURI(voitureOptions) as string)
 				.then(res => {
 					concessionnaire = res;
 				})
 				.catch(err => console.log(err));
 
-			const car = concessionnaire![0];
-
-			if (!car)
+			if (concessionnaire.length == 0)
 				return i.editReply({
 					content: `Aucune voiture trouvée avec cette valeur ${voitureOptions}`,
 				});
+			const car = concessionnaire![0];
 
 			const carEmbed = new EmbedBuilder()
 				.setAuthor({
@@ -167,7 +166,7 @@ export class ConcessionnaireCommand extends Command {
 		const focusedOption = i.options.getFocused(true);
 		const voitureOptions = i.options.get('voiture', true).value;
 
-		let choices: Array<string>;
+		let choices: Array<string> = [];
 
 		if (focusedOption.name === 'voiture') {
 			await CarController.searchCar(voitureOptions as string)
@@ -184,7 +183,7 @@ export class ConcessionnaireCommand extends Command {
 				});
 		}
 
-		const filtered = choices!.slice(0,25);
+		const filtered = choices!.slice(0, 25);
 
 		i.respond(filtered.map((choice: any) => ({ name: choice, value: choice })));
 	}

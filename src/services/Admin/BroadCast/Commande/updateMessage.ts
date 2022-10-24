@@ -88,7 +88,7 @@ export class UpdateMessageCommand extends Command {
 			});
 
 			return i.reply({
-				content: cmdLang.validation.format(toChannel.name),
+				content: cmdLang.validation.format(toChannel.name, toMessage.url),
 			});
 		} catch (error) {
 			return i.reply(lang.bot.errorMessage);

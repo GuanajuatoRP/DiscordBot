@@ -129,7 +129,7 @@
                 "fromMessageNotFound": "Le message a copier n'a pas ete trouve",
                 "toMessageNotFound": "Le message a mettre a jour n'a pas ete trouve"
             },
-            "validation": "le message du salon {0} a bien été mis à jour"
+            "validation": "le message du salon {0} a bien été mis à jour\n {1}"
         },
         "rawMessage": {
             "slashOptions": {

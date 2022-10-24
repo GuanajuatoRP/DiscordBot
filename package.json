@@ -1,6 +1,6 @@
 {
     "name": "guanajuatobot",
-    "version": "2.29.4",
+    "version": "2.29.6",
     "description": "Bot officiel du serveur RP FH5 GuanajuatoRo",
     "main": "dist/index.js",
     "scripts": {

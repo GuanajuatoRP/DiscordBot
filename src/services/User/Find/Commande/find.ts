@@ -245,10 +245,11 @@ export class FindCommand extends Command {
 	}
 	async onAutocomplete(i: AutocompleteInteraction) {
 		const focusedOption = i.options.getFocused(true);
+		const immatOption = i.options.get('car', true).value;
 		let choices: Array<string>;
 
 		if (focusedOption.name === 'car') {
-			await CarController.getAllCar()
+			await CarController.getCarByImmat(immatOption as string)
 				.then((cars: CarDTO[]) => {
 					choices = cars
 						.filter(car => car.imatriculation && car.imatriculation !== '')
@@ -257,8 +258,9 @@ export class FindCommand extends Command {
 				.catch(err => console.log(err));
 		}
 
+		console.log('choices', choices!);
 		const filtered = choices!
-			.filter((choice: any) => choice.startsWith(focusedOption.value))
+			.filter((choice: string) => choice.includes(focusedOption.value))
 			.slice(0, 25);
 
 		i.respond(filtered.map((choice: any) => ({ name: choice, value: choice })));

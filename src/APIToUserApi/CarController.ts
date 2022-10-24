@@ -13,6 +13,13 @@ export default class CarController {
 	static async getUserAllCar(DiscordId: string) {
 		return (await ApiBase.userApi.get(`api/Garage/all/${DiscordId}`)).data;
 	}
+	static async getCarByImmat(Immat: string) {
+		return (
+			await ApiBase.userApi.get(
+				`api/Garage/SearchCarByImat?immatriculation=${Immat}`,
+			)
+		).data;
+	}
 	static async editCar(car: EditCarDTO) {
 		return (await ApiBase.userApi.put(`api/Garage/${car.keyCar}`, car)).data;
 	}
@@ -29,7 +36,7 @@ export default class CarController {
 	static async searchCar(seachValue: string | undefined) {
 		return (
 			await ApiBase.userApi.get(
-				`api/OriginalCar/SearchDiscord?searchModel=${seachValue}&limit=25`,
+				`api/OriginalCar/SearchDiscord?searchModel=${seachValue}`,
 			)
 		).data;
 	}
