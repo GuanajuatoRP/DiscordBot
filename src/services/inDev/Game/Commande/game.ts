@@ -106,7 +106,7 @@
 //         }
 
 //         const filtered = choices!.filter((choice: any) =>
-//             choice.startsWith(focusedOption.value)
+//             choice.includes(focusedOption.value)
 //         )
 //         i
 //             .respond(filtered.map((choice: any) => ({ name: choice, value: choice })))

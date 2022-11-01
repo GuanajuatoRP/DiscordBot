@@ -2,7 +2,8 @@ import { Command } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
 import type { CommandInteraction } from 'discord.js';
 import lang from '../../../../Tools/language.json';
-const cmdLang = lang.commands.endGame;
+const serviceLang = lang.services.game;
+const cmdLang = serviceLang.commandInformation.endGame;
 import appConfig from '../../../../Util/appConfig.json';
 export class EndGameCommand extends Command {
 	constructor(client: ShewenyClient) {
@@ -53,7 +54,7 @@ export class EndGameCommand extends Command {
 			});
 
 			return i.reply({
-				content: cmdLang.i.content,
+				content: serviceLang.validation.endSession,
 				ephemeral: true,
 			});
 		} catch (error) {

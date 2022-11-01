@@ -3,7 +3,6 @@ export class CarDTO {
 	public idUser = '';
 	public username = '';
 	public idCar = '';
-	public carId = 0;
 	public carOrdinal = 0;
 	public maker = '';
 	public model = '';

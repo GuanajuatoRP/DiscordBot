@@ -8,7 +8,8 @@ import {
 	TextChannel,
 } from 'discord.js';
 import lang from '../../../../Tools/language.json';
-const cmdLang = lang.commands.rawMessage;
+const serviceLang = lang.services.broadCast;
+const cmdLang = serviceLang.commandInformation.getRawMessage;
 
 export class GetRawMessageCommand extends Command {
 	constructor(client: ShewenyClient) {
@@ -68,6 +69,7 @@ export class GetRawMessageCommand extends Command {
 				files: [attachment, ...message.attachments.values()],
 			});
 		} catch (error) {
+			console.error(error);
 			i.reply(lang.bot.errorMessage);
 			this.client.emit('ErrorCommandLog', i, error);
 		}

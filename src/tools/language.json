@@ -5,32 +5,116 @@
         },
         "errorMessage": "Oupss il semblerais qu'une erreur c'est produite. Si cela perssiste contacte le Staff"
     },
-    "commands": {
-        "congedier": {
-            "embed": {
-                "title": "",
-                "color": "#",
-                "footer": "",
-                "fields": [{
-                    "name": "",
-                    "value": ""
-                }],
-                "author": {
-                    "name": "",
-                    "url": ""
+    "services": {
+        "broadCast": {
+            "commandInformation": {
+                "getRawMessage": {
+                    "slashOptions": {
+                        "fromChannel": "Salon ou est présent le message a copier",
+                        "messageId": "Id du message a copier"
+                    },
+                    "description": {
+                        "desc": "Permet d'obtenir une copy d'un message en version raw",
+                        "usage": "rawmessage {Channel ou est présent le message} {MessageId}",
+                        "exemples": [
+                            "rawmessage #général 123456789"
+                        ]
+                    }
+                },
+                "sendMessage": {
+                    "slashOptions": {
+                        "messageId": "Id du message a envoyé",
+                        "channelTo": "Channel ou envoyé le message",
+                        "channelFrom": "Channel ou est présent le message a envoyé"
+                    },
+                    "description": {
+                        "desc": "Permet d'envoyé un message, qui a au préalable été crée, le formatage restera tel quel.",
+                        "usage": "sendMessage {Channel d'ou provien le message} {Id du message a envoyé} {Channel dans le quel envoyé le message}",
+                        "exemples": [
+                            "sendMessage from-channel:#help message-id:1587569320 to-channel:#Generale"
+                        ]
+                    }
+                },
+                "updateMessage": {
+                    "slashOptions": {
+                        "channelFrom": "Channel d'origine du message a copier",
+                        "messageIdFrom": "Id du message a copier",
+                        "channelTo": "Channel de destination du message a mettre a jour",
+                        "messageIdTo": "Id du message a mettre a jour"
+                    },
+                    "description": {
+                        "desc": "Permet de mettre a jour un message du bot",
+                        "usage": "updatemessage {FromChannel} {FromMessageId} {ToChannel} {ToMessageId}",
+                        "exemples": [
+                            "updateMessage FromChannel:#général FromMessageId:1001952446853163051 ToChannel:#règlement ToMessageId:1001952446853161051",
+                            "updateMessage FromChannel:#général FromMessageId:1031952446853163051 ToChannel:#règlement ToMessageId:1001952946853161051"
+                        ]
+                    }
                 }
             },
-            "slashOptions": {
-                "optionName": "optionName"
+            "errors": {
+                "fromMessageNotFound": "Le message a copier n'a pas été trouvé",
+                "toMessageNotFound": "Le message a mettre a jour n'a pas été trouvé",
+                "toChannelNotFound": "Le channel de destination n'a pas été trouvé",
+                "tooLongMessage": "Le message est trop long, il ne peut pas dépasser 2000 caractères"
             },
-            "description": {
-                "desc": "congedier des membres",
-                "usage": "congedier",
-                "exemples": [
-                    "congedier"
-                ]
+            "validation": {
+                "messageUpdated": "Le message du salon {0} a bien été mis à jour avec succès\n {1}",
+                "messageSent": "Le message à été envoyé avec succès dans le salon {0}"
             }
         },
+        "game": {
+            "commandInformation": {
+                "endGame": {
+                    "description": {
+                        "desc": "Termine une session, supprime tous les salon et le rôle crée suite a une session",
+                        "usage": "endgame",
+                        "exemples": [
+                            "endgame"
+                        ]
+                    }
+                },
+                "role": {
+                    "description": {
+                        "desc": "Permet de répartir les membres de la salle de jeu en deux équipe",
+                        "usage": "role",
+                        "exemples": [
+                            "role"
+                        ]
+                    },
+                    "slashOptions": {
+                        "nbTeamB": "Nombre de personne à ajouté dans l'équipe B"
+                    }
+                }
+            },
+            "Components": {
+                "embeds": {
+                    "role": {
+                        "author": "Répartition des rôles",
+                        "fields": {
+                            "teamA": "Team :regional_indicator_a: :",
+                            "teamB": "Team :b: :"
+                        }
+                    }
+                },
+                "buttons": {
+                    "role": {
+                        "labels": {
+                            "getRole": "Obtenir un rôle"
+                        }
+                    }
+                }
+            },
+            "errors": {
+                "minimalUser": "Il faut au moins 2 personnes dans le sallon pour utilisé cette commande",
+                "noChannel": "Le salon \"Salle de jeux\" ne peut pas être trouvé"
+            },
+            "validation": {
+                "endSession": "La session a bien été terminé, l'ensemble des rôle et permission on été supprimé"
+            }
+        }
+    },
+    "commands": {
         "virement": {
             "interaction": {
                 "public": "<@{0}> a envoyé {1}€ à <@{2}>. Il lui reste {3}€ et <@{2}> a maintenant {4}€",
@@ -109,55 +193,6 @@
                     "find member member:@UwU.#2273"
                 ]
             }
-        },
-        "updateMessage": {
-            "slashOptions": {
-                "channelFrom": "Channel d'origine du message a copier",
-                "messageIdFrom": "Id du message a copier",
-                "channelTo": "Channel de destination du message a mettre a jour",
-                "messageIdTo": "Id du message a mettre a jour"
-            },
-            "description": {
-                "desc": "Permet de mettre a jour un message du bot",
-                "usage": "updatemessage {FromChannel} {FromMessageId} {ToChannel} {ToMessageId}",
-                "exemples": [
-                    "updateMessage FromChannel:#général FromMessageId:1001952446853163051 ToChannel:#règlement ToMessageId:1001952446853161051",
-                    "updateMessage FromChannel:#général FromMessageId:1031952446853163051 ToChannel:#règlement ToMessageId:1001952946853161051"
-                ]
-            },
-            "errors": {
-                "fromMessageNotFound": "Le message a copier n'a pas ete trouve",
-                "toMessageNotFound": "Le message a mettre a jour n'a pas ete trouve"
-            },
-            "validation": "le message du salon {0} a bien été mis à jour\n {1}"
-        },
-        "rawMessage": {
-            "slashOptions": {
-                "fromChannel": "Salon ou est présent le message a copier",
-                "messageId": "Id du message a copier"
-            },
-            "description": {
-                "desc": "Permet d'obtenir une copy d'un message en version raw",
-                "usage": "rawmessage {Channel ou est présent le message} {MessageId}",
-                "exemples": [
-                    "rawmessage #général 123456789"
-                ]
-            }
-        },
-        "sendMessage": {
-            "slashOptions": {
-                "messageId": "Id du message a envoyé",
-                "channelTo": "Channel ou envoyé le message",
-                "channelFrom": "Channel ou est présent le message a envoyé"
-            },
-            "description": {
-                "desc": "Permet d'envoyé un message, qui a au préalable été crée, le formatage restera tel quel.",
-                "usage": "sendMessage {Channel d'ou provien le message} {Id du message a envoyé} {Channel dans le quel envoyé le message}",
-                "exemples": [
-                    "sendMessage from-channel:#help message-id:1587569320 to-channel:#Generale"
-                ]
-            },
-            "validation": "Le message a bien été envoyé dans le channel {0}"
         },
         "adminMoney": {
             "embed": {
@@ -314,8 +349,31 @@
                     "vente-perso"
                 ]
             },
+            "button": {
+                "setPrice": "Définir un prix de vente",
+                "sell": "Choisir un acheteur",
+                "cancel": "Annuler"
+            },
             "SelectMenu": {
                 "setPlaceholder": "Choisis une voiture dans la liste"
+            },
+            "slashOptions": {
+                "voiture": "Choisi la voiture que tu veux vendre"
+            },
+            "embed": {
+                "Author": "Ventre de voiture entre particulier",
+                "title": "Status de la vente : En Attente",
+                "description": "Fiche de vente particulier d'une voiture",
+                "color": "#A020F0",
+                "footer": "Voiture de : {0}",
+                "fields": {
+                    "stats": {
+                        "name": "Stats de la voiture"
+                    }
+                }
+            },
+            "error": {
+                "notInGarage": "La voiture : **{0}** n'est pas dans ton garage"
             },
             "i": {
                 "content": "Merci de choisir une de vos voiture dans la liste suivante"
@@ -438,18 +496,6 @@
                 }
             }
         },
-        "endGame": {
-            "description": {
-                "desc": "Termine une session, supprime tous les salon et le rôle crée suite a une session",
-                "usage": "endgame",
-                "exemples": [
-                    "endgame"
-                ]
-            },
-            "i": {
-                "content": "La session est terminée, les salons suprimé et les permission retirée"
-            }
-        },
         "getChannel": {
             "description": {
                 "desc": "Enregistre toutes les donnée d'une catégorie dans fichier prédéfinis",
@@ -560,33 +606,6 @@
             "messageError": {
                 "maxNumber": "Tu ne peux peut purge que 100 Message Max",
                 "maxDays": "Vous ne pouvez pas supprimer un message de plus de 14jours"
-            }
-        },
-        "role": {
-            "description": {
-                "desc": "Permet de répartir les membre de la salle de jeu en deux équipe",
-                "usage": "role",
-                "exemples": [
-                    "role"
-                ]
-            },
-            "embed": {
-                "Author": "Répartition des équipes",
-                "Fields": [{
-                        "teamname": "Team :regional_indicator_a: :"
-                    },
-                    {
-                        "teamname": "Team :b: :"
-                    }
-                ]
-            },
-            "bouton": {
-                "label": "Obtenir un role"
-            },
-            "i": {
-                "error": {
-                    "content": "Le nombre minimal de personne requise pour cette commande est de 2"
-                }
             }
         },
         "register": {
@@ -1071,7 +1090,7 @@
                 "Author": "Ventre de voiture entre particulier",
                 "title": "Status de la vente : En Attente",
                 "description": "Fiche de vente particulier d'une voiture",
-                "color": "PURPLE",
+                "color": "#A020F0",
                 "footer": "Voiture de : {0}",
                 "fields": {
                     "stats": {

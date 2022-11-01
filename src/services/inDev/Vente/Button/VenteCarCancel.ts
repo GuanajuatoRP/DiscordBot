@@ -1,6 +1,11 @@
 import { Button } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
-import type { ButtonInteraction, GuildMember, Message } from 'discord.js';
+import {
+	ButtonInteraction,
+	GuildMember,
+	Message,
+	MessageFlags,
+} from 'discord.js';
 import { IsEmbedOwner } from '../../../../Tools/Exports/isEmbedOwner';
 import lang from '../../../../Tools/language.json';
 const interactionLang = lang.button.VenteCarCancel;
@@ -23,7 +28,8 @@ export class VenteCarCancelBtn extends Button {
 			});
 		}
 
-		message.delete();
+		if (message.flags.bitfield != MessageFlags.Ephemeral)
+			await message.delete();
 
 		return button.reply({
 			content: interactionLang.i.content,

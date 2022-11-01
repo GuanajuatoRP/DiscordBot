@@ -11,7 +11,8 @@ export default class CarController {
 		return (await ApiBase.userApi.get(`api/Garage/all/`)).data;
 	}
 	static async getUserAllCar(DiscordId: string) {
-		return (await ApiBase.userApi.get(`api/Garage/all/${DiscordId}`)).data;
+		return (await ApiBase.userApi.get(`api/Garage/all/${DiscordId}`))
+			.data as CarDTO[];
 	}
 	static async getCarByImmat(Immat: string) {
 		return (
@@ -39,5 +40,9 @@ export default class CarController {
 				`api/OriginalCar/SearchDiscord?searchModel=${seachValue}`,
 			)
 		).data;
+	}
+
+	static async changeUser(car: CarDTO, DiscordId: string) {
+		return await ApiBase.userApi.put(`api/Garage/${car.keyCar}/${DiscordId}`);
 	}
 }

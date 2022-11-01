@@ -42,12 +42,15 @@ export const client = new ShewenyClient({
 			},
 		},
 		events: {
-			directory: './Services/', //Event directory
+			directory: './Services/',
 		},
 		buttons: {
-			directory: './Services/', //Button directory
+			directory: './Services/',
 		},
 		selectMenus: {
+			directory: './Services/',
+		},
+		modals: {
 			directory: './Services/',
 		},
 		// inhibitors: {

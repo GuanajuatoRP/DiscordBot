@@ -81,6 +81,7 @@ export class FindCommand extends Command {
 			switch (subCommand.name) {
 				case 'member':
 					const guildMember = subCommand.options![0].member as GuildMember;
+
 					await UserController.getUser(guildMember.id)
 						.then((user: UserDTO) => {
 							const embed = DefaultEmbed()
@@ -109,7 +110,7 @@ export class FindCommand extends Command {
 										inline: true,
 									},
 									{
-										name: "Date d'arriver a Guanajuato",
+										name: "Date d'arriver à Guanajuato",
 										value: user.createdAt,
 										inline: false,
 									},
@@ -125,7 +126,7 @@ export class FindCommand extends Command {
 									},
 									{
 										name: 'Stage',
-										value: user.stage.name,
+										value: user.stage.toString(),
 										inline: true,
 									},
 									{
@@ -154,16 +155,14 @@ export class FindCommand extends Command {
 										inline: true,
 									},
 								]);
+
 							return i.editReply({
 								content: 'find',
 								embeds: [embed],
 							});
 						})
-						.catch(err => {
-							if (
-								err.response.data ==
-								'Aucun utilisateur trouver avec ce discordId'
-							)
+						.catch((err: Error) => {
+							if (err.message == 'Aucun utilisateur trouver avec ce discordId')
 								return i.editReply({
 									content: cmdLang.error.member,
 								});

@@ -95,3 +95,25 @@ export const addMoneyRapport = async (
 		embeds: [embedMoney],
 	});
 };
+export const virementMoneyRapport = async (
+	memberHaveMoney: GuildMember,
+	moneyDTO: GetMoneyDTO,
+	memberToSendMoney: GuildMember,
+	money2DTO: GetMoneyDTO,
+	sendedValue: number,
+) => {
+	const banqueChannel = (await memberHaveMoney.guild!.channels.fetch(
+		chanels.rp.banque,
+	)) as TextChannel;
+
+	await banqueChannel!.send({
+		content:
+			`<@{0}> a envoyé {1}€ à <@{2}>. Il lui reste {3}€ et <@{2}> a maintenant {4}€`.format(
+				memberHaveMoney.id,
+				sendedValue.toString(),
+				memberToSendMoney.id,
+				moneyDTO.money.toString(),
+				money2DTO.money.toString(),
+			),
+	});
+};

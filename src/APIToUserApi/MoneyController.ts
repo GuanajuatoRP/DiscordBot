@@ -12,6 +12,7 @@ export default class MoneyController {
 			value: montant,
 		})) as AxiosResponse<any, any>;
 	}
+
 	static async removeMoney(discordId: string, montant: Number, force: boolean) {
 		return (await ApiBase.userApi.post(
 			`api/Money/remove/${discordId}?force=${force}`,

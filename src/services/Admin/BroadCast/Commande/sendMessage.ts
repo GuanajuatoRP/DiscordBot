@@ -9,7 +9,8 @@ import {
 	TextChannel,
 } from 'discord.js';
 import lang from '../../../../Tools/language.json';
-const cmdLang = lang.commands.sendMessage;
+const serviceLang = lang.services.broadCast;
+const cmdLang = serviceLang.commandInformation.sendMessage;
 
 export class SendMessageCommand extends Command {
 	constructor(client: ShewenyClient) {
@@ -59,6 +60,19 @@ export class SendMessageCommand extends Command {
 			const message = (await fromChannel!.messages.fetch(
 				messageId as string,
 			)) as Message;
+
+			if (!message)
+				return i.reply({
+					content: serviceLang.errors.fromMessageNotFound,
+					ephemeral: true,
+				});
+
+			if (message.content.length > 2000) {
+				return i.reply({
+					content: serviceLang.errors.tooLongMessage,
+					ephemeral: true,
+				});
+			}
 
 			const toChannelId = i.options.get('to-channel', true).value;
 			const toChannel = (await guild.channels.fetch(

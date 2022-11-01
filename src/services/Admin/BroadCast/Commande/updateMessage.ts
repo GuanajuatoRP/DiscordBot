@@ -8,7 +8,8 @@ import {
 	TextChannel,
 } from 'discord.js';
 import lang from '../../../../Tools/language.json';
-const cmdLang = lang.commands.updateMessage;
+const serviceLang = lang.services.broadCast;
+const cmdLang = serviceLang.commandInformation.updateMessage;
 
 export class UpdateMessageCommand extends Command {
 	constructor(client: ShewenyClient) {
@@ -69,7 +70,7 @@ export class UpdateMessageCommand extends Command {
 			const fromMessage = (await fromChannel.messages
 				.fetch(fromMessageId)
 				.catch(error => {
-					return i.reply(cmdLang.errors.fromMessageNotFound);
+					return i.reply(serviceLang.errors.fromMessageNotFound);
 				})) as Message;
 
 			const toMessage = (await toChannel.messages
@@ -78,7 +79,8 @@ export class UpdateMessageCommand extends Command {
 					return i.reply(lang.bot.errorMessage);
 				})) as Message;
 
-			if (!toMessage.editable) return i.reply(cmdLang.errors.toMessageNotFound);
+			if (!toMessage.editable)
+				return i.reply(serviceLang.errors.toMessageNotFound);
 
 			await toMessage.edit({
 				content: fromMessage.content,
@@ -88,7 +90,10 @@ export class UpdateMessageCommand extends Command {
 			});
 
 			return i.reply({
-				content: cmdLang.validation.format(toChannel.name, toMessage.url),
+				content: serviceLang.validation.messageUpdated.format(
+					toChannel.name,
+					toMessage.url,
+				),
 			});
 		} catch (error) {
 			return i.reply(lang.bot.errorMessage);

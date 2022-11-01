@@ -12,6 +12,7 @@ export class GetGameRoleBtns extends Button {
 		await button.deferUpdate();
 		const embed = button.message.embeds[0];
 		const member = button.member as GuildMember;
+
 		const RoleA = button.guild!.roles.cache.get(appConfig.Roles.GMA) as Role;
 		const RoleB = button.guild!.roles.cache.get(appConfig.Roles.GMB) as Role;
 
